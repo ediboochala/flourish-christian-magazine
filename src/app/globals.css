@@ -72,6 +72,38 @@
   }
 }
 
+/* Every route gets a brief, tasteful entrance instead of an abrupt cut —
+   see src/app/template.tsx, which remounts (and so replays this) on every
+   navigation. */
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-transition {
+  animation: page-enter 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+/* Slow, cinematic drift used behind hero headlines. */
+@keyframes kenburns {
+  from {
+    transform: scale(1.001);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+.animate-kenburns {
+  animation: kenburns 20s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
 * {
   scroll-behavior: smooth;
 }
@@ -287,16 +319,34 @@ select:focus-visible,
   text-underline-offset: 3px;
 }
 
-/* Reveal-on-scroll utility (progressive enhancement, no-JS safe) */
+/* Reveal-on-scroll utility (progressive enhancement, no-JS safe). Four
+   entrance variants share one timing/easing so a page can mix them (e.g.
+   pairing reveal-left/reveal-right across a two-column split) without the
+   motion feeling inconsistent. */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
   transition: opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.reveal-up {
+  transform: translateY(24px);
+}
+
+.reveal-scale {
+  transform: scale(0.94);
+}
+
+.reveal-left {
+  transform: translateX(-32px);
+}
+
+.reveal-right {
+  transform: translateX(32px);
 }
 
 .reveal.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
 /* Elegant hairline divider */
@@ -337,8 +387,16 @@ select:focus-visible,
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  .reveal {
+  .reveal,
+  .reveal-up,
+  .reveal-scale,
+  .reveal-left,
+  .reveal-right {
     opacity: 1;
     transform: none;
+  }
+  .page-transition,
+  .animate-kenburns {
+    animation: none;
   }
 }

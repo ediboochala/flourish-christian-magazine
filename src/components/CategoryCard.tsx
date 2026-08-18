@@ -9,7 +9,7 @@ export default function CategoryCard({ category }: { category: Category }) {
   return (
     <Link
       href={`/categories/${category.slug}`}
-      className="group relative flex aspect-[4/5] flex-col justify-end overflow-hidden rounded-2xl"
+      className="group relative flex aspect-[4/5] flex-col justify-end overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_-16px_rgba(58,15,43,0.35)]"
     >
       <div className="img-zoom absolute inset-0">
         <PlaceholderImage image={category.image} />

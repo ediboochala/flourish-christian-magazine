@@ -4,15 +4,17 @@ import PlaceholderImage from "@/components/ui/PlaceholderImage";
 export default function Hero() {
   return (
     <section className="grain-overlay relative overflow-hidden bg-plum">
-      <div className="absolute inset-0">
-        <PlaceholderImage
-          image={{
-            alt: "Editorial hero photograph of Christian women in community — placeholder, replace with brand photography",
-            tone: "plum",
-          }}
-          label="Hero Photograph — Replace With Brand Photography"
-          priority
-        />
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="animate-kenburns absolute inset-0">
+          <PlaceholderImage
+            image={{
+              alt: "Editorial hero photograph of Christian women in community — placeholder, replace with brand photography",
+              tone: "plum",
+            }}
+            label="Hero Photograph — Replace With Brand Photography"
+            priority
+          />
+        </div>
         <div className="absolute inset-0 bg-gradient-to-t from-plum via-plum/70 to-plum/30" />
       </div>
 

@@ -88,42 +88,80 @@ export default function Header() {
         </div>
 
         <button
-          className="flex h-9 w-9 items-center justify-center text-plum lg:hidden"
+          className="relative flex h-9 w-9 items-center justify-center text-plum lg:hidden"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
+          aria-controls="mobile-nav"
           onClick={() => setOpen((o) => !o)}
         >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          <Menu
+            className={cx(
+              "absolute h-6 w-6 transition-all duration-300",
+              open ? "rotate-90 opacity-0" : "rotate-0 opacity-100"
+            )}
+            aria-hidden="true"
+          />
+          <X
+            className={cx(
+              "absolute h-6 w-6 transition-all duration-300",
+              open ? "rotate-0 opacity-100" : "-rotate-90 opacity-0"
+            )}
+            aria-hidden="true"
+          />
         </button>
       </div>
 
-      {open && (
-        <div className="border-t border-charcoal/10 bg-ivory px-6 py-6 lg:hidden">
-          <nav className="flex flex-col gap-1" aria-label="Mobile">
-            {NAV_LINKS.map((link) => (
+      {/* Always rendered (not conditionally mounted) so both opening and
+          closing animate — grid-template-rows is one of the few CSS
+          properties that can transition to/from an intrinsic "auto"-like
+          height. Nav items fade/slide in with a slight stagger. */}
+      <div
+        id="mobile-nav"
+        className={cx(
+          "grid overflow-hidden bg-ivory transition-[grid-template-rows] duration-300 ease-out lg:hidden",
+          open ? "grid-rows-[1fr] border-t border-charcoal/10" : "grid-rows-[0fr] border-t-0"
+        )}
+      >
+        <div className="min-h-0 overflow-hidden">
+          <nav className="flex flex-col gap-1 px-6 pt-6" aria-label="Mobile">
+            {NAV_LINKS.map((link, i) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="rounded-lg px-3 py-3 font-sans text-sm font-semibold uppercase tracking-[0.06em] text-charcoal hover:bg-cream hover:text-burgundy"
+                className={cx(
+                  "rounded-lg px-3 py-3 font-sans text-sm font-semibold uppercase tracking-[0.06em] text-charcoal transition-all duration-300 hover:bg-cream hover:text-burgundy",
+                  open ? "translate-x-0 opacity-100" : "-translate-x-2 opacity-0"
+                )}
+                style={{ transitionDelay: open ? `${i * 40}ms` : "0ms" }}
               >
                 {link.label}
               </Link>
             ))}
             <Link
               href="/search"
-              className="rounded-lg px-3 py-3 font-sans text-sm font-semibold uppercase tracking-[0.06em] text-charcoal hover:bg-cream hover:text-burgundy"
+              className={cx(
+                "rounded-lg px-3 py-3 font-sans text-sm font-semibold uppercase tracking-[0.06em] text-charcoal transition-all duration-300 hover:bg-cream hover:text-burgundy",
+                open ? "translate-x-0 opacity-100" : "-translate-x-2 opacity-0"
+              )}
+              style={{ transitionDelay: open ? `${NAV_LINKS.length * 40}ms` : "0ms" }}
             >
               Search
             </Link>
           </nav>
-          <Link
-            href="/write-for-flourish"
-            className="mt-4 flex w-full items-center justify-center rounded-full bg-plum px-5 py-3 font-sans text-xs font-semibold uppercase tracking-[0.08em] text-white"
-          >
-            Join Flourish
-          </Link>
+          <div className="px-6 pb-6 pt-4">
+            <Link
+              href="/write-for-flourish"
+              className={cx(
+                "flex w-full items-center justify-center rounded-full bg-plum px-5 py-3 font-sans text-xs font-semibold uppercase tracking-[0.08em] text-white transition-all duration-300",
+                open ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
+              )}
+              style={{ transitionDelay: open ? `${(NAV_LINKS.length + 1) * 40}ms` : "0ms" }}
+            >
+              Join Flourish
+            </Link>
+          </div>
         </div>
-      )}
+      </div>
     </header>
   );
 }

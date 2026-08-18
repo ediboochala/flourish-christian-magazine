@@ -7,12 +7,16 @@ interface RevealProps {
   children: React.ReactNode;
   className?: string;
   delayMs?: number;
+  /** Direction of the entrance. Mix "left"/"right" across a two-column
+   *  split, or "scale" for imagery, to give a page some visual rhythm
+   *  instead of every section rising in from the same direction. */
+  variant?: "up" | "scale" | "left" | "right";
 }
 
 /** Progressive-enhancement scroll reveal. Content is fully visible with
  *  no JS; this only adds a subtle fade/rise once the element enters
  *  the viewport, and respects prefers-reduced-motion via CSS. */
-export default function Reveal({ children, className, delayMs = 0 }: RevealProps) {
+export default function Reveal({ children, className, delayMs = 0, variant = "up" }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -35,7 +39,7 @@ export default function Reveal({ children, className, delayMs = 0 }: RevealProps
   return (
     <div
       ref={ref}
-      className={cx("reveal", visible && "is-visible", className)}
+      className={cx(`reveal reveal-${variant}`, visible && "is-visible", className)}
       style={{ transitionDelay: `${delayMs}ms` }}
     >
       {children}

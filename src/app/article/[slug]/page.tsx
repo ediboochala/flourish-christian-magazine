@@ -60,8 +60,10 @@ export default async function ArticlePage({
 
       {/* HERO */}
       <section className="grain-overlay relative overflow-hidden bg-plum">
-        <div className="absolute inset-0 opacity-40">
-          <PlaceholderImage image={article.heroImage} priority />
+        <div className="absolute inset-0 overflow-hidden opacity-40">
+          <div className="animate-kenburns absolute inset-0">
+            <PlaceholderImage image={article.heroImage} priority />
+          </div>
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-plum via-plum/85 to-plum/50" />
         <div className="relative z-[2] mx-auto max-w-3xl px-6 pb-16 pt-32 text-center lg:px-10">
@@ -132,7 +134,10 @@ export default async function ArticlePage({
                 href={`/article/${prevArticle.slug}`}
                 className="group flex items-center gap-2 font-sans text-sm text-charcoal-soft hover:text-plum"
               >
-                <ChevronLeft className="h-4 w-4" aria-hidden="true" />
+                <ChevronLeft
+                  className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1"
+                  aria-hidden="true"
+                />
                 <span className="max-w-[10rem] truncate sm:max-w-xs">{prevArticle.title}</span>
               </Link>
             ) : (
@@ -144,7 +149,10 @@ export default async function ArticlePage({
                 className="group flex items-center gap-2 text-right font-sans text-sm text-charcoal-soft hover:text-plum"
               >
                 <span className="max-w-[10rem] truncate sm:max-w-xs">{nextArticle.title}</span>
-                <ChevronRight className="h-4 w-4" aria-hidden="true" />
+                <ChevronRight
+                  className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                  aria-hidden="true"
+                />
               </Link>
             )}
           </div>

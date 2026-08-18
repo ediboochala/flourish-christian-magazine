@@ -7,7 +7,7 @@ export default function TestimonyCard({ testimony }: { testimony: Testimony }) {
   return (
     <Link
       href={`/testimonies/${testimony.slug}`}
-      className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-[0_1px_2px_rgba(36,31,33,0.06)] transition-shadow hover:shadow-[0_18px_40px_-16px_rgba(58,15,43,0.25)]"
+      className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-[0_1px_2px_rgba(36,31,33,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_-16px_rgba(58,15,43,0.25)]"
     >
       <div className="img-zoom relative aspect-[4/3] w-full overflow-hidden">
         <PlaceholderImage image={testimony.image} />

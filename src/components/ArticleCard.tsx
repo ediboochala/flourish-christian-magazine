@@ -45,7 +45,7 @@ export default function ArticleCard({ article, size = "default", className }: Ar
     <Link
       href={`/article/${article.slug}`}
       className={cx(
-        "group flex flex-col overflow-hidden rounded-2xl bg-white shadow-[0_1px_2px_rgba(36,31,33,0.06)] transition-shadow duration-300 hover:shadow-[0_18px_40px_-16px_rgba(58,15,43,0.25)]",
+        "group flex flex-col overflow-hidden rounded-2xl bg-white shadow-[0_1px_2px_rgba(36,31,33,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_-16px_rgba(58,15,43,0.25)]",
         className
       )}
     >

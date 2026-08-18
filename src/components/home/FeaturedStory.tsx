@@ -27,7 +27,7 @@ export default function FeaturedStory({ article }: { article: Article }) {
             </p>
           )}
           <Link href={`/article/${article.slug}`}>
-            <h2 className="mt-4 font-serif text-3xl leading-[1.12] text-plum transition-colors hover:text-burgundy sm:text-4xl lg:text-[2.75rem]">
+            <h2 className="text-h2 mt-4 font-serif text-plum transition-colors hover:text-burgundy">
               {article.title}
             </h2>
           </Link>
@@ -50,9 +50,12 @@ export default function FeaturedStory({ article }: { article: Article }) {
           </div>
           <Link
             href={`/article/${article.slug}`}
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-plum px-7 py-3.5 font-sans text-xs font-semibold uppercase tracking-[0.1em] text-white transition-colors hover:bg-burgundy"
+            className="group/link mt-8 inline-flex items-center gap-1 rounded-full bg-plum px-7 py-3.5 font-sans text-xs font-semibold uppercase tracking-[0.1em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-burgundy active:translate-y-0 active:scale-[0.97]"
           >
-            Read the Full Story →
+            Read the Full Story
+            <span className="inline-block transition-transform duration-300 group-hover/link:translate-x-1">
+              →
+            </span>
           </Link>
         </div>
       </div>

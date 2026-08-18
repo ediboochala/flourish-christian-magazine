@@ -42,7 +42,7 @@ export default function Footer() {
                   key={i}
                   href="#"
                   aria-label="Flourish on social media [placeholder link]"
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white/70 transition-colors hover:border-gold hover:text-gold-light"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white/70 transition-all duration-300 hover:-translate-y-0.5 hover:border-gold hover:text-gold-light"
                 >
                   <Icon className="h-4 w-4" aria-hidden="true" />
                 </a>
@@ -78,8 +78,14 @@ export default function Footer() {
                 </li>
               ))}
               <li>
-                <Link href="/categories" className="font-sans text-sm text-gold-light hover:text-white">
-                  View All →
+                <Link
+                  href="/categories"
+                  className="group/link inline-flex items-center gap-1 font-sans text-sm text-gold-light hover:text-white"
+                >
+                  View All
+                  <span className="inline-block transition-transform duration-300 group-hover/link:translate-x-1">
+                    →
+                  </span>
                 </Link>
               </li>
             </ul>

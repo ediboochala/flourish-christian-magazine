@@ -39,9 +39,12 @@ export default function Home() {
               <SectionHeading eyebrow="Fresh From Flourish" title="Latest Stories" />
               <Link
                 href="/magazine"
-                className="font-sans text-xs font-semibold uppercase tracking-[0.1em] text-burgundy hover:text-plum"
+                className="group/link inline-flex items-center gap-1 font-sans text-xs font-semibold uppercase tracking-[0.1em] text-burgundy hover:text-plum"
               >
-                View All Stories →
+                View All Stories
+                <span className="inline-block transition-transform duration-300 group-hover/link:translate-x-1">
+                  →
+                </span>
               </Link>
             </div>
           </Reveal>
@@ -75,7 +78,7 @@ export default function Home() {
           <div className="mt-10 text-center">
             <Link
               href="/categories"
-              className="inline-flex items-center rounded-full border border-plum px-7 py-3 font-sans text-xs font-semibold uppercase tracking-[0.1em] text-plum transition-colors hover:bg-plum hover:text-white"
+              className="inline-flex items-center rounded-full border border-plum px-7 py-3 font-sans text-xs font-semibold uppercase tracking-[0.1em] text-plum transition-all duration-300 hover:-translate-y-0.5 hover:bg-plum hover:text-white active:translate-y-0 active:scale-[0.97]"
             >
               View All Categories
             </Link>
@@ -86,7 +89,7 @@ export default function Home() {
       {/* COMMUNITY / EDITORIAL FEATURE */}
       <section className="bg-white py-20 sm:py-24">
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-2 lg:gap-16 lg:px-10">
-          <Reveal className="order-2 lg:order-1">
+          <Reveal variant="left" className="order-2 lg:order-1">
             <Eyebrow>From the Community</Eyebrow>
             <h2 className="text-h2 mt-4 font-serif text-plum">
               Meet the Women Behind the Stories
@@ -98,9 +101,12 @@ export default function Home() {
             </p>
             <Link
               href="/contributors"
-              className="mt-7 inline-flex items-center rounded-full bg-plum px-7 py-3.5 font-sans text-xs font-semibold uppercase tracking-[0.1em] text-white transition-colors hover:bg-burgundy"
+              className="group/link mt-7 inline-flex items-center gap-1 rounded-full bg-plum px-7 py-3.5 font-sans text-xs font-semibold uppercase tracking-[0.1em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-burgundy active:translate-y-0 active:scale-[0.97]"
             >
-              Meet Our Contributors →
+              Meet Our Contributors
+              <span className="inline-block transition-transform duration-300 group-hover/link:translate-x-1">
+                →
+              </span>
             </Link>
             <div className="mt-10 grid grid-cols-2 gap-4">
               {spotlightContributors.map((author) => (
@@ -113,7 +119,10 @@ export default function Home() {
               ))}
             </div>
           </Reveal>
-          <Reveal className="img-zoom relative order-1 aspect-[4/5] w-full overflow-hidden rounded-2xl lg:order-2">
+          <Reveal
+            variant="scale"
+            className="img-zoom relative order-1 aspect-[4/5] w-full overflow-hidden rounded-2xl lg:order-2"
+          >
             <PlaceholderImage
               image={{ alt: "Editorial photo of Flourish contributors in community", tone: "gold" }}
             />
@@ -133,9 +142,12 @@ export default function Home() {
               />
               <Link
                 href="/events"
-                className="font-sans text-xs font-semibold uppercase tracking-[0.1em] text-gold-light hover:text-white"
+                className="group/link inline-flex items-center gap-1 font-sans text-xs font-semibold uppercase tracking-[0.1em] text-gold-light hover:text-white"
               >
-                View All Events →
+                View All Events
+                <span className="inline-block transition-transform duration-300 group-hover/link:translate-x-1">
+                  →
+                </span>
               </Link>
             </div>
           </Reveal>
@@ -157,17 +169,21 @@ export default function Home() {
               <SectionHeading eyebrow="Stories of Faith" title="A Story Worth Sharing" />
             </Reveal>
             <div className="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-3">
-              <Reveal className="lg:col-span-1">
+              <Reveal variant="left" className="lg:col-span-1">
                 <TestimonyCard testimony={spotlightTestimony} />
               </Reveal>
-              <Reveal delayMs={100} className="flex flex-col justify-center lg:col-span-2">
+              <Reveal
+                variant="right"
+                delayMs={100}
+                className="flex flex-col justify-center lg:col-span-2"
+              >
                 <p className="pull-quote">&ldquo;{spotlightTestimony.body[0]}&rdquo;</p>
                 <p className="mt-4 font-sans text-sm text-charcoal-soft">
                   Your story matters. Your experience may be the encouragement another woman needs.
                 </p>
                 <Link
                   href="/testimonies"
-                  className="mt-6 inline-flex w-fit items-center rounded-full border border-plum px-7 py-3 font-sans text-xs font-semibold uppercase tracking-[0.1em] text-plum transition-colors hover:bg-plum hover:text-white"
+                  className="mt-6 inline-flex w-fit items-center rounded-full border border-plum px-7 py-3 font-sans text-xs font-semibold uppercase tracking-[0.1em] text-plum transition-all duration-300 hover:-translate-y-0.5 hover:bg-plum hover:text-white active:translate-y-0 active:scale-[0.97]"
                 >
                   Share Your Testimony
                 </Link>
@@ -192,13 +208,13 @@ export default function Home() {
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 href="/write-for-flourish"
-                className="inline-flex items-center rounded-full bg-plum px-8 py-4 font-sans text-sm font-semibold uppercase tracking-[0.08em] text-white transition-colors hover:bg-burgundy"
+                className="inline-flex items-center rounded-full bg-plum px-8 py-4 font-sans text-sm font-semibold uppercase tracking-[0.08em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-burgundy active:translate-y-0 active:scale-[0.97]"
               >
                 Share Your Story
               </Link>
               <Link
                 href="/write-for-flourish"
-                className="inline-flex items-center rounded-full border border-plum px-8 py-4 font-sans text-sm font-semibold uppercase tracking-[0.08em] text-plum transition-colors hover:bg-plum hover:text-white"
+                className="inline-flex items-center rounded-full border border-plum px-8 py-4 font-sans text-sm font-semibold uppercase tracking-[0.08em] text-plum transition-all duration-300 hover:-translate-y-0.5 hover:bg-plum hover:text-white active:translate-y-0 active:scale-[0.97]"
               >
                 Become a Contributor
               </Link>
