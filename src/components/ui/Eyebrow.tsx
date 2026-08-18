@@ -14,7 +14,7 @@ export default function Eyebrow({
         className
       )}
     >
-      <span className="h-[3px] w-[3px] rounded-full bg-gold" />
+      <span className="h-[5px] w-[5px] rotate-45 bg-gold" aria-hidden="true" />
       {children}
     </span>
   );

@@ -4,18 +4,24 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
+// Fraunces is a full variable font — loading it without a fixed `weight`
+// keeps its whole 100–900 weight range plus the optical-size (opsz), SOFT,
+// and WONK axes available. Paired with `font-optical-sizing: auto` in
+// globals.css, this lets the same face render as a soft, warm text cut at
+// body sizes and automatically sharpen into a high-contrast display cut at
+// headline sizes — the whole reason this typeface exists.
 const fraunces = Fraunces({
   variable: "--font-fraunces",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
   style: ["normal", "italic"],
+  axes: ["opsz", "SOFT", "WONK"],
   display: "swap",
 });
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700", "800"],
   display: "swap",
 });
 
@@ -50,8 +56,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={`${fraunces.variable} ${inter.variable} antialiased`}>
+    // The font loader variables are attached to <html> rather than <body>
+    // so that globals.css's `:root { --font-sans: var(--font-inter), … }`
+    // can actually see --font-inter/--font-fraunces — CSS custom properties
+    // only inherit downward, so :root has no visibility into variables
+    // defined lower down on <body>.
+    <html lang="en" className={`${fraunces.variable} ${inter.variable}`}>
+      <body className="antialiased">
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-plum focus:px-5 focus:py-3 focus:text-sm focus:text-white"

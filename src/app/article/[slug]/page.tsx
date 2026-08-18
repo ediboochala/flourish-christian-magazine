@@ -7,6 +7,7 @@ import ArticleBody from "@/components/ArticleBody";
 import ArticleCard from "@/components/ArticleCard";
 import ShareButtons from "@/components/ShareButtons";
 import NewsletterCTA from "@/components/NewsletterCTA";
+import ReadingProgress from "@/components/ReadingProgress";
 import { articles, getArticleBySlug, getRelatedArticles } from "@/lib/data/articles";
 import { getAuthorBySlug } from "@/lib/data/authors";
 import { getCategoryBySlug } from "@/lib/data/categories";
@@ -55,13 +56,15 @@ export default async function ArticlePage({
 
   return (
     <article>
+      <ReadingProgress />
+
       {/* HERO */}
-      <section className="relative overflow-hidden bg-plum">
+      <section className="grain-overlay relative overflow-hidden bg-plum">
         <div className="absolute inset-0 opacity-40">
           <PlaceholderImage image={article.heroImage} priority />
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-plum via-plum/85 to-plum/50" />
-        <div className="relative mx-auto max-w-3xl px-6 pb-16 pt-32 text-center lg:px-10">
+        <div className="relative z-[2] mx-auto max-w-3xl px-6 pb-16 pt-32 text-center lg:px-10">
           {category && (
             <Link
               href={`/categories/${category.slug}`}
@@ -70,9 +73,7 @@ export default async function ArticlePage({
               {category.name}
             </Link>
           )}
-          <h1 className="mt-4 font-serif text-3xl leading-[1.15] text-white sm:text-5xl">
-            {article.title}
-          </h1>
+          <h1 className="text-h1 mt-4 font-serif text-white">{article.title}</h1>
           {article.subtitle && (
             <p className="mx-auto mt-5 max-w-xl font-serif text-lg italic leading-relaxed text-white/80">
               {article.subtitle}

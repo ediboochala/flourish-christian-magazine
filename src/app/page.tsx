@@ -88,7 +88,7 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-2 lg:gap-16 lg:px-10">
           <Reveal className="order-2 lg:order-1">
             <Eyebrow>From the Community</Eyebrow>
-            <h2 className="mt-4 font-serif text-3xl leading-tight text-plum sm:text-4xl">
+            <h2 className="text-h2 mt-4 font-serif text-plum">
               Meet the Women Behind the Stories
             </h2>
             <p className="mt-5 font-sans text-base leading-relaxed text-charcoal-soft">
@@ -122,8 +122,8 @@ export default function Home() {
       </section>
 
       {/* EVENTS */}
-      <section className="bg-plum py-20 sm:py-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10">
+      <section className="grain-overlay bg-plum py-20 sm:py-24">
+        <div className="relative z-[2] mx-auto max-w-7xl px-6 lg:px-10">
           <Reveal>
             <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
               <SectionHeading
@@ -182,7 +182,7 @@ export default function Home() {
         <div className="mx-auto max-w-4xl px-6 text-center lg:px-10">
           <Reveal>
             <Eyebrow className="justify-center">Write for Flourish</Eyebrow>
-            <h2 className="mt-4 font-serif text-3xl leading-tight text-plum sm:text-4xl">
+            <h2 className="text-h2 mt-4 font-serif text-plum">
               Your Story Could Encourage Another Woman.
             </h2>
             <p className="mx-auto mt-5 max-w-xl font-sans text-base leading-relaxed text-charcoal-soft">

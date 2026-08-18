@@ -37,7 +37,7 @@ export default function SectionHeading({
       )}
       <h2
         className={cx(
-          "font-serif text-3xl leading-tight sm:text-4xl",
+          "text-h2 font-serif",
           tone === "light" ? "text-plum" : "text-white"
         )}
       >

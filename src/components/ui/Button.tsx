@@ -13,12 +13,12 @@ interface BaseProps {
 
 const VARIANT_CLASSES: Record<Variant, string> = {
   primary:
-    "bg-plum text-white hover:bg-burgundy shadow-sm hover:shadow-md",
+    "bg-plum text-white hover:bg-burgundy shadow-sm hover:shadow-md hover:-translate-y-0.5",
   secondary:
-    "bg-transparent text-plum border border-plum hover:bg-plum hover:text-white",
+    "bg-transparent text-plum border border-plum hover:bg-plum hover:text-white hover:-translate-y-0.5",
   ghost: "bg-transparent text-plum hover:bg-cream",
   "outline-light":
-    "bg-transparent text-white border border-white/70 hover:bg-white hover:text-plum",
+    "bg-transparent text-white border border-white/70 hover:bg-white hover:text-plum hover:-translate-y-0.5",
 };
 
 const SIZE_CLASSES: Record<Size, string> = {
@@ -28,7 +28,7 @@ const SIZE_CLASSES: Record<Size, string> = {
 };
 
 const BASE =
-  "inline-flex items-center justify-center gap-2 rounded-full font-sans font-semibold uppercase tracking-[0.08em] transition-all duration-300";
+  "inline-flex items-center justify-center gap-2 rounded-full font-sans font-semibold uppercase tracking-[0.08em] transition-all duration-300 active:scale-[0.97] active:translate-y-0";
 
 export function Button({
   variant = "primary",

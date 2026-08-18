@@ -39,30 +39,36 @@ export default function Header() {
     <header
       className={cx(
         "sticky top-0 z-50 w-full transition-all duration-300",
-        scrolled ? "bg-ivory/95 shadow-[0_1px_0_rgba(36,31,33,0.08)] backdrop-blur-sm" : "bg-ivory/95"
+        scrolled ? "bg-ivory/95 shadow-[0_1px_0_rgba(36,31,33,0.08)] backdrop-blur-md" : "bg-ivory/95"
       )}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
         <Link href="/" className="flex flex-col leading-none">
-          <span className="font-serif text-xl tracking-wide text-plum sm:text-2xl">Flourish</span>
+          <span className="font-serif text-xl font-medium tracking-tight text-plum sm:text-[1.7rem]">
+            Flourish
+          </span>
           <span className="font-sans text-[9px] font-semibold uppercase tracking-[0.32em] text-gold">
             Christian Magazine
           </span>
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={cx(
-                "font-sans text-[13px] font-semibold uppercase tracking-[0.08em] transition-colors hover:text-burgundy",
-                pathname?.startsWith(link.href) ? "text-burgundy" : "text-charcoal"
-              )}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {NAV_LINKS.map((link) => {
+            const active = pathname?.startsWith(link.href);
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                aria-current={active ? "page" : undefined}
+                className={cx(
+                  "nav-link font-sans text-[13px] font-semibold uppercase tracking-[0.08em] transition-colors hover:text-burgundy",
+                  active ? "text-burgundy" : "text-charcoal"
+                )}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="hidden items-center gap-4 lg:flex">
@@ -75,7 +81,7 @@ export default function Header() {
           </Link>
           <Link
             href="/write-for-flourish"
-            className="rounded-full bg-plum px-5 py-2.5 font-sans text-xs font-semibold uppercase tracking-[0.08em] text-white transition-colors hover:bg-burgundy"
+            className="rounded-full bg-plum px-5 py-2.5 font-sans text-xs font-semibold uppercase tracking-[0.08em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-burgundy active:translate-y-0 active:scale-[0.97]"
           >
             Join Flourish
           </Link>
