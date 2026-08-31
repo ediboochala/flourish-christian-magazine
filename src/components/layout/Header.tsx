@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Search, Menu, X } from "lucide-react";
@@ -13,6 +14,7 @@ const NAV_LINKS = [
   { href: "/events", label: "Events" },
   { href: "/testimonies", label: "Testimonies" },
   { href: "/about", label: "About" },
+  { href: "/get-involved", label: "Get Involved" },
 ];
 
 export default function Header() {
@@ -43,16 +45,28 @@ export default function Header() {
       )}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
-        <Link href="/" className="flex flex-col leading-none">
-          <span className="font-serif text-xl font-medium tracking-tight text-plum sm:text-[1.7rem]">
-            Flourish
+        <Link href="/" className="flex items-center gap-3 leading-none">
+          <span className="relative h-11 w-11 flex-shrink-0 overflow-hidden rounded-full ring-1 ring-plum/10 sm:h-12 sm:w-12">
+            <Image
+              src="/Gemini_Generated_Image_2t6tje2t6tje2t6t.jpg"
+              alt="M.F.M Women Foundation Florida logo"
+              fill
+              sizes="48px"
+              className="object-cover"
+              priority
+            />
           </span>
-          <span className="font-sans text-[9px] font-semibold uppercase tracking-[0.32em] text-gold">
-            Christian Magazine
+          <span className="flex flex-col">
+            <span className="font-serif text-xl font-medium tracking-tight text-plum sm:text-[1.7rem]">
+              Flourish
+            </span>
+            <span className="font-sans text-[9px] font-semibold uppercase tracking-[0.28em] text-gold">
+              Christian Magazine
+            </span>
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-5 xl:gap-7 lg:flex" aria-label="Primary">
           {NAV_LINKS.map((link) => {
             const active = pathname?.startsWith(link.href);
             return (

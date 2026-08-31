@@ -3,11 +3,11 @@ import Image from "next/image";
 import { cx } from "@/lib/utils";
 
 const TONE_GRADIENTS: Record<ImageTone, string> = {
-  plum: "from-[#3a0f2b] via-[#55193f] to-[#711b32]",
-  burgundy: "from-[#5a0f1f] via-[#711b32] to-[#8f2740]",
-  gold: "from-[#8f7031] via-[#b8924f] to-[#d8bd8a]",
-  rose: "from-[#8f2740] via-[#c98fa0] to-[#e3c3cd]",
-  charcoal: "from-[#171314] via-[#241f21] to-[#4a4245]",
+  plum: "from-[#2c1a49] via-[#432764] to-[#6b3f9e]",
+  burgundy: "from-[#5c1554] via-[#8c227c] to-[#b94fab]",
+  gold: "from-[#3f5410] via-[#6d8e19] to-[#9dc727]",
+  rose: "from-[#6d8e19] via-[#a9c95a] to-[#dcecac]",
+  charcoal: "from-[#17111c] via-[#241f21] to-[#4a4245]",
 };
 
 interface PlaceholderImageProps {

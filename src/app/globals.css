@@ -6,17 +6,22 @@
    ========================================================================== */
 
 :root {
-  /* Core palette */
+  /* Core palette — drawn from the M.F.M Women Foundation Florida mark:
+     deep violet-purple, vivid lime, orchid magenta, and a forest-green
+     wordmark accent. Token names are kept from the original system so
+     every component that already references them (bg-plum, text-gold,
+     etc.) picks up the new brand automatically. */
   --color-ivory: #fbf7f1;
   --color-cream: #f4ebdf;
-  --color-plum: #3a0f2b;
-  --color-plum-light: #55193f;
-  --color-burgundy: #711b32;
-  --color-burgundy-light: #8f2740;
-  --color-rose: #c98fa0;
-  --color-rose-light: #e3c3cd;
-  --color-gold: #b8924f;
-  --color-gold-light: #d8bd8a;
+  --color-plum: #432764;
+  --color-plum-light: #6b3f9e;
+  --color-burgundy: #8c227c;
+  --color-burgundy-light: #b94fab;
+  --color-rose: #c4dd81;
+  --color-rose-light: #e6f0c8;
+  --color-gold: #5a7a14;
+  --color-gold-light: #9dc727;
+  --color-forest: #195a30;
   --color-charcoal: #241f21;
   --color-charcoal-soft: #4a4245;
   --color-white: #ffffff;
@@ -39,6 +44,7 @@
   --color-rose-light: var(--color-rose-light);
   --color-gold: var(--color-gold);
   --color-gold-light: var(--color-gold-light);
+  --color-forest: var(--color-forest);
   --color-charcoal: var(--color-charcoal);
   --color-charcoal-soft: var(--color-charcoal-soft);
 
@@ -50,6 +56,7 @@
 
   --animate-fade-up: fade-up 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
   --animate-fade-in: fade-in 0.8s ease both;
+  --animate-blob: blob-float 16s ease-in-out infinite;
 }
 
 @keyframes fade-up {
@@ -102,6 +109,63 @@
 
 .animate-kenburns {
   animation: kenburns 20s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+/* Slow-drifting brand-color aurora blobs — used behind hero/section
+   headers instead of a flat color fill, echoing the logo's purple,
+   lime, and magenta palette without ever repeating the exact mark. */
+@keyframes blob-float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(4%, 6%) scale(1.08);
+  }
+  66% {
+    transform: translate(-3%, -4%) scale(0.96);
+  }
+}
+
+.animate-blob {
+  animation: blob-float 16s ease-in-out infinite;
+}
+
+.aurora-backdrop {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.aurora-backdrop::before,
+.aurora-backdrop::after {
+  content: "";
+  position: absolute;
+  width: 60%;
+  padding-bottom: 60%;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.4;
+  /* "screen" adds light rather than mixing pigment, so the lime and
+     magenta glows stay vivid over the dark purple ground instead of
+     averaging down into a muddy brown. */
+  mix-blend-mode: screen;
+  animation: blob-float 16s ease-in-out infinite;
+}
+
+.aurora-backdrop::before {
+  left: -10%;
+  top: -15%;
+  background: var(--color-burgundy-light);
+}
+
+.aurora-backdrop::after {
+  right: -12%;
+  bottom: -18%;
+  background: var(--color-gold-light);
+  animation-delay: -8s;
+  animation-duration: 19s;
 }
 
 * {
@@ -396,7 +460,10 @@ select:focus-visible,
     transform: none;
   }
   .page-transition,
-  .animate-kenburns {
+  .animate-kenburns,
+  .animate-blob,
+  .aurora-backdrop::before,
+  .aurora-backdrop::after {
     animation: none;
   }
 }

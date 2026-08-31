@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import PlaceholderImage from "@/components/ui/PlaceholderImage";
 import NewsletterCTA from "@/components/NewsletterCTA";
@@ -6,25 +7,25 @@ import NewsletterCTA from "@/components/NewsletterCTA";
 export const metadata: Metadata = {
   title: "About Flourish",
   description:
-    "Learn about Flourish Christian Magazine — its mission, vision, values, and relationship with the women of MFM Tampa.",
+    "Flourish is the online publication of M.F.M Women Foundation Florida — learn our story, mission, and values.",
 };
 
 const VALUES = [
   {
-    title: "Rooted in Faith",
-    body: "Every story flows from a Christ-centered worldview and a commitment to Scripture. [Placeholder — confirm doctrinal statement.]",
+    title: "Faith",
+    body: "Every page points back to God's Word.",
   },
   {
-    title: "Excellence in Craft",
-    body: "We believe Christian women deserve editorial quality that honors both the message and the medium.",
+    title: "Purpose",
+    body: "We help women discover and walk boldly in their calling.",
   },
   {
-    title: "Community Over Content",
-    body: "Flourish exists to connect women to one another, not just to articles.",
+    title: "Connection",
+    body: "No woman flourishes alone; we grow better together.",
   },
   {
-    title: "Honesty Over Perfection",
-    body: "We tell true stories — including the hard, unfinished, and still-being-worked-out ones.",
+    title: "Encouragement",
+    body: "A safe space, free of judgment, full of grace.",
   },
 ];
 
@@ -38,61 +39,63 @@ export default function AboutPage() {
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-plum via-plum/85 to-plum/60" />
+        <div className="aurora-backdrop opacity-40" />
         <div className="relative mx-auto max-w-3xl px-6 py-28 text-center lg:px-10">
+          <span className="relative mx-auto mb-6 block h-20 w-20 overflow-hidden rounded-full ring-2 ring-white/30">
+            <Image
+              src="/Gemini_Generated_Image_2t6tje2t6tje2t6t.jpg"
+              alt="M.F.M Women Foundation Florida logo"
+              fill
+              sizes="80px"
+              className="object-cover"
+            />
+          </span>
           <p className="font-sans text-xs font-semibold uppercase tracking-[0.24em] text-gold-light">
             About Flourish
           </p>
           <h1 className="mt-4 font-serif text-4xl leading-tight text-white sm:text-5xl">
             A Digital Home for Christian Women to Flourish
           </h1>
+          <p className="mx-auto mt-5 max-w-xl font-sans text-base leading-relaxed text-white/75">
+            An online publication of M.F.M Women Foundation Florida.
+          </p>
         </div>
       </section>
 
       <section className="bg-white py-20 sm:py-24">
         <div className="mx-auto max-w-3xl px-6 lg:px-10">
-          <h2 className="font-serif text-2xl text-plum">What Flourish Is</h2>
+          <h2 className="font-serif text-2xl text-plum">Our Story</h2>
           <p className="mt-4 font-sans text-base leading-relaxed text-charcoal-soft">
-            Flourish Christian Magazine is a digital magazine, community, and women&apos;s ministry
-            platform created for the women of Mountain of Fire and Miracles Ministries (MFM) Tampa,
-            and for Christian women beyond the congregation. [Placeholder copy — replace with
-            official Flourish description once confirmed by ministry leadership.]
+            Flourish was born out of a simple but powerful conviction: every woman deserves a space
+            to grow in faith, be reminded of her worth, and find community with others walking the
+            same journey.
           </p>
-
-          <h2 className="mt-12 font-serif text-2xl text-plum">Why It Exists</h2>
           <p className="mt-4 font-sans text-base leading-relaxed text-charcoal-soft">
-            Christian women navigate faith, family, career, and community all at once — often
-            without a space designed specifically for the fullness of that experience. Flourish
-            exists to be that space: a place to be inspired, equipped, encouraged, and empowered.
-            [Placeholder copy.]
+            As the official online publication of{" "}
+            <strong className="font-semibold text-plum">M.F.M Women Foundation Florida</strong>,
+            Flourish exists to nurture Christian women through biblically grounded encouragement,
+            real testimonies, and practical tools for everyday life — marriage, motherhood, purpose,
+            healing, and wellness.
           </p>
-
-          <h2 className="mt-12 font-serif text-2xl text-plum">Who It Serves</h2>
           <p className="mt-4 font-sans text-base leading-relaxed text-charcoal-soft">
-            Flourish serves young adult women, married women, mothers, working professionals,
-            ministry workers, women leaders, and mature women — within the MFM Tampa community and
-            among Christian women more broadly. [Placeholder copy.]
-          </p>
-
-          <h2 className="mt-12 font-serif text-2xl text-plum">Our Relationship with MFM Tampa</h2>
-          <p className="mt-4 font-sans text-base leading-relaxed text-charcoal-soft">
-            Flourish Christian Magazine is an expression of the women&apos;s ministry at MFM Tampa.
-            [Placeholder — this section must be reviewed and confirmed by ministry leadership before
-            publishing. No official organizational claims have been made here.]
+            We believe a flourishing woman doesn&apos;t just grow for herself. She becomes a
+            wellspring for her family, her community, and the Kingdom of God.
           </p>
 
           <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2">
             <div className="rounded-2xl bg-cream p-6">
               <h3 className="font-serif text-xl text-plum">Our Mission</h3>
               <p className="mt-2 font-sans text-sm leading-relaxed text-charcoal-soft">
-                [Placeholder — insert official mission statement.] To inspire, equip, and connect
-                Christian women through faith-filled stories, resources, and community.
+                To inspire, equip, and connect Christian women through faith, stories, testimonies,
+                and sisterhood — rooted in Christ, growing together, flourishing in purpose.
               </p>
             </div>
             <div className="rounded-2xl bg-cream p-6">
-              <h3 className="font-serif text-xl text-plum">Our Vision</h3>
+              <h3 className="font-serif text-xl text-plum">Who We Serve</h3>
               <p className="mt-2 font-sans text-sm leading-relaxed text-charcoal-soft">
-                [Placeholder — insert official vision statement.] To become a trusted digital home
-                where Christian women flourish in faith, purpose, and community.
+                Christian women in every season — young adults, mothers, working professionals,
+                ministry workers, and leaders — within the M.F.M Women Foundation Florida community
+                and among Christian women everywhere.
               </p>
             </div>
           </div>
@@ -128,10 +131,10 @@ export default function AboutPage() {
               Write for Flourish
             </Link>
             <Link
-              href="/events"
+              href="/get-involved"
               className="inline-flex items-center rounded-full border border-plum px-8 py-4 font-sans text-sm font-semibold uppercase tracking-[0.08em] text-plum transition-colors hover:bg-plum hover:text-white"
             >
-              View Events
+              Get Involved
             </Link>
           </div>
         </div>

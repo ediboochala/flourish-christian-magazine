@@ -101,11 +101,11 @@ export default function NewsletterCTA({ variant = "section" }: NewsletterCTAProp
           <Mail className="h-5 w-5 text-gold-light" aria-hidden="true" />
         </span>
         <h2 className="mt-6 font-serif text-3xl leading-tight text-white sm:text-4xl">
-          Don&apos;t Just Read. Flourish With Us.
+          Never Miss an Issue
         </h2>
         <p className="mt-4 font-sans text-base leading-relaxed text-white/75">
-          Receive inspiring stories, practical Christian wisdom, devotionals, women&apos;s insights,
-          upcoming events, and the latest from Flourish Christian Magazine.
+          Join thousands of women receiving faith, encouragement, and community — straight to their
+          inbox.
         </p>
         <form onSubmit={handleSubmit} className="mt-8 flex w-full max-w-md flex-col gap-3 sm:flex-row">
           <label htmlFor="newsletter-section" className="sr-only">
@@ -123,14 +123,15 @@ export default function NewsletterCTA({ variant = "section" }: NewsletterCTAProp
           <button
             type="submit"
             disabled={status === "submitting"}
-            className="rounded-full bg-gold px-7 py-3 font-sans text-xs font-semibold uppercase tracking-[0.1em] text-plum transition-colors hover:bg-gold-light disabled:opacity-60"
+            className="rounded-full bg-gold-light px-7 py-3 font-sans text-xs font-semibold uppercase tracking-[0.1em] text-plum transition-colors hover:bg-gold-light/85 disabled:opacity-60"
           >
-            {status === "success" ? "You're In! ✓" : "Join the Flourish Community"}
+            {status === "success" ? "You're In! ✓" : "Subscribe Now"}
           </button>
         </form>
-        <p className="mt-4 font-sans text-xs text-white/50">
-          No spam. Unsubscribe anytime. [Replace with your privacy commitment.]
+        <p className="mt-4 font-sans text-sm italic text-white/60">
+          &ldquo;Rooted in Christ. Growing together. Flourishing in purpose.&rdquo;
         </p>
+        <p className="mt-2 font-sans text-xs text-white/50">No spam. Unsubscribe anytime.</p>
       </div>
     </section>
   );

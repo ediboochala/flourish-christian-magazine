@@ -59,6 +59,23 @@ export default function MagazinePage() {
         </section>
       )}
 
+      <section className="bg-white py-16">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10">
+          <SectionHeading eyebrow="Past Issues Archive" title="Browse Every Issue of Flourish" />
+          <div className="mt-8 flex flex-col gap-3 rounded-2xl border border-charcoal/10 bg-cream p-6 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p className="font-sans text-xs font-semibold uppercase tracking-[0.16em] text-burgundy">
+                Spring 2024 · Issue No. 1
+              </p>
+              <p className="mt-1 font-serif text-xl italic text-plum">A Season of Renewal</p>
+            </div>
+            <span className="font-sans text-xs font-medium uppercase tracking-[0.1em] text-charcoal-soft">
+              Future issues will populate here
+            </span>
+          </div>
+        </div>
+      </section>
+
       <section className="bg-ivory py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <SectionHeading eyebrow="Full Archive" title="Browse All Stories" />

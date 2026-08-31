@@ -28,29 +28,34 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.flourishchristianmagazine.com"),
   title: {
-    default: "Flourish Christian Magazine — Faith. Purpose. Womanhood. Community.",
+    default: "Flourish — Rooted in Christ. Growing Together. Flourishing in Purpose.",
     template: "%s · Flourish Christian Magazine",
   },
   description:
-    "A place for Christian women to be inspired, equipped, encouraged, and empowered to flourish in every season of life. Stories, faith, community, and events for the women of MFM Tampa and beyond.",
+    "Flourish is the online publication of M.F.M Women Foundation Florida — inspiring Christian women through faith, stories, testimonies, and community. Read the latest issue and join thousands of women growing in faith and purpose.",
   keywords: [
     "Christian women's magazine",
     "faith and purpose",
     "women's ministry",
-    "MFM Tampa",
+    "M.F.M Women Foundation Florida",
     "Christian lifestyle",
     "women's devotionals",
   ],
+  icons: {
+    icon: "/Gemini_Generated_Image_2t6tje2t6tje2t6t.jpg",
+    apple: "/Gemini_Generated_Image_2t6tje2t6tje2t6t.jpg",
+  },
   openGraph: {
     title: "Flourish Christian Magazine",
-    description: "Faith that inspires. Women who flourish. Stories that matter.",
+    description: "Inspiring Christian women through faith, stories, testimonies, and community.",
     type: "website",
     siteName: "Flourish Christian Magazine",
+    images: ["/Gemini_Generated_Image_2t6tje2t6tje2t6t.jpg"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Flourish Christian Magazine",
-    description: "Faith that inspires. Women who flourish. Stories that matter.",
+    description: "Inspiring Christian women through faith, stories, testimonies, and community.",
   },
 };
 

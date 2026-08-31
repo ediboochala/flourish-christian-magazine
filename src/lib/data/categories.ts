@@ -3,38 +3,38 @@ import { Category } from "@/lib/types";
 export const categories: Category[] = [
   {
     slug: "faith-spirituality",
-    name: "Faith & Spirituality",
+    name: "Spiritual Growth",
     description:
-      "Rooted reflections on walking closely with God — scripture, worship, and the disciplines that deepen a woman's spiritual life.",
-    image: { alt: "Editorial imagery for Faith & Spirituality", tone: "plum" },
+      "Deeper roots, stronger faith. Faith isn't static — it's a living relationship meant to grow. Explore devotionals, prayer guides, and Word-based teaching designed to move you from surface-level religion into intimate relationship with God.",
+    image: { alt: "Editorial imagery for Spiritual Growth", tone: "plum" },
   },
   {
     slug: "women-purpose",
-    name: "Women & Purpose",
+    name: "Woman of Purpose",
     description:
-      "Exploring calling, identity, and the God-given assignments women carry into their homes, workplaces, and communities.",
-    image: { alt: "Editorial imagery for Women & Purpose", tone: "gold" },
+      "Made on purpose, for a purpose. You are not here by accident. This section helps you uncover your God-given gifts, silence the noise of comparison, and walk confidently in the assignment only you can fulfill.",
+    image: { alt: "Editorial imagery for Woman of Purpose", tone: "gold" },
   },
   {
     slug: "family-relationships",
-    name: "Family & Relationships",
+    name: "Marriage & Relationships",
     description:
-      "Honest, grace-filled conversations on marriage, motherhood, singleness, friendship, and the relationships that shape us.",
-    image: { alt: "Editorial imagery for Family & Relationships", tone: "rose" },
+      "Godly love, built to last. Marriage is a sacred covenant, not just a contract — and it takes intentionality, grace, and God at the center to thrive. This section brings you real talk on communication, conflict, intimacy, and covenant love, all through a biblical lens.",
+    image: { alt: "Editorial imagery for Marriage & Relationships", tone: "rose" },
   },
   {
     slug: "health-wellness",
     name: "Health & Wellness",
     description:
-      "Whole-person wellbeing — rest, mental health, physical health, and stewarding the body as a woman of faith.",
+      "Whole and well — mind, body, soul. God cares about your whole self, not just your spirit. This section covers emotional healing, physical wellness, mental health, and rest — because a flourishing woman is a well-tended one.",
     image: { alt: "Editorial imagery for Health & Wellness", tone: "burgundy" },
   },
   {
     slug: "lifestyle",
-    name: "Lifestyle",
+    name: "Faith & Home",
     description:
-      "Elegant, practical living — home, style, hospitality, and the everyday rhythms of a flourishing Christian woman.",
-    image: { alt: "Editorial imagery for Lifestyle", tone: "gold" },
+      "Where ministry begins. Before it reaches the world, faith starts at home. Get practical, real-life guidance on raising Christ-centered children, creating peace in your household, and making your home a sanctuary.",
+    image: { alt: "Editorial imagery for Faith & Home", tone: "gold" },
   },
   {
     slug: "personal-growth",
@@ -58,9 +58,10 @@ export const categories: Category[] = [
   },
   {
     slug: "testimonies",
-    name: "Testimonies",
-    description: "Real stories of God's faithfulness, told by the women who lived them.",
-    image: { alt: "Editorial imagery for Testimonies", tone: "rose" },
+    name: "Women's Stories",
+    description:
+      "Real women. Real faith. Real victory. Testimonies of strength, healing, and hope from women just like you — because your story might be the very thing someone else needs to keep going.",
+    image: { alt: "Editorial imagery for Women's Stories", tone: "rose" },
   },
   {
     slug: "inspiration",
@@ -70,9 +71,10 @@ export const categories: Category[] = [
   },
   {
     slug: "community",
-    name: "Community",
-    description: "Stories, updates, and voices from the wider Flourish and MFM Tampa women's community.",
-    image: { alt: "Editorial imagery for Community", tone: "plum" },
+    name: "Announcements",
+    description:
+      "Stay in the know. From foundation events to community opportunities, this is your hub for everything happening across M.F.M Women Foundation Florida.",
+    image: { alt: "Editorial imagery for Announcements", tone: "plum" },
   },
   {
     slug: "christian-living",

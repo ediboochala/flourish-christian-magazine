@@ -1,9 +1,9 @@
 import { FlourishEvent } from "@/lib/types";
 
 /**
- * PLACEHOLDER EVENT CONTENT — replace with verified MFM Tampa Women's
- * Ministry event details before publishing. Dates, locations, and
- * registration details below are illustrative only.
+ * PLACEHOLDER EVENT CONTENT — replace with verified M.F.M Women Foundation Florida event
+ * details before publishing. Dates, locations, and registration details below are
+ * illustrative only.
  */
 export const events: FlourishEvent[] = [
   {
@@ -12,7 +12,7 @@ export const events: FlourishEvent[] = [
     category: "Women's Conferences",
     date: "2026-10-17",
     time: "9:00 AM – 4:00 PM EST",
-    location: "MFM Tampa — Main Auditorium [placeholder address]",
+    location: "M.F.M Women Foundation Florida — Main Auditorium [placeholder address]",
     description:
       "A full day of worship, teaching, and community for women ready to step into a new season of purpose. [Placeholder — confirm theme, speakers, and schedule.]",
     image: { alt: "Editorial photo for Flourish Women's Conference 2026", tone: "plum" },
@@ -25,7 +25,7 @@ export const events: FlourishEvent[] = [
     category: "Bible Studies",
     date: "2026-08-20",
     time: "6:30 PM – 8:00 PM EST",
-    location: "MFM Tampa — Fellowship Hall [placeholder address]",
+    location: "M.F.M Women Foundation Florida — Fellowship Hall [placeholder address]",
     description: "A recurring weekly study working verse-by-verse through Scripture, open to all women. [Placeholder details.]",
     image: { alt: "Editorial photo for Midweek Women's Bible Study", tone: "gold" },
     registrationOpen: true,
@@ -36,7 +36,7 @@ export const events: FlourishEvent[] = [
     category: "Prayer Meetings",
     date: "2026-09-05",
     time: "6:00 AM – 8:00 AM EST",
-    location: "MFM Tampa — Prayer Chapel [placeholder address]",
+    location: "M.F.M Women Foundation Florida — Prayer Chapel [placeholder address]",
     description: "A dedicated morning of corporate prayer and fasting for the women of the ministry. [Placeholder details.]",
     image: { alt: "Editorial photo for Women's Prayer and Fasting Morning", tone: "burgundy" },
     registrationOpen: false,
@@ -47,7 +47,7 @@ export const events: FlourishEvent[] = [
     category: "Workshops",
     date: "2026-09-19",
     time: "11:00 AM – 2:00 PM EST",
-    location: "MFM Tampa — Conference Room [placeholder address]",
+    location: "M.F.M Women Foundation Florida — Conference Room [placeholder address]",
     description: "A practical workshop on aligning career decisions with calling, featuring guest facilitators. [Placeholder details.]",
     image: { alt: "Editorial photo for Purpose and Career Workshop", tone: "rose" },
     registrationOpen: true,
@@ -58,7 +58,7 @@ export const events: FlourishEvent[] = [
     category: "Fellowships",
     date: "2026-09-26",
     time: "10:00 AM – 12:30 PM EST",
-    location: "MFM Tampa — Fellowship Hall [placeholder address]",
+    location: "M.F.M Women Foundation Florida — Fellowship Hall [placeholder address]",
     description: "A relaxed morning of connection, testimony sharing, and community building over brunch. [Placeholder details.]",
     image: { alt: "Editorial photo for Sisters' Fellowship Brunch", tone: "gold" },
     registrationOpen: true,

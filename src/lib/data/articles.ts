@@ -5,7 +5,7 @@ import { Article } from "@/lib/types";
  * All articles below are illustrative placeholder content demonstrating
  * layout, tone, and structure. Replace with real Flourish editorial
  * content before launch. No claims, statistics, or quotes here should
- * be treated as official MFM Tampa or Flourish statements.
+ * be treated as official M.F.M Women Foundation Florida or Flourish statements.
  */
 export const articles: Article[] = [
   {

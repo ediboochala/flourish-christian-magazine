@@ -1,8 +1,9 @@
 import Link from "next/link";
 import Hero from "@/components/home/Hero";
+import ScriptureBanner from "@/components/home/ScriptureBanner";
+import InThisIssue from "@/components/home/InThisIssue";
 import FeaturedStory from "@/components/home/FeaturedStory";
 import ArticleCard from "@/components/ArticleCard";
-import CategoryCard from "@/components/CategoryCard";
 import EventCard from "@/components/EventCard";
 import TestimonyCard from "@/components/TestimonyCard";
 import NewsletterCTA from "@/components/NewsletterCTA";
@@ -11,7 +12,6 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import Eyebrow from "@/components/ui/Eyebrow";
 import Reveal from "@/components/ui/Reveal";
 import { getFeaturedArticle, getLatestArticles } from "@/lib/data/articles";
-import { categories } from "@/lib/data/categories";
 import { getUpcomingEvents } from "@/lib/data/events";
 import { testimonies } from "@/lib/data/testimonies";
 import { authors } from "@/lib/data/authors";
@@ -26,6 +26,8 @@ export default function Home() {
   return (
     <>
       <Hero />
+
+      <ScriptureBanner />
 
       <Reveal>
         <FeaturedStory article={featured} />
@@ -58,33 +60,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* EXPLORE CATEGORIES */}
-      <section className="bg-cream py-20 sm:py-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <Reveal>
-            <SectionHeading
-              eyebrow="Discover"
-              title="Explore by Category"
-              description="From faith and purpose to family, wellness, and leadership — find the stories that speak to your season."
-            />
-          </Reveal>
-          <div className="mt-12 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
-            {categories.slice(0, 8).map((category, i) => (
-              <Reveal key={category.slug} delayMs={i * 60}>
-                <CategoryCard category={category} />
-              </Reveal>
-            ))}
-          </div>
-          <div className="mt-10 text-center">
-            <Link
-              href="/categories"
-              className="inline-flex items-center rounded-full border border-plum px-7 py-3 font-sans text-xs font-semibold uppercase tracking-[0.1em] text-plum transition-all duration-300 hover:-translate-y-0.5 hover:bg-plum hover:text-white active:translate-y-0 active:scale-[0.97]"
-            >
-              View All Categories
-            </Link>
-          </div>
-        </div>
-      </section>
+      <InThisIssue />
 
       {/* COMMUNITY / EDITORIAL FEATURE */}
       <section className="bg-white py-20 sm:py-24">
@@ -96,8 +72,8 @@ export default function Home() {
             </h2>
             <p className="mt-5 font-sans text-base leading-relaxed text-charcoal-soft">
               Flourish is written by women, for women — pastors&apos; wives, mothers, professionals,
-              students, and leaders within the MFM Tampa community and beyond, each contributing
-              their voice, wisdom, and lived experience.
+              students, and leaders within the M.F.M Women Foundation Florida community and beyond,
+              each contributing their voice, wisdom, and lived experience.
             </p>
             <Link
               href="/contributors"

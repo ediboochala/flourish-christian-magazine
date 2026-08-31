@@ -4,8 +4,8 @@ import TestimonyCard from "@/components/TestimonyCard";
 import { testimonies } from "@/lib/data/testimonies";
 
 export const metadata: Metadata = {
-  title: "Testimonies",
-  description: "Real stories of God's faithfulness, told by the women who lived them.",
+  title: "Women's Stories",
+  description: "Real women. Real faith. Real victory. Testimonies of strength, healing, and hope.",
 };
 
 export default function TestimoniesPage() {
@@ -14,13 +14,14 @@ export default function TestimoniesPage() {
       <section className="bg-plum py-20 sm:py-24">
         <div className="mx-auto max-w-4xl px-6 text-center lg:px-10">
           <p className="font-sans text-xs font-semibold uppercase tracking-[0.24em] text-gold-light">
-            Stories of Faith
+            Women&apos;s Stories
           </p>
           <h1 className="mt-4 font-serif text-4xl leading-tight text-white sm:text-5xl">
-            Testimonies
+            Real Women. Real Faith. Real Victory.
           </h1>
           <p className="mx-auto mt-5 max-w-xl font-sans text-base leading-relaxed text-white/75">
-            Real stories of God&apos;s faithfulness, told by the women who lived them.
+            Testimonies of strength, healing, and hope from women just like you — because your
+            story might be the very thing someone else needs to keep going.
           </p>
         </div>
       </section>

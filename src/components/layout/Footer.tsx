@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Mail } from "lucide-react";
 import { FacebookIcon, InstagramIcon, YoutubeIcon } from "@/components/ui/BrandIcons";
@@ -14,6 +15,7 @@ const MAGAZINE_LINKS = [
 
 const COMPANY_LINKS = [
   { href: "/about", label: "About Flourish" },
+  { href: "/get-involved", label: "Get Involved" },
   { href: "/contact", label: "Contact" },
   { href: "/privacy", label: "Privacy Policy" },
   { href: "/terms", label: "Terms of Use" },
@@ -25,23 +27,33 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-5">
           <div className="sm:col-span-2 lg:col-span-2">
-            <Link href="/" className="flex flex-col leading-none">
-              <span className="font-serif text-2xl text-white">Flourish</span>
-              <span className="font-sans text-[9px] font-semibold uppercase tracking-[0.32em] text-gold-light">
-                Christian Magazine
+            <Link href="/" className="flex items-center gap-3 leading-none">
+              <span className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-full ring-1 ring-white/10">
+                <Image
+                  src="/Gemini_Generated_Image_2t6tje2t6tje2t6t.jpg"
+                  alt="M.F.M Women Foundation Florida logo"
+                  fill
+                  sizes="48px"
+                  className="object-cover"
+                />
+              </span>
+              <span className="flex flex-col">
+                <span className="font-serif text-2xl text-white">Flourish</span>
+                <span className="font-sans text-[9px] font-semibold uppercase tracking-[0.32em] text-gold-light">
+                  Christian Magazine
+                </span>
               </span>
             </Link>
             <p className="mt-4 max-w-sm font-sans text-sm leading-relaxed text-white/60">
-              A digital magazine, community, and women&apos;s ministry platform for the women of MFM
-              Tampa and Christian women everywhere. Faith that inspires. Women who flourish. Stories
-              that matter.
+              An online publication of M.F.M Women Foundation Florida — inspiring Christian women
+              through faith, stories, testimonies, and community.
             </p>
             <div className="mt-6 flex items-center gap-3">
               {[FacebookIcon, InstagramIcon, YoutubeIcon, Mail].map((Icon, i) => (
                 <a
                   key={i}
                   href="#"
-                  aria-label="Flourish on social media [placeholder link]"
+                  aria-label="Flourish on social media [placeholder link — add real profile URL]"
                   className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white/70 transition-all duration-300 hover:-translate-y-0.5 hover:border-gold hover:text-gold-light"
                 >
                   <Icon className="h-4 w-4" aria-hidden="true" />
@@ -122,11 +134,17 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 font-sans text-xs text-white/40 sm:flex-row">
-          <p>
-            © {new Date().getFullYear()} Flourish Christian Magazine · A ministry expression of MFM
-            Tampa Women&apos;s Ministry [placeholder — confirm official organizational language].
+        <div className="mt-12 flex flex-col items-center gap-2 border-t border-white/10 pt-8 text-center">
+          <p className="font-sans text-xs font-semibold uppercase tracking-[0.28em] text-gold-light">
+            Faith · Purpose · Connection · Encouragement
           </p>
+          <p className="font-serif text-base italic text-white/70">
+            Rooted in Christ. Growing together. Flourishing in purpose.
+          </p>
+        </div>
+
+        <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 font-sans text-xs text-white/40 sm:flex-row">
+          <p>© {new Date().getFullYear()} Flourish Magazine · M.F.M Women Foundation Florida</p>
           <div className="flex gap-6">
             <Link href="/privacy" className="hover:text-white/70">
               Privacy

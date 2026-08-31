@@ -39,8 +39,8 @@ export default function ContributorsPage() {
               Your Story Could Encourage Another Woman.
             </h2>
             <p className="mx-auto mt-3 max-w-lg font-sans text-sm leading-relaxed text-charcoal-soft">
-              Flourish is always open to new contributing voices from the MFM Tampa community and
-              beyond.
+              Flourish is always open to new contributing voices from the M.F.M Women Foundation
+              Florida community and beyond.
             </p>
             <Link
               href="/write-for-flourish"
