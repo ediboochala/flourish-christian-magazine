@@ -28,11 +28,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.flourishchristianmagazine.com"),
   title: {
-    default: "Flourish — Rooted in Christ. Growing Together. Flourishing in Purpose.",
+    default: "Flourish: Rooted in Christ. Growing Together. Flourishing in Purpose.",
     template: "%s · Flourish Christian Magazine",
   },
   description:
-    "Flourish is the online publication of M.F.M Women Foundation Florida — inspiring Christian women through faith, stories, testimonies, and community. Read the latest issue and join thousands of women growing in faith and purpose.",
+    "Flourish is the online publication of M.F.M Women Foundation Florida, inspiring Christian women through faith, stories, testimonies, and community. Read the latest issue and join thousands of women growing in faith and purpose.",
   keywords: [
     "Christian women's magazine",
     "faith and purpose",

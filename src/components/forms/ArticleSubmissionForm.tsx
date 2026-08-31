@@ -30,7 +30,7 @@ export default function ArticleSubmissionForm() {
         <h3 className="font-serif text-2xl text-plum">Thank You for Sharing Your Story</h3>
         <p className="mt-3 font-sans text-sm leading-relaxed text-charcoal-soft">
           Your submission has been received. The Flourish editorial team reviews every submission
-          and will be in touch by email. [Placeholder confirmation — connect to a real editorial
+          and will be in touch by email. [Placeholder confirmation, connect to a real editorial
           review workflow before launch.]
         </p>
       </div>

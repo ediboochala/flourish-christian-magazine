@@ -38,7 +38,7 @@ export default function EventsPage() {
             </div>
           ) : (
             <p className="font-sans text-sm text-charcoal-soft">
-              No upcoming events scheduled at this time — check back soon.
+              No upcoming events scheduled at this time. Check back soon.
             </p>
           )}
         </div>

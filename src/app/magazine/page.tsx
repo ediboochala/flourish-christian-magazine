@@ -8,7 +8,7 @@ import { categories } from "@/lib/data/categories";
 export const metadata: Metadata = {
   title: "Magazine Archive",
   description:
-    "Browse every Flourish Christian Magazine story — search, filter by category, and discover editor's picks and trending reads.",
+    "Browse every Flourish Christian Magazine story. Search, filter by category, and discover editor's picks and trending reads.",
 };
 
 export default function MagazinePage() {
@@ -26,7 +26,7 @@ export default function MagazinePage() {
             Every Story. One Digital Library.
           </h1>
           <p className="mx-auto mt-5 max-w-xl font-sans text-base leading-relaxed text-white/75">
-            Search, filter, and explore the full Flourish archive — faith, purpose, family, wellness,
+            Search, filter, and explore the full Flourish archive: faith, purpose, family, wellness,
             leadership, and more.
           </p>
         </div>

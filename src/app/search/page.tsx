@@ -3,7 +3,7 @@ import SearchExperience from "@/components/search/SearchExperience";
 
 export const metadata: Metadata = {
   title: "Search",
-  description: "Search Flourish Christian Magazine — articles, contributors, events, and testimonies.",
+  description: "Search Flourish Christian Magazine: articles, contributors, events, and testimonies.",
 };
 
 export default function SearchPage() {

@@ -9,19 +9,19 @@ export const testimonies: Testimony[] = [
   {
     slug: "from-anxiety-to-a-settled-peace",
     title: "From Anxiety to a Settled Peace",
-    intro: "A placeholder testimony illustrating how the testimony template renders — replace with a verified story.",
+    intro: "A placeholder testimony illustrating how the testimony template renders, replace with a verified story.",
     authorName: "A Flourish Woman [placeholder name]",
     publishedAt: "2026-07-28",
     image: { alt: "Editorial photo for testimony: From Anxiety to a Settled Peace", tone: "rose" },
     body: [
       "[Placeholder testimony text.] For two years, anxiety shaped nearly every decision I made. Through consistent prayer, community, and counsel, I found a settled peace I didn't think was possible.",
-      "This is a placeholder illustrating layout only — replace with an authentic, consented testimony before publishing.",
+      "This is a placeholder illustrating layout only, replace with an authentic, consented testimony before publishing.",
     ],
   },
   {
     slug: "restored-after-a-season-of-doubt",
     title: "Restored After a Season of Doubt",
-    intro: "A placeholder testimony illustrating how the testimony template renders — replace with a verified story.",
+    intro: "A placeholder testimony illustrating how the testimony template renders, replace with a verified story.",
     authorName: "A Flourish Woman [placeholder name]",
     publishedAt: "2026-07-14",
     image: { alt: "Editorial photo for testimony: Restored After a Season of Doubt", tone: "gold" },
@@ -32,7 +32,7 @@ export const testimonies: Testimony[] = [
   {
     slug: "provision-in-an-impossible-season",
     title: "Provision in an Impossible Season",
-    intro: "A placeholder testimony illustrating how the testimony template renders — replace with a verified story.",
+    intro: "A placeholder testimony illustrating how the testimony template renders, replace with a verified story.",
     authorName: "A Flourish Woman [placeholder name]",
     publishedAt: "2026-06-30",
     image: { alt: "Editorial photo for testimony: Provision in an Impossible Season", tone: "burgundy" },
@@ -43,7 +43,7 @@ export const testimonies: Testimony[] = [
   {
     slug: "healing-in-a-difficult-marriage-season",
     title: "Healing in a Difficult Marriage Season",
-    intro: "A placeholder testimony illustrating how the testimony template renders — replace with a verified story.",
+    intro: "A placeholder testimony illustrating how the testimony template renders, replace with a verified story.",
     authorName: "A Flourish Woman [placeholder name]",
     publishedAt: "2026-06-18",
     image: { alt: "Editorial photo for testimony: Healing in a Difficult Marriage Season", tone: "plum" },

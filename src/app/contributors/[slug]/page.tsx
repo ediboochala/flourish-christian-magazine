@@ -73,7 +73,7 @@ export default async function ContributorProfilePage({
             </div>
           ) : (
             <p className="mt-4 font-sans text-sm text-charcoal-soft">
-              No published articles yet — check back soon.
+              No published articles yet. Check back soon.
             </p>
           )}
         </div>

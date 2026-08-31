@@ -71,7 +71,7 @@ export default function Home() {
               Meet the Women Behind the Stories
             </h2>
             <p className="mt-5 font-sans text-base leading-relaxed text-charcoal-soft">
-              Flourish is written by women, for women — pastors&apos; wives, mothers, professionals,
+              Flourish is written by women, for women: pastors&apos; wives, mothers, professionals,
               students, and leaders within the M.F.M Women Foundation Florida community and beyond,
               each contributing their voice, wisdom, and lived experience.
             </p>

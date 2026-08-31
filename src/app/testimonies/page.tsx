@@ -20,7 +20,7 @@ export default function TestimoniesPage() {
             Real Women. Real Faith. Real Victory.
           </h1>
           <p className="mx-auto mt-5 max-w-xl font-sans text-base leading-relaxed text-white/75">
-            Testimonies of strength, healing, and hope from women just like you — because your
+            Testimonies of strength, healing, and hope from women just like you, because your
             story might be the very thing someone else needs to keep going.
           </p>
         </div>

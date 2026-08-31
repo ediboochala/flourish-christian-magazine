@@ -32,7 +32,7 @@ export default function ContactForm() {
       <div className="rounded-2xl bg-cream p-10 text-center">
         <h3 className="font-serif text-2xl text-plum">Message Received</h3>
         <p className="mt-3 font-sans text-sm leading-relaxed text-charcoal-soft">
-          Thank you for reaching out. Our team will respond as soon as possible. [Placeholder —
+          Thank you for reaching out. Our team will respond as soon as possible. [Placeholder,
           connect to a real inbox or CRM before launch.]
         </p>
       </div>

@@ -91,7 +91,7 @@ export default function MagazineArchive({
           >
             <option value="newest">Newest First</option>
             <option value="oldest">Oldest First</option>
-            <option value="az">A–Z</option>
+            <option value="az">Alphabetical</option>
           </select>
         </div>
       </div>

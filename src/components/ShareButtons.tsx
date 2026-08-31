@@ -32,7 +32,7 @@ export default function ShareButtons({ title, url, prompt }: ShareButtonsProps) 
     {
       label: "WhatsApp",
       icon: WhatsAppIcon,
-      href: `https://wa.me/?text=${encodeURIComponent(`${title} — ${shareUrl}`)}`,
+      href: `https://wa.me/?text=${encodeURIComponent(`${title}: ${shareUrl}`)}`,
     },
     {
       label: "Facebook",

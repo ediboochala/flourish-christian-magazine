@@ -4,7 +4,7 @@ import { categories } from "@/lib/data/categories";
 
 export const metadata: Metadata = {
   title: "Categories",
-  description: "Explore Flourish Christian Magazine by category — faith, purpose, family, wellness, leadership, and more.",
+  description: "Explore Flourish Christian Magazine by category: faith, purpose, family, wellness, leadership, and more.",
 };
 
 export default function CategoriesPage() {
@@ -19,7 +19,7 @@ export default function CategoriesPage() {
             Explore by Category
           </h1>
           <p className="mx-auto mt-5 max-w-xl font-sans text-base leading-relaxed text-white/75">
-            Find the stories that speak to your season — from faith and prayer to leadership,
+            Find the stories that speak to your season, from faith and prayer to leadership,
             wellness, and everyday Christian living.
           </p>
         </div>

@@ -104,7 +104,7 @@ export default function NewsletterCTA({ variant = "section" }: NewsletterCTAProp
           Never Miss an Issue
         </h2>
         <p className="mt-4 font-sans text-base leading-relaxed text-white/75">
-          Join thousands of women receiving faith, encouragement, and community — straight to their
+          Join thousands of women receiving faith, encouragement, and community, straight to their
           inbox.
         </p>
         <form onSubmit={handleSubmit} className="mt-8 flex w-full max-w-md flex-col gap-3 sm:flex-row">

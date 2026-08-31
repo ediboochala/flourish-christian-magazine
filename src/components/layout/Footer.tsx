@@ -45,7 +45,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="mt-4 max-w-sm font-sans text-sm leading-relaxed text-white/60">
-              An online publication of M.F.M Women Foundation Florida — inspiring Christian women
+              An online publication of M.F.M Women Foundation Florida, inspiring Christian women
               through faith, stories, testimonies, and community.
             </p>
             <div className="mt-6 flex items-center gap-3">
@@ -53,7 +53,7 @@ export default function Footer() {
                 <a
                   key={i}
                   href="#"
-                  aria-label="Flourish on social media [placeholder link — add real profile URL]"
+                  aria-label="Flourish on social media [placeholder link, add real profile URL]"
                   className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white/70 transition-all duration-300 hover:-translate-y-0.5 hover:border-gold hover:text-gold-light"
                 >
                   <Icon className="h-4 w-4" aria-hidden="true" />

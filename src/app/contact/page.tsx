@@ -4,7 +4,7 @@ import ContactForm from "@/components/forms/ContactForm";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Get in touch with Flourish Christian Magazine — general inquiries, contributor questions, and event inquiries.",
+  description: "Get in touch with Flourish Christian Magazine: general inquiries, contributor questions, and event inquiries.",
 };
 
 export default function ContactPage() {
@@ -17,7 +17,7 @@ export default function ContactPage() {
           </p>
           <h1 className="mt-4 font-serif text-4xl leading-tight text-white sm:text-5xl">Contact Us</h1>
           <p className="mx-auto mt-5 max-w-xl font-sans text-base leading-relaxed text-white/75">
-            Questions, contributor inquiries, event details, or feedback — we&apos;d love to hear
+            Questions, contributor inquiries, event details, or feedback, we&apos;d love to hear
             from you.
           </p>
         </div>
@@ -34,15 +34,15 @@ export default function ContactPage() {
                   <span>
                     hello@flourishchristianmagazine.com
                     <br />
-                    <span className="text-xs">[Placeholder — confirm official contact email.]</span>
+                    <span className="text-xs">[Placeholder, confirm official contact email.]</span>
                   </span>
                 </p>
                 <p className="flex items-start gap-3">
                   <MapPin className="mt-0.5 h-4 w-4 flex-shrink-0 text-gold" aria-hidden="true" />
                   <span>
-                    Mountain of Fire and Miracles Ministries — Tampa, Florida
+                    M.F.M Women Foundation Florida, Tampa, Florida
                     <br />
-                    <span className="text-xs">[Placeholder — confirm official mailing address.]</span>
+                    <span className="text-xs">[Placeholder, confirm official mailing address.]</span>
                   </span>
                 </p>
               </div>
@@ -50,7 +50,7 @@ export default function ContactPage() {
             <div className="rounded-2xl bg-cream p-6">
               <h3 className="font-serif text-lg text-plum">Response Time</h3>
               <p className="mt-2 font-sans text-sm leading-relaxed text-charcoal-soft">
-                We aim to respond to all inquiries within a few business days. [Placeholder — confirm
+                We aim to respond to all inquiries within a few business days. [Placeholder, confirm
                 actual response time commitment.]
               </p>
             </div>

@@ -41,7 +41,7 @@ const ISSUE_SECTIONS = [
     emoji: "❤️",
     label: "Health & Wellness",
     title: "Mind. Body. Soul.",
-    blurb: "Because flourishing isn't just spiritual — it's whole-life restoration.",
+    blurb: "Because flourishing isn't just spiritual. It's whole-life restoration.",
     page: 30,
     href: "/categories/health-wellness",
   },
@@ -67,7 +67,7 @@ export default function InThisIssue() {
           <SectionHeading
             eyebrow="Spring 2024 · Issue No. 1"
             title="In This Issue"
-            description="Six sections, one season of renewal — here's what's inside the current issue of Flourish."
+            description="Six sections, one season of renewal. Here's what's inside the current issue of Flourish."
           />
         </Reveal>
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">

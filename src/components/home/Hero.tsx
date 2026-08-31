@@ -8,10 +8,10 @@ export default function Hero() {
         <div className="animate-kenburns absolute inset-0">
           <PlaceholderImage
             image={{
-              alt: "Editorial hero photograph of Christian women in community — placeholder, replace with brand photography",
+              alt: "Editorial hero photograph of Christian women in community, placeholder, replace with brand photography",
               tone: "plum",
             }}
-            label="Hero Photograph — Replace With Brand Photography"
+            label="Hero Photograph, Replace With Brand Photography"
             priority
           />
         </div>
@@ -20,19 +20,17 @@ export default function Hero() {
       </div>
 
       <div className="relative z-[2] mx-auto flex min-h-[86vh] max-w-7xl flex-col justify-end px-6 pb-20 pt-40 sm:pb-24 lg:px-10">
-        <p className="animate-fade-in inline-flex w-fit items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-gold-light backdrop-blur-sm">
-          Spring 2024 <span className="text-white/40">·</span> Issue No. 1
-        </p>
-        <h1 className="text-display animate-fade-up mt-6 max-w-3xl font-serif text-white [text-shadow:0_2px_28px_rgba(0,0,0,0.28)]">
+        <h1 className="text-display animate-fade-in max-w-3xl font-serif text-white [text-shadow:0_2px_28px_rgba(0,0,0,0.28)]">
           A Season of Renewal
         </h1>
         <p className="animate-fade-up mt-6 max-w-xl border-l-2 border-gold-light pl-5 font-serif text-lg italic leading-relaxed text-white/90 sm:text-xl">
           &ldquo;Inspiring Christian women through faith, stories, testimonies, and community.&rdquo;
         </p>
         <p className="animate-fade-up mt-2 max-w-xl font-sans text-base leading-relaxed text-white/80 sm:text-lg">
-          There is a season for everything under heaven — and this one is yours. Whether you&apos;re
-          standing at the edge of a new chapter or quietly waiting on a promise, Flourish was
-          created to walk with you: page by page, story by story, prayer by prayer. Welcome home.
+          There is a season for everything under heaven, and this one is yours. Whether
+          you&apos;re standing at the edge of a new chapter or quietly waiting on a promise,
+          Flourish was created to walk with you, page by page, story by story, prayer by prayer.
+          Welcome home.
         </p>
         <div className="animate-fade-up mt-9 flex flex-col gap-4 sm:flex-row">
           <Link

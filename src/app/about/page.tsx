@@ -7,7 +7,7 @@ import NewsletterCTA from "@/components/NewsletterCTA";
 export const metadata: Metadata = {
   title: "About Flourish",
   description:
-    "Flourish is the online publication of M.F.M Women Foundation Florida — learn our story, mission, and values.",
+    "Flourish is the online publication of M.F.M Women Foundation Florida. Learn our story, mission, and values.",
 };
 
 const VALUES = [
@@ -35,7 +35,7 @@ export default function AboutPage() {
       <section className="relative overflow-hidden bg-plum">
         <div className="absolute inset-0 opacity-30">
           <PlaceholderImage
-            image={{ alt: "Editorial photo for About Flourish — placeholder", tone: "plum" }}
+            image={{ alt: "Editorial photo for About Flourish, placeholder", tone: "plum" }}
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-plum via-plum/85 to-plum/60" />
@@ -74,7 +74,7 @@ export default function AboutPage() {
             As the official online publication of{" "}
             <strong className="font-semibold text-plum">M.F.M Women Foundation Florida</strong>,
             Flourish exists to nurture Christian women through biblically grounded encouragement,
-            real testimonies, and practical tools for everyday life — marriage, motherhood, purpose,
+            real testimonies, and practical tools for everyday life: marriage, motherhood, purpose,
             healing, and wellness.
           </p>
           <p className="mt-4 font-sans text-base leading-relaxed text-charcoal-soft">
@@ -87,14 +87,14 @@ export default function AboutPage() {
               <h3 className="font-serif text-xl text-plum">Our Mission</h3>
               <p className="mt-2 font-sans text-sm leading-relaxed text-charcoal-soft">
                 To inspire, equip, and connect Christian women through faith, stories, testimonies,
-                and sisterhood — rooted in Christ, growing together, flourishing in purpose.
+                and sisterhood, rooted in Christ, growing together, flourishing in purpose.
               </p>
             </div>
             <div className="rounded-2xl bg-cream p-6">
               <h3 className="font-serif text-xl text-plum">Who We Serve</h3>
               <p className="mt-2 font-sans text-sm leading-relaxed text-charcoal-soft">
-                Christian women in every season — young adults, mothers, working professionals,
-                ministry workers, and leaders — within the M.F.M Women Foundation Florida community
+                Christian women in every season: young adults, mothers, working professionals,
+                ministry workers, and leaders, within the M.F.M Women Foundation Florida community
                 and among Christian women everywhere.
               </p>
             </div>

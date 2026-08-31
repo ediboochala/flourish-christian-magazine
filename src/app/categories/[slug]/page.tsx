@@ -67,7 +67,7 @@ export default async function CategoryArchivePage({
           />
           {categoryArticles.length === 0 && (
             <p className="mt-6 font-sans text-sm text-charcoal-soft">
-              No stories in this category yet — check back soon.
+              No stories in this category yet. Check back soon.
             </p>
           )}
         </div>

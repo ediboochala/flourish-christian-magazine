@@ -53,7 +53,7 @@ export default function GetInvolvedPage() {
           </h1>
           <p className="mx-auto mt-5 max-w-xl font-sans text-base leading-relaxed text-white/75">
             We exist to empower Christian women to walk in faith, purpose, and sisterhood. Flourish
-            magazine is one expression of that mission — but our work extends beyond the page into
+            magazine is one expression of that mission, but our work extends beyond the page into
             community events, mentorship, and outreach.
           </p>
         </div>

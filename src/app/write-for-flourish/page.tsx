@@ -31,19 +31,19 @@ export default function WriteForFlourishPage() {
             <h2 className="font-serif text-2xl text-plum">What We&apos;re Looking For</h2>
             <ul className="mt-5 space-y-4 font-sans text-sm leading-relaxed text-charcoal-soft">
               <li>
-                <strong className="text-charcoal">Faith &amp; Spirituality</strong> — reflections
+                <strong className="text-charcoal">Faith &amp; Spirituality:</strong> reflections
                 rooted in Scripture and the Christian walk.
               </li>
               <li>
-                <strong className="text-charcoal">Personal Stories</strong> — honest, well-crafted
+                <strong className="text-charcoal">Personal Stories:</strong> honest, well-crafted
                 accounts of God&apos;s work in your life.
               </li>
               <li>
-                <strong className="text-charcoal">Practical Wisdom</strong> — insight on family,
+                <strong className="text-charcoal">Practical Wisdom:</strong> insight on family,
                 career, leadership, wellness, and everyday Christian living.
               </li>
               <li>
-                <strong className="text-charcoal">Testimonies</strong> — stories of God&apos;s
+                <strong className="text-charcoal">Testimonies:</strong> stories of God&apos;s
                 faithfulness, told with honesty and care.
               </li>
             </ul>
@@ -51,7 +51,7 @@ export default function WriteForFlourishPage() {
               <h3 className="font-serif text-lg text-plum">Editorial Process</h3>
               <p className="mt-2 font-sans text-sm leading-relaxed text-charcoal-soft">
                 Every submission is reviewed by the Flourish editorial team. We may edit for length,
-                clarity, and style, and will contact you before publishing. [Placeholder — replace
+                clarity, and style, and will contact you before publishing. [Placeholder, replace
                 with your confirmed editorial workflow and expected response time.]
               </p>
             </div>
