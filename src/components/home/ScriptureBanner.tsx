@@ -6,7 +6,10 @@ import Reveal from "@/components/ui/Reveal";
  */
 export default function ScriptureBanner() {
   return (
-    <section className="relative overflow-hidden bg-cream py-16 sm:py-20">
+    <section
+      id="scripture-banner"
+      className="relative scroll-mt-20 overflow-hidden bg-cream py-16 sm:py-20"
+    >
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.08]"
         style={{

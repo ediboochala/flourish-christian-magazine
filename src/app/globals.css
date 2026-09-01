@@ -168,6 +168,69 @@
   animation-duration: 19s;
 }
 
+/* A slim rule that draws itself left-to-right on mount — used above the
+   Hero headline in place of a heavier badge. */
+@keyframes rule-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.hero-rule {
+  transform-origin: left;
+  animation: rule-grow 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+/* Warm gradient fill for a single accent word inside a headline — falls
+   back to a solid gold on browsers without background-clip: text. */
+.text-shimmer {
+  color: var(--color-gold-light);
+  background: linear-gradient(100deg, var(--color-gold-light) 10%, #f4ecc9 45%, var(--color-gold-light) 80%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* A soft, breathing sway for decorative line-art (the flourish motif
+   behind the Hero copy) — organic rather than mechanical. */
+@keyframes sway {
+  0%,
+  100% {
+    transform: rotate(-1.5deg);
+  }
+  50% {
+    transform: rotate(1.5deg);
+  }
+}
+
+.animate-sway {
+  animation: sway 7s ease-in-out infinite;
+}
+
+/* A diagonal light sweep across a button on hover — reserved for a
+   page's single highest-priority call to action. */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.55) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.btn-shine:hover::after {
+  transform: translateX(120%);
+}
+
 * {
   scroll-behavior: smooth;
 }
@@ -437,8 +500,13 @@ select:focus-visible,
   .page-transition,
   .animate-kenburns,
   .animate-blob,
+  .animate-sway,
+  .hero-rule,
   .aurora-backdrop::before,
   .aurora-backdrop::after {
     animation: none;
+  }
+  .btn-shine::after {
+    display: none;
   }
 }
