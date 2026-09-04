@@ -10,6 +10,8 @@ interface PlaceholderImageProps {
   sizes?: string;
   fill?: boolean;
   label?: string;
+  /** Renders a lighter version of the generative art for small thumbnails. */
+  compact?: boolean;
 }
 
 /**
@@ -28,6 +30,7 @@ export default function PlaceholderImage({
   sizes = "100vw",
   fill = true,
   label,
+  compact,
 }: PlaceholderImageProps) {
   if (image.src) {
     return (
@@ -46,15 +49,17 @@ export default function PlaceholderImage({
     <div
       role="img"
       aria-label={image.alt}
-      className={cx("relative flex h-full w-full items-center justify-center overflow-hidden", className)}
+      className={cx("grain-overlay relative h-full w-full overflow-hidden", className)}
     >
       <AbstractArt
         seed={image.src || image.alt}
         tone={image.tone ?? "plum"}
+        motif={image.motif}
+        variant={compact ? "compact" : "full"}
         className="absolute inset-0"
       />
       {label && (
-        <span className="absolute bottom-3 left-3 right-3 z-[1] text-center font-sans text-[11px] uppercase tracking-[0.14em] text-white/75">
+        <span className="absolute bottom-3 left-3 right-3 z-[2] text-center font-sans text-[11px] uppercase tracking-[0.14em] text-white/75">
           {label}
         </span>
       )}

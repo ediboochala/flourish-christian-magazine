@@ -44,7 +44,7 @@ export default function FeaturedStory({ article }: { article: Article }) {
               {author && <PlaceholderImage image={author.image} sizes="36px" />}
             </span>
             <span>
-              By <strong className="font-semibold text-charcoal">{author?.name}</strong> ·{" "}
+              By <strong className="font-bold tracking-tight text-plum">{author?.name}</strong> ·{" "}
               {formatDate(article.publishedAt)}
             </span>
           </div>

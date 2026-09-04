@@ -13,6 +13,13 @@
 
 export type ImageTone = "plum" | "burgundy" | "gold" | "rose" | "charcoal";
 
+/** Botanical motif used by the generative placeholder art. Each carries
+ *  a Christian association: olive (peace), wheat (harvest / bread of
+ *  life), vine ("I am the vine"), lily ("consider the lilies"), palm
+ *  (victory), fern (humility / new growth). When omitted, a motif is
+ *  derived from the image's `alt`/`src` text and its `tone`. */
+export type NatureMotif = "olive" | "wheat" | "vine" | "lily" | "palm" | "fern";
+
 /** A placeholder-safe image reference. `src` is optional on purpose —
  *  when empty, the UI renders an elegant editorial placeholder instead
  *  of a broken image or an invented stock photo. */
@@ -20,6 +27,8 @@ export interface MediaImage {
   src?: string;
   alt: string;
   tone?: ImageTone;
+  /** Overrides the auto-derived botanical motif for the placeholder art. */
+  motif?: NatureMotif;
   credit?: string;
 }
 

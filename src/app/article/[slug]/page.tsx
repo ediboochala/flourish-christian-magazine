@@ -60,12 +60,12 @@ export default async function ArticlePage({
 
       {/* HERO */}
       <section className="grain-overlay relative overflow-hidden bg-plum">
-        <div className="absolute inset-0 overflow-hidden opacity-40">
+        <div className="absolute inset-0 overflow-hidden opacity-[0.55]">
           <div className="animate-kenburns absolute inset-0">
             <PlaceholderImage image={article.heroImage} priority />
           </div>
         </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-plum via-plum/85 to-plum/50" />
+        <div className="absolute inset-0 bg-gradient-to-t from-plum via-plum/80 to-plum/45" />
         <div className="relative z-[2] mx-auto max-w-3xl px-6 pb-16 pt-32 text-center lg:px-10">
           <div className="flex items-center justify-center gap-3">
             {article.isNew && (
@@ -93,7 +93,7 @@ export default async function ArticlePage({
               {author && <PlaceholderImage image={author.image} sizes="40px" />}
             </span>
             <span>
-              By <strong className="font-semibold text-white">{author?.name}</strong>
+              By <strong className="font-bold tracking-tight text-white">{author?.name}</strong>
               <span className="mx-2">·</span>
               {formatDate(article.publishedAt)}
               <span className="mx-2">·</span>

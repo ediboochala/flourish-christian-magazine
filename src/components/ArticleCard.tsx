@@ -22,7 +22,7 @@ export default function ArticleCard({ article, size = "default", className }: Ar
         className={cx("group flex gap-4 items-start", className)}
       >
         <div className="img-zoom relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-lg">
-          <PlaceholderImage image={article.heroImage} sizes="80px" />
+          <PlaceholderImage image={article.heroImage} sizes="80px" compact />
         </div>
         <div className="min-w-0">
           {(article.isNew || category) && (
@@ -85,7 +85,12 @@ export default function ArticleCard({ article, size = "default", className }: Ar
           {article.excerpt}
         </p>
         <div className="mt-5 flex items-center justify-between border-t border-charcoal/10 pt-4 font-sans text-xs text-charcoal-soft">
-          <span>{author?.name ?? "Flourish"}</span>
+          <span className="inline-flex items-baseline gap-1">
+            <span className="text-charcoal-soft/75">By</span>
+            <span className="font-semibold tracking-tight text-plum">
+              {author?.name ?? "Flourish"}
+            </span>
+          </span>
           <span>
             {formatDateShort(article.publishedAt)} · {article.readingTimeMinutes} min read
           </span>

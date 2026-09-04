@@ -90,7 +90,9 @@ export default function Home() {
                   <span className="relative h-11 w-11 flex-shrink-0 overflow-hidden rounded-full">
                     <PlaceholderImage image={author.image} sizes="44px" />
                   </span>
-                  <span className="font-sans text-sm font-medium text-charcoal">{author.name}</span>
+                  <span className="font-sans text-sm font-semibold tracking-tight text-plum">
+                    {author.name}
+                  </span>
                 </div>
               ))}
             </div>
