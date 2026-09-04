@@ -107,3 +107,37 @@ export interface Testimony {
   image: MediaImage;
   body: string[];
 }
+
+/** A single labelled fact in a meeting's opening details, e.g.
+ *  { label: "Opening Prayer", value: "Pastor Mrs. Olajide (MFM Tampa)" }. */
+export interface MeetingDetail {
+  label: string;
+  value: string;
+}
+
+/** Minutes from a chapter meeting. Text-only by design — no imagery — so
+ *  it can be transcribed straight from meeting notes. */
+export interface MeetingMinutes {
+  slug: string;
+  organization: string;
+  chapters: string[];
+  details: MeetingDetail[];
+  keyInsights: string[];
+  anchorScriptures: string[];
+  benefits: string[];
+  prayerPoints: string[];
+  announcements: string[];
+  nextMeeting: string;
+}
+
+/** An invitation to an upcoming chapter meeting. */
+export interface MeetingInvitation {
+  slug: string;
+  title: string;
+  date: string;
+  time: string;
+  venue: string;
+  attendance: string;
+  zoomMeetingId?: string;
+  zoomPasscode?: string;
+}

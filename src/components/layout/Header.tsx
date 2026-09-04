@@ -14,6 +14,7 @@ const EXPLORE_LINKS = [
   { href: "/contributors", label: "Contributors", blurb: "Meet the women who write" },
   { href: "/events", label: "Events", blurb: "Conferences & gatherings" },
   { href: "/testimonies", label: "Women's Stories", blurb: "Real testimonies of faith" },
+  { href: "/meeting-minutes", label: "Meeting Minutes", blurb: "Chapter minutes & announcements" },
 ];
 
 const TRAILING_LINKS = [

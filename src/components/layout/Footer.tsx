@@ -10,6 +10,7 @@ const MAGAZINE_LINKS = [
   { href: "/contributors", label: "Contributors" },
   { href: "/events", label: "Events" },
   { href: "/testimonies", label: "Testimonies" },
+  { href: "/meeting-minutes", label: "Meeting Minutes" },
   { href: "/write-for-flourish", label: "Submit an Article" },
 ];
 
