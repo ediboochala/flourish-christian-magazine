@@ -33,9 +33,14 @@ export default function AboutPage() {
   return (
     <div>
       <section className="relative overflow-hidden bg-plum">
-        <div className="absolute inset-0 opacity-30">
+        <div className="absolute inset-0 opacity-40">
           <PlaceholderImage
-            image={{ alt: "Editorial photo for About Flourish, placeholder", tone: "plum" }}
+            image={{
+              src: "/images/site/about.jpg",
+              alt: "Women gathered with hands joined at the center",
+              tone: "plum",
+              credit: "Photo via Unsplash",
+            }}
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-plum via-plum/85 to-plum/60" />

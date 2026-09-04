@@ -16,10 +16,11 @@ export default function Hero() {
         <div className="animate-kenburns absolute inset-0">
           <PlaceholderImage
             image={{
-              alt: "Editorial hero photograph of Christian women in community, placeholder, replace with brand photography",
+              src: "/images/site/hero.jpg",
+              alt: "Warm light falling along a path through tall forest trees",
               tone: "plum",
+              credit: "Photo via Unsplash",
             }}
-            label="Hero Photograph, Replace With Brand Photography"
             priority
           />
         </div>

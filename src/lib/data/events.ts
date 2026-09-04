@@ -15,7 +15,12 @@ export const events: FlourishEvent[] = [
     location: "M.F.M Women Foundation Florida, Main Auditorium [placeholder address]",
     description:
       "A full day of worship, teaching, and community for women ready to step into a new season of purpose. [Placeholder, confirm theme, speakers, and schedule.]",
-    image: { alt: "Editorial photo for Flourish Women's Conference 2026", tone: "plum" },
+    image: {
+      src: "/images/events/flourish-women-conference-2026.jpg",
+      alt: "A hand raised in worship under warm stage light",
+      tone: "plum",
+      credit: "Photo via Unsplash",
+    },
     registrationOpen: true,
     featured: true,
   },
@@ -27,7 +32,12 @@ export const events: FlourishEvent[] = [
     time: "6:30 PM to 8:00 PM EST",
     location: "M.F.M Women Foundation Florida, Fellowship Hall [placeholder address]",
     description: "A recurring weekly study working verse-by-verse through Scripture, open to all women. [Placeholder details.]",
-    image: { alt: "Editorial photo for Midweek Women's Bible Study", tone: "gold" },
+    image: {
+      src: "/images/events/midweek-womens-bible-study.jpg",
+      alt: "A small group reading together around a table",
+      tone: "gold",
+      credit: "Photo via Unsplash",
+    },
     registrationOpen: true,
   },
   {
@@ -38,7 +48,12 @@ export const events: FlourishEvent[] = [
     time: "6:00 AM to 8:00 AM EST",
     location: "M.F.M Women Foundation Florida, Prayer Chapel [placeholder address]",
     description: "A dedicated morning of corporate prayer and fasting for the women of the ministry. [Placeholder details.]",
-    image: { alt: "Editorial photo for Women's Prayer and Fasting Morning", tone: "burgundy" },
+    image: {
+      src: "/images/events/womens-prayer-and-fasting-morning.jpg",
+      alt: "Early light raking across a field",
+      tone: "burgundy",
+      credit: "Photo via Unsplash",
+    },
     registrationOpen: false,
   },
   {
@@ -49,7 +64,12 @@ export const events: FlourishEvent[] = [
     time: "11:00 AM to 2:00 PM EST",
     location: "M.F.M Women Foundation Florida, Conference Room [placeholder address]",
     description: "A practical workshop on aligning career decisions with calling, featuring guest facilitators. [Placeholder details.]",
-    image: { alt: "Editorial photo for Purpose and Career Workshop", tone: "rose" },
+    image: {
+      src: "/images/events/purpose-and-career-workshop.jpg",
+      alt: "Writing notes in a notebook",
+      tone: "rose",
+      credit: "Photo via Unsplash",
+    },
     registrationOpen: true,
   },
   {
@@ -60,7 +80,12 @@ export const events: FlourishEvent[] = [
     time: "10:00 AM to 12:30 PM EST",
     location: "M.F.M Women Foundation Florida, Fellowship Hall [placeholder address]",
     description: "A relaxed morning of connection, testimony sharing, and community building over brunch. [Placeholder details.]",
-    image: { alt: "Editorial photo for Sisters' Fellowship Brunch", tone: "gold" },
+    image: {
+      src: "/images/events/sisters-fellowship-brunch.jpg",
+      alt: "Fresh bread and coffee laid out on a table",
+      tone: "gold",
+      credit: "Photo via Unsplash",
+    },
     registrationOpen: true,
   },
   {
@@ -71,7 +96,12 @@ export const events: FlourishEvent[] = [
     time: "Friday 5:00 PM to Sunday 12:00 PM EST",
     location: "Off-site Retreat Center [placeholder location]",
     description: "A weekend away for rest, deep teaching, and renewal, designed for women in every season of life. [Placeholder details.]",
-    image: { alt: "Editorial photo for Annual Women's Retreat", tone: "plum" },
+    image: {
+      src: "/images/events/annual-womens-retreat.jpg",
+      alt: "A quiet, mist-filled forest",
+      tone: "plum",
+      credit: "Photo via Unsplash",
+    },
     registrationOpen: false,
     featured: true,
   },
@@ -83,7 +113,12 @@ export const events: FlourishEvent[] = [
     time: "9:00 AM to 1:00 PM EST",
     location: "Tampa Community Partner Site [placeholder location]",
     description: "Flourish women serving together in the greater Tampa community. [Placeholder details, confirm partner organization.]",
-    image: { alt: "Editorial photo for Community Outreach and Service Day", tone: "burgundy" },
+    image: {
+      src: "/images/events/community-outreach-day.jpg",
+      alt: "Hands joined together in a circle",
+      tone: "burgundy",
+      credit: "Photo via Unsplash",
+    },
     registrationOpen: true,
   },
 ];

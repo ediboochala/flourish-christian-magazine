@@ -102,7 +102,12 @@ export default function Home() {
             className="img-zoom relative order-1 aspect-[4/5] w-full overflow-hidden rounded-2xl lg:order-2"
           >
             <PlaceholderImage
-              image={{ alt: "Editorial photo of Flourish contributors in community", tone: "gold" }}
+              image={{
+                src: "/images/site/community.jpg",
+                alt: "A circle of women's hands joined together",
+                tone: "gold",
+                credit: "Photo via Unsplash",
+              }}
             />
           </Reveal>
         </div>
