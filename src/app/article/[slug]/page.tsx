@@ -67,14 +67,21 @@ export default async function ArticlePage({
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-plum via-plum/85 to-plum/50" />
         <div className="relative z-[2] mx-auto max-w-3xl px-6 pb-16 pt-32 text-center lg:px-10">
-          {category && (
-            <Link
-              href={`/categories/${category.slug}`}
-              className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-gold-light hover:text-white"
-            >
-              {category.name}
-            </Link>
-          )}
+          <div className="flex items-center justify-center gap-3">
+            {article.isNew && (
+              <span className="rounded-full bg-gold px-2.5 py-1 font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-plum">
+                New
+              </span>
+            )}
+            {category && (
+              <Link
+                href={`/categories/${category.slug}`}
+                className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-gold-light hover:text-white"
+              >
+                {category.name}
+              </Link>
+            )}
+          </div>
           <h1 className="text-h1 mt-4 font-serif text-white">{article.title}</h1>
           {article.subtitle && (
             <p className="mx-auto mt-5 max-w-xl font-serif text-lg italic leading-relaxed text-white/80">

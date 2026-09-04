@@ -47,7 +47,13 @@ export default function MagazineArchive({
     result = [...result].sort((a, b) => {
       if (sort === "az") return a.title.localeCompare(b.title);
       const diff = new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
-      return sort === "newest" ? diff : -diff;
+      if (sort === "oldest") return -diff;
+      // "newest": brand-new issue pieces first, then by editorial priority, then by date
+      if (!!a.isNew !== !!b.isNew) return a.isNew ? -1 : 1;
+      const pa = a.priority ?? Number.POSITIVE_INFINITY;
+      const pb = b.priority ?? Number.POSITIVE_INFINITY;
+      if (pa !== pb) return pa - pb;
+      return diff;
     });
 
     return result;

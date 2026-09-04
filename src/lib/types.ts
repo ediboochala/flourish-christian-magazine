@@ -52,6 +52,12 @@ export interface Article {
   featured?: boolean;
   editorsPick?: boolean;
   trending?: boolean;
+  /** Marks a newly published story. Adds a "New" badge on cards and floats
+   *  the article to the top of listings, ahead of older stories. */
+  isNew?: boolean;
+  /** Editorial priority within an issue. Lower number = higher priority
+   *  (1 leads the issue). Undefined sorts after every prioritised story. */
+  priority?: number;
   tags?: string[];
   body: string[]; // paragraphs / simple markup blocks (## for h2, > for pull-quote)
   seo?: {

@@ -49,6 +49,22 @@ export const authors: Author[] = [
     focusAreas: ["Women & Purpose", "Leadership"],
     image: { alt: "Portrait placeholder for Chiamaka Nwosu", tone: "burgundy" },
   },
+  {
+    slug: "tayo-oluwayemiwo",
+    name: "Pastor Tayo Oluwayemiwo",
+    role: "Guest Contributor",
+    bio: "Pastor Tayo Oluwayemiwo ministers in Broward, Florida, teaching on healing, deliverance, and wholeness for women contending for every area of their lives. [Placeholder biography, replace with contributor-provided bio.]",
+    focusAreas: ["Health & Wellness", "Faith & Spirituality"],
+    image: { alt: "Portrait placeholder for Pastor Tayo Oluwayemiwo", tone: "burgundy" },
+  },
+  {
+    slug: "suzan-olunuga",
+    name: "Pastor Suzan Olunuga",
+    role: "Guest Contributor",
+    bio: "Pastor Suzan Olunuga ministers in Jacksonville, Florida, with a heart for women pressing through prolonged hardship into breakthrough. [Placeholder biography, replace with contributor-provided bio.]",
+    focusAreas: ["Faith & Spirituality", "Inspiration"],
+    image: { alt: "Portrait placeholder for Pastor Suzan Olunuga", tone: "plum" },
+  },
 ];
 
 export function getAuthorBySlug(slug: string): Author | undefined {

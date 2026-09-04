@@ -25,9 +25,14 @@ export default function ArticleCard({ article, size = "default", className }: Ar
           <PlaceholderImage image={article.heroImage} sizes="80px" />
         </div>
         <div className="min-w-0">
-          {category && (
-            <p className="mb-1 font-sans text-[10px] font-semibold uppercase tracking-[0.14em] text-burgundy">
-              {category.name}
+          {(article.isNew || category) && (
+            <p className="mb-1 flex items-center gap-2 font-sans text-[10px] font-semibold uppercase tracking-[0.14em] text-burgundy">
+              {article.isNew && (
+                <span className="rounded-full bg-gold px-1.5 py-0.5 text-[9px] tracking-[0.12em] text-plum">
+                  New
+                </span>
+              )}
+              {category?.name}
             </p>
           )}
           <h3 className="font-serif text-base leading-snug text-plum group-hover:text-burgundy transition-colors line-clamp-2">
@@ -59,6 +64,11 @@ export default function ArticleCard({ article, size = "default", className }: Ar
         {category && (
           <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 font-sans text-[10px] font-semibold uppercase tracking-[0.14em] text-plum backdrop-blur-sm">
             {category.name}
+          </span>
+        )}
+        {article.isNew && (
+          <span className="absolute right-4 top-4 rounded-full bg-gold px-3 py-1 font-sans text-[10px] font-semibold uppercase tracking-[0.14em] text-plum shadow-sm">
+            New
           </span>
         )}
       </div>

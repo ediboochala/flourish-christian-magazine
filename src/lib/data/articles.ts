@@ -1,13 +1,153 @@
 import { Article } from "@/lib/types";
 
 /**
- * PLACEHOLDER EDITORIAL CONTENT
- * All articles below are illustrative placeholder content demonstrating
- * layout, tone, and structure. Replace with real Flourish editorial
- * content before launch. No claims, statistics, or quotes here should
- * be treated as official M.F.M Women Foundation Florida or Flourish statements.
+ * EDITORIAL CONTENT
+ * The three September 2026 issue pieces at the top of this list are real
+ * contributor submissions, ordered by editorial priority (`priority: 1`
+ * leads the issue) and flagged `isNew` so they carry a "New" badge and
+ * sort ahead of everything else. Everything below them is still
+ * illustrative placeholder content demonstrating layout, tone, and
+ * structure. Replace the placeholders with real Flourish editorial
+ * content before launch. No claims, statistics, or quotes in the
+ * placeholder entries should be treated as official M.F.M Women
+ * Foundation Florida or Flourish statements.
+ *
+ * Adding a new issue piece: give it `isNew: true`, a `priority` number,
+ * and a `publishedAt` in the issue month. It will surface at the top of
+ * the homepage "Latest Stories" and the magazine archive automatically.
  */
 export const articles: Article[] = [
+  {
+    slug: "from-brokenness-to-wholeness-overcoming-lifes-toughest-battles",
+    title: "From Brokenness to Wholeness: Overcoming Life's Toughest Battles",
+    subtitle:
+      "God desires wholeness for every woman: spiritually, emotionally, mentally, and physically.",
+    excerpt:
+      "Life's battles touch the body, mind, relationships, finances, and purpose. A pastoral look at eight areas where women fight for healing, and the path back to wholeness in Christ.",
+    categorySlug: "health-wellness",
+    authorSlug: "tayo-oluwayemiwo",
+    publishedAt: "2026-09-03",
+    readingTimeMinutes: 8,
+    heroImage: { alt: "Editorial photo for From Brokenness to Wholeness", tone: "burgundy" },
+    isNew: true,
+    priority: 1,
+    editorsPick: true,
+    tags: ["new", "healing", "wholeness", "faith"],
+    body: [
+      "Life can bring battles that affect the body, mind, relationships, finances, and purpose. As women of faith, we must remember that God desires wholeness for us spiritually, emotionally, mentally, and physically.",
+      "Yet Jesus Christ came to destroy the works of the devil and bring redemption.",
+      "> For this purpose, the Son of God was manifested, that he might destroy the works of the devil. (1 John 3:8, KJV)",
+      "Through Christ, we have salvation, healing, wisdom, strength, and hope.",
+      "## 1. Spiritual Sickness",
+      "One of the deepest forms of sickness is spiritual separation from God. A person may appear successful outwardly while inwardly battling sin, bitterness, unforgiveness, guilt, rebellion, or spiritual emptiness.",
+      "In Acts 8, Simon's encounter with the apostles showed that serious issues remained within his heart. The greatest deliverance anyone can experience is freedom from sin. When the heart is surrendered to Christ, transformation begins.",
+      "## 2. Mental and Emotional Sickness",
+      "Mental and emotional struggles affect many women today. Anxiety, depression, trauma, eating disorders, chronic stress, and intrusive thoughts may range from mild to severe.",
+      "Medical care, counselling, therapy, appropriate medication, exercise, rest, and lifestyle changes can support recovery. Prayer and faith also provide comfort and hope.",
+      "## 3. Psychosomatic Illness",
+      "The mind and body are closely connected. Counselling, good sleep, supportive relationships, prayer, and meditation on Scripture can help restore balance.",
+      "> Casting all your care upon him; for he careth for you. (1 Peter 5:7, KJV)",
+      "## 4. Physiological Sickness",
+      "Some illnesses result from dysfunction in the body, affecting organs, hormones, nerves, bones, or the immune system. They may require medical tests, medication, specialist care, surgery, or lifestyle changes.",
+      "Faith and medicine need not oppose each other. We can pray fervently while seeking appropriate medical care.",
+      "## 5. Inherited and Generational Patterns",
+      "Some illnesses have genetic or hereditary components and may appear repeatedly within families. Destructive behavioral, emotional, relational, or spiritual patterns can also pass from one generation to another.",
+      "Our family history may inform us, but it does not have to define our future.",
+      "## 6. A Wounded Destiny",
+      "Sometimes the battle is not physical sickness but a life that seems unable to move forward. A hindered destiny may show through rejection, backwardness, missed opportunities, opposition, repeated failure, shame, confusion, or lack of direction.",
+      "God created every woman with purpose. Prayer, wise counsel, discipline, discernment, and obedience to God can help move us from stagnation into purposeful living.",
+      "## 7. Marital and Relationship Affliction",
+      "Relationships can become areas of deep pain. Some women experience broken relationships, marital conflict, betrayal, separation, divorce, abuse, or the death of a spouse.",
+      "Healing may require prayer, counselling, forgiveness, healthy boundaries, community support, and professional or legal intervention. No woman should remain in an unsafe situation believing abuse is a spiritual obligation.",
+      "## 8. Financial Sickness",
+      "Financial struggles may appear as chronic lack, debt, poor decisions, unemployment, lack of opportunities, dependency, repeated business failure, or inability to save.",
+      "Prayer is important, but financial restoration also requires wisdom. Budgeting, saving, learning new skills, pursuing opportunities, avoiding unnecessary debt, and becoming financially disciplined can contribute to stability.",
+      "## The Path to Wholeness",
+      "Whatever area of life is under attack, our foundation must remain Jesus Christ. Prayer and meditation on God's Word remain essential. Spiritual devotion should produce wisdom, discipline, compassion, responsibility, and appropriate action.",
+      "When medical attention is necessary, seek it. When counselling is necessary, receive it. When boundaries are necessary, establish them. When financial discipline is necessary, practice it. And when prayer is necessary, which is always, pray without ceasing.",
+      "## Final Encouragement",
+      "Living victoriously does not mean we will never face challenges. It means we do not face them without hope. Jesus Christ remains our Saviour, strength, refuge, and source of eternal life.",
+      "Whatever plague has tried to define your life, remember: your struggle does not have to become your identity. God is still able to restore, heal, redirect, and give beauty for ashes.",
+      "> He sent his word, and healed them, and delivered them from their destructions. (Psalm 107:20, KJV)",
+      "## Prayers for Your Wholeness",
+      "Every plague of sin, sickness, affliction, and destruction assigned against my life and destiny, be consumed by the fire of the Holy Ghost, in the name of Jesus.",
+      "Every inherited, ancestral, foundational, mental, marital, financial, and destiny affliction troubling my life, lose your hold and die, in the name of Jesus.",
+      "Blood of Jesus, penetrate every area of my life and flush out every root of sickness, bondage, failure, rejection, backwardness, and satanic oppression, in the name of Jesus.",
+    ],
+  },
+  {
+    slug: "faith-that-presses-through-lessons-from-the-woman-with-the-issue-of-blood",
+    title: "Faith That Presses Through: Lessons from the Woman with the Issue of Blood",
+    subtitle:
+      "What the woman with the issue of blood teaches us about relentless, breakthrough faith.",
+    excerpt:
+      "For twelve years she was sick, broke, and isolated. Then she heard Jesus was passing by. A study in the faith that refuses to stay put.",
+    categorySlug: "faith-spirituality",
+    authorSlug: "suzan-olunuga",
+    publishedAt: "2026-09-02",
+    readingTimeMinutes: 6,
+    heroImage: { alt: "Editorial photo for Faith That Presses Through", tone: "plum" },
+    isNew: true,
+    priority: 2,
+    trending: true,
+    tags: ["new", "faith", "perseverance", "healing"],
+    body: [
+      "Life has a way of throwing up walls that feel completely impassable. When you are facing prolonged hardship, chronic burnout, or delays that stretch on for years, the urge to throw in the towel is overwhelming.",
+      "But transformation usually requires a very specific kind of faith, a faith that refuses to stay put.",
+      "If you need a masterclass in relentless resilience, look no further than the biblical account of the woman with the issue of blood. For twelve long, exhausting years, this unnamed woman lived with constant hemorrhaging. Her crisis wasn't just physical. It touched every single area of her life.",
+      "The Gospel of Mark points out that she spent every penny she had on doctors, only to grow worse. Under the social laws of her time, her continuous condition labeled her \"unclean,\" cutting her off from community, family, and public life. She was isolated, financially broke, and running on absolutely empty.",
+      "By every logical standard, she had every reason to give up. Yet the moment she heard Jesus was walking through her town, something inside her shifted. Her faith refused to stay quiet.",
+      "> Breakthrough faith doesn't wait for a clear path; it carves one through the crowd.",
+      "## The Three Barriers She Had to Overcome",
+      "To get her miracle, she had to press through three massive obstacles.",
+      "The trauma of past failures. She had to process twelve years of disappointment and medical dead ends, choosing to risk opening her heart to hope one more time.",
+      "The fear of public shame. Stepping into a packed crowd meant risking public anger, harsh judgment, and severe consequences for breaking social isolation rules.",
+      "Severe physical exhaustion. Weakened by chronic illness, she had to physically push her way through a dense, suffocating sea of people.",
+      "She didn't demand center stage. She didn't wait for an official invitation. She simply anchored her heart on one thought: \"If I can just touch His cloak, I will be healed.\"",
+      "Reaching through the dust and crowd, she touched the hem of His garment. Instantly, the bleeding stopped.",
+      "## From Invisible to Seen",
+      "When Jesus stopped the crowd and asked who touched Him, she stepped forward trembling, expecting anger. Instead, Jesus redefined her entire story. He didn't focus on the rules she broke; He honored her courage.",
+      "> Daughter, your faith has made you whole. Go in peace.",
+      "In that single moment, she wasn't just physically healed. She was restored socially, emotionally, and spiritually.",
+      "## Your Turn to Reach Out",
+      "This story reminds us that breakthrough faith is rarely neat, quiet, or convenient. It doesn't wait for circumstances to align perfectly. When you feel like you are at the absolute end of your rope, that is your invitation to reach out one more time. Your breakthrough lives on the other side of your willingness to keep pressing in.",
+      "## Prayer Points for Your Faith",
+      "For strength beyond circumstance: Lord, build my faith so that it is grounded in Your promises rather than my feelings or current struggles. Give me steady endurance when the journey feels long.",
+      "For courage to hope again: Father, heal the places where past disappointments have made me hesitant to trust You. I receive the grace to step out in expectation, even when I can't see the full picture.",
+    ],
+  },
+  {
+    slug: "gratitude-in-the-dark",
+    title: "Gratitude in the Dark",
+    subtitle: "How to thank God in the seasons when nothing feels praiseworthy.",
+    excerpt:
+      "Gratitude in the dark is not denial. It is defiant faith. A look at Habakkuk's declaration, and why praise is a weapon against despair.",
+    categorySlug: "prayer-devotion",
+    authorSlug: "editorial-team",
+    publishedAt: "2026-09-01",
+    readingTimeMinutes: 6,
+    heroImage: { alt: "Editorial photo for Gratitude in the Dark", tone: "charcoal" },
+    isNew: true,
+    priority: 3,
+    tags: ["new", "gratitude", "praise", "worship"],
+    body: [
+      "Gratitude in the dark describes the believer's decision to thank God in seasons where nothing feels praiseworthy. It is the act of praising God in the pit, when life is confusing, painful, or seemingly hopeless. The phrase functions as a metaphor, comparing the literal absence of light to the emotional and spiritual darkness of hardship, grief, or crisis. It illustrates the discipline of finding thankfulness and hope even when you cannot see a way forward.",
+      "Habakkuk 3:18-19 stands as Scripture's clearest example of this truth. In a time of total agricultural failure, economic collapse, and national despair, Habakkuk declares, \"Yet I will rejoice in the Lord. The Lord God is my strength.\" His gratitude is not rooted in circumstances but in God's unchanging character. He chooses joy in God as Savior even while lacking every earthly security. This is gratitude in the dark: praise offered when life provides no visible reason to rejoice.",
+      "Three salient truths define this kind of gratitude.",
+      "## 1. Gratitude Is a Choice",
+      "If gratitude depended on feelings, no one would thank God in seasons of pain. Feelings shift with circumstances, but God's character never changes. Gratitude becomes a deliberate act of faith: thanking God while carrying burdens no one sees, while hurting silently, or while facing situations that defy understanding. It is choosing God's truth over emotional instability. Gratitude in the dark says, \"My feelings may change, but my God does not.\"",
+      "## 2. Praise Is a Weapon Against Despair",
+      "Praise is not passive; it is spiritual warfare. It functions as both an offensive and defensive weapon in the believer's armory. As an offensive weapon, praise disrupts the kingdom of darkness. When a believer responds to unpleasant situations with worship instead of fear, sorrow, or complaint, it creates confusion in the enemy's camp. This is why songs like \"It Is Well with My Soul\" were birthed out of devastating seasons. Praise became a counterattack.",
+      "As a defensive weapon, praise breaks the grip of anxiety and heaviness. Complaining feeds fear, but worship feeds faith. Acts 16 shows Paul and Silas praising at midnight in prison; their worship triggered divine intervention. Where God's presence dwells, darkness cannot remain.",
+      "## 3. The Sacrifice of Praise Changes Us",
+      "The sacrifice of praise means choosing to thank God when you are hurting, confused, or facing crisis. It is costly because it demands surrender of comfort, pride, and the natural desire to complain. When problems feel overwhelming, praise forces your eyes away from circumstances and back onto God's unchanging character. Psalm 42:11 reflects this shift: \"Hope in God, for I shall yet praise Him.\" Sacrificial praise realigns the heart with truth and strengthens the believer internally.",
+      "## Cultivating a Lifestyle of Gratitude",
+      "Reflect on how God saved your soul, the gift of salvation. Reflect on God's past and present provision and protection. Reject complaining as a habit. Develop a lifestyle of gratitude.",
+      "Gratitude in the dark is not denial. It is defiant faith. It is choosing worship in the valley and trusting God until the dawn breaks.",
+      "## Prayer Point",
+      "My Father, my Father, please empower me to praise You in seasons and out of seasons, in the name of Jesus. Amen.",
+    ],
+  },
   {
     slug: "seasons-of-waiting-finding-god-in-the-in-between",
     title: "Seasons of Waiting: Finding God in the In-Between",
@@ -183,55 +323,6 @@ export const articles: Article[] = [
       "Wherever you are, you are not behind. You are exactly where formation is happening.",
     ],
   },
-  {
-    slug: "inside-flourish-what-a-year-of-community-has-taught-us",
-    title: "Inside Flourish: What a Season of Community Has Taught Us",
-    subtitle: "A note from the editorial team on what we're building together.",
-    excerpt: "Reflections from the Flourish community on connection, contribution, and shared growth.",
-    categorySlug: "community",
-    authorSlug: "editorial-team",
-    publishedAt: "2026-07-15",
-    readingTimeMinutes: 5,
-    heroImage: { alt: "Editorial photo for Inside Flourish community reflection", tone: "plum" },
-    tags: ["community"],
-    body: [
-      "Flourish exists because women need more than information. They need a community that walks with them. This season has reminded us how much strength is found in shared story.",
-      "Thank you to every woman who has read, shared, submitted, or simply shown up. This is only the beginning.",
-    ],
-  },
-  {
-    slug: "stewarding-conflict-well-in-marriage",
-    title: "Stewarding Conflict Well in Marriage",
-    subtitle: "Conflict isn't a sign of a broken marriage. It's an invitation to a more honest one.",
-    excerpt: "A grounded look at handling disagreement with humility, honesty, and grace.",
-    categorySlug: "christian-living",
-    authorSlug: "grace-adeyemi",
-    publishedAt: "2026-07-10",
-    readingTimeMinutes: 6,
-    heroImage: { alt: "Editorial photo for Stewarding Conflict Well in Marriage", tone: "burgundy" },
-    tags: ["marriage", "conflict"],
-    body: [
-      "Every marriage has conflict; the healthiest ones simply steward it differently. The goal is not the absence of disagreement but the presence of honesty and repair.",
-      "## Repair Is a Skill, Not Just a Feeling",
-      "Learning to say 'I was wrong,' 'help me understand,' and 'let's try again' turns conflict from a threat into a tool for deeper intimacy.",
-    ],
-  },
-  {
-    slug: "the-ministry-of-showing-up",
-    title: "The Ministry of Showing Up",
-    subtitle: "Faithfulness in the unnoticed moments is still faithfulness.",
-    excerpt: "A short reflection on the quiet, consistent acts of service that rarely make headlines but shape lives.",
-    categorySlug: "faith-spirituality",
-    authorSlug: "chiamaka-nwosu",
-    publishedAt: "2026-07-05",
-    readingTimeMinutes: 4,
-    heroImage: { alt: "Editorial photo for The Ministry of Showing Up", tone: "rose" },
-    tags: ["service", "faithfulness"],
-    body: [
-      "Not every act of ministry is public. Some of the most eternally significant work happens in the unnoticed showing up: the phone call, the meal, the ride to the hospital.",
-      "God sees what goes unrecorded. Keep showing up.",
-    ],
-  },
 ];
 
 export function getArticleBySlug(slug: string): Article | undefined {
@@ -250,11 +341,34 @@ export function getFeaturedArticle(): Article {
   return articles.find((a) => a.featured) ?? articles[0];
 }
 
+/**
+ * Editorial ordering for every listing: brand-new issue pieces first,
+ * then by ascending `priority` (1 leads the issue), then newest by date.
+ * A story with no `priority` sorts after every prioritised one.
+ */
+export function byIssuePriority(a: Article, b: Article): number {
+  if (!!a.isNew !== !!b.isNew) return a.isNew ? -1 : 1;
+  const pa = a.priority ?? Number.POSITIVE_INFINITY;
+  const pb = b.priority ?? Number.POSITIVE_INFINITY;
+  if (pa !== pb) return pa - pb;
+  return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
+}
+
 export function getLatestArticles(limit?: number): Article[] {
-  const sorted = [...articles].sort(
-    (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-  );
+  const sorted = [...articles].sort(byIssuePriority);
   return typeof limit === "number" ? sorted.slice(0, limit) : sorted;
+}
+
+/** Articles flagged `isNew`, in editorial priority order. */
+export function getNewArticles(limit?: number): Article[] {
+  const sorted = articles.filter((a) => a.isNew).sort(byIssuePriority);
+  return typeof limit === "number" ? sorted.slice(0, limit) : sorted;
+}
+
+/** Every article published in the given month (`"YYYY-MM"`), ordered
+ *  new-and-prioritised first. Defaults to the current September 2026 issue. */
+export function getIssueArticles(month = "2026-09"): Article[] {
+  return articles.filter((a) => a.publishedAt.startsWith(`${month}-`)).sort(byIssuePriority);
 }
 
 export function getTrendingArticles(limit = 4): Article[] {
