@@ -36,8 +36,8 @@ export default function AboutPage() {
         <div className="absolute inset-0 opacity-40">
           <PlaceholderImage
             image={{
-              src: "/images/site/about.jpg",
-              alt: "Women gathered with hands joined at the center",
+              src: "/images/site/about-meadow.jpg",
+              alt: "Golden mist over a meadow at sunrise",
               tone: "plum",
               credit: "Photo via Unsplash",
             }}

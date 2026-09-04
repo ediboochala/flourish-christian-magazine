@@ -103,8 +103,8 @@ export default function Home() {
           >
             <PlaceholderImage
               image={{
-                src: "/images/site/community.jpg",
-                alt: "A circle of women's hands joined together",
+                src: "/images/site/community-grove.jpg",
+                alt: "A quiet path winding through a grove of birch trees",
                 tone: "gold",
                 credit: "Photo via Unsplash",
               }}

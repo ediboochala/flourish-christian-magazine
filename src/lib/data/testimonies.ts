@@ -62,8 +62,8 @@ export const testimonies: Testimony[] = [
     authorName: "A Flourish Woman [placeholder name]",
     publishedAt: "2026-06-18",
     image: {
-      src: "/images/testimonies/healing-in-a-difficult-marriage-season.jpg",
-      alt: "Hands resting gently on one another",
+      src: "/images/testimonies/healing-in-a-difficult-marriage-season-trees.jpg",
+      alt: "Two trees standing together on a hill at sunset",
       tone: "plum",
       credit: "Photo via Unsplash",
     },

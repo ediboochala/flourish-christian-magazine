@@ -16,8 +16,8 @@ export const events: FlourishEvent[] = [
     description:
       "A full day of worship, teaching, and community for women ready to step into a new season of purpose. [Placeholder, confirm theme, speakers, and schedule.]",
     image: {
-      src: "/images/events/flourish-women-conference-2026.jpg",
-      alt: "A hand raised in worship under warm stage light",
+      src: "/images/events/flourish-women-conference-2026-sanctuary.jpg",
+      alt: "A church sanctuary lit by stained-glass windows",
       tone: "plum",
       credit: "Photo via Unsplash",
     },
@@ -33,8 +33,8 @@ export const events: FlourishEvent[] = [
     location: "M.F.M Women Foundation Florida, Fellowship Hall [placeholder address]",
     description: "A recurring weekly study working verse-by-verse through Scripture, open to all women. [Placeholder details.]",
     image: {
-      src: "/images/events/midweek-womens-bible-study.jpg",
-      alt: "A small group reading together around a table",
+      src: "/images/events/midweek-womens-bible-study-table.jpg",
+      alt: "An open Bible on a table beside tea and a plant",
       tone: "gold",
       credit: "Photo via Unsplash",
     },
@@ -50,7 +50,7 @@ export const events: FlourishEvent[] = [
     description: "A dedicated morning of corporate prayer and fasting for the women of the ministry. [Placeholder details.]",
     image: {
       src: "/images/events/womens-prayer-and-fasting-morning.jpg",
-      alt: "Early light raking across a field",
+      alt: "Low morning sun raking across a field",
       tone: "burgundy",
       credit: "Photo via Unsplash",
     },
@@ -65,8 +65,8 @@ export const events: FlourishEvent[] = [
     location: "M.F.M Women Foundation Florida, Conference Room [placeholder address]",
     description: "A practical workshop on aligning career decisions with calling, featuring guest facilitators. [Placeholder details.]",
     image: {
-      src: "/images/events/purpose-and-career-workshop.jpg",
-      alt: "Writing notes in a notebook",
+      src: "/images/events/purpose-and-career-workshop-bible.jpg",
+      alt: "An open Bible with a pen resting between the pages",
       tone: "rose",
       credit: "Photo via Unsplash",
     },
@@ -114,8 +114,8 @@ export const events: FlourishEvent[] = [
     location: "Tampa Community Partner Site [placeholder location]",
     description: "Flourish women serving together in the greater Tampa community. [Placeholder details, confirm partner organization.]",
     image: {
-      src: "/images/events/community-outreach-day.jpg",
-      alt: "Hands joined together in a circle",
+      src: "/images/events/community-outreach-day-garden.jpg",
+      alt: "Seedlings growing in a sunlit garden bed",
       tone: "burgundy",
       credit: "Photo via Unsplash",
     },
