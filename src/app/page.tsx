@@ -14,14 +14,13 @@ import Reveal from "@/components/ui/Reveal";
 import { getFeaturedArticle, getLatestArticles } from "@/lib/data/articles";
 import { getUpcomingEvents } from "@/lib/data/events";
 import { testimonies } from "@/lib/data/testimonies";
-import { authors } from "@/lib/data/authors";
+import { editorialBoard } from "@/lib/data/editorialBoard";
 
 export default function Home() {
   const featured = getFeaturedArticle();
   const latest = getLatestArticles(6).filter((a) => a.slug !== featured.slug);
   const spotlightEvents = getUpcomingEvents(3);
   const spotlightTestimony = testimonies[0];
-  const spotlightContributors = authors.slice(1, 5);
 
   return (
     <>
@@ -66,14 +65,14 @@ export default function Home() {
       <section className="bg-white py-20 sm:py-24">
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-2 lg:gap-16 lg:px-10">
           <Reveal variant="left" className="order-2 lg:order-1">
-            <Eyebrow>From the Community</Eyebrow>
+            <Eyebrow>Editorial Board</Eyebrow>
             <h2 className="text-h2 mt-4 font-serif text-plum">
-              Meet the Women Behind the Stories
+              Meet Our Editorial Board
             </h2>
             <p className="mt-5 font-sans text-base leading-relaxed text-charcoal-soft">
-              Flourish is written by women, for women: pastors&apos; wives, mothers, professionals,
-              students, and leaders within the M.F.M Women Foundation Florida community and beyond,
-              each contributing their voice, wisdom, and lived experience.
+              Flourish is written by women from across the M.F.M Women Foundation Florida
+              community and beyond — far too many to name here. Guiding every issue is our
+              editorial board: a pastor from each Florida chapter, together with our editor.
             </p>
             <Link
               href="/contributors"
@@ -84,18 +83,21 @@ export default function Home() {
                 →
               </span>
             </Link>
-            <div className="mt-10 grid grid-cols-2 gap-4">
-              {spotlightContributors.map((author) => (
-                <div key={author.slug} className="flex items-center gap-3">
-                  <span className="relative h-11 w-11 flex-shrink-0 overflow-hidden rounded-full">
-                    <PlaceholderImage image={author.image} sizes="44px" />
+            <ul className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2">
+              {editorialBoard.map((member) => (
+                <li key={member.slug} className="flex items-start gap-3">
+                  <span className="mt-2 h-[5px] w-[5px] flex-shrink-0 rotate-45 bg-gold" aria-hidden="true" />
+                  <span>
+                    <span className="block font-sans text-sm font-semibold tracking-tight text-plum">
+                      {member.name}
+                    </span>
+                    <span className="block font-sans text-xs text-charcoal-soft">
+                      {member.role} &middot; {member.location}
+                    </span>
                   </span>
-                  <span className="font-sans text-sm font-semibold tracking-tight text-plum">
-                    {author.name}
-                  </span>
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
           </Reveal>
           <Reveal
             variant="scale"

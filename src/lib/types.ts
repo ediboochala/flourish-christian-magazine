@@ -48,6 +48,16 @@ export interface Author {
   image: MediaImage;
 }
 
+/** A member of the M.F.M Women Foundation Florida editorial board —
+ *  distinct from `Author`: this is the leadership roster (chapter
+ *  pastors and the editor), not article bylines. */
+export interface EditorialBoardMember {
+  slug: string;
+  name: string;
+  role: string;
+  location: string;
+}
+
 export interface Article {
   slug: string;
   title: string;
