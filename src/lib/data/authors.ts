@@ -1,5 +1,15 @@
 import { Author } from "@/lib/types";
 
+/**
+ * CONTRIBUTORS
+ * The two guest contributors at the end of this list (Pastor Tayo
+ * Oluwayemiwo and Pastor Suzan Olunuga) are real September 2026 issue
+ * contributors. Every other writer entry was generated with the original
+ * scaffold and its byline is set to "Anonymous" until a real contributor
+ * name and bio are supplied — edit the `name` and `bio` fields below
+ * when that information is available. Slugs are kept stable so existing
+ * article and contributor URLs keep working.
+ */
 export const authors: Author[] = [
   {
     slug: "editorial-team",
@@ -11,43 +21,43 @@ export const authors: Author[] = [
   },
   {
     slug: "adaeze-okafor",
-    name: "Adaeze Okafor",
+    name: "Anonymous",
     role: "Contributing Writer",
-    bio: "Adaeze writes on faith, purpose, and womanhood, drawing from her experience in ministry and marketplace leadership. [Placeholder biography, replace with contributor-provided bio.]",
+    bio: "Contributor name and bio to be added. [Placeholder entry, edit with the real contributor's details.]",
     focusAreas: ["Faith & Spirituality", "Leadership"],
-    image: { alt: "Portrait placeholder for Adaeze Okafor", tone: "burgundy" },
+    image: { alt: "Portrait placeholder for a Flourish contributor", tone: "burgundy" },
   },
   {
     slug: "grace-adeyemi",
-    name: "Grace Adeyemi",
+    name: "Anonymous",
     role: "Contributing Writer",
-    bio: "Grace is passionate about marriage and motherhood, writing honestly about the beauty and challenges of family life. [Placeholder biography, replace with contributor-provided bio.]",
+    bio: "Contributor name and bio to be added. [Placeholder entry, edit with the real contributor's details.]",
     focusAreas: ["Family & Relationships", "Christian Living"],
-    image: { alt: "Portrait placeholder for Grace Adeyemi", tone: "rose" },
+    image: { alt: "Portrait placeholder for a Flourish contributor", tone: "rose" },
   },
   {
     slug: "temitope-bello",
-    name: "Temitope Bello",
+    name: "Anonymous",
     role: "Contributing Writer",
-    bio: "Temitope explores personal growth and wellness, encouraging women to steward their whole selves, spirit, soul, and body. [Placeholder biography, replace with contributor-provided bio.]",
+    bio: "Contributor name and bio to be added. [Placeholder entry, edit with the real contributor's details.]",
     focusAreas: ["Health & Wellness", "Personal Growth"],
-    image: { alt: "Portrait placeholder for Temitope Bello", tone: "gold" },
+    image: { alt: "Portrait placeholder for a Flourish contributor", tone: "gold" },
   },
   {
     slug: "joy-eze",
-    name: "Joy Eze",
+    name: "Anonymous",
     role: "Contributing Writer",
-    bio: "Joy writes on prayer, devotion, and the disciplines of a grounded spiritual life. [Placeholder biography, replace with contributor-provided bio.]",
+    bio: "Contributor name and bio to be added. [Placeholder entry, edit with the real contributor's details.]",
     focusAreas: ["Prayer & Devotion", "Inspiration"],
-    image: { alt: "Portrait placeholder for Joy Eze", tone: "plum" },
+    image: { alt: "Portrait placeholder for a Flourish contributor", tone: "plum" },
   },
   {
     slug: "chiamaka-nwosu",
-    name: "Chiamaka Nwosu",
+    name: "Anonymous",
     role: "Contributing Writer",
-    bio: "Chiamaka shares reflections on purpose and leadership for women navigating career and calling. [Placeholder biography, replace with contributor-provided bio.]",
+    bio: "Contributor name and bio to be added. [Placeholder entry, edit with the real contributor's details.]",
     focusAreas: ["Women & Purpose", "Leadership"],
-    image: { alt: "Portrait placeholder for Chiamaka Nwosu", tone: "burgundy" },
+    image: { alt: "Portrait placeholder for a Flourish contributor", tone: "burgundy" },
   },
   {
     slug: "tayo-oluwayemiwo",
