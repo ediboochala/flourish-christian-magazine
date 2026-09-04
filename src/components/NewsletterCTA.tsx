@@ -8,7 +8,7 @@ interface NewsletterCTAProps {
 }
 
 export default function NewsletterCTA({ variant = "section" }: NewsletterCTAProps) {
-  const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [email, setEmail] = useState("");
 
   async function handleSubmit(e: React.FormEvent) {
@@ -16,42 +16,51 @@ export default function NewsletterCTA({ variant = "section" }: NewsletterCTAProp
     if (!email) return;
     setStatus("submitting");
     try {
-      await fetch("/api/subscribe", {
+      const res = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
       });
+      if (!res.ok) throw new Error("Failed");
+      setStatus("success");
+      setEmail("");
     } catch {
-      // Non-blocking: this is a placeholder endpoint. Replace with a real
-      // email service (Mailchimp, ConvertKit, Klaviyo, etc.) integration.
+      // Replace with a real email service (Mailchimp, ConvertKit, Klaviyo,
+      // etc.) integration before launch.
+      setStatus("error");
     }
-    setStatus("success");
-    setEmail("");
   }
 
   if (variant === "inline") {
     return (
-      <form onSubmit={handleSubmit} className="flex w-full max-w-md flex-col gap-3 sm:flex-row">
-        <label htmlFor="newsletter-inline" className="sr-only">
-          Email address
-        </label>
-        <input
-          id="newsletter-inline"
-          type="email"
-          required
-          placeholder="Your email address"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="w-full flex-1 rounded-full border border-charcoal/15 bg-white px-5 py-3 font-sans text-sm text-charcoal placeholder:text-charcoal-soft/70 focus:border-gold focus:outline-none"
-        />
-        <button
-          type="submit"
-          disabled={status === "submitting"}
-          className="rounded-full bg-plum px-6 py-3 font-sans text-xs font-semibold uppercase tracking-[0.1em] text-white transition-colors hover:bg-burgundy disabled:opacity-60"
-        >
-          {status === "success" ? "You're In! ✓" : "Join Flourish"}
-        </button>
-      </form>
+      <div className="w-full max-w-md">
+        <form onSubmit={handleSubmit} className="flex w-full flex-col gap-3 sm:flex-row">
+          <label htmlFor="newsletter-inline" className="sr-only">
+            Email address
+          </label>
+          <input
+            id="newsletter-inline"
+            type="email"
+            required
+            placeholder="Your email address"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full flex-1 rounded-full border border-charcoal/15 bg-white px-5 py-3 font-sans text-sm text-charcoal placeholder:text-charcoal-soft/70 focus:border-gold focus:outline-none"
+          />
+          <button
+            type="submit"
+            disabled={status === "submitting"}
+            className="rounded-full bg-plum px-6 py-3 font-sans text-xs font-semibold uppercase tracking-[0.1em] text-white transition-colors hover:bg-burgundy disabled:opacity-60"
+          >
+            {status === "success" ? "You're In! ✓" : "Join Flourish"}
+          </button>
+        </form>
+        {status === "error" && (
+          <p className="mt-2 font-sans text-sm text-burgundy">
+            Something went wrong. Please try again.
+          </p>
+        )}
+      </div>
     );
   }
 
@@ -82,6 +91,11 @@ export default function NewsletterCTA({ variant = "section" }: NewsletterCTAProp
           >
             {status === "success" ? "You're In! ✓" : "Join the Flourish Community"}
           </button>
+          {status === "error" && (
+            <p className="font-sans text-sm text-burgundy">
+              Something went wrong. Please try again.
+            </p>
+          )}
         </form>
       </div>
     );
@@ -128,6 +142,11 @@ export default function NewsletterCTA({ variant = "section" }: NewsletterCTAProp
             {status === "success" ? "You're In! ✓" : "Subscribe Now"}
           </button>
         </form>
+        {status === "error" && (
+          <p className="mt-3 font-sans text-sm text-burgundy-light">
+            Something went wrong. Please try again.
+          </p>
+        )}
         <p className="mt-4 font-sans text-sm italic text-white/60">
           &ldquo;Rooted in Christ. Growing together. Flourishing in purpose.&rdquo;
         </p>
