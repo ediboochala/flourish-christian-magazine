@@ -8,6 +8,59 @@ import Image from "next/image";
  * closing the panel.
  */
 
+/** A small spray of botanical blooms for the hero's bottom-left corner —
+ *  line-art in the same brand palette as the leaf crest, rather than a
+ *  stock photo, so it reads as part of the cover's illustrated system. */
+function FloralCorner({ className, style }: { className?: string; style?: React.CSSProperties }) {
+  const bloom = (cx: number, cy: number, scale: number, petals: number, fill: string, opacity: number) => (
+    <g transform={`translate(${cx} ${cy}) scale(${scale})`} opacity={opacity}>
+      {Array.from({ length: petals }).map((_, i) => (
+        <ellipse
+          key={i}
+          cx="0"
+          cy="-13"
+          rx="9"
+          ry="14"
+          fill={fill}
+          transform={`rotate(${(360 / petals) * i})`}
+        />
+      ))}
+      <circle r="5.5" fill="var(--color-gold-light)" />
+    </g>
+  );
+
+  return (
+    <svg viewBox="0 0 220 210" aria-hidden="true" className={className} style={style} fill="none">
+      {/* stems */}
+      <path d="M46 210 C 43 160 58 128 50 86" stroke="var(--color-forest)" strokeWidth="3" strokeLinecap="round" opacity="0.85" />
+      <path d="M96 210 C 101 168 82 138 100 100" stroke="var(--color-forest)" strokeWidth="3" strokeLinecap="round" opacity="0.75" />
+      <path d="M138 210 C 133 170 152 145 136 112" stroke="var(--color-forest)" strokeWidth="2.5" strokeLinecap="round" opacity="0.65" />
+
+      {/* leaves */}
+      <path
+        d="M50 148 C 30 143 19 127 13 111 C 35 110 51 121 57 137 Z"
+        fill="var(--color-forest)"
+        opacity="0.7"
+      />
+      <path
+        d="M100 158 C 119 153 130 135 134 118 C 113 119 98 132 93 150 Z"
+        fill="var(--color-gold-light)"
+        opacity="0.55"
+      />
+      <path
+        d="M48 104 C 29 101 17 87 11 72 C 32 70 49 81 55 96 Z"
+        fill="var(--color-forest)"
+        opacity="0.6"
+      />
+
+      {/* blooms */}
+      {bloom(50, 86, 1.05, 6, "var(--color-burgundy-light)", 0.92)}
+      {bloom(100, 100, 0.85, 5, "var(--color-rose-light)", 0.88)}
+      {bloom(138, 112, 0.7, 5, "var(--color-burgundy-light)", 0.75)}
+    </svg>
+  );
+}
+
 function LeafCrest({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 64 48" aria-hidden="true" className={className} fill="none">
@@ -62,6 +115,11 @@ export default function Hero() {
           }}
         />
         <div className="aurora-backdrop opacity-40" />
+
+        <FloralCorner
+          className="animate-sway pointer-events-none absolute bottom-0 left-0 h-40 w-40 sm:h-48 sm:w-48 lg:h-56 lg:w-56"
+          style={{ transformOrigin: "bottom left" }}
+        />
       </div>
 
       <div className="relative z-[2] mx-auto flex min-h-[82vh] max-w-7xl flex-col px-6 pb-16 pt-10 sm:min-h-[90vh] sm:pt-12 lg:px-10">
