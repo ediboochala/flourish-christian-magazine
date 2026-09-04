@@ -3,15 +3,10 @@ import Image from "next/image";
 
 /**
  * HERO — the printed Flourish cover, rebuilt for the web: a centered
- * "FLOURISH" masthead crested by a leaf, the cover woman filling the
- * right of the frame, a "Season of Renewal" headline block lower-left,
- * and the brand ribbon closing the panel.
+ * "FLOURISH" wordmark, the cover woman filling the right of the frame,
+ * a "Season of Renewal" headline block lower-left, and the brand ribbon
+ * closing the panel.
  */
-
-// The masthead is split so the opening letter can carry the tall, swashy
-// initial the printed logo uses while the rest of the word stays even.
-const MASTHEAD_INITIAL = "F";
-const MASTHEAD_REST = "lourish";
 
 function LeafCrest({ className }: { className?: string }) {
   return (
@@ -45,12 +40,12 @@ export default function Hero() {
       <div className="absolute inset-0">
         <div className="animate-kenburns absolute inset-0">
           <Image
-            src="/images/hero.png"
+            src="/images/categories/hero.png"
             alt="A woman in a purple headwrap writing in her Bible beside vases of purple flowers"
             fill
             priority
             sizes="100vw"
-            className="object-cover object-[84%_30%] sm:object-[78%_center] lg:object-[80%_center]"
+            className="object-cover object-[70%_32%] sm:object-[75%_center] lg:object-[78%_center]"
           />
         </div>
         <div
@@ -85,21 +80,16 @@ export default function Hero() {
           className="animate-fade-up mt-8 flex flex-col items-center text-center"
           style={{ animationDelay: "80ms" }}
         >
-          <LeafCrest className="animate-sway h-9 w-auto text-gold-light sm:h-11" />
-          <h1
-            className="mt-1 max-w-full font-serif font-semibold uppercase leading-[0.85] text-white [text-shadow:0_2px_24px_rgba(0,0,0,0.35)]"
-            style={{
-              fontSize: "clamp(2rem, -1rem + 9vw, 8.5rem)",
-              letterSpacing: "0.02em",
-            }}
-          >
-            <span
-              className="align-baseline"
-              style={{ fontSize: "1.16em", fontVariationSettings: '"WONK" 1' }}
-            >
-              {MASTHEAD_INITIAL}
-            </span>
-            {MASTHEAD_REST}
+          <h1 className="relative w-full max-w-[36rem] px-4 drop-shadow-[0_2px_24px_rgba(0,0,0,0.35)]">
+            <Image
+              src="/images/flourish-wordmark.png"
+              alt="Flourish"
+              width={2115}
+              height={743}
+              priority
+              unoptimized
+              className="h-auto w-full"
+            />
           </h1>
           <div className="mt-4 flex w-full max-w-2xl items-center justify-center gap-3">
             <span className="hidden h-px flex-1 bg-gradient-to-r from-transparent to-gold-light/70 sm:block" />
