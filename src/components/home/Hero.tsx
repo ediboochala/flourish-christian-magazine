@@ -93,7 +93,7 @@ export default function Hero() {
       <div className="absolute inset-0">
         <div className="animate-kenburns absolute inset-0">
           <Image
-            src="/images/site/hero.png"
+            src="/images/site/hero 22222.png"
             alt="A woman in a purple headwrap writing in her Bible beside vases of purple flowers"
             fill
             priority
