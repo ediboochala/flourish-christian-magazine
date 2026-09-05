@@ -3,6 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import PlaceholderImage from "@/components/ui/PlaceholderImage";
 import NewsletterCTA from "@/components/NewsletterCTA";
+import Eyebrow from "@/components/ui/Eyebrow";
+import Reveal from "@/components/ui/Reveal";
+import { FacebookIcon, InstagramIcon } from "@/components/ui/BrandIcons";
 
 export const metadata: Metadata = {
   title: "About Flourish",
@@ -104,6 +107,48 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-20 sm:py-24">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-[minmax(0,380px)_1fr] lg:gap-16 lg:px-10">
+          <Reveal variant="scale" className="img-zoom relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-2xl">
+            <Image
+              src="/images/site/shade-olukoya.jpg"
+              alt="Pastor (Dr.) Mrs. Shade Olukoya smiling and speaking into a microphone, wearing an orange floral hat and a matching orange, teal, and black blazer"
+              fill
+              sizes="(min-width: 1024px) 380px, 90vw"
+              className="object-cover"
+            />
+          </Reveal>
+          <Reveal variant="right">
+            <Eyebrow>Global Leadership</Eyebrow>
+            <h2 className="text-h2 mt-4 font-serif text-plum">Pastor (Dr.) Mrs. Shade Olukoya</h2>
+            <p className="mt-3 font-sans text-sm font-semibold uppercase tracking-[0.08em] text-burgundy">
+              Mummy G.O. &middot; International President, MFM Women Foundation
+            </p>
+            <p className="mt-5 font-sans text-base leading-relaxed text-charcoal-soft">
+              A woman of faith and a dedicated servant of God who stands beside the General
+              Overseer in the ministry&apos;s global mandate of prayer and deliverance. She leads
+              the MFM Women Foundation across regions and nations worldwide.
+            </p>
+            <p className="mt-4 font-sans text-base leading-relaxed text-charcoal-soft">
+              M.F.M Women Foundation Florida, and Flourish alongside it, carries her vision of
+              prayer, discipleship, and sisterhood into every chapter and every page.
+            </p>
+            <div className="mt-7 flex items-center gap-3">
+              {[FacebookIcon, InstagramIcon].map((Icon, i) => (
+                <a
+                  key={i}
+                  href="#"
+                  aria-label="Pastor (Dr.) Mrs. Shade Olukoya on social media [placeholder link, add real profile URL]"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-plum/20 text-plum transition-all duration-300 hover:-translate-y-0.5 hover:border-gold hover:text-burgundy"
+                >
+                  <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
+                </a>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </section>
 
