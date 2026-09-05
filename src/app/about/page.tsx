@@ -49,13 +49,14 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-gradient-to-t from-plum via-plum/85 to-plum/60" />
         <div className="aurora-backdrop opacity-40" />
         <div className="relative mx-auto max-w-3xl px-6 py-28 text-center lg:px-10">
-          <span className="relative mx-auto mb-6 block h-20 w-20 overflow-hidden rounded-full ring-2 ring-white/30">
+          <span className="relative mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-white p-3 ring-2 ring-white/30">
             <Image
-              src="/Gemini_Generated_Image_2t6tje2t6tje2t6t.jpg"
-              alt="M.F.M Women Foundation Florida logo"
-              fill
-              sizes="80px"
-              className="object-cover"
+              src="/images/site/mfm-logo.png"
+              alt="Mountain of Fire and Miracles Ministries logo"
+              width={244}
+              height={245}
+              sizes="72px"
+              className="h-full w-full object-contain"
             />
           </span>
           <p className="font-sans text-xs font-semibold uppercase tracking-[0.24em] text-gold-light">
@@ -66,6 +67,23 @@ export default function AboutPage() {
           </h1>
           <p className="mx-auto mt-5 max-w-xl font-sans text-base leading-relaxed text-white/75">
             An online publication of M.F.M Women Foundation Florida.
+          </p>
+        </div>
+      </section>
+
+      <section className="border-b border-plum/10 bg-cream py-10">
+        <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 px-6 text-center sm:flex-row sm:justify-center sm:gap-5 sm:text-left lg:px-10">
+          <Image
+            src="/images/site/mfm-logo.png"
+            alt="Mountain of Fire and Miracles Ministries logo"
+            width={244}
+            height={245}
+            className="h-16 w-16 flex-shrink-0"
+          />
+          <p className="font-sans text-sm leading-relaxed text-charcoal-soft">
+            <span className="font-semibold text-plum">Flourish Christian Magazine</span> is the
+            online publication of M.F.M Women Foundation Florida &mdash; Mountain of Fire and
+            Miracles Ministries.
           </p>
         </div>
       </section>
