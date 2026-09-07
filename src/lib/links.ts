@@ -1,9 +1,5 @@
 /**
- * External destination for "Women Foundation Leadership".
- *
- * TODO(client): set this to the MFM Mega Region Women Foundation
- * leadership page URL the client will provide. While it is null, the
- * on-site /women-foundation-leadership overview page stands in and simply
- * omits the outbound link.
+ * External destination for "Women Foundation Leadership" — the MFM Mega
+ * Region 2 (USA) women's site. Used by the header, footer, and About page.
  */
-export const MEGA_REGION_LEADERSHIP_URL: string | null = null;
+export const MEGA_REGION_LEADERSHIP_URL = "https://mfmmegaregion2usa.org/women";

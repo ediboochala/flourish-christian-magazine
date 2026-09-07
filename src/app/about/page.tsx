@@ -5,6 +5,7 @@ import PlaceholderImage from "@/components/ui/PlaceholderImage";
 import NewsletterCTA from "@/components/NewsletterCTA";
 import Eyebrow from "@/components/ui/Eyebrow";
 import Reveal from "@/components/ui/Reveal";
+import { MEGA_REGION_LEADERSHIP_URL } from "@/lib/links";
 
 export const metadata: Metadata = {
   title: "About Flourish",
@@ -140,15 +141,17 @@ export default function AboutPage() {
               Broward, Jacksonville, Miami, Orlando, Tallahassee, and Tampa are served by this
               structure, and Flourish is published under it.
             </p>
-            <Link
-              href="/women-foundation-leadership"
+            <a
+              href={MEGA_REGION_LEADERSHIP_URL}
+              target="_blank"
+              rel="noreferrer"
               className="group/link mt-7 inline-flex items-center gap-1 rounded-full bg-plum px-7 py-3.5 font-sans text-xs font-semibold uppercase tracking-[0.1em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-burgundy active:translate-y-0 active:scale-[0.97]"
             >
               Women Foundation Leadership
               <span className="inline-block transition-transform duration-300 group-hover/link:translate-x-1">
                 →
               </span>
-            </Link>
+            </a>
           </Reveal>
         </div>
       </section>

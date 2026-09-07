@@ -7,8 +7,9 @@ import { usePathname } from "next/navigation";
 import { ChevronDown, Search, Menu, X } from "lucide-react";
 import { cx } from "@/lib/utils";
 import { categories } from "@/lib/data/categories";
+import { MEGA_REGION_LEADERSHIP_URL } from "@/lib/links";
 
-type SubLink = { href: string; label: string; blurb?: string };
+type SubLink = { href: string; label: string; blurb?: string; external?: boolean };
 type NavItem = { href: string; label: string; menu?: SubLink[] };
 
 const NAV: NavItem[] = [
@@ -38,9 +39,10 @@ const NAV: NavItem[] = [
       { href: "/about", label: "About Flourish", blurb: "Our story & mission" },
       { href: "/contact", label: "Contact", blurb: "Get in touch" },
       {
-        href: "/women-foundation-leadership",
+        href: MEGA_REGION_LEADERSHIP_URL,
         label: "Women Foundation Leadership",
-        blurb: "The leadership structure",
+        blurb: "MFM Mega Region 2",
+        external: true,
       },
     ],
   },
@@ -200,17 +202,9 @@ export default function Header() {
                 >
                   <div className="grain-overlay overflow-hidden rounded-2xl border border-charcoal/8 bg-white p-2 shadow-xl">
                     {item.menu.map((link) => {
-                      const linkActive = pathname === link.href;
-                      return (
-                        <Link
-                          key={link.href + link.label}
-                          href={link.href}
-                          role="menuitem"
-                          className={cx(
-                            "flex flex-col rounded-xl px-3.5 py-2.5 transition-colors duration-200",
-                            linkActive ? "bg-cream" : "hover:bg-cream"
-                          )}
-                        >
+                      const linkActive = !link.external && pathname === link.href;
+                      const inner = (
+                        <>
                           <span className="font-sans text-[13px] font-semibold uppercase tracking-[0.05em] text-plum">
                             {link.label}
                           </span>
@@ -219,6 +213,31 @@ export default function Header() {
                               {link.blurb}
                             </span>
                           )}
+                        </>
+                      );
+                      const linkClasses = cx(
+                        "flex flex-col rounded-xl px-3.5 py-2.5 transition-colors duration-200",
+                        linkActive ? "bg-cream" : "hover:bg-cream"
+                      );
+                      return link.external ? (
+                        <a
+                          key={link.href + link.label}
+                          href={link.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          role="menuitem"
+                          className={linkClasses}
+                        >
+                          {inner}
+                        </a>
+                      ) : (
+                        <Link
+                          key={link.href + link.label}
+                          href={link.href}
+                          role="menuitem"
+                          className={linkClasses}
+                        >
+                          {inner}
                         </Link>
                       );
                     })}
@@ -294,15 +313,19 @@ export default function Header() {
                   <div className="mb-1 ml-3 flex flex-col border-l border-charcoal/10 pl-3">
                     {item.menu
                       .filter((l) => l.href !== item.href)
-                      .map((l) => (
-                        <Link
-                          key={l.href + l.label}
-                          href={l.href}
-                          className="rounded-lg px-3 py-2 font-sans text-xs font-medium uppercase tracking-[0.06em] text-charcoal-soft transition-colors duration-300 hover:bg-cream hover:text-burgundy"
-                        >
-                          {l.label}
-                        </Link>
-                      ))}
+                      .map((l) => {
+                        const cls =
+                          "rounded-lg px-3 py-2 font-sans text-xs font-medium uppercase tracking-[0.06em] text-charcoal-soft transition-colors duration-300 hover:bg-cream hover:text-burgundy";
+                        return l.external ? (
+                          <a key={l.href + l.label} href={l.href} target="_blank" rel="noreferrer" className={cls}>
+                            {l.label}
+                          </a>
+                        ) : (
+                          <Link key={l.href + l.label} href={l.href} className={cls}>
+                            {l.label}
+                          </Link>
+                        );
+                      })}
                   </div>
                 )}
               </div>

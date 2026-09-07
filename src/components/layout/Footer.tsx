@@ -4,6 +4,7 @@ import { Mail } from "lucide-react";
 import { FacebookIcon, InstagramIcon, YoutubeIcon } from "@/components/ui/BrandIcons";
 import { categories } from "@/lib/data/categories";
 import NewsletterCTA from "@/components/NewsletterCTA";
+import { MEGA_REGION_LEADERSHIP_URL } from "@/lib/links";
 
 const MAGAZINE_LINKS = [
   { href: "/magazine", label: "Magazine Archive" },
@@ -15,7 +16,7 @@ const MAGAZINE_LINKS = [
 const COMPANY_LINKS = [
   { href: "/about", label: "About Flourish" },
   { href: "/contact", label: "Contact" },
-  { href: "/women-foundation-leadership", label: "Women Foundation Leadership" },
+  { href: MEGA_REGION_LEADERSHIP_URL, label: "Women Foundation Leadership", external: true },
   { href: "/get-involved", label: "Get Involved" },
   { href: "/privacy", label: "Privacy Policy" },
   { href: "/terms", label: "Terms of Use" },
@@ -110,9 +111,20 @@ export default function Footer() {
             <ul className="mt-4 space-y-3">
               {COMPANY_LINKS.map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className="font-sans text-sm hover:text-white">
-                    {l.label}
-                  </Link>
+                  {"external" in l && l.external ? (
+                    <a
+                      href={l.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="font-sans text-sm hover:text-white"
+                    >
+                      {l.label}
+                    </a>
+                  ) : (
+                    <Link href={l.href} className="font-sans text-sm hover:text-white">
+                      {l.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
