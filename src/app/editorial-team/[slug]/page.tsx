@@ -20,7 +20,7 @@ export async function generateMetadata({
   return { title: author.name, description: author.bio };
 }
 
-export default async function ContributorProfilePage({
+export default async function EditorialTeamProfilePage({
   params,
 }: {
   params: Promise<{ slug: string }>;

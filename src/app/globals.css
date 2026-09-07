@@ -22,6 +22,10 @@
   --color-gold: #5a7a14;
   --color-gold-light: #9dc727;
   --color-forest: #195a30;
+  /* Lilac — the soft violet of a lilac (Syringa) panicle, used for the
+     homepage's botanical corner spray. */
+  --color-lilac: #b98fd6;
+  --color-lilac-light: #ddc7ef;
   --color-charcoal: #241f21;
   --color-charcoal-soft: #4a4245;
   --color-white: #ffffff;
@@ -45,6 +49,8 @@
   --color-gold: var(--color-gold);
   --color-gold-light: var(--color-gold-light);
   --color-forest: var(--color-forest);
+  --color-lilac: var(--color-lilac);
+  --color-lilac-light: var(--color-lilac-light);
   --color-charcoal: var(--color-charcoal);
   --color-charcoal-soft: var(--color-charcoal-soft);
 

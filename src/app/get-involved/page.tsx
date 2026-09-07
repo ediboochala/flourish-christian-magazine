@@ -6,27 +6,23 @@ import NewsletterCTA from "@/components/NewsletterCTA";
 export const metadata: Metadata = {
   title: "Get Involved",
   description:
-    "M.F.M Women Foundation Florida exists to empower Christian women to walk in faith, purpose, and sisterhood. Join our community, volunteer, or partner with us.",
+    "M.F.M Women Foundation Florida exists to empower Christian women to walk in faith, purpose, and sisterhood. Join our community or advertise with Flourish.",
 };
+
+const ADVERTISING_EMAIL = "oureditorialboard@gmail.com";
 
 const WAYS_TO_JOIN = [
   {
     title: "Join Our Community",
     body: "Subscribe to Flourish, attend an event, and connect with a growing sisterhood of Christian women in faith and purpose.",
     href: "/events",
-    cta: "Join Our Community",
+    cta: "Explore Events",
   },
   {
-    title: "Volunteer With Us",
-    body: "Lend your time and gifts to community events, mentorship, and outreach that carry the Foundation's mission beyond the page.",
-    href: "/contact",
-    cta: "Volunteer With Us",
-  },
-  {
-    title: "Partner With Us",
-    body: "Churches, ministries, and organizations aligned with our mission are invited to partner with M.F.M Women Foundation Florida.",
-    href: "/contact",
-    cta: "Partner With Us",
+    title: "Advertise With Us",
+    body: "Reach a growing readership of Christian women. Advertising helps sustain Flourish as our traffic and readership grow. Email us for our media details and rates.",
+    href: `mailto:${ADVERTISING_EMAIL}`,
+    cta: ADVERTISING_EMAIL,
   },
 ];
 
@@ -53,32 +49,40 @@ export default function GetInvolvedPage() {
           </h1>
           <p className="mx-auto mt-5 max-w-xl font-sans text-base leading-relaxed text-white/75">
             We exist to empower Christian women to walk in faith, purpose, and sisterhood. Flourish
-            magazine is one expression of that mission, but our work extends beyond the page into
-            community events, mentorship, and outreach.
+            magazine is one expression of that mission. As our readership grows, advertising helps
+            keep the magazine sustainable.
           </p>
         </div>
       </section>
 
       <section className="bg-white py-20 sm:py-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-            {WAYS_TO_JOIN.map((way) => (
-              <div
-                key={way.title}
-                className="flex flex-col rounded-2xl border border-charcoal/10 bg-ivory p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
-              >
-                <h2 className="font-serif text-xl text-plum">{way.title}</h2>
-                <p className="mt-3 flex-1 font-sans text-sm leading-relaxed text-charcoal-soft">
-                  {way.body}
-                </p>
-                <Link
-                  href={way.href}
-                  className="mt-6 inline-flex w-fit items-center rounded-full bg-plum px-6 py-3 font-sans text-xs font-semibold uppercase tracking-[0.1em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-burgundy active:translate-y-0 active:scale-[0.97]"
+        <div className="mx-auto max-w-4xl px-6 lg:px-10">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
+            {WAYS_TO_JOIN.map((way) => {
+              const isEmail = way.href.startsWith("mailto:");
+              const ctaClasses =
+                "mt-6 inline-flex w-fit items-center rounded-full bg-plum px-6 py-3 font-sans text-xs font-semibold uppercase tracking-[0.1em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-burgundy active:translate-y-0 active:scale-[0.97]";
+              return (
+                <div
+                  key={way.title}
+                  className="flex flex-col rounded-2xl border border-charcoal/10 bg-ivory p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                 >
-                  {way.cta}
-                </Link>
-              </div>
-            ))}
+                  <h2 className="font-serif text-xl text-plum">{way.title}</h2>
+                  <p className="mt-3 flex-1 font-sans text-sm leading-relaxed text-charcoal-soft">
+                    {way.body}
+                  </p>
+                  {isEmail ? (
+                    <a href={way.href} className={`${ctaClasses} lowercase tracking-[0.02em]`}>
+                      {way.cta}
+                    </a>
+                  ) : (
+                    <Link href={way.href} className={ctaClasses}>
+                      {way.cta}
+                    </Link>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

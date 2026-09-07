@@ -7,17 +7,16 @@ import NewsletterCTA from "@/components/NewsletterCTA";
 
 const MAGAZINE_LINKS = [
   { href: "/magazine", label: "Magazine Archive" },
-  { href: "/contributors", label: "Contributors" },
-  { href: "/events", label: "Events" },
-  { href: "/testimonies", label: "Testimonies" },
-  { href: "/meeting-minutes", label: "Meeting Minutes" },
   { href: "/write-for-flourish", label: "Submit an Article" },
+  { href: "/editorial-team", label: "Editorial Team" },
+  { href: "/events", label: "Events" },
 ];
 
 const COMPANY_LINKS = [
   { href: "/about", label: "About Flourish" },
-  { href: "/get-involved", label: "Get Involved" },
   { href: "/contact", label: "Contact" },
+  { href: "/women-foundation-leadership", label: "Women Foundation Leadership" },
+  { href: "/get-involved", label: "Get Involved" },
   { href: "/privacy", label: "Privacy Policy" },
   { href: "/terms", label: "Terms of Use" },
 ];

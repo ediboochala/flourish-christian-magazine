@@ -102,7 +102,7 @@ export default function NewsletterCTA({ variant = "section" }: NewsletterCTAProp
   }
 
   return (
-    <section className="relative overflow-hidden bg-plum py-20 sm:py-24">
+    <section id="subscribe" className="relative scroll-mt-20 overflow-hidden bg-plum py-20 sm:py-24">
       <div
         className="pointer-events-none absolute inset-0 opacity-20"
         style={{

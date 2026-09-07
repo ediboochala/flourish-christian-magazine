@@ -1,4 +1,18 @@
-import { FlourishEvent } from "@/lib/types";
+import { FlourishEvent, MonthlyMeeting } from "@/lib/types";
+
+/**
+ * The standing monthly gathering of M.F.M Women Foundation Florida. Shown
+ * as a notice on the Events page and homepage, not as a dated event.
+ *
+ * SECURITY: the Zoom Meeting ID must never be published here or rendered
+ * anywhere on the site — it is shared with attendees directly.
+ */
+export const monthlyMeeting: MonthlyMeeting = {
+  name: "Women Foundation Florida",
+  cadence: "Last Saturday of every month",
+  time: "6:00 PM ET",
+  platform: "Zoom",
+};
 
 /**
  * PLACEHOLDER EVENT CONTENT — replace with verified M.F.M Women Foundation Florida event

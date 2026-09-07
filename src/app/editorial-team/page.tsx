@@ -4,24 +4,24 @@ import ContributorCard from "@/components/ContributorCard";
 import { authors } from "@/lib/data/authors";
 
 export const metadata: Metadata = {
-  title: "Contributors",
-  description: "Meet the women behind the stories at Flourish Christian Magazine.",
+  title: "Editorial Team",
+  description: "Meet the editorial team behind Flourish Christian Magazine.",
 };
 
-export default function ContributorsPage() {
+export default function EditorialTeamPage() {
   return (
     <div>
       <section className="bg-plum py-20 sm:py-24">
         <div className="mx-auto max-w-4xl px-6 text-center lg:px-10">
           <p className="font-sans text-xs font-semibold uppercase tracking-[0.24em] text-gold-light">
-            Women of Flourish
+            The Team Behind Flourish
           </p>
           <h1 className="mt-4 font-serif text-4xl leading-tight text-white sm:text-5xl">
-            Meet the Women Behind the Stories
+            Meet the Editorial Team
           </h1>
           <p className="mx-auto mt-5 max-w-xl font-sans text-base leading-relaxed text-white/75">
-            Flourish is written by a growing community of Christian women sharing wisdom, story,
-            and encouragement with one another.
+            The editors and writers who shape each issue of Flourish, alongside a growing
+            community of Christian women sharing wisdom, story, and encouragement.
           </p>
         </div>
       </section>
@@ -39,14 +39,14 @@ export default function ContributorsPage() {
               Your Story Could Encourage Another Woman.
             </h2>
             <p className="mx-auto mt-3 max-w-lg font-sans text-sm leading-relaxed text-charcoal-soft">
-              Flourish is always open to new contributing voices from the M.F.M Women Foundation
-              Florida community and beyond.
+              Flourish is always open to new voices from the M.F.M Women Foundation Florida
+              community and beyond.
             </p>
             <Link
               href="/write-for-flourish"
               className="mt-6 inline-flex items-center rounded-full bg-plum px-7 py-3.5 font-sans text-xs font-semibold uppercase tracking-[0.1em] text-white transition-colors hover:bg-burgundy"
             >
-              Become a Contributor
+              Submit an Article
             </Link>
           </div>
         </div>

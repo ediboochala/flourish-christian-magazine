@@ -6,52 +6,78 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Search, Menu, X } from "lucide-react";
 import { cx } from "@/lib/utils";
+import { categories } from "@/lib/data/categories";
 
-const PRIMARY_LINKS = [{ href: "/magazine", label: "Magazine" }];
+type SubLink = { href: string; label: string; blurb?: string };
+type NavItem = { href: string; label: string; menu?: SubLink[] };
 
-const EXPLORE_LINKS = [
-  { href: "/categories", label: "Categories", blurb: "Browse every section" },
-  { href: "/contributors", label: "Contributors", blurb: "Meet the women who write" },
-  { href: "/events", label: "Events", blurb: "Conferences & gatherings" },
-  { href: "/testimonies", label: "Women's Stories", blurb: "Real testimonies of faith" },
-  { href: "/meeting-minutes", label: "Meeting Minutes", blurb: "Chapter minutes & announcements" },
-];
-
-const TRAILING_LINKS = [
-  { href: "/about", label: "About" },
+const NAV: NavItem[] = [
+  { href: "/", label: "Flourish" },
+  {
+    href: "/magazine",
+    label: "Magazine",
+    menu: [
+      { href: "/magazine", label: "Magazine Archive", blurb: "Every issue & story" },
+      { href: "/write-for-flourish", label: "Submit an Article", blurb: "Share your story" },
+      { href: "/editorial-team", label: "Editorial Team", blurb: "The voices behind Flourish" },
+    ],
+  },
+  {
+    href: "/categories",
+    label: "Categories",
+    menu: [
+      ...categories.map((c) => ({ href: `/categories/${c.slug}`, label: c.name })),
+      { href: "/categories", label: "View all categories" },
+    ],
+  },
+  { href: "/events", label: "Events" },
+  {
+    href: "/about",
+    label: "About",
+    menu: [
+      { href: "/about", label: "About Flourish", blurb: "Our story & mission" },
+      { href: "/contact", label: "Contact", blurb: "Get in touch" },
+      {
+        href: "/women-foundation-leadership",
+        label: "Women Foundation Leadership",
+        blurb: "The leadership structure",
+      },
+    ],
+  },
   { href: "/get-involved", label: "Get Involved" },
 ];
-
-// Flattened, in display order, for the mobile menu.
-const ALL_LINKS = [...PRIMARY_LINKS, ...EXPLORE_LINKS, ...TRAILING_LINKS];
 
 /** Shared "pill" treatment for a top-level nav item — a soft rounded
  *  highlight that fades in on hover/focus instead of a bare underline,
  *  reads as one deliberate family whether the item is active or not. */
 function navItemClasses(active: boolean) {
   return cx(
-    "rounded-full px-3.5 py-2 font-sans text-[12px] font-semibold uppercase tracking-[0.07em] transition-colors duration-300",
+    "rounded-full px-3 py-2 font-sans text-[12px] font-semibold uppercase tracking-[0.06em] transition-colors duration-300",
     active ? "bg-plum/8 text-plum" : "text-charcoal hover:bg-cream hover:text-burgundy"
   );
+}
+
+function isActive(pathname: string | null, item: NavItem) {
+  if (item.href === "/") return pathname === "/";
+  if (pathname?.startsWith(item.href)) return true;
+  return item.menu?.some((l) => l.href !== "/categories" && pathname?.startsWith(l.href)) ?? false;
 }
 
 export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [exploreOpen, setExploreOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const [lastPathname, setLastPathname] = useState(pathname);
-  const exploreRef = useRef<HTMLDivElement>(null);
+  const navRef = useRef<HTMLElement>(null);
 
-  const exploreActive = EXPLORE_LINKS.some((l) => pathname?.startsWith(l.href));
-
-  // Close the mobile menu and the Explore dropdown when navigating —
-  // adjusting state during render (rather than in a useEffect) avoids an
-  // extra render/commit cycle.
+  // Close the mobile menu and any open dropdown when navigating — adjusting
+  // state during render (rather than in a useEffect) avoids an extra
+  // render/commit cycle.
   if (pathname !== lastPathname) {
     setLastPathname(pathname);
     setOpen(false);
-    setExploreOpen(false);
+    setOpenMenu(null);
   }
 
   useEffect(() => {
@@ -61,18 +87,18 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Outside click + Escape close the Explore dropdown — hover/mouseleave
-  // on its wrapper (below) handles the common desktop case; this covers
-  // touch and keyboard.
+  // Outside click + Escape close the open dropdown — hover/mouseleave on
+  // each item's wrapper (below) handles the common desktop case; this
+  // covers touch and keyboard.
   useEffect(() => {
-    if (!exploreOpen) return;
+    if (!openMenu) return;
     function onPointerDown(e: MouseEvent) {
-      if (exploreRef.current && !exploreRef.current.contains(e.target as Node)) {
-        setExploreOpen(false);
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+        setOpenMenu(null);
       }
     }
     function onKeyDown(e: KeyboardEvent) {
-      if (e.key === "Escape") setExploreOpen(false);
+      if (e.key === "Escape") setOpenMenu(null);
     }
     document.addEventListener("mousedown", onPointerDown);
     document.addEventListener("keydown", onKeyDown);
@@ -80,7 +106,7 @@ export default function Header() {
       document.removeEventListener("mousedown", onPointerDown);
       document.removeEventListener("keydown", onKeyDown);
     };
-  }, [exploreOpen]);
+  }, [openMenu]);
 
   return (
     <header
@@ -121,95 +147,84 @@ export default function Header() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
-          {PRIMARY_LINKS.map((link) => {
-            const active = pathname?.startsWith(link.href);
+        <nav ref={navRef} className="hidden items-center gap-0.5 lg:flex" aria-label="Primary">
+          {NAV.map((item) => {
+            const active = isActive(pathname, item);
+
+            if (!item.menu) {
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  aria-current={active ? "page" : undefined}
+                  className={navItemClasses(active)}
+                >
+                  {item.label}
+                </Link>
+              );
+            }
+
+            const menuOpen = openMenu === item.label;
             return (
-              <Link
-                key={link.href}
-                href={link.href}
-                aria-current={active ? "page" : undefined}
-                className={navItemClasses(!!active)}
+              <div
+                key={item.label}
+                className="relative"
+                onMouseEnter={() => setOpenMenu(item.label)}
+                onMouseLeave={() => setOpenMenu(null)}
               >
-                {link.label}
-              </Link>
-            );
-          })}
+                <button
+                  type="button"
+                  aria-haspopup="true"
+                  aria-expanded={menuOpen}
+                  onClick={() => setOpenMenu((o) => (o === item.label ? null : item.label))}
+                  className={cx(navItemClasses(active), "inline-flex items-center gap-1")}
+                >
+                  {item.label}
+                  <ChevronDown
+                    className={cx(
+                      "h-3 w-3 transition-transform duration-300",
+                      menuOpen && "rotate-180"
+                    )}
+                    aria-hidden="true"
+                  />
+                </button>
 
-          {/* Explore dropdown — groups Categories, Contributors, Events,
-              and Women's Stories so the bar itself stays short. Opens on
-              hover (the wrapping div, not just the button, so crossing
-              the gap into the panel doesn't close it) and on click, for
-              touch and keyboard. */}
-          <div
-            ref={exploreRef}
-            className="relative"
-            onMouseEnter={() => setExploreOpen(true)}
-            onMouseLeave={() => setExploreOpen(false)}
-          >
-            <button
-              type="button"
-              aria-haspopup="true"
-              aria-expanded={exploreOpen}
-              onClick={() => setExploreOpen((o) => !o)}
-              className={cx(navItemClasses(exploreActive), "inline-flex items-center gap-1")}
-            >
-              Explore
-              <ChevronDown
-                className={cx(
-                  "h-3 w-3 transition-transform duration-300",
-                  exploreOpen && "rotate-180"
-                )}
-                aria-hidden="true"
-              />
-            </button>
-
-            <div
-              role="menu"
-              className={cx(
-                "absolute left-1/2 top-full z-10 w-64 -translate-x-1/2 pt-3 transition-all duration-200 ease-out",
-                exploreOpen
-                  ? "translate-y-0 opacity-100"
-                  : "pointer-events-none -translate-y-1 opacity-0"
-              )}
-            >
-              <div className="grain-overlay overflow-hidden rounded-2xl border border-charcoal/8 bg-white p-2 shadow-xl">
-                {EXPLORE_LINKS.map((link) => {
-                  const active = pathname?.startsWith(link.href);
-                  return (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      role="menuitem"
-                      className={cx(
-                        "flex flex-col rounded-xl px-3.5 py-2.5 transition-colors duration-200",
-                        active ? "bg-cream" : "hover:bg-cream"
-                      )}
-                    >
-                      <span className="font-sans text-[13px] font-semibold uppercase tracking-[0.05em] text-plum">
-                        {link.label}
-                      </span>
-                      <span className="mt-0.5 font-sans text-xs text-charcoal-soft">
-                        {link.blurb}
-                      </span>
-                    </Link>
-                  );
-                })}
+                <div
+                  role="menu"
+                  className={cx(
+                    "absolute left-1/2 top-full z-10 w-64 -translate-x-1/2 pt-3 transition-all duration-200 ease-out",
+                    menuOpen
+                      ? "translate-y-0 opacity-100"
+                      : "pointer-events-none -translate-y-1 opacity-0"
+                  )}
+                >
+                  <div className="grain-overlay overflow-hidden rounded-2xl border border-charcoal/8 bg-white p-2 shadow-xl">
+                    {item.menu.map((link) => {
+                      const linkActive = pathname === link.href;
+                      return (
+                        <Link
+                          key={link.href + link.label}
+                          href={link.href}
+                          role="menuitem"
+                          className={cx(
+                            "flex flex-col rounded-xl px-3.5 py-2.5 transition-colors duration-200",
+                            linkActive ? "bg-cream" : "hover:bg-cream"
+                          )}
+                        >
+                          <span className="font-sans text-[13px] font-semibold uppercase tracking-[0.05em] text-plum">
+                            {link.label}
+                          </span>
+                          {link.blurb && (
+                            <span className="mt-0.5 font-sans text-xs text-charcoal-soft">
+                              {link.blurb}
+                            </span>
+                          )}
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-
-          {TRAILING_LINKS.map((link) => {
-            const active = pathname?.startsWith(link.href);
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                aria-current={active ? "page" : undefined}
-                className={navItemClasses(!!active)}
-              >
-                {link.label}
-              </Link>
             );
           })}
         </nav>
@@ -257,7 +272,7 @@ export default function Header() {
       {/* Always rendered (not conditionally mounted) so both opening and
           closing animate — grid-template-rows is one of the few CSS
           properties that can transition to/from an intrinsic "auto"-like
-          height. Nav items fade/slide in with a slight stagger. */}
+          height. */}
       <div
         id="mobile-nav"
         className={cx(
@@ -266,27 +281,35 @@ export default function Header() {
         )}
       >
         <div className="min-h-0 overflow-hidden">
-          <nav className="flex flex-col gap-1 px-6 pt-6" aria-label="Mobile">
-            {ALL_LINKS.map((link, i) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={cx(
-                  "rounded-lg px-3 py-3 font-sans text-sm font-semibold uppercase tracking-[0.06em] text-charcoal transition-all duration-300 hover:bg-cream hover:text-burgundy",
-                  open ? "translate-x-0 opacity-100" : "-translate-x-2 opacity-0"
+          <nav className="flex flex-col gap-0.5 px-6 pt-6" aria-label="Mobile">
+            {NAV.map((item) => (
+              <div key={item.label}>
+                <Link
+                  href={item.href}
+                  className="rounded-lg px-3 py-3 font-sans text-sm font-semibold uppercase tracking-[0.06em] text-charcoal transition-colors duration-300 hover:bg-cream hover:text-burgundy"
+                >
+                  {item.label}
+                </Link>
+                {item.menu && (
+                  <div className="mb-1 ml-3 flex flex-col border-l border-charcoal/10 pl-3">
+                    {item.menu
+                      .filter((l) => l.href !== item.href)
+                      .map((l) => (
+                        <Link
+                          key={l.href + l.label}
+                          href={l.href}
+                          className="rounded-lg px-3 py-2 font-sans text-xs font-medium uppercase tracking-[0.06em] text-charcoal-soft transition-colors duration-300 hover:bg-cream hover:text-burgundy"
+                        >
+                          {l.label}
+                        </Link>
+                      ))}
+                  </div>
                 )}
-                style={{ transitionDelay: open ? `${i * 40}ms` : "0ms" }}
-              >
-                {link.label}
-              </Link>
+              </div>
             ))}
             <Link
               href="/search"
-              className={cx(
-                "rounded-lg px-3 py-3 font-sans text-sm font-semibold uppercase tracking-[0.06em] text-charcoal transition-all duration-300 hover:bg-cream hover:text-burgundy",
-                open ? "translate-x-0 opacity-100" : "-translate-x-2 opacity-0"
-              )}
-              style={{ transitionDelay: open ? `${ALL_LINKS.length * 40}ms` : "0ms" }}
+              className="rounded-lg px-3 py-3 font-sans text-sm font-semibold uppercase tracking-[0.06em] text-charcoal transition-colors duration-300 hover:bg-cream hover:text-burgundy"
             >
               Search
             </Link>
@@ -294,11 +317,7 @@ export default function Header() {
           <div className="px-6 pb-6 pt-4">
             <Link
               href="/write-for-flourish"
-              className={cx(
-                "flex w-full items-center justify-center rounded-full bg-plum px-5 py-3 font-sans text-xs font-semibold uppercase tracking-[0.08em] text-white transition-all duration-300",
-                open ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
-              )}
-              style={{ transitionDelay: open ? `${(ALL_LINKS.length + 1) * 40}ms` : "0ms" }}
+              className="flex w-full items-center justify-center rounded-full bg-plum px-5 py-3 font-sans text-xs font-semibold uppercase tracking-[0.08em] text-white transition-all duration-300"
             >
               Join Flourish
             </Link>

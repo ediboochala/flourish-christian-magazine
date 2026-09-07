@@ -108,46 +108,12 @@ export interface FlourishEvent {
   featured?: boolean;
 }
 
-export interface Testimony {
-  slug: string;
-  title: string;
-  intro: string;
-  authorName: string;
-  publishedAt: string;
-  image: MediaImage;
-  body: string[];
-}
-
-/** A single labelled fact in a meeting's opening details, e.g.
- *  { label: "Opening Prayer", value: "Pastor Mrs. Olajide (MFM Tampa)" }. */
-export interface MeetingDetail {
-  label: string;
-  value: string;
-}
-
-/** Minutes from a chapter meeting. Text-only by design — no imagery — so
- *  it can be transcribed straight from meeting notes. */
-export interface MeetingMinutes {
-  slug: string;
-  organization: string;
-  chapters: string[];
-  details: MeetingDetail[];
-  keyInsights: string[];
-  anchorScriptures: string[];
-  benefits: string[];
-  prayerPoints: string[];
-  announcements: string[];
-  nextMeeting: string;
-}
-
-/** An invitation to an upcoming chapter meeting. */
-export interface MeetingInvitation {
-  slug: string;
-  title: string;
-  date: string;
+/** A standing, recurring gathering shown as a notice rather than a dated
+ *  calendar entry. The Zoom Meeting ID is deliberately not modelled here —
+ *  it is never shown publicly. */
+export interface MonthlyMeeting {
+  name: string;
+  cadence: string;
   time: string;
-  venue: string;
-  attendance: string;
-  zoomMeetingId?: string;
-  zoomPasscode?: string;
+  platform: string;
 }

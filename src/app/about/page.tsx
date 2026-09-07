@@ -5,7 +5,6 @@ import PlaceholderImage from "@/components/ui/PlaceholderImage";
 import NewsletterCTA from "@/components/NewsletterCTA";
 import Eyebrow from "@/components/ui/Eyebrow";
 import Reveal from "@/components/ui/Reveal";
-import { FacebookIcon, InstagramIcon } from "@/components/ui/BrandIcons";
 
 export const metadata: Metadata = {
   title: "About Flourish",
@@ -129,43 +128,27 @@ export default function AboutPage() {
       </section>
 
       <section className="bg-white py-20 sm:py-24">
-        <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-[minmax(0,380px)_1fr] lg:gap-16 lg:px-10">
-          <Reveal variant="scale" className="img-zoom relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-2xl">
-            <Image
-              src="/images/site/shade-olukoya.jpg"
-              alt="Pastor (Dr.) Mrs. Shade Olukoya smiling and speaking into a microphone, wearing an orange floral hat and a matching orange, teal, and black blazer"
-              fill
-              sizes="(min-width: 1024px) 380px, 90vw"
-              className="object-cover"
-            />
-          </Reveal>
-          <Reveal variant="right">
-            <Eyebrow>Global Leadership</Eyebrow>
-            <h2 className="text-h2 mt-4 font-serif text-plum">Pastor (Dr.) Mrs. Shade Olukoya</h2>
-            <p className="mt-3 font-sans text-sm font-semibold uppercase tracking-[0.08em] text-burgundy">
-              Mummy G.O. &middot; International President, MFM Women Foundation
-            </p>
+        <div className="mx-auto max-w-3xl px-6 lg:px-10">
+          <Reveal>
+            <Eyebrow>Women Foundation Leadership</Eyebrow>
+            <h2 className="text-h2 mt-4 font-serif text-plum">How the Women Foundation Is Led</h2>
             <p className="mt-5 font-sans text-base leading-relaxed text-charcoal-soft">
-              A woman of faith and a dedicated servant of God who stands beside the General
-              Overseer in the ministry&apos;s global mandate of prayer and deliverance. She leads
-              the MFM Women Foundation across regions and nations worldwide.
+              M.F.M Women Foundation Florida sits within the wider leadership structure of the
+              MFM Women Foundation. Oversight flows from the Foundation&apos;s international
+              leadership, through its mega regions and regional coordinators, down to the state
+              and local chapters — each with its own pastoral team. Florida&apos;s chapters in
+              Broward, Jacksonville, Miami, Orlando, Tallahassee, and Tampa are served by this
+              structure, and Flourish is published under it.
             </p>
-            <p className="mt-4 font-sans text-base leading-relaxed text-charcoal-soft">
-              M.F.M Women Foundation Florida, and Flourish alongside it, carries her vision of
-              prayer, discipleship, and sisterhood into every chapter and every page.
-            </p>
-            <div className="mt-7 flex items-center gap-3">
-              {[FacebookIcon, InstagramIcon].map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  aria-label="Pastor (Dr.) Mrs. Shade Olukoya on social media [placeholder link, add real profile URL]"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-plum/20 text-plum transition-all duration-300 hover:-translate-y-0.5 hover:border-gold hover:text-burgundy"
-                >
-                  <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
-                </a>
-              ))}
-            </div>
+            <Link
+              href="/women-foundation-leadership"
+              className="group/link mt-7 inline-flex items-center gap-1 rounded-full bg-plum px-7 py-3.5 font-sans text-xs font-semibold uppercase tracking-[0.1em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-burgundy active:translate-y-0 active:scale-[0.97]"
+            >
+              Women Foundation Leadership
+              <span className="inline-block transition-transform duration-300 group-hover/link:translate-x-1">
+                →
+              </span>
+            </Link>
           </Reveal>
         </div>
       </section>

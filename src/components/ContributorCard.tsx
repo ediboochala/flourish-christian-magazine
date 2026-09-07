@@ -8,7 +8,7 @@ export default function ContributorCard({ author }: { author: Author }) {
 
   return (
     <Link
-      href={`/contributors/${author.slug}`}
+      href={`/editorial-team/${author.slug}`}
       className="group flex flex-col items-center rounded-2xl bg-white p-8 text-center shadow-[0_1px_2px_rgba(36,31,33,0.06)] transition-shadow hover:shadow-[0_18px_40px_-16px_rgba(58,15,43,0.25)]"
     >
       <div className="img-zoom relative h-28 w-28 overflow-hidden rounded-full ring-4 ring-cream">

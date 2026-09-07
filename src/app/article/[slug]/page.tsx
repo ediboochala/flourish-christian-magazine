@@ -125,7 +125,7 @@ export default async function ArticlePage({
                   Written By
                 </p>
                 <Link
-                  href={`/contributors/${author.slug}`}
+                  href={`/editorial-team/${author.slug}`}
                   className="font-serif text-lg text-plum hover:text-burgundy"
                 >
                   {author.name}

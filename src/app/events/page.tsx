@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import EventCard from "@/components/EventCard";
+import MonthlyMeetingNotice from "@/components/events/MonthlyMeetingNotice";
 import { getUpcomingEvents } from "@/lib/data/events";
 
 export const metadata: Metadata = {
@@ -30,6 +31,9 @@ export default function EventsPage() {
 
       <section className="bg-ivory py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
+          <div className="mb-12">
+            <MonthlyMeetingNotice />
+          </div>
           {events.length > 0 ? (
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {events.map((event) => (
