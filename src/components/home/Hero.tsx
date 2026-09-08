@@ -66,7 +66,7 @@ export default function Hero() {
         {/* Lilac bloom anchoring the bottom-left corner, feathered into the
             plum wash so it reads as part of the cover rather than a pasted tile. */}
         <div
-          className="pointer-events-none absolute bottom-0 left-0 h-44 w-44 sm:h-56 sm:w-56 lg:h-64 lg:w-64"
+          className="pointer-events-none absolute bottom-0 left-0 h-52 w-52 sm:h-64 sm:w-64 lg:h-80 lg:w-80"
           style={{
             WebkitMaskImage:
               "linear-gradient(to top right, #000 35%, rgba(0,0,0,0.55) 60%, transparent 88%)",
@@ -79,7 +79,7 @@ export default function Hero() {
             alt=""
             aria-hidden="true"
             fill
-            sizes="(min-width: 1024px) 16rem, (min-width: 640px) 14rem, 11rem"
+            sizes="(min-width: 1024px) 20rem, (min-width: 640px) 16rem, 13rem"
             className="object-cover object-[18%_62%]"
           />
         </div>
