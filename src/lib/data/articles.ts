@@ -30,7 +30,7 @@ export const articles: Article[] = [
     readingTimeMinutes: 8,
     heroImage: {
       src: "/images/articles/from-brokenness-to-wholeness-overcoming-lifes-toughest-battles.jpg",
-      alt: "Still water at first light",
+      alt: "A deep burgundy dahlia in full bloom, its golden centre catching the light",
       tone: "burgundy",
       motif: "vine",
       credit: "Photo via Unsplash",
@@ -94,7 +94,7 @@ export const articles: Article[] = [
     readingTimeMinutes: 6,
     heroImage: {
       src: "/images/articles/faith-that-presses-through-lessons-from-the-woman-with-the-issue-of-blood.jpg",
-      alt: "A path pressing on through the trees",
+      alt: "A single purple viola pushing up through a tangle of bare winter twigs",
       tone: "plum",
       motif: "wheat",
       credit: "Photo via Unsplash",
@@ -140,7 +140,7 @@ export const articles: Article[] = [
     readingTimeMinutes: 6,
     heroImage: {
       src: "/images/articles/gratitude-in-the-dark.jpg",
-      alt: "Candlelight falling across an open page",
+      alt: "Purple wood-sorrel flowers glowing against deep shadow",
       tone: "charcoal",
       motif: "olive",
       credit: "Photo via Unsplash",
@@ -209,7 +209,7 @@ export const articles: Article[] = [
     readingTimeMinutes: 6,
     heroImage: {
       src: "/images/articles/the-quiet-strength-of-a-woman-who-knows-her-purpose.jpg",
-      alt: "A single tree standing in an open field",
+      alt: "One pale purple iris standing alone against a soft grey sky",
       tone: "gold",
       motif: "vine",
       credit: "Photo via Unsplash",
@@ -236,7 +236,7 @@ export const articles: Article[] = [
     readingTimeMinutes: 8,
     heroImage: {
       src: "/images/articles/raising-children-who-know-the-lord.jpg",
-      alt: "Wildflowers at the edge of a wood",
+      alt: "Pink campion and daisies scattered through a green spring meadow",
       tone: "rose",
       motif: "fern",
       credit: "Photo via Unsplash",
@@ -263,7 +263,7 @@ export const articles: Article[] = [
     readingTimeMinutes: 6,
     heroImage: {
       src: "/images/articles/rest-is-not-a-reward-a-theology-of-sabbath-for-busy-women.jpg",
-      alt: "Calm water along a wooded shore",
+      alt: "Purple water lilies resting on the still surface of a quiet pond",
       tone: "burgundy",
       motif: "lily",
       credit: "Photo via Unsplash",
@@ -289,7 +289,7 @@ export const articles: Article[] = [
     readingTimeMinutes: 5,
     heroImage: {
       src: "/images/articles/the-art-of-gracious-hospitality-at-home.jpg",
-      alt: "Fresh bread and coffee on a table",
+      alt: "Burgundy and blush garden roses gathered in a glass jar on a table",
       tone: "gold",
       motif: "olive",
       credit: "Photo via Unsplash",
@@ -312,7 +312,7 @@ export const articles: Article[] = [
     readingTimeMinutes: 7,
     heroImage: {
       src: "/images/articles/healing-from-comparison-in-the-age-of-social-media.jpg",
-      alt: "A field of white wildflowers in soft light",
+      alt: "A spire of purple salvia in focus among a field blurred by golden light",
       tone: "plum",
       motif: "lily",
       credit: "Photo via Unsplash",
@@ -336,7 +336,7 @@ export const articles: Article[] = [
     readingTimeMinutes: 6,
     heroImage: {
       src: "/images/articles/leading-with-both-conviction-and-compassion.jpg",
-      alt: "A figure at a mountain summit at sunrise",
+      alt: "A single round allium bloom, hundreds of tiny purple florets on one stem",
       tone: "charcoal",
       motif: "palm",
       credit: "Photo via Unsplash",
@@ -359,7 +359,7 @@ export const articles: Article[] = [
     readingTimeMinutes: 4,
     heroImage: {
       src: "/images/articles/a-simple-morning-prayer-practice-for-busy-seasons.jpg",
-      alt: "An open Bible in morning light",
+      alt: "Lilac blossom lit by soft early morning sun",
       tone: "burgundy",
       motif: "olive",
       credit: "Photo via Unsplash",
@@ -383,7 +383,7 @@ export const articles: Article[] = [
     readingTimeMinutes: 3,
     heroImage: {
       src: "/images/articles/you-are-not-behind-a-word-for-the-comparing-heart.jpg",
-      alt: "Low sun raking across a green field",
+      alt: "Lavender catching warm low sunlight, hills fading behind",
       tone: "gold",
       motif: "wheat",
       credit: "Photo via Unsplash",
