@@ -8,65 +8,6 @@ import Image from "next/image";
  * closing the panel.
  */
 
-/** A spray of lilac (Syringa) blooms for the hero's bottom-left corner —
- *  line-art in the brand palette rather than a stock photo, so it reads as
- *  part of the cover's illustrated system. Each stem is topped with a
- *  cone-shaped panicle built from many small four-petal florets. */
-function FloralCorner({ className, style }: { className?: string; style?: React.CSSProperties }) {
-  /** One four-petal lilac floret. */
-  const floret = (x: number, y: number, r: number, fill: string, opacity: number) => (
-    <g transform={`translate(${x} ${y})`} opacity={opacity}>
-      {[0, 90, 180, 270].map((a) => (
-        <ellipse key={a} cx="0" cy={-r} rx={r * 0.62} ry={r} fill={fill} transform={`rotate(${a})`} />
-      ))}
-      <circle r={r * 0.34} fill="var(--color-lilac-light)" />
-    </g>
-  );
-
-  /** A cone of florets — dense at the base, tapering to a point at the top.
-   *  Deterministic offsets keep it organic without randomness at runtime. */
-  const panicle = (ox: number, oy: number, h: number, w: number, fill: string, opacity: number) => {
-    const rows = 5;
-    const nodes: React.ReactNode[] = [];
-    for (let row = 0; row < rows; row++) {
-      const t = row / (rows - 1); // 0 at tip, 1 at base
-      const rowY = oy - h * (1 - t);
-      const spread = (w / 2) * t;
-      const count = 1 + row;
-      for (let i = 0; i < count; i++) {
-        const fx = count === 1 ? 0 : (i / (count - 1) - 0.5) * 2; // -1..1
-        const jitter = ((row * 7 + i * 13) % 5) - 2;
-        const x = ox + fx * spread + jitter;
-        const y = rowY + (((row * 5 + i * 11) % 6) - 3);
-        const size = 3.1 + t * 1.9;
-        nodes.push(
-          <g key={`${row}-${i}`}>{floret(x, y, size, fill, opacity)}</g>
-        );
-      }
-    }
-    return <g>{nodes}</g>;
-  };
-
-  return (
-    <svg viewBox="0 0 220 210" aria-hidden="true" className={className} style={style} fill="none">
-      {/* stems */}
-      <path d="M40 210 C 38 168 52 138 48 96" stroke="var(--color-forest)" strokeWidth="3" strokeLinecap="round" opacity="0.85" />
-      <path d="M92 210 C 98 172 82 148 96 108" stroke="var(--color-forest)" strokeWidth="2.75" strokeLinecap="round" opacity="0.7" />
-      <path d="M138 210 C 134 176 150 152 134 120" stroke="var(--color-forest)" strokeWidth="2.5" strokeLinecap="round" opacity="0.6" />
-
-      {/* leaves — the broad heart-shaped leaf of the lilac */}
-      <path d="M48 150 C 26 146 14 128 9 110 C 33 108 51 120 58 140 Z" fill="var(--color-forest)" opacity="0.7" />
-      <path d="M96 162 C 118 158 130 140 135 122 C 111 120 96 132 90 154 Z" fill="var(--color-forest)" opacity="0.5" />
-      <path d="M46 104 C 27 101 16 86 11 71 C 32 69 48 80 54 97 Z" fill="var(--color-forest)" opacity="0.55" />
-
-      {/* panicles */}
-      {panicle(48, 96, 74, 52, "var(--color-lilac)", 0.95)}
-      {panicle(96, 108, 58, 42, "var(--color-plum-light)", 0.9)}
-      {panicle(134, 120, 46, 34, "var(--color-lilac)", 0.78)}
-    </svg>
-  );
-}
-
 function LeafCrest({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 64 48" aria-hidden="true" className={className} fill="none">
@@ -122,10 +63,26 @@ export default function Hero() {
         />
         <div className="aurora-backdrop opacity-40" />
 
-        <FloralCorner
-          className="animate-sway pointer-events-none absolute bottom-0 left-0 h-40 w-40 sm:h-48 sm:w-48 lg:h-56 lg:w-56"
-          style={{ transformOrigin: "bottom left" }}
-        />
+        {/* Lilac bloom anchoring the bottom-left corner, feathered into the
+            plum wash so it reads as part of the cover rather than a pasted tile. */}
+        <div
+          className="pointer-events-none absolute bottom-0 left-0 h-44 w-44 sm:h-56 sm:w-56 lg:h-64 lg:w-64"
+          style={{
+            WebkitMaskImage:
+              "linear-gradient(to top right, #000 35%, rgba(0,0,0,0.55) 60%, transparent 88%)",
+            maskImage:
+              "linear-gradient(to top right, #000 35%, rgba(0,0,0,0.55) 60%, transparent 88%)",
+          }}
+        >
+          <Image
+            src="/images/site/lilac-corner.png"
+            alt=""
+            aria-hidden="true"
+            fill
+            sizes="(min-width: 1024px) 16rem, (min-width: 640px) 14rem, 11rem"
+            className="object-cover object-[30%_70%]"
+          />
+        </div>
       </div>
 
       <div className="relative z-[2] mx-auto flex min-h-[72vh] max-w-7xl flex-col px-6 pb-16 pt-10 sm:min-h-[82vh] sm:pt-12 lg:px-10">
