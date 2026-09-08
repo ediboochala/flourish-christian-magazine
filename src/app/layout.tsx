@@ -41,10 +41,10 @@ export const metadata: Metadata = {
     "Christian lifestyle",
     "women's devotionals",
   ],
-  icons: {
-    icon: "/Gemini_Generated_Image_2t6tje2t6tje2t6t.jpg",
-    apple: "/Gemini_Generated_Image_2t6tje2t6tje2t6t.jpg",
-  },
+  // Favicons come from the file-based convention (src/app/favicon.ico,
+  // icon.png, apple-icon.png — all generated from the Foundation logo),
+  // which Next wires into <head> automatically. Keep it that way rather
+  // than pointing `icons` at a multi-MB source image.
   openGraph: {
     title: "Flourish Christian Magazine",
     description: "Inspiring Christian women through faith, stories, testimonies, and community.",
