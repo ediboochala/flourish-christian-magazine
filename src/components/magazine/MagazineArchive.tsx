@@ -145,7 +145,7 @@ export default function MagazineArchive({
           ))}
         </div>
       ) : (
-        <div className="mt-16 rounded-2xl bg-white p-12 text-center">
+        <div className="mt-10 rounded-2xl bg-white p-8 text-center">
           <p className="font-serif text-xl text-plum">No stories match your search.</p>
           <p className="mt-2 font-sans text-sm text-charcoal-soft">
             Try a different keyword or explore another category.
@@ -154,7 +154,7 @@ export default function MagazineArchive({
       )}
 
       {visibleCount < filtered.length && (
-        <div className="mt-12 text-center">
+        <div className="mt-8 text-center">
           <button
             onClick={() => setVisibleCount((c) => c + PAGE_SIZE)}
             className="rounded-full border border-plum px-8 py-3.5 font-sans text-xs font-semibold uppercase tracking-[0.1em] text-plum transition-colors hover:bg-plum hover:text-white"

@@ -34,12 +34,12 @@ const TILES = [
  *  next, kept deliberately short so the page ends with the content. */
 export default function HomeTiles() {
   return (
-    <section className="bg-ivory py-20 sm:py-24">
+    <section className="bg-ivory py-14 sm:py-16">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <Reveal>
           <SectionHeading eyebrow="Explore Flourish" title="Where to Go Next" />
         </Reveal>
-        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {TILES.map((tile, i) => (
             <Reveal key={tile.href} delayMs={i * 70}>
               <Link

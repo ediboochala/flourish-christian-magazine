@@ -66,7 +66,7 @@ export default async function ArticlePage({
           </div>
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-plum via-plum/80 to-plum/45" />
-        <div className="relative z-[2] mx-auto max-w-3xl px-6 pb-16 pt-32 text-center lg:px-10">
+        <div className="relative z-[2] mx-auto max-w-3xl px-6 pb-12 pt-24 text-center lg:px-10">
           <div className="flex items-center justify-center gap-3">
             {article.isNew && (
               <span className="rounded-full bg-gold px-2.5 py-1 font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-plum">
@@ -104,11 +104,11 @@ export default async function ArticlePage({
       </section>
 
       {/* BODY */}
-      <section className="bg-white py-16 sm:py-20">
+      <section className="bg-white py-12 sm:py-14">
         <div className="mx-auto max-w-3xl px-6 lg:px-10">
           <ArticleBody blocks={article.body} />
 
-          <div className="mt-12 border-t border-charcoal/10 pt-8">
+          <div className="mt-8 border-t border-charcoal/10 pt-8">
             <ShareButtons
               title={article.title}
               prompt="Know a woman who needs to hear this? Share it with her."
@@ -116,7 +116,7 @@ export default async function ArticlePage({
           </div>
 
           {author && (
-            <div className="mt-12 flex flex-col items-start gap-4 rounded-2xl bg-cream p-6 sm:flex-row sm:items-center">
+            <div className="mt-8 flex flex-col items-start gap-4 rounded-2xl bg-cream p-6 sm:flex-row sm:items-center">
               <span className="relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-full">
                 <PlaceholderImage image={author.image} sizes="64px" />
               </span>
@@ -168,7 +168,7 @@ export default async function ArticlePage({
 
       {/* RELATED */}
       {related.length > 0 && (
-        <section className="bg-cream py-16 sm:py-20">
+        <section className="bg-cream py-12 sm:py-14">
           <div className="mx-auto max-w-7xl px-6 lg:px-10">
             <h2 className="font-serif text-2xl text-plum sm:text-3xl">You May Also Like</h2>
             <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">

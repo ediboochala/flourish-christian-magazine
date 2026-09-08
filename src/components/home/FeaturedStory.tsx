@@ -11,9 +11,9 @@ export default function FeaturedStory({ article }: { article: Article }) {
   const category = getCategoryBySlug(article.categorySlug);
 
   return (
-    <section className="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28">
+    <section className="mx-auto max-w-7xl px-6 py-14 lg:px-10 lg:py-20">
       <Eyebrow>Editor&apos;s Feature</Eyebrow>
-      <div className="mt-6 grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
+      <div className="mt-6 grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-12">
         <Link
           href={`/article/${article.slug}`}
           className="img-zoom relative order-1 aspect-[4/5] w-full overflow-hidden rounded-2xl lg:order-none"

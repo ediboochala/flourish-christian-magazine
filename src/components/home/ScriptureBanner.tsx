@@ -8,7 +8,7 @@ export default function ScriptureBanner() {
   return (
     <section
       id="scripture-banner"
-      className="relative scroll-mt-20 overflow-hidden bg-cream py-16 sm:py-20"
+      className="relative scroll-mt-20 overflow-hidden bg-cream py-12 sm:py-14"
     >
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.08]"

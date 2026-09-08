@@ -33,7 +33,7 @@ export default async function EditorialTeamProfilePage({
 
   return (
     <div>
-      <section className="bg-plum py-20 sm:py-24">
+      <section className="bg-plum py-14 sm:py-16">
         <div className="mx-auto flex max-w-3xl flex-col items-center px-6 text-center lg:px-10">
           <div className="relative h-32 w-32 overflow-hidden rounded-full ring-4 ring-white/20">
             <PlaceholderImage image={author.image} sizes="128px" />
@@ -60,7 +60,7 @@ export default async function EditorialTeamProfilePage({
         </div>
       </section>
 
-      <section className="bg-ivory py-20 sm:py-24">
+      <section className="bg-ivory py-14 sm:py-16">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <h2 className="font-serif text-2xl text-plum sm:text-3xl">
             Articles by {author.name}

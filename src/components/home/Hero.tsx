@@ -128,7 +128,7 @@ export default function Hero() {
         />
       </div>
 
-      <div className="relative z-[2] mx-auto flex min-h-[82vh] max-w-7xl flex-col px-6 pb-16 pt-10 sm:min-h-[90vh] sm:pt-12 lg:px-10">
+      <div className="relative z-[2] mx-auto flex min-h-[72vh] max-w-7xl flex-col px-6 pb-16 pt-10 sm:min-h-[82vh] sm:pt-12 lg:px-10">
         {/* Issue line */}
         <div className="animate-fade-in flex items-center justify-between gap-4 font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-gold-light sm:text-xs">
           <span>Spring 2024 &nbsp;&bull;&nbsp; Issue No.&nbsp;1</span>
@@ -170,7 +170,7 @@ export default function Hero() {
 
         {/* Season of Renewal — pushed toward the lower-left, as on the cover */}
         <div
-          className="animate-fade-up mt-auto max-w-full pt-14 sm:max-w-lg"
+          className="animate-fade-up mt-auto max-w-full pt-10 sm:max-w-lg"
           style={{ animationDelay: "220ms" }}
         >
           <p

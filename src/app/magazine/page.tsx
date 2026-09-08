@@ -17,7 +17,7 @@ export default function MagazinePage() {
 
   return (
     <div>
-      <section className="bg-plum py-20 sm:py-24">
+      <section className="bg-plum py-14 sm:py-16">
         <div className="mx-auto max-w-4xl px-6 text-center lg:px-10">
           <p className="font-sans text-xs font-semibold uppercase tracking-[0.24em] text-gold-light">
             The Magazine
@@ -33,7 +33,7 @@ export default function MagazinePage() {
       </section>
 
       {(editorsPicks.length > 0 || trending.length > 0) && (
-        <section className="bg-cream py-16">
+        <section className="bg-cream py-12">
           <div className="mx-auto max-w-7xl px-6 lg:px-10">
             {editorsPicks.length > 0 && (
               <div className="mb-16">
@@ -59,7 +59,7 @@ export default function MagazinePage() {
         </section>
       )}
 
-      <section className="bg-white py-16">
+      <section className="bg-white py-12">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <SectionHeading eyebrow="Past Issues Archive" title="Browse Every Issue of Flourish" />
           <div className="mt-8 flex flex-col gap-3 rounded-2xl border border-charcoal/10 bg-cream p-6 sm:flex-row sm:items-center sm:justify-between">
@@ -76,7 +76,7 @@ export default function MagazinePage() {
         </div>
       </section>
 
-      <section className="bg-ivory py-20 sm:py-24">
+      <section className="bg-ivory py-14 sm:py-16">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <SectionHeading eyebrow="Full Archive" title="Browse All Stories" />
           <div className="mt-10">

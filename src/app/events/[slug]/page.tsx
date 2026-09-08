@@ -42,7 +42,7 @@ export default async function EventDetailPage({
           <PlaceholderImage image={event.image} priority />
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-plum via-plum/85 to-plum/55" />
-        <div className="relative mx-auto max-w-3xl px-6 pb-16 pt-32 text-center lg:px-10">
+        <div className="relative mx-auto max-w-3xl px-6 pb-12 pt-24 text-center lg:px-10">
           <span className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-gold-light">
             {event.category}
           </span>
@@ -52,8 +52,8 @@ export default async function EventDetailPage({
         </div>
       </section>
 
-      <section className="bg-white py-16 sm:py-20">
-        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-12 px-6 lg:grid-cols-3 lg:px-10">
+      <section className="bg-white py-12 sm:py-14">
+        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-10 px-6 lg:grid-cols-3 lg:px-10">
           <div className="lg:col-span-2">
             <h2 className="font-serif text-2xl text-plum">About This Event</h2>
             <p className="mt-4 font-sans text-base leading-relaxed text-charcoal-soft">
@@ -103,7 +103,7 @@ export default async function EventDetailPage({
       </section>
 
       {other.length > 0 && (
-        <section className="bg-cream py-16 sm:py-20">
+        <section className="bg-cream py-12 sm:py-14">
           <div className="mx-auto max-w-7xl px-6 lg:px-10">
             <h2 className="font-serif text-2xl text-plum sm:text-3xl">More Events</h2>
             <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">

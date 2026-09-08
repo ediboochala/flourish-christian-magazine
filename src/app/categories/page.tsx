@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function CategoriesPage() {
   return (
     <div>
-      <section className="bg-plum py-20 sm:py-24">
+      <section className="bg-plum py-14 sm:py-16">
         <div className="mx-auto max-w-4xl px-6 text-center lg:px-10">
           <p className="font-sans text-xs font-semibold uppercase tracking-[0.24em] text-gold-light">
             Discover
@@ -25,7 +25,7 @@ export default function CategoriesPage() {
         </div>
       </section>
 
-      <section className="bg-ivory py-20 sm:py-24">
+      <section className="bg-ivory py-14 sm:py-16">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
             {categories.map((category) => (

@@ -7,7 +7,6 @@ import ArticleCard from "@/components/ArticleCard";
 import EventCard from "@/components/EventCard";
 import MonthlyMeetingNotice from "@/components/events/MonthlyMeetingNotice";
 import NewsletterCTA from "@/components/NewsletterCTA";
-import PlaceholderImage from "@/components/ui/PlaceholderImage";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Eyebrow from "@/components/ui/Eyebrow";
 import Reveal from "@/components/ui/Reveal";
@@ -31,7 +30,7 @@ export default function Home() {
       </Reveal>
 
       {/* LATEST STORIES */}
-      <section className="bg-white py-20 sm:py-24">
+      <section className="bg-white py-14 sm:py-16">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <Reveal>
             <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
@@ -47,7 +46,7 @@ export default function Home() {
               </Link>
             </div>
           </Reveal>
-          <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {latest.slice(0, 6).map((article, i) => (
               <Reveal key={article.slug} delayMs={i * 80}>
                 <ArticleCard article={article} />
@@ -58,7 +57,7 @@ export default function Home() {
       </section>
 
       {/* EVENTS */}
-      <section className="grain-overlay bg-plum py-20 sm:py-24">
+      <section className="grain-overlay bg-plum py-14 sm:py-16">
         <div className="relative z-[2] mx-auto max-w-7xl px-6 lg:px-10">
           <Reveal>
             <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
@@ -79,7 +78,7 @@ export default function Home() {
             </div>
           </Reveal>
           <Reveal>
-            <div className="mt-12">
+            <div className="mt-8">
               <MonthlyMeetingNotice />
             </div>
           </Reveal>
@@ -94,53 +93,36 @@ export default function Home() {
       </section>
 
       {/* EDITORIAL BOARD */}
-      <section className="bg-white py-20 sm:py-24">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-2 lg:gap-16 lg:px-10">
-          <Reveal variant="left" className="order-2 lg:order-1">
+      <section id="editorial-board" className="scroll-mt-24 bg-white py-14 sm:py-16">
+        <div className="mx-auto max-w-3xl px-6 lg:px-10">
+          <Reveal>
             <Eyebrow>Editorial Board</Eyebrow>
-            <h2 className="text-h2 mt-4 font-serif text-plum">Meet Our Editorial Board</h2>
-            <p className="mt-5 font-sans text-base leading-relaxed text-charcoal-soft">
-              Flourish is written by women from across the M.F.M Women Foundation Florida
-              community and beyond — far too many to name here. Guiding every issue is our
-              editorial board: a pastor from each Florida chapter, together with our editor.
+            <h2 className="text-h2 mt-3 font-serif text-plum">Meet Our Editorial Board</h2>
+            <p className="mt-4 font-sans text-base leading-relaxed text-charcoal-soft">
+              Guiding every issue is our Editorial Board, made up of pastors and pastors&apos;
+              wives from Florida.
             </p>
-            <Link
-              href="/editorial-team"
-              className="group/link mt-7 inline-flex items-center gap-1 rounded-full bg-plum px-7 py-3.5 font-sans text-xs font-semibold uppercase tracking-[0.1em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-burgundy active:translate-y-0 active:scale-[0.97]"
-            >
-              Meet the Editorial Team
-              <span className="inline-block transition-transform duration-300 group-hover/link:translate-x-1">
-                →
-              </span>
-            </Link>
-            <ul className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2">
+            <ul className="mt-8 grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2">
               {editorialBoard.map((member) => (
-                <li key={member.slug} className="flex items-start gap-3">
-                  <span className="mt-2 h-[5px] w-[5px] flex-shrink-0 rotate-45 bg-gold" aria-hidden="true" />
+                <li
+                  key={member.slug}
+                  className="flex items-start gap-3 border-t border-charcoal/10 pt-4"
+                >
+                  <span
+                    className="mt-1.5 h-[5px] w-[5px] flex-shrink-0 rotate-45 bg-gold"
+                    aria-hidden="true"
+                  />
                   <span>
                     <span className="block font-sans text-sm font-semibold tracking-tight text-plum">
                       {member.name}
                     </span>
                     <span className="block font-sans text-xs text-charcoal-soft">
-                      {member.role} &middot; {member.location}
+                      {member.location}
                     </span>
                   </span>
                 </li>
               ))}
             </ul>
-          </Reveal>
-          <Reveal
-            variant="scale"
-            className="img-zoom relative order-1 aspect-[4/5] w-full overflow-hidden rounded-2xl lg:order-2"
-          >
-            <PlaceholderImage
-              image={{
-                src: "/images/site/community-grove.jpg",
-                alt: "A quiet path winding through a grove of birch trees",
-                tone: "gold",
-                credit: "Photo via Unsplash",
-              }}
-            />
           </Reveal>
         </div>
       </section>

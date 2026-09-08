@@ -48,7 +48,7 @@ export default function AboutPage() {
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-plum via-plum/85 to-plum/60" />
         <div className="aurora-backdrop opacity-40" />
-        <div className="relative mx-auto max-w-3xl px-6 py-28 text-center lg:px-10">
+        <div className="relative mx-auto max-w-3xl px-6 py-20 text-center lg:px-10">
           <span className="relative mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-white p-3 ring-2 ring-white/30">
             <Image
               src="/images/site/mfm-logo.png"
@@ -88,7 +88,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-white py-20 sm:py-24">
+      <section className="bg-white py-14 sm:py-16">
         <div className="mx-auto max-w-3xl px-6 lg:px-10">
           <h2 className="font-serif text-2xl text-plum">Our Story</h2>
           <p className="mt-4 font-sans text-base leading-relaxed text-charcoal-soft">
@@ -108,7 +108,7 @@ export default function AboutPage() {
             wellspring for her family, her community, and the Kingdom of God.
           </p>
 
-          <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2">
+          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
             <div className="rounded-2xl bg-cream p-6">
               <h3 className="font-serif text-xl text-plum">Our Mission</h3>
               <p className="mt-2 font-sans text-sm leading-relaxed text-charcoal-soft">
@@ -128,7 +128,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-white py-20 sm:py-24">
+      <section className="bg-white py-14 sm:py-16">
         <div className="mx-auto max-w-3xl px-6 lg:px-10">
           <Reveal>
             <Eyebrow>Women Foundation Leadership</Eyebrow>
@@ -156,7 +156,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-cream py-20 sm:py-24">
+      <section className="bg-cream py-14 sm:py-16">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <h2 className="font-serif text-3xl text-plum sm:text-4xl">Our Values</h2>
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -170,7 +170,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-white py-20 sm:py-24">
+      <section className="bg-white py-14 sm:py-16">
         <div className="mx-auto max-w-3xl px-6 text-center lg:px-10">
           <h2 className="font-serif text-3xl text-plum sm:text-4xl">How to Participate</h2>
           <p className="mt-4 font-sans text-base leading-relaxed text-charcoal-soft">

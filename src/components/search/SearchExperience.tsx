@@ -46,7 +46,7 @@ export default function SearchExperience() {
           id="site-search"
           type="search"
           autoFocus
-          placeholder="Search articles, the editorial team, and events…"
+          placeholder="Search articles, contributors, and events…"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           className="w-full rounded-full border border-charcoal/15 bg-white py-4 pl-14 pr-5 font-sans text-base text-charcoal placeholder:text-charcoal-soft/70 focus:border-gold focus:outline-none"
@@ -60,7 +60,7 @@ export default function SearchExperience() {
       )}
 
       {results && (
-        <div className="mt-10 space-y-12">
+        <div className="mt-10 space-y-8">
           <p className="font-sans text-sm text-charcoal-soft">
             {totalResults} {totalResults === 1 ? "result" : "results"} for &ldquo;{query}&rdquo;
           </p>
@@ -87,7 +87,7 @@ export default function SearchExperience() {
 
           {results.team.length > 0 && (
             <div>
-              <h2 className="font-serif text-xl text-plum">Editorial Team</h2>
+              <h2 className="font-serif text-xl text-plum">Contributors</h2>
               <ul className="mt-4 space-y-3">
                 {results.team.map((a) => (
                   <li key={a.slug}>
@@ -124,7 +124,7 @@ export default function SearchExperience() {
           )}
 
           {totalResults === 0 && (
-            <div className="rounded-2xl bg-white p-12 text-center">
+            <div className="rounded-2xl bg-white p-8 text-center">
               <p className="font-serif text-xl text-plum">No results found.</p>
               <p className="mt-2 font-sans text-sm text-charcoal-soft">
                 Try a different search term, or explore the magazine archive.

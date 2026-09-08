@@ -10,10 +10,10 @@ export const metadata: Metadata = {
 export default function WriteForFlourishPage() {
   return (
     <div>
-      <section className="bg-plum py-20 sm:py-24">
+      <section className="bg-plum py-14 sm:py-16">
         <div className="mx-auto max-w-3xl px-6 text-center lg:px-10">
           <p className="font-sans text-xs font-semibold uppercase tracking-[0.24em] text-gold-light">
-            Write for Flourish
+            Submit an Article
           </p>
           <h1 className="mt-4 font-serif text-4xl leading-tight text-white sm:text-5xl">
             Your Story Could Encourage Another Woman.
@@ -25,8 +25,8 @@ export default function WriteForFlourishPage() {
         </div>
       </section>
 
-      <section className="bg-ivory py-20 sm:py-24">
-        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-14 px-6 lg:grid-cols-5 lg:px-10">
+      <section className="bg-ivory py-14 sm:py-16">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 px-6 lg:grid-cols-5 lg:px-10">
           <aside className="lg:col-span-2">
             <h2 className="font-serif text-2xl text-plum">What We&apos;re Looking For</h2>
             <ul className="mt-5 space-y-4 font-sans text-sm leading-relaxed text-charcoal-soft">

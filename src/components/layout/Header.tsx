@@ -20,7 +20,11 @@ const NAV: NavItem[] = [
     menu: [
       { href: "/magazine", label: "Magazine Archive", blurb: "Every issue & story" },
       { href: "/write-for-flourish", label: "Submit an Article", blurb: "Share your story" },
-      { href: "/editorial-team", label: "Editorial Team", blurb: "The voices behind Flourish" },
+      {
+        href: "/#editorial-board",
+        label: "Editorial Board",
+        blurb: "Pastors & pastors' wives from Florida",
+      },
     ],
   },
   {
@@ -248,19 +252,13 @@ export default function Header() {
           })}
         </nav>
 
-        <div className="hidden items-center gap-2 lg:flex">
+        <div className="hidden items-center lg:flex">
           <Link
             href="/search"
             aria-label="Search Flourish"
             className="flex h-9 w-9 items-center justify-center rounded-full text-charcoal transition-colors duration-300 hover:bg-cream hover:text-burgundy"
           >
             <Search className="h-4 w-4" aria-hidden="true" />
-          </Link>
-          <Link
-            href="/write-for-flourish"
-            className="ml-1 rounded-full bg-plum px-5 py-2.5 font-sans text-xs font-semibold uppercase tracking-[0.08em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-burgundy active:translate-y-0 active:scale-[0.97]"
-          >
-            Join Flourish
           </Link>
         </div>
 
@@ -300,7 +298,7 @@ export default function Header() {
         )}
       >
         <div className="min-h-0 overflow-hidden">
-          <nav className="flex flex-col gap-0.5 px-6 pt-6" aria-label="Mobile">
+          <nav className="flex flex-col gap-0.5 px-6 pb-6 pt-6" aria-label="Mobile">
             {NAV.map((item) => (
               <div key={item.label}>
                 <Link
@@ -337,14 +335,6 @@ export default function Header() {
               Search
             </Link>
           </nav>
-          <div className="px-6 pb-6 pt-4">
-            <Link
-              href="/write-for-flourish"
-              className="flex w-full items-center justify-center rounded-full bg-plum px-5 py-3 font-sans text-xs font-semibold uppercase tracking-[0.08em] text-white transition-all duration-300"
-            >
-              Join Flourish
-            </Link>
-          </div>
         </div>
       </div>
     </header>

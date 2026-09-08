@@ -48,13 +48,12 @@ export interface Author {
   image: MediaImage;
 }
 
-/** A member of the M.F.M Women Foundation Florida editorial board —
- *  distinct from `Author`: this is the leadership roster (chapter
- *  pastors and the editor), not article bylines. */
+/** A member of the Flourish Editorial Board — distinct from `Author`:
+ *  this is the guiding roster (pastors and pastors' wives from Florida),
+ *  not article bylines. Listed by name and location only. */
 export interface EditorialBoardMember {
   slug: string;
   name: string;
-  role: string;
   location: string;
 }
 
