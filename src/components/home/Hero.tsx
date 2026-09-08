@@ -80,7 +80,7 @@ export default function Hero() {
             aria-hidden="true"
             fill
             sizes="(min-width: 1024px) 16rem, (min-width: 640px) 14rem, 11rem"
-            className="object-cover object-[30%_70%]"
+            className="object-cover object-[18%_62%]"
           />
         </div>
       </div>
