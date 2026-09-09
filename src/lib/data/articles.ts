@@ -30,10 +30,10 @@ export const articles: Article[] = [
     readingTimeMinutes: 8,
     heroImage: {
       src: "/images/articles/from-brokenness-to-wholeness-overcoming-lifes-toughest-battles.jpg",
-      alt: "A deep burgundy dahlia in full bloom, its golden centre catching the light",
+      alt: "A broken patterned saucer pieced back together around a full cup of coffee",
       tone: "burgundy",
       motif: "vine",
-      credit: "Photo via Unsplash",
+      credit: "AI-generated image",
     },
     isNew: true,
     priority: 1,
