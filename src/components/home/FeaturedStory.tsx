@@ -15,7 +15,7 @@ export default function FeaturedStory({ article }: { article: Article }) {
       <div className="mt-6 grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-10">
         <Link
           href={`/article/${article.slug}`}
-          className="img-zoom relative order-1 aspect-[4/5] w-full overflow-hidden rounded-2xl lg:order-none"
+          className="img-zoom relative aspect-[4/5] w-full overflow-hidden rounded-2xl"
         >
           <PlaceholderImage image={article.heroImage} priority />
         </Link>

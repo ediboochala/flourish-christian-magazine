@@ -14,7 +14,9 @@ import { editorialBoard } from "@/lib/data/editorialBoard";
 
 export default function Home() {
   const featured = getFeaturedArticle();
-  const latest = getLatestArticles(6).filter((a) => a.slug !== featured.slug);
+  // Pull one extra so the grid still shows a full six after the featured
+  // story is filtered out — six keeps the 3-column rows balanced.
+  const latest = getLatestArticles(7).filter((a) => a.slug !== featured.slug);
 
   return (
     <>

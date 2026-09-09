@@ -39,9 +39,13 @@ export default function HomeTiles() {
         <Reveal>
           <SectionHeading eyebrow="Explore Flourish" title="Where to Go Next" />
         </Reveal>
-        <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-6 flex flex-wrap justify-center gap-6">
           {TILES.map((tile, i) => (
-            <Reveal key={tile.href} delayMs={i * 70}>
+            <Reveal
+              key={tile.href}
+              delayMs={i * 70}
+              className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
+            >
               <Link
                 href={tile.href}
                 className="group flex h-full flex-col rounded-2xl border border-charcoal/10 bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:border-transparent hover:shadow-xl"

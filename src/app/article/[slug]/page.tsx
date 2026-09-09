@@ -59,12 +59,12 @@ export default async function ArticlePage({
 
       {/* HERO */}
       <section className="grain-overlay relative overflow-hidden bg-plum">
-        <div className="absolute inset-0 overflow-hidden opacity-[0.55]">
+        <div className="absolute inset-0 overflow-hidden opacity-[0.7]">
           <div className="animate-kenburns absolute inset-0">
             <PlaceholderImage image={article.heroImage} priority />
           </div>
         </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-plum via-plum/80 to-plum/45" />
+        <div className="absolute inset-0 bg-gradient-to-t from-plum/95 via-plum/70 to-plum/35" />
         <div className="relative z-[2] mx-auto max-w-3xl px-6 pb-10 pt-20 text-center lg:px-10">
           <div className="flex items-center justify-center gap-3">
             {article.isNew && (

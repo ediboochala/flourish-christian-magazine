@@ -49,25 +49,27 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-gradient-to-t from-plum via-plum/85 to-plum/60" />
         <div className="aurora-backdrop opacity-40" />
         <div className="relative mx-auto max-w-3xl px-6 py-14 text-center lg:px-10">
-          <span className="relative mx-auto mb-5 flex h-24 w-24 items-center justify-center rounded-full bg-white p-3 ring-2 ring-white/30">
-            <Image
-              src="/images/site/mfm-logo.png"
-              alt="Mountain of Fire and Miracles Ministries logo"
-              width={244}
-              height={245}
-              sizes="72px"
-              className="h-full w-full object-contain"
-            />
-          </span>
-          <p className="font-sans text-xs font-semibold uppercase tracking-[0.24em] text-gold-light">
-            About Flourish
-          </p>
-          <h1 className="mt-4 font-serif text-4xl leading-tight text-white sm:text-5xl">
-            A Digital Home for Christian Women to Flourish
-          </h1>
-          <p className="mx-auto mt-5 max-w-xl font-sans text-base leading-relaxed text-white/75">
-            An online publication of M.F.M Women Foundation Florida.
-          </p>
+          <Reveal>
+            <span className="relative mx-auto mb-5 flex h-24 w-24 items-center justify-center rounded-full bg-white p-3 ring-2 ring-white/30">
+              <Image
+                src="/images/site/mfm-logo.png"
+                alt="Mountain of Fire and Miracles Ministries logo"
+                width={244}
+                height={245}
+                sizes="72px"
+                className="h-full w-full object-contain"
+              />
+            </span>
+            <p className="font-sans text-xs font-semibold uppercase tracking-[0.24em] text-gold-light">
+              About Flourish
+            </p>
+            <h1 className="mt-4 font-serif text-4xl leading-tight text-white sm:text-5xl">
+              A Digital Home for Christian Women to Flourish
+            </h1>
+            <p className="mx-auto mt-5 max-w-xl font-sans text-base leading-relaxed text-white/75">
+              Faith, stories, testimonies, and community &mdash; for women in every season.
+            </p>
+          </Reveal>
         </div>
       </section>
 
@@ -90,6 +92,7 @@ export default function AboutPage() {
 
       <section className="bg-white pb-10 pt-12">
         <div className="mx-auto max-w-3xl px-6 lg:px-10">
+          <Reveal>
           <h2 className="font-serif text-2xl text-plum">Our Story</h2>
           <p className="mt-4 font-sans text-base leading-relaxed text-charcoal-soft">
             Flourish was born out of a simple but powerful conviction: every woman deserves a space
@@ -125,6 +128,7 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
+          </Reveal>
         </div>
       </section>
 
@@ -159,20 +163,28 @@ export default function AboutPage() {
 
       <section className="bg-cream py-12">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <h2 className="font-serif text-3xl text-plum sm:text-4xl">Our Values</h2>
-          <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {VALUES.map((v) => (
-              <div key={v.title} className="rounded-2xl bg-white p-6">
-                <h3 className="font-serif text-lg text-plum">{v.title}</h3>
-                <p className="mt-2 font-sans text-sm leading-relaxed text-charcoal-soft">{v.body}</p>
-              </div>
-            ))}
-          </div>
+          <Reveal>
+            <h2 className="font-serif text-3xl text-plum sm:text-4xl">Our Values</h2>
+            <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {VALUES.map((v) => (
+                <div
+                  key={v.title}
+                  className="rounded-2xl bg-white p-6 transition-transform duration-300 hover:-translate-y-1"
+                >
+                  <h3 className="font-serif text-lg text-plum">{v.title}</h3>
+                  <p className="mt-2 font-sans text-sm leading-relaxed text-charcoal-soft">
+                    {v.body}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </section>
 
       <section className="bg-white py-12">
         <div className="mx-auto max-w-3xl px-6 text-center lg:px-10">
+          <Reveal>
           <h2 className="font-serif text-3xl text-plum sm:text-4xl">How to Participate</h2>
           <p className="mt-4 font-sans text-base leading-relaxed text-charcoal-soft">
             Read and share stories, attend the monthly meeting, submit an article or testimony, or
@@ -192,6 +204,7 @@ export default function AboutPage() {
               Get Involved
             </Link>
           </div>
+          </Reveal>
         </div>
       </section>
 

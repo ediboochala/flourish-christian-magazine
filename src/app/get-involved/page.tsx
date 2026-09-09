@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import NewsletterCTA from "@/components/NewsletterCTA";
+import Reveal from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
   title: "Get Involved",
@@ -32,39 +33,42 @@ export default function GetInvolvedPage() {
       <section className="relative overflow-hidden bg-plum">
         <div className="aurora-backdrop opacity-50" />
         <div className="relative mx-auto max-w-3xl px-6 py-14 text-center lg:px-10">
-          <span className="relative mx-auto mb-5 block h-20 w-20 overflow-hidden rounded-full ring-2 ring-white/30">
-            <Image
-              src="/Gemini_Generated_Image_2t6tje2t6tje2t6t.jpg"
-              alt="M.F.M Women Foundation Florida logo"
-              fill
-              sizes="80px"
-              className="object-cover"
-            />
-          </span>
-          <p className="font-sans text-xs font-semibold uppercase tracking-[0.24em] text-gold-light">
-            Get Involved
-          </p>
-          <h1 className="mt-4 font-serif text-4xl leading-tight text-white sm:text-5xl">
-            M.F.M Women Foundation Florida
-          </h1>
-          <p className="mx-auto mt-5 max-w-xl font-sans text-base leading-relaxed text-white/75">
-            We exist to empower Christian women to walk in faith, purpose, and sisterhood. Flourish
-            magazine is one expression of that mission. As our readership grows, advertising helps
-            keep the magazine sustainable.
-          </p>
+          <Reveal>
+            <span className="relative mx-auto mb-5 block h-20 w-20 overflow-hidden rounded-full ring-2 ring-white/30">
+              <Image
+                src="/Gemini_Generated_Image_2t6tje2t6tje2t6t.jpg"
+                alt="M.F.M Women Foundation Florida logo"
+                fill
+                sizes="80px"
+                className="object-cover"
+              />
+            </span>
+            <p className="font-sans text-xs font-semibold uppercase tracking-[0.24em] text-gold-light">
+              Get Involved
+            </p>
+            <h1 className="mt-4 font-serif text-4xl leading-tight text-white sm:text-5xl">
+              M.F.M Women Foundation Florida
+            </h1>
+            <p className="mx-auto mt-5 max-w-xl font-sans text-base leading-relaxed text-white/75">
+              We exist to empower Christian women to walk in faith, purpose, and sisterhood. Flourish
+              magazine is one expression of that mission. As our readership grows, advertising helps
+              keep the magazine sustainable.
+            </p>
+          </Reveal>
         </div>
       </section>
 
       <section className="bg-white py-12">
         <div className="mx-auto max-w-4xl px-6 lg:px-10">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
-            {WAYS_TO_JOIN.map((way) => {
+            {WAYS_TO_JOIN.map((way, i) => {
               const isEmail = way.href.startsWith("mailto:");
               const ctaClasses =
                 "mt-6 inline-flex w-fit items-center rounded-full bg-plum px-6 py-3 font-sans text-xs font-semibold uppercase tracking-[0.1em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-burgundy active:translate-y-0 active:scale-[0.97]";
               return (
-                <div
+                <Reveal
                   key={way.title}
+                  delayMs={i * 90}
                   className="flex flex-col rounded-2xl border border-charcoal/10 bg-ivory p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                 >
                   <h2 className="font-serif text-xl text-plum">{way.title}</h2>
@@ -80,7 +84,7 @@ export default function GetInvolvedPage() {
                       {way.cta}
                     </Link>
                   )}
-                </div>
+                </Reveal>
               );
             })}
           </div>

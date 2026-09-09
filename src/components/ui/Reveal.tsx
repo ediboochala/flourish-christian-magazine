@@ -30,7 +30,9 @@ export default function Reveal({ children, className, delayMs = 0, variant = "up
           observer.disconnect();
         }
       },
-      { threshold: 0.15 }
+      // Fire a touch before the element is fully in view so content is
+      // settling as it arrives rather than visibly animating after landing.
+      { threshold: 0.1, rootMargin: "0px 0px -8% 0px" }
     );
     observer.observe(node);
     return () => observer.disconnect();

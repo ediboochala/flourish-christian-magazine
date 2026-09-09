@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Mail, MapPin } from "lucide-react";
 import ContactForm from "@/components/forms/ContactForm";
+import Reveal from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -12,20 +13,25 @@ export default function ContactPage() {
     <div>
       <section className="bg-plum py-12 sm:py-14">
         <div className="mx-auto max-w-3xl px-6 text-center lg:px-10">
-          <p className="font-sans text-xs font-semibold uppercase tracking-[0.24em] text-gold-light">
-            Get in Touch
-          </p>
-          <h1 className="mt-4 font-serif text-4xl leading-tight text-white sm:text-5xl">Contact Us</h1>
-          <p className="mx-auto mt-5 max-w-xl font-sans text-base leading-relaxed text-white/75">
-            Questions, contributor inquiries, event details, or feedback, we&apos;d love to hear
-            from you.
-          </p>
+          <Reveal>
+            <p className="font-sans text-xs font-semibold uppercase tracking-[0.24em] text-gold-light">
+              Get in Touch
+            </p>
+            <h1 className="mt-4 font-serif text-4xl leading-tight text-white sm:text-5xl">
+              Contact Us
+            </h1>
+            <p className="mx-auto mt-5 max-w-xl font-sans text-base leading-relaxed text-white/75">
+              Questions, contributor inquiries, event details, or feedback, we&apos;d love to hear
+              from you.
+            </p>
+          </Reveal>
         </div>
       </section>
 
       <section className="bg-ivory py-12">
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 px-6 lg:grid-cols-5 lg:px-10">
-          <aside className="space-y-8 lg:col-span-2">
+          <aside className="lg:col-span-2">
+            <Reveal variant="left" className="space-y-8">
             <div>
               <h2 className="font-serif text-2xl text-plum">Reach Us Directly</h2>
               <div className="mt-5 space-y-4 font-sans text-sm text-charcoal-soft">
@@ -54,12 +60,15 @@ export default function ContactPage() {
                 actual response time commitment.]
               </p>
             </div>
+            </Reveal>
           </aside>
 
           <div className="lg:col-span-3">
-            <div className="rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(36,31,33,0.06)] sm:p-10">
-              <ContactForm />
-            </div>
+            <Reveal variant="right">
+              <div className="rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(36,31,33,0.06)] sm:p-10">
+                <ContactForm />
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>

@@ -37,6 +37,7 @@ export const articles: Article[] = [
     },
     isNew: true,
     priority: 1,
+    featured: true,
     editorsPick: true,
     tags: ["new", "healing", "wholeness", "faith"],
     body: [
@@ -140,7 +141,7 @@ export const articles: Article[] = [
     readingTimeMinutes: 6,
     heroImage: {
       src: "/images/articles/gratitude-in-the-dark.jpg",
-      alt: "Purple wood-sorrel flowers glowing against deep shadow",
+      alt: "The deep violet petals of an iris, lit against near-darkness",
       tone: "charcoal",
       motif: "olive",
       credit: "Photo via Unsplash",
@@ -183,7 +184,6 @@ export const articles: Article[] = [
       motif: "lily",
       credit: "AI-generated image",
     },
-    featured: true,
     editorsPick: true,
     tags: ["faith", "patience", "trust"],
     body: [

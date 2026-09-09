@@ -88,7 +88,7 @@ export default function Hero() {
       <div className="relative z-[2] mx-auto flex min-h-[72vh] max-w-7xl flex-col px-6 pb-16 pt-10 sm:min-h-[82vh] sm:pt-12 lg:px-10">
         {/* Issue line */}
         <div className="animate-fade-in flex items-center justify-between gap-4 font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-gold-light sm:text-xs">
-          <span>Spring 2024 &nbsp;&bull;&nbsp; Issue No.&nbsp;1</span>
+          <span>Issue No.&nbsp;1 &nbsp;&bull;&nbsp; A Season of Renewal</span>
           <span className="hidden text-right leading-tight text-white/60 sm:block">
             Online publication of
             <br />
