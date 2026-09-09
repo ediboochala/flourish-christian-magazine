@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Article } from "@/lib/types";
 import { getAuthorBySlug } from "@/lib/data/authors";
 import { getCategoryBySlug } from "@/lib/data/categories";
-import { formatDateShort, cx } from "@/lib/utils";
+import { cx } from "@/lib/utils";
 import PlaceholderImage from "@/components/ui/PlaceholderImage";
 
 interface ArticleCardProps {
@@ -39,7 +39,7 @@ export default function ArticleCard({ article, size = "default", className }: Ar
             {article.title}
           </h3>
           <p className="mt-1 font-sans text-xs text-charcoal-soft">
-            {formatDateShort(article.publishedAt)}
+            {article.readingTimeMinutes} min read
           </p>
         </div>
       </Link>
@@ -91,9 +91,7 @@ export default function ArticleCard({ article, size = "default", className }: Ar
               {author?.name ?? "Flourish"}
             </span>
           </span>
-          <span>
-            {formatDateShort(article.publishedAt)} · {article.readingTimeMinutes} min read
-          </span>
+          <span>{article.readingTimeMinutes} min read</span>
         </div>
       </div>
     </Link>

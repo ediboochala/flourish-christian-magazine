@@ -4,20 +4,17 @@ import ScriptureBanner from "@/components/home/ScriptureBanner";
 import FeaturedStory from "@/components/home/FeaturedStory";
 import HomeTiles from "@/components/home/HomeTiles";
 import ArticleCard from "@/components/ArticleCard";
-import EventCard from "@/components/EventCard";
 import MonthlyMeetingNotice from "@/components/events/MonthlyMeetingNotice";
 import NewsletterCTA from "@/components/NewsletterCTA";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Eyebrow from "@/components/ui/Eyebrow";
 import Reveal from "@/components/ui/Reveal";
 import { getFeaturedArticle, getLatestArticles } from "@/lib/data/articles";
-import { getUpcomingEvents } from "@/lib/data/events";
 import { editorialBoard } from "@/lib/data/editorialBoard";
 
 export default function Home() {
   const featured = getFeaturedArticle();
   const latest = getLatestArticles(6).filter((a) => a.slug !== featured.slug);
-  const spotlightEvents = getUpcomingEvents(3);
 
   return (
     <>
@@ -30,7 +27,7 @@ export default function Home() {
       </Reveal>
 
       {/* LATEST STORIES */}
-      <section className="bg-white py-14 sm:py-16">
+      <section className="bg-white py-12">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <Reveal>
             <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
@@ -46,7 +43,7 @@ export default function Home() {
               </Link>
             </div>
           </Reveal>
-          <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {latest.slice(0, 6).map((article, i) => (
               <Reveal key={article.slug} delayMs={i * 80}>
                 <ArticleCard article={article} />
@@ -57,20 +54,20 @@ export default function Home() {
       </section>
 
       {/* EVENTS */}
-      <section className="grain-overlay bg-plum py-14 sm:py-16">
+      <section className="grain-overlay bg-plum py-12">
         <div className="relative z-[2] mx-auto max-w-7xl px-6 lg:px-10">
           <Reveal>
             <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
               <SectionHeading
                 eyebrow="What's Happening at Flourish"
-                title="Upcoming Events"
+                title="The Monthly Meeting"
                 tone="dark"
               />
               <Link
                 href="/events"
                 className="group/link inline-flex items-center gap-1 font-sans text-xs font-semibold uppercase tracking-[0.1em] text-gold-light hover:text-white"
               >
-                View All Events
+                Meeting Details
                 <span className="inline-block transition-transform duration-300 group-hover/link:translate-x-1">
                   →
                 </span>
@@ -78,22 +75,15 @@ export default function Home() {
             </div>
           </Reveal>
           <Reveal>
-            <div className="mt-8">
+            <div className="mt-6">
               <MonthlyMeetingNotice />
             </div>
           </Reveal>
-          <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {spotlightEvents.map((event, i) => (
-              <Reveal key={event.slug} delayMs={i * 80}>
-                <EventCard event={event} />
-              </Reveal>
-            ))}
-          </div>
         </div>
       </section>
 
       {/* EDITORIAL BOARD */}
-      <section id="editorial-board" className="scroll-mt-24 bg-white py-14 sm:py-16">
+      <section id="editorial-board" className="scroll-mt-24 bg-white py-12">
         <div className="mx-auto max-w-3xl px-6 lg:px-10">
           <Reveal>
             <Eyebrow>Editorial Board</Eyebrow>
@@ -102,7 +92,7 @@ export default function Home() {
               Guiding every issue is our Editorial Board, made up of pastors and pastors&apos;
               wives from Florida.
             </p>
-            <ul className="mt-8 grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2">
+            <ul className="mt-6 grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2">
               {editorialBoard.map((member) => (
                 <li
                   key={member.slug}

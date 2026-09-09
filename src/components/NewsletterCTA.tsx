@@ -102,7 +102,7 @@ export default function NewsletterCTA({ variant = "section" }: NewsletterCTAProp
   }
 
   return (
-    <section id="subscribe" className="relative scroll-mt-20 overflow-hidden bg-plum py-14 sm:py-16">
+    <section id="subscribe" className="relative scroll-mt-20 overflow-hidden bg-plum py-12 sm:py-14">
       <div
         className="pointer-events-none absolute inset-0 opacity-20"
         style={{
@@ -114,14 +114,14 @@ export default function NewsletterCTA({ variant = "section" }: NewsletterCTAProp
         <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10">
           <Mail className="h-5 w-5 text-gold-light" aria-hidden="true" />
         </span>
-        <h2 className="mt-6 font-serif text-3xl leading-tight text-white sm:text-4xl">
+        <h2 className="mt-4 font-serif text-3xl leading-tight text-white sm:text-4xl">
           Never Miss an Issue
         </h2>
-        <p className="mt-4 font-sans text-base leading-relaxed text-white/75">
+        <p className="mt-3 font-sans text-base leading-relaxed text-white/75">
           Join thousands of women receiving faith, encouragement, and community, straight to their
           inbox.
         </p>
-        <form onSubmit={handleSubmit} className="mt-8 flex w-full max-w-md flex-col gap-3 sm:flex-row">
+        <form onSubmit={handleSubmit} className="mt-6 flex w-full max-w-md flex-col gap-3 sm:flex-row">
           <label htmlFor="newsletter-section" className="sr-only">
             Email address
           </label>

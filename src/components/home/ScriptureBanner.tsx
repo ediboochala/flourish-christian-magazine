@@ -8,7 +8,7 @@ export default function ScriptureBanner() {
   return (
     <section
       id="scripture-banner"
-      className="relative scroll-mt-20 overflow-hidden bg-cream py-12 sm:py-14"
+      className="relative scroll-mt-20 overflow-hidden bg-cream py-10 sm:py-12"
     >
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.08]"
@@ -22,7 +22,7 @@ export default function ScriptureBanner() {
           <div className="divider-ornate mx-auto w-full max-w-xs">
             <span className="font-serif text-sm italic text-gold">Scripture</span>
           </div>
-          <blockquote className="mt-8 space-y-5">
+          <blockquote className="mt-6 space-y-5">
             <p className="font-serif text-xl italic leading-snug text-plum sm:text-2xl">
               &ldquo;She is far more precious than rubies.&rdquo;
               <span className="mt-1 block font-sans text-xs font-semibold not-italic uppercase tracking-[0.2em] text-burgundy">
@@ -36,7 +36,7 @@ export default function ScriptureBanner() {
               </span>
             </p>
           </blockquote>
-          <p className="mt-8 font-sans text-base font-medium text-charcoal-soft sm:text-lg">
+          <p className="mt-6 font-sans text-base font-medium text-charcoal-soft sm:text-lg">
             You were never meant to shrink. You were made to flourish.
           </p>
         </Reveal>

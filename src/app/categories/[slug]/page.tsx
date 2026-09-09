@@ -37,7 +37,7 @@ export default async function CategoryArchivePage({
 
   return (
     <div>
-      <section className="relative overflow-hidden bg-plum py-16 sm:py-20">
+      <section className="relative overflow-hidden bg-plum py-12 sm:py-16">
         <div className="absolute inset-0 opacity-30">
           <PlaceholderImage image={category.image} />
         </div>
@@ -58,7 +58,7 @@ export default async function CategoryArchivePage({
         </div>
       </section>
 
-      <section className="bg-ivory py-14 sm:py-16">
+      <section className="bg-ivory py-12">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <MagazineArchive
             articles={articles}

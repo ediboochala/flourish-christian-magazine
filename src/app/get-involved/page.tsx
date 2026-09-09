@@ -31,8 +31,8 @@ export default function GetInvolvedPage() {
     <div>
       <section className="relative overflow-hidden bg-plum">
         <div className="aurora-backdrop opacity-50" />
-        <div className="relative mx-auto max-w-3xl px-6 py-20 text-center lg:px-10">
-          <span className="relative mx-auto mb-6 block h-20 w-20 overflow-hidden rounded-full ring-2 ring-white/30">
+        <div className="relative mx-auto max-w-3xl px-6 py-14 text-center lg:px-10">
+          <span className="relative mx-auto mb-5 block h-20 w-20 overflow-hidden rounded-full ring-2 ring-white/30">
             <Image
               src="/Gemini_Generated_Image_2t6tje2t6tje2t6t.jpg"
               alt="M.F.M Women Foundation Florida logo"
@@ -55,7 +55,7 @@ export default function GetInvolvedPage() {
         </div>
       </section>
 
-      <section className="bg-white py-14 sm:py-16">
+      <section className="bg-white py-12">
         <div className="mx-auto max-w-4xl px-6 lg:px-10">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
             {WAYS_TO_JOIN.map((way) => {

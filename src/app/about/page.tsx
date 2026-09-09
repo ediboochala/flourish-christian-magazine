@@ -48,8 +48,8 @@ export default function AboutPage() {
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-plum via-plum/85 to-plum/60" />
         <div className="aurora-backdrop opacity-40" />
-        <div className="relative mx-auto max-w-3xl px-6 py-20 text-center lg:px-10">
-          <span className="relative mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-white p-3 ring-2 ring-white/30">
+        <div className="relative mx-auto max-w-3xl px-6 py-14 text-center lg:px-10">
+          <span className="relative mx-auto mb-5 flex h-24 w-24 items-center justify-center rounded-full bg-white p-3 ring-2 ring-white/30">
             <Image
               src="/images/site/mfm-logo.png"
               alt="Mountain of Fire and Miracles Ministries logo"
@@ -71,7 +71,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-b border-plum/10 bg-cream py-10">
+      <section className="border-b border-plum/10 bg-cream py-8">
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 px-6 text-center sm:flex-row sm:justify-center sm:gap-5 sm:text-left lg:px-10">
           <Image
             src="/images/site/mfm-logo.png"
@@ -88,7 +88,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-white py-14 sm:py-16">
+      <section className="bg-white pb-10 pt-12">
         <div className="mx-auto max-w-3xl px-6 lg:px-10">
           <h2 className="font-serif text-2xl text-plum">Our Story</h2>
           <p className="mt-4 font-sans text-base leading-relaxed text-charcoal-soft">
@@ -108,7 +108,7 @@ export default function AboutPage() {
             wellspring for her family, her community, and the Kingdom of God.
           </p>
 
-          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
+          <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
             <div className="rounded-2xl bg-cream p-6">
               <h3 className="font-serif text-xl text-plum">Our Mission</h3>
               <p className="mt-2 font-sans text-sm leading-relaxed text-charcoal-soft">
@@ -128,12 +128,13 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-white py-14 sm:py-16">
+      <section className="bg-white pb-12 pt-0">
         <div className="mx-auto max-w-3xl px-6 lg:px-10">
+          <div className="border-t border-charcoal/10 pt-10" />
           <Reveal>
             <Eyebrow>Women Foundation Leadership</Eyebrow>
             <h2 className="text-h2 mt-4 font-serif text-plum">How the Women Foundation Is Led</h2>
-            <p className="mt-5 font-sans text-base leading-relaxed text-charcoal-soft">
+            <p className="mt-4 font-sans text-base leading-relaxed text-charcoal-soft">
               M.F.M Women Foundation Florida sits within the wider leadership structure of the
               MFM Women Foundation. Oversight flows from the Foundation&apos;s international
               leadership, through its mega regions and regional coordinators, down to the state
@@ -145,7 +146,7 @@ export default function AboutPage() {
               href={MEGA_REGION_LEADERSHIP_URL}
               target="_blank"
               rel="noreferrer"
-              className="group/link mt-7 inline-flex items-center gap-1 rounded-full bg-plum px-7 py-3.5 font-sans text-xs font-semibold uppercase tracking-[0.1em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-burgundy active:translate-y-0 active:scale-[0.97]"
+              className="group/link mt-6 inline-flex items-center gap-1 rounded-full bg-plum px-7 py-3.5 font-sans text-xs font-semibold uppercase tracking-[0.1em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-burgundy active:translate-y-0 active:scale-[0.97]"
             >
               Women Foundation Leadership
               <span className="inline-block transition-transform duration-300 group-hover/link:translate-x-1">
@@ -156,10 +157,10 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-cream py-14 sm:py-16">
+      <section className="bg-cream py-12">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <h2 className="font-serif text-3xl text-plum sm:text-4xl">Our Values</h2>
-          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {VALUES.map((v) => (
               <div key={v.title} className="rounded-2xl bg-white p-6">
                 <h3 className="font-serif text-lg text-plum">{v.title}</h3>
@@ -170,14 +171,14 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-white py-14 sm:py-16">
+      <section className="bg-white py-12">
         <div className="mx-auto max-w-3xl px-6 text-center lg:px-10">
           <h2 className="font-serif text-3xl text-plum sm:text-4xl">How to Participate</h2>
           <p className="mt-4 font-sans text-base leading-relaxed text-charcoal-soft">
-            Read and share stories, attend an event, submit an article or testimony, or simply join
-            the Flourish community by subscribing below.
+            Read and share stories, attend the monthly meeting, submit an article or testimony, or
+            simply join the Flourish community by subscribing below.
           </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
               href="/write-for-flourish"
               className="inline-flex items-center rounded-full bg-plum px-8 py-4 font-sans text-sm font-semibold uppercase tracking-[0.08em] text-white transition-colors hover:bg-burgundy"

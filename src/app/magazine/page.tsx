@@ -17,7 +17,7 @@ export default function MagazinePage() {
 
   return (
     <div>
-      <section className="bg-plum py-14 sm:py-16">
+      <section className="bg-plum py-12 sm:py-14">
         <div className="mx-auto max-w-4xl px-6 text-center lg:px-10">
           <p className="font-sans text-xs font-semibold uppercase tracking-[0.24em] text-gold-light">
             The Magazine
@@ -36,9 +36,9 @@ export default function MagazinePage() {
         <section className="bg-cream py-12">
           <div className="mx-auto max-w-7xl px-6 lg:px-10">
             {editorsPicks.length > 0 && (
-              <div className="mb-16">
+              <div className="mb-10">
                 <SectionHeading eyebrow="Editor's Pick" title="Hand-Selected for You" />
-                <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
                   {editorsPicks.map((a) => (
                     <ArticleCard key={a.slug} article={a} />
                   ))}
@@ -48,7 +48,7 @@ export default function MagazinePage() {
             {trending.length > 0 && (
               <div>
                 <SectionHeading eyebrow="Most Read" title="Trending This Week" />
-                <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-3">
+                <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-3">
                   {trending.map((a) => (
                     <ArticleCard key={a.slug} article={a} size="compact" />
                   ))}
@@ -59,10 +59,10 @@ export default function MagazinePage() {
         </section>
       )}
 
-      <section className="bg-white py-12">
+      <section className="bg-white pb-8 pt-12">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <SectionHeading eyebrow="Past Issues Archive" title="Browse Every Issue of Flourish" />
-          <div className="mt-8 flex flex-col gap-3 rounded-2xl border border-charcoal/10 bg-cream p-6 sm:flex-row sm:items-center sm:justify-between">
+          <div className="mt-6 flex flex-col gap-3 rounded-2xl border border-charcoal/10 bg-cream p-6 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <p className="font-sans text-xs font-semibold uppercase tracking-[0.16em] text-burgundy">
                 Spring 2024 · Issue No. 1
@@ -76,10 +76,10 @@ export default function MagazinePage() {
         </div>
       </section>
 
-      <section className="bg-ivory py-14 sm:py-16">
+      <section className="bg-ivory pb-12 pt-10">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <SectionHeading eyebrow="Full Archive" title="Browse All Stories" />
-          <div className="mt-10">
+          <div className="mt-6">
             <MagazineArchive articles={articles} categories={categories} />
           </div>
         </div>

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <div>
-      <section className="bg-plum py-14 sm:py-16">
+      <section className="bg-plum py-12 sm:py-14">
         <div className="mx-auto max-w-3xl px-6 text-center lg:px-10">
           <p className="font-sans text-xs font-semibold uppercase tracking-[0.24em] text-gold-light">
             Get in Touch
@@ -23,7 +23,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="bg-ivory py-14 sm:py-16">
+      <section className="bg-ivory py-12">
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 px-6 lg:grid-cols-5 lg:px-10">
           <aside className="space-y-8 lg:col-span-2">
             <div>

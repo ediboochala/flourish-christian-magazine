@@ -2,7 +2,6 @@ import Link from "next/link";
 import { Article } from "@/lib/types";
 import { getAuthorBySlug } from "@/lib/data/authors";
 import { getCategoryBySlug } from "@/lib/data/categories";
-import { formatDate } from "@/lib/utils";
 import PlaceholderImage from "@/components/ui/PlaceholderImage";
 import Eyebrow from "@/components/ui/Eyebrow";
 
@@ -11,9 +10,9 @@ export default function FeaturedStory({ article }: { article: Article }) {
   const category = getCategoryBySlug(article.categorySlug);
 
   return (
-    <section className="mx-auto max-w-7xl px-6 py-14 lg:px-10 lg:py-20">
+    <section className="mx-auto max-w-7xl px-6 py-12 lg:px-10 lg:py-14">
       <Eyebrow>Editor&apos;s Feature</Eyebrow>
-      <div className="mt-6 grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-12">
+      <div className="mt-6 grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-10">
         <Link
           href={`/article/${article.slug}`}
           className="img-zoom relative order-1 aspect-[4/5] w-full overflow-hidden rounded-2xl lg:order-none"
@@ -44,8 +43,7 @@ export default function FeaturedStory({ article }: { article: Article }) {
               {author && <PlaceholderImage image={author.image} sizes="36px" />}
             </span>
             <span>
-              By <strong className="font-bold tracking-tight text-plum">{author?.name}</strong> ·{" "}
-              {formatDate(article.publishedAt)}
+              By <strong className="font-bold tracking-tight text-plum">{author?.name}</strong>
             </span>
           </div>
           <Link

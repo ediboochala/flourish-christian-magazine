@@ -11,7 +11,6 @@ import ReadingProgress from "@/components/ReadingProgress";
 import { articles, getArticleBySlug, getRelatedArticles } from "@/lib/data/articles";
 import { getAuthorBySlug } from "@/lib/data/authors";
 import { getCategoryBySlug } from "@/lib/data/categories";
-import { formatDate } from "@/lib/utils";
 
 export function generateStaticParams() {
   return articles.map((a) => ({ slug: a.slug }));
@@ -66,7 +65,7 @@ export default async function ArticlePage({
           </div>
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-plum via-plum/80 to-plum/45" />
-        <div className="relative z-[2] mx-auto max-w-3xl px-6 pb-12 pt-24 text-center lg:px-10">
+        <div className="relative z-[2] mx-auto max-w-3xl px-6 pb-10 pt-20 text-center lg:px-10">
           <div className="flex items-center justify-center gap-3">
             {article.isNew && (
               <span className="rounded-full bg-gold px-2.5 py-1 font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-plum">
@@ -95,8 +94,6 @@ export default async function ArticlePage({
             <span>
               By <strong className="font-bold tracking-tight text-white">{author?.name}</strong>
               <span className="mx-2">·</span>
-              {formatDate(article.publishedAt)}
-              <span className="mx-2">·</span>
               {article.readingTimeMinutes} min read
             </span>
           </div>
@@ -104,7 +101,7 @@ export default async function ArticlePage({
       </section>
 
       {/* BODY */}
-      <section className="bg-white py-12 sm:py-14">
+      <section className="bg-white py-12">
         <div className="mx-auto max-w-3xl px-6 lg:px-10">
           <ArticleBody blocks={article.body} />
 
@@ -135,7 +132,7 @@ export default async function ArticlePage({
             </div>
           )}
 
-          <div className="mt-10 flex items-center justify-between border-t border-charcoal/10 pt-8">
+          <div className="mt-8 flex items-center justify-between border-t border-charcoal/10 pt-8">
             {prevArticle ? (
               <Link
                 href={`/article/${prevArticle.slug}`}
@@ -168,10 +165,10 @@ export default async function ArticlePage({
 
       {/* RELATED */}
       {related.length > 0 && (
-        <section className="bg-cream py-12 sm:py-14">
+        <section className="bg-cream py-12">
           <div className="mx-auto max-w-7xl px-6 lg:px-10">
             <h2 className="font-serif text-2xl text-plum sm:text-3xl">You May Also Like</h2>
-            <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {related.map((a) => (
                 <ArticleCard key={a.slug} article={a} />
               ))}
