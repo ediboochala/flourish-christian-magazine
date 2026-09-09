@@ -9,12 +9,19 @@ import { Author } from "@/lib/types";
  * name and bio are supplied — edit the `name` and `bio` fields below
  * when that information is available. Slugs are kept stable so existing
  * article and contributor URLs keep working.
+ *
+ * `editorialTeam: true` marks the Flourish editorial team / editorial
+ * board (the collective byline plus the two contributing pastors). Their
+ * article bylines show as plain text with no link to a profile or the
+ * Editorial Team page, so the platform highlights its wider pool of
+ * women contributors rather than the editorial team.
  */
 export const authors: Author[] = [
   {
     slug: "editorial-team",
     name: "Flourish Editorial Team",
     role: "Editorial",
+    editorialTeam: true,
     bio: "The collective editorial voice of Flourish Christian Magazine, curating stories and resources for the Flourish community.",
     focusAreas: ["Editorial", "Community"],
     image: { alt: "Portrait placeholder for Flourish Editorial Team", tone: "plum" },
@@ -63,6 +70,7 @@ export const authors: Author[] = [
     slug: "tayo-oluwayemiwo",
     name: "Pastor Tayo Oluwayemiwo",
     role: "Guest Contributor",
+    editorialTeam: true,
     bio: "Pastor Tayo Oluwayemiwo ministers in Broward, Florida, teaching on healing, deliverance, and wholeness for women contending for every area of their lives. [Placeholder biography, replace with contributor-provided bio.]",
     focusAreas: ["Health & Wellness", "Faith & Spirituality"],
     image: { alt: "Portrait placeholder for Pastor Tayo Oluwayemiwo", tone: "burgundy" },
@@ -71,6 +79,7 @@ export const authors: Author[] = [
     slug: "suzan-olunuga",
     name: "Pastor Suzan Olunuga",
     role: "Guest Contributor",
+    editorialTeam: true,
     bio: "Pastor Suzan Olunuga ministers in Jacksonville, Florida, with a heart for women pressing through prolonged hardship into breakthrough. [Placeholder biography, replace with contributor-provided bio.]",
     focusAreas: ["Faith & Spirituality", "Inspiration"],
     image: { alt: "Portrait placeholder for Pastor Suzan Olunuga", tone: "plum" },

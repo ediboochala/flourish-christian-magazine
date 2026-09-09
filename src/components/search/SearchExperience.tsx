@@ -89,16 +89,25 @@ export default function SearchExperience() {
             <div>
               <h2 className="font-serif text-xl text-plum">Contributors</h2>
               <ul className="mt-4 space-y-3">
-                {results.team.map((a) => (
-                  <li key={a.slug}>
-                    <Link
-                      href={`/editorial-team/${a.slug}`}
-                      className="font-sans text-sm font-medium text-charcoal hover:text-burgundy"
+                {results.team.map((a) =>
+                  a.editorialTeam ? (
+                    <li
+                      key={a.slug}
+                      className="font-sans text-sm font-medium text-charcoal"
                     >
                       {a.name}
-                    </Link>
-                  </li>
-                ))}
+                    </li>
+                  ) : (
+                    <li key={a.slug}>
+                      <Link
+                        href={`/editorial-team/${a.slug}`}
+                        className="font-sans text-sm font-medium text-charcoal hover:text-burgundy"
+                      >
+                        {a.name}
+                      </Link>
+                    </li>
+                  )
+                )}
               </ul>
             </div>
           )}

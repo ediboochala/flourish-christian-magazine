@@ -121,12 +121,16 @@ export default async function ArticlePage({
                 <p className="font-sans text-xs font-semibold uppercase tracking-[0.1em] text-burgundy">
                   Written By
                 </p>
-                <Link
-                  href={`/editorial-team/${author.slug}`}
-                  className="font-serif text-lg text-plum hover:text-burgundy"
-                >
-                  {author.name}
-                </Link>
+                {author.editorialTeam ? (
+                  <span className="font-serif text-lg text-plum">{author.name}</span>
+                ) : (
+                  <Link
+                    href={`/editorial-team/${author.slug}`}
+                    className="font-serif text-lg text-plum hover:text-burgundy"
+                  >
+                    {author.name}
+                  </Link>
+                )}
                 <p className="mt-1 font-sans text-sm text-charcoal-soft line-clamp-2">{author.bio}</p>
               </div>
             </div>

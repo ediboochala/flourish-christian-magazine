@@ -46,6 +46,11 @@ export interface Author {
   bio: string;
   focusAreas: string[];
   image: MediaImage;
+  /** True for the Flourish editorial team / editorial board. Their
+   *  bylines render as plain text — no link to a profile or the
+   *  Editorial Team page — so the platform foregrounds its wider pool
+   *  of contributors rather than the editorial team. */
+  editorialTeam?: boolean;
 }
 
 /** A member of the Flourish Editorial Board — distinct from `Author`:
