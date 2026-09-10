@@ -8,21 +8,32 @@ const labelClasses = "block font-sans text-xs font-semibold uppercase tracking-[
 
 export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const form = e.currentTarget;
     setStatus("submitting");
-    const formData = new FormData(e.currentTarget);
+    setErrorMessage("");
+    const formData = new FormData(form);
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(Object.fromEntries(formData)),
       });
-      if (!res.ok) throw new Error("Failed");
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        throw new Error(data.error || "Something went wrong.");
+      }
       setStatus("success");
-      e.currentTarget.reset();
-    } catch {
+      form.reset();
+    } catch (err) {
+      setErrorMessage(
+        err instanceof Error && err.message
+          ? err.message
+          : "Something went wrong sending your message. Please try again, or email us directly."
+      );
       setStatus("error");
     }
   }
@@ -32,8 +43,8 @@ export default function ContactForm() {
       <div className="rounded-2xl bg-cream p-10 text-center">
         <h3 className="font-serif text-2xl text-plum">Message Received</h3>
         <p className="mt-3 font-sans text-sm leading-relaxed text-charcoal-soft">
-          Thank you for reaching out. Our team will respond as soon as possible. [Placeholder,
-          connect to a real inbox or CRM before launch.]
+          Thank you for reaching out. Your message is on its way to the Flourish team, and
+          we&apos;ll reply to the email address you gave us as soon as we can.
         </p>
       </div>
     );
@@ -41,6 +52,12 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      {/* Honeypot — hidden from people, catches bots. */}
+      <div aria-hidden="true" className="hidden">
+        <label htmlFor="company">Company</label>
+        <input id="company" name="company" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
+
       <div>
         <label htmlFor="inquiryType" className={labelClasses}>
           Inquiry Type *
@@ -85,9 +102,7 @@ export default function ContactForm() {
       </div>
 
       {status === "error" && (
-        <p className="font-sans text-sm text-burgundy">
-          Something went wrong sending your message. Please try again, or email us directly.
-        </p>
+        <p className="font-sans text-sm text-burgundy">{errorMessage}</p>
       )}
 
       <button
