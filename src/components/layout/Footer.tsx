@@ -9,7 +9,7 @@ import { MEGA_REGION_LEADERSHIP_URL } from "@/lib/links";
 const MAGAZINE_LINKS = [
   { href: "/magazine", label: "Magazine Archive" },
   { href: "/write-for-flourish", label: "Submit an Article" },
-  { href: "/#editorial-board", label: "Editorial Board" },
+  { href: "/about#editorial-board", label: "Editorial Board" },
   { href: "/events", label: "Events" },
 ];
 
@@ -131,7 +131,10 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 rounded-2xl border border-white/10 bg-white/5 p-8 sm:p-10">
+        <div
+          id="subscribe"
+          className="mt-10 scroll-mt-24 rounded-2xl border border-white/10 bg-white/5 p-8 sm:p-10"
+        >
           <div className="flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-center">
             <div>
               <p className="font-serif text-xl text-white">Keep Flourishing.</p>

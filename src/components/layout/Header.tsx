@@ -21,7 +21,7 @@ const NAV: NavItem[] = [
       { href: "/magazine", label: "Magazine Archive", blurb: "Every issue & story" },
       { href: "/write-for-flourish", label: "Submit an Article", blurb: "Share your story" },
       {
-        href: "/#editorial-board",
+        href: "/about#editorial-board",
         label: "Editorial Board",
         blurb: "Pastors & pastors' wives from Florida",
       },

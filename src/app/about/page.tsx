@@ -5,6 +5,7 @@ import PlaceholderImage from "@/components/ui/PlaceholderImage";
 import NewsletterCTA from "@/components/NewsletterCTA";
 import Eyebrow from "@/components/ui/Eyebrow";
 import Reveal from "@/components/ui/Reveal";
+import { editorialBoard } from "@/lib/data/editorialBoard";
 import { MEGA_REGION_LEADERSHIP_URL } from "@/lib/links";
 
 export const metadata: Metadata = {
@@ -157,6 +158,41 @@ export default function AboutPage() {
                 →
               </span>
             </a>
+          </Reveal>
+        </div>
+      </section>
+
+      <section id="editorial-board" className="scroll-mt-24 bg-white pb-12 pt-0">
+        <div className="mx-auto max-w-3xl px-6 lg:px-10">
+          <div className="border-t border-charcoal/10 pt-10" />
+          <Reveal>
+            <Eyebrow>Editorial Board</Eyebrow>
+            <h2 className="text-h2 mt-4 font-serif text-plum">Meet Our Editorial Board</h2>
+            <p className="mt-4 font-sans text-base leading-relaxed text-charcoal-soft">
+              Guiding every issue is our Editorial Board, made up of pastors and pastors&apos;
+              wives from Florida.
+            </p>
+            <ul className="mt-6 grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2">
+              {editorialBoard.map((member) => (
+                <li
+                  key={member.slug}
+                  className="flex items-start gap-3 border-t border-charcoal/10 pt-4"
+                >
+                  <span
+                    className="mt-1.5 h-[5px] w-[5px] flex-shrink-0 rotate-45 bg-gold"
+                    aria-hidden="true"
+                  />
+                  <span>
+                    <span className="block font-sans text-sm font-semibold tracking-tight text-plum">
+                      {member.name}
+                    </span>
+                    <span className="block font-sans text-xs text-charcoal-soft">
+                      {member.location}
+                    </span>
+                  </span>
+                </li>
+              ))}
+            </ul>
           </Reveal>
         </div>
       </section>
