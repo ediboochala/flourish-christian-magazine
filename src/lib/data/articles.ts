@@ -2,7 +2,7 @@ import { Article } from "@/lib/types";
 
 /**
  * EDITORIAL CONTENT
- * The three September 2026 issue pieces at the top of this list are real
+ * The four September 2026 issue pieces at the top of this list are real
  * contributor submissions, ordered by editorial priority (`priority: 1`
  * leads the issue) and flagged `isNew` so they carry a "New" badge and
  * sort ahead of everything else. Everything below them is still
@@ -165,6 +165,54 @@ export const articles: Article[] = [
       "Gratitude in the dark is not denial. It is defiant faith. It is choosing worship in the valley and trusting God until the dawn breaks.",
       "## Prayer Point",
       "My Father, my Father, please empower me to praise You in seasons and out of seasons, in the name of Jesus. Amen.",
+    ],
+  },
+  {
+    slug: "there-is-no-fear-in-love",
+    title: "There Is No Fear in Love",
+    subtitle:
+      "Why genuine love shows up on ordinary days, not only when goodbye feels near.",
+    excerpt:
+      "It is easy to become gentle when we sense that time is running out. But love was never meant to be a performance prompted by fear. A call to steady, unhurried, everyday love.",
+    categorySlug: "marriage-relationships",
+    authorSlug: "winnie-darius",
+    publishedAt: "2026-09-04",
+    readingTimeMinutes: 5,
+    heroImage: {
+      src: "/images/articles/there-is-no-fear-in-love.jpg",
+      alt: "The word LOVE spelled in pale wooden letters on a cream background, a small red heart standing in for the O",
+      tone: "rose",
+      motif: "fern",
+      credit: "Photo via Unsplash",
+    },
+    isNew: true,
+    priority: 4,
+    editorsPick: true,
+    tags: ["new", "love", "relationships", "presence"],
+    body: [
+      "It is often easy to become more attentive when we sense that time is running out.",
+      "When someone is preparing to leave, when a relationship begins to fall apart, or when illness reminds us that life is fragile, we suddenly become more present. We speak more gently, listen more carefully and begin doing the thoughtful things we repeatedly postponed. Moments we once treated casually become precious because we now know they are numbered.",
+      "But why must the fear of losing someone teach us how to value them?",
+      "The Bible tells us that there is no fear in love. Genuine love should not be driven by panic, guilt or the fear of future regret. We should not wait until the clock is running out before becoming gentle with someone. We should not save our presence for the moment when goodbye feels near. Neither should we suddenly begin giving what should have been freely given all along.",
+      "When kindness appears only because someone is leaving, it may look like love, but it can become a performance prompted by fear.",
+      "True love does not need an audience or an emergency. It shows up during ordinary days, when there is no applause and nothing to gain. It calls to ask, \"How are you?\" It listens without being in a hurry. It notices when someone is tired, remembers what matters to them and offers kindness without waiting to be asked.",
+      "Love makes people feel valued even when there is no reason to believe that they will be gone tomorrow. It does not reserve affection for farewell moments, hospital rooms, funerals or failing relationships. Its kindness is not activated only by the threat of loss.",
+      "The way we treat people should not suddenly change because their time with us has become limited.",
+      "Do what is right while there is still time, not because you are afraid of what their absence might feel like, but because they matter today. Speak your words of appreciation now. Offer your support now. Make the telephone call now. Forgive where you can, apologize where you should and create time for those you claim to love.",
+      "> Every moment was precious before you discovered that it was numbered.",
+      "We sometimes behave as though there will always be another opportunity: another weekend to visit, another evening to talk, another birthday to celebrate or another chance to say, \"I appreciate you,\" \"Please forgive me,\" or simply, \"I love you.\"",
+      "Life, however, does not always announce the final opportunity.",
+      "This does not mean that we should live anxiously, constantly fearing that something terrible may happen. Fear has torment, and love was never intended to keep us in emotional bondage. Instead, love teaches us to live intentionally. The uncertainty of tomorrow should inspire us to be faithful today, not fearful, but grateful.",
+      "Perfect love casts out fear because it does not wait for a crisis before expressing itself. It gives without calculating what it will receive in return. It remains present when there is no immediate reward. It chooses patience when frustration would be easier and kindness when indifference would require less effort.",
+      "## Let Your Love Be Steady",
+      "Steady love does not disappear when life becomes busy. It does not become warm only when a person begins withdrawing. It does not neglect someone for years and then become generous when the relationship is almost over. Steady love remains dependable through ordinary routines, difficult seasons and quiet moments that may never be seen or celebrated by anyone else.",
+      "## Let Your Kindness Become Ordinary",
+      "Kindness should not be a rare event reserved for special occasions. It should become part of how we speak, respond and relate to others every day. A gentle answer, a patient conversation, a thoughtful gesture and a willingness to help may appear small, but these are the daily expressions from which meaningful relationships are built.",
+      "## Let Your Presence Be Freely Given",
+      "No one should have to become temporary before earning our attention. People should not have to walk away before we recognize their value. They should not have to become sick before we visit them, grow silent before we listen to them or become exhausted before we offer help.",
+      "The truest way to love someone is not to become better to them when you realize that you are running out of time. It is to have been good to them while you still believed you had all the time in the world.",
+      "Love them now, not because goodbye feels near. Honor them now, not merely because others are watching. Be present now, not because time is running out, but because sincere love is steadfast, intentional and free from fear.",
+      "> There is no fear in love; but perfect love casteth out fear: because fear hath torment. He that feareth is not made perfect in love. (1 John 4:18, KJV)",
     ],
   },
   {

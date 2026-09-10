@@ -84,6 +84,14 @@ export const authors: Author[] = [
     focusAreas: ["Faith & Spirituality", "Inspiration"],
     image: { alt: "Portrait placeholder for Pastor Suzan Olunuga", tone: "plum" },
   },
+  {
+    slug: "winnie-darius",
+    name: "Winnie Darius",
+    role: "Guest Contributor",
+    bio: "Winnie Darius writes from Tampa, Florida on love, presence, and the quiet, everyday faithfulness that relationships are built on. [Placeholder biography, replace with contributor-provided bio.]",
+    focusAreas: ["Marriage & Relationships", "Christian Living"],
+    image: { alt: "Portrait placeholder for Winnie Darius", tone: "rose" },
+  },
 ];
 
 export function getAuthorBySlug(slug: string): Author | undefined {
