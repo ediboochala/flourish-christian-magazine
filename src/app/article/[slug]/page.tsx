@@ -131,7 +131,6 @@ export default async function ArticlePage({
                     {author.name}
                   </Link>
                 )}
-                <p className="mt-1 font-sans text-sm text-charcoal-soft line-clamp-2">{author.bio}</p>
               </div>
             </div>
           )}

@@ -17,7 +17,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const author = getAuthorBySlug(slug);
   if (!author) return {};
-  return { title: author.name, description: author.bio };
+  return { title: author.name, description: author.bio || undefined };
 }
 
 export default async function EditorialTeamProfilePage({
@@ -44,9 +44,11 @@ export default async function EditorialTeamProfilePage({
               {author.role}
             </p>
           )}
-          <p className="mx-auto mt-5 max-w-xl font-sans text-base leading-relaxed text-white/80">
-            {author.bio}
-          </p>
+          {author.bio && (
+            <p className="mx-auto mt-5 max-w-xl font-sans text-base leading-relaxed text-white/80">
+              {author.bio}
+            </p>
+          )}
           <div className="mt-5 flex flex-wrap justify-center gap-2">
             {author.focusAreas.map((area) => (
               <span

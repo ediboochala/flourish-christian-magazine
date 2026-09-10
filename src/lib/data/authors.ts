@@ -2,12 +2,12 @@ import { Author } from "@/lib/types";
 
 /**
  * CONTRIBUTORS
- * The two guest contributors at the end of this list (Pastor Tayo
- * Oluwayemiwo and Pastor Suzan Olunuga) are real September 2026 issue
- * contributors. Every other writer entry was generated with the original
- * scaffold and its byline is set to "Anonymous" until a real contributor
- * name and bio are supplied — edit the `name` and `bio` fields below
- * when that information is available. Slugs are kept stable so existing
+ * Bylines are shown as "Name, Location" — no author bio is displayed on
+ * articles or contributor profiles. Pastor Tayo Oluwayemiwo, Pastor Suzan
+ * Olunuga and Winnie Darius are real September 2026 issue contributors.
+ * The remaining entries came from the original scaffold; the user asked
+ * that any name they did not supply be shown as "Anonymous Contributor,
+ * FL" until real names are provided. Slugs are kept stable so existing
  * article and contributor URLs keep working.
  *
  * `editorialTeam: true` marks the Flourish editorial team / editorial
@@ -22,73 +22,73 @@ export const authors: Author[] = [
     name: "Flourish Editorial Team",
     role: "Editorial",
     editorialTeam: true,
-    bio: "The collective editorial voice of Flourish Christian Magazine, curating stories and resources for the Flourish community.",
+    bio: "",
     focusAreas: ["Editorial", "Community"],
     image: { alt: "Portrait placeholder for Flourish Editorial Team", tone: "plum" },
   },
   {
     slug: "adaeze-okafor",
-    name: "Anonymous",
+    name: "Anonymous Contributor, FL",
     role: "Contributing Writer",
-    bio: "Contributor name and bio to be added. [Placeholder entry, edit with the real contributor's details.]",
+    bio: "",
     focusAreas: ["Faith & Spirituality", "Leadership"],
     image: { alt: "Portrait placeholder for a Flourish contributor", tone: "burgundy" },
   },
   {
     slug: "grace-adeyemi",
-    name: "Anonymous",
+    name: "Anonymous Contributor, FL",
     role: "Contributing Writer",
-    bio: "Contributor name and bio to be added. [Placeholder entry, edit with the real contributor's details.]",
+    bio: "",
     focusAreas: ["Family & Relationships", "Christian Living"],
     image: { alt: "Portrait placeholder for a Flourish contributor", tone: "rose" },
   },
   {
     slug: "temitope-bello",
-    name: "Anonymous",
+    name: "Anonymous Contributor, FL",
     role: "Contributing Writer",
-    bio: "Contributor name and bio to be added. [Placeholder entry, edit with the real contributor's details.]",
+    bio: "",
     focusAreas: ["Health & Wellness", "Personal Growth"],
     image: { alt: "Portrait placeholder for a Flourish contributor", tone: "gold" },
   },
   {
     slug: "joy-eze",
-    name: "Anonymous",
+    name: "Anonymous Contributor, FL",
     role: "Contributing Writer",
-    bio: "Contributor name and bio to be added. [Placeholder entry, edit with the real contributor's details.]",
+    bio: "",
     focusAreas: ["Prayer & Devotion", "Inspiration"],
     image: { alt: "Portrait placeholder for a Flourish contributor", tone: "plum" },
   },
   {
     slug: "chiamaka-nwosu",
-    name: "Anonymous",
+    name: "Anonymous Contributor, FL",
     role: "Contributing Writer",
-    bio: "Contributor name and bio to be added. [Placeholder entry, edit with the real contributor's details.]",
+    bio: "",
     focusAreas: ["Women & Purpose", "Leadership"],
     image: { alt: "Portrait placeholder for a Flourish contributor", tone: "burgundy" },
   },
   {
     slug: "tayo-oluwayemiwo",
-    name: "Pastor Tayo Oluwayemiwo",
+    name: "Pastor Tayo Oluwayemiwo, Broward, FL",
     role: "Guest Contributor",
     editorialTeam: true,
-    bio: "Pastor Tayo Oluwayemiwo ministers in Broward, Florida, teaching on healing, deliverance, and wholeness for women contending for every area of their lives. [Placeholder biography, replace with contributor-provided bio.]",
+    bio: "",
     focusAreas: ["Health & Wellness", "Faith & Spirituality"],
     image: { alt: "Portrait placeholder for Pastor Tayo Oluwayemiwo", tone: "burgundy" },
   },
   {
     slug: "suzan-olunuga",
-    name: "Pastor Suzan Olunuga",
+    name: "Pastor Suzan Olunuga, Jacksonville, FL",
     role: "Guest Contributor",
     editorialTeam: true,
-    bio: "Pastor Suzan Olunuga ministers in Jacksonville, Florida, with a heart for women pressing through prolonged hardship into breakthrough. [Placeholder biography, replace with contributor-provided bio.]",
+    bio: "",
     focusAreas: ["Faith & Spirituality", "Inspiration"],
     image: { alt: "Portrait placeholder for Pastor Suzan Olunuga", tone: "plum" },
   },
   {
     slug: "winnie-darius",
-    name: "Winnie Darius",
+    name: "Winnie Darius, NY",
     role: "Guest Contributor",
-    bio: "Winnie Darius writes from Tampa, Florida on love, presence, and the quiet, everyday faithfulness that relationships are built on. [Placeholder biography, replace with contributor-provided bio.]",
+    bio: "",
     focusAreas: ["Marriage & Relationships", "Christian Living"],
     image: { alt: "Portrait placeholder for Winnie Darius", tone: "rose" },
   },
