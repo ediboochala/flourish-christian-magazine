@@ -136,7 +136,7 @@ export const articles: Article[] = [
     excerpt:
       "Gratitude in the dark is not denial. It is defiant faith. A look at Habakkuk's declaration, and why praise is a weapon against despair.",
     categorySlug: "faith-inspiration",
-    authorSlug: "editorial-team",
+    authorSlug: "suzan-olunuga",
     publishedAt: "2026-09-01",
     readingTimeMinutes: 6,
     heroImage: {
