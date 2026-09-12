@@ -21,8 +21,8 @@ export const editorialBoard: EditorialBoardMember[] = [
     location: "Miami, FL",
   },
   {
-    slug: "adeniyi",
-    name: "Pastor Mrs. Adeniyi",
+    slug: "victoria-adeniyi",
+    name: "Pastor Mrs. Victoria Adeniyi",
     location: "Tallahassee, FL",
   },
   {
