@@ -3,6 +3,7 @@ import Hero from "@/components/home/Hero";
 import ScriptureBanner from "@/components/home/ScriptureBanner";
 import FeaturedStory from "@/components/home/FeaturedStory";
 import ArticleCard from "@/components/ArticleCard";
+import CrusadeBanner from "@/components/events/CrusadeBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
 import { getFeaturedArticle, getLatestArticles } from "@/lib/data/articles";
@@ -18,6 +19,16 @@ export default function Home() {
       <Hero />
 
       <ScriptureBanner />
+
+      {/* CRUSADE — promotional banner for the foundation-wide Great Florida
+          Deliverance Crusade, linking out to Joy FM Tampa. */}
+      <section className="bg-white pb-4 pt-2">
+        <div className="mx-auto max-w-4xl px-6 lg:px-10">
+          <Reveal variant="scale">
+            <CrusadeBanner />
+          </Reveal>
+        </div>
+      </section>
 
       <Reveal>
         <FeaturedStory article={featured} />

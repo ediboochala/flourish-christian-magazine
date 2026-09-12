@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import MonthlyMeetingNotice from "@/components/events/MonthlyMeetingNotice";
+import CrusadeBanner from "@/components/events/CrusadeBanner";
 import NewsletterCTA from "@/components/NewsletterCTA";
 import Reveal from "@/components/ui/Reveal";
 
@@ -33,6 +34,16 @@ export default function EventsPage() {
         <div className="mx-auto max-w-3xl px-6 lg:px-10">
           <Reveal variant="scale">
             <MonthlyMeetingNotice />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* CRUSADE — a foundation-wide dated event, distinct from the standing
+          monthly meeting above. */}
+      <section className="bg-white pb-12">
+        <div className="mx-auto max-w-3xl px-6 lg:px-10">
+          <Reveal variant="scale">
+            <CrusadeBanner />
           </Reveal>
         </div>
       </section>
