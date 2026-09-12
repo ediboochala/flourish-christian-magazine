@@ -3,12 +3,14 @@ import Image from "next/image";
 import Link from "next/link";
 import NewsletterCTA from "@/components/NewsletterCTA";
 import Reveal from "@/components/ui/Reveal";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Get Involved",
   description:
     "M.F.M Women Foundation Florida exists to empower Christian women to walk in faith, purpose, and sisterhood. Join our community or advertise with Flourish.",
-};
+  path: "/get-involved",
+});
 
 const ADVERTISING_EMAIL = "oureditorialboard@gmail.com";
 

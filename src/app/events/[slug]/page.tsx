@@ -6,6 +6,7 @@ import PlaceholderImage from "@/components/ui/PlaceholderImage";
 import ShareButtons from "@/components/ShareButtons";
 import { events, getEventBySlug, getUpcomingEvents } from "@/lib/data/events";
 import { formatDate } from "@/lib/utils";
+import { pageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return events.map((e) => ({ slug: e.slug }));
@@ -19,7 +20,12 @@ export async function generateMetadata({
   const { slug } = await params;
   const event = getEventBySlug(slug);
   if (!event) return {};
-  return { title: event.title, description: event.description };
+  return pageMetadata({
+    title: event.title,
+    description: event.description,
+    path: `/events/${event.slug}`,
+    image: event.image.src ? { url: event.image.src, alt: event.image.alt } : undefined,
+  });
 }
 
 export default async function EventDetailPage({

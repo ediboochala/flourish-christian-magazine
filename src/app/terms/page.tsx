@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Terms of Use",
   description: "Flourish Christian Magazine terms of use.",
-};
+  path: "/terms",
+});
 
 export default function TermsPage() {
   return (

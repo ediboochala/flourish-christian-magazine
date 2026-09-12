@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import ArticleSubmissionForm from "@/components/forms/ArticleSubmissionForm";
 import Reveal from "@/components/ui/Reveal";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Write for Flourish",
   description:
     "Share your story with Flourish Christian Magazine. Submit an article, testimony, or become a regular contributor.",
-};
+  path: "/write-for-flourish",
+});
 
 export default function WriteForFlourishPage() {
   return (

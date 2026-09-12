@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import SearchExperience from "@/components/search/SearchExperience";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Search",
   description: "Search Flourish Christian Magazine: articles, the editorial team, and events.",
-};
+  path: "/search",
+});
 
 export default function SearchPage() {
   return (

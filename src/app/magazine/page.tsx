@@ -5,12 +5,14 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
 import { articles, getEditorsPicks, getTrendingArticles } from "@/lib/data/articles";
 import { categories } from "@/lib/data/categories";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Magazine Archive",
   description:
     "Browse every Flourish Christian Magazine story. Search, filter by category, and discover editor's picks and trending reads.",
-};
+  path: "/magazine",
+});
 
 export default function MagazinePage() {
   const editorsPicks = getEditorsPicks(3);

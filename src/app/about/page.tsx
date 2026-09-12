@@ -7,12 +7,14 @@ import Eyebrow from "@/components/ui/Eyebrow";
 import Reveal from "@/components/ui/Reveal";
 import { editorialBoard } from "@/lib/data/editorialBoard";
 import { MEGA_REGION_LEADERSHIP_URL } from "@/lib/links";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "About Flourish",
   description:
     "Flourish is the online publication of M.F.M Women Foundation Florida. Learn our story, mission, and values.",
-};
+  path: "/about",
+});
 
 const VALUES = [
   {

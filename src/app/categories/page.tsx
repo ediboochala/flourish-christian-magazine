@@ -2,11 +2,14 @@ import type { Metadata } from "next";
 import CategoryCard from "@/components/CategoryCard";
 import Reveal from "@/components/ui/Reveal";
 import { categories } from "@/lib/data/categories";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Categories",
-  description: "Explore Flourish Christian Magazine by category: faith, purpose, family, wellness, leadership, and more.",
-};
+  description:
+    "Explore Flourish Christian Magazine by category: faith, purpose, family, wellness, leadership, and more.",
+  path: "/categories",
+});
 
 export default function CategoriesPage() {
   return (

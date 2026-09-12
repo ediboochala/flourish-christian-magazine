@@ -4,6 +4,7 @@ import PlaceholderImage from "@/components/ui/PlaceholderImage";
 import ArticleCard from "@/components/ArticleCard";
 import { authors, getAuthorBySlug } from "@/lib/data/authors";
 import { getArticlesByAuthor } from "@/lib/data/articles";
+import { pageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return authors.map((a) => ({ slug: a.slug }));
@@ -17,7 +18,11 @@ export async function generateMetadata({
   const { slug } = await params;
   const author = getAuthorBySlug(slug);
   if (!author) return {};
-  return { title: author.name, description: author.bio || undefined };
+  return pageMetadata({
+    title: author.name,
+    description: author.bio || `Read articles by ${author.name} on Flourish Christian Magazine.`,
+    path: `/editorial-team/${author.slug}`,
+  });
 }
 
 export default async function EditorialTeamProfilePage({

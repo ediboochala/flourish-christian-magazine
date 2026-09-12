@@ -5,6 +5,7 @@ import MagazineArchive from "@/components/magazine/MagazineArchive";
 import PlaceholderImage from "@/components/ui/PlaceholderImage";
 import { categories, getCategoryBySlug } from "@/lib/data/categories";
 import { articles, getArticlesByCategory } from "@/lib/data/articles";
+import { pageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return categories.map((c) => ({ slug: c.slug }));
@@ -18,10 +19,14 @@ export async function generateMetadata({
   const { slug } = await params;
   const category = getCategoryBySlug(slug);
   if (!category) return {};
-  return {
+  return pageMetadata({
     title: category.name,
     description: category.description,
-  };
+    path: `/categories/${category.slug}`,
+    image: category.image.src
+      ? { url: category.image.src, alt: category.image.alt }
+      : undefined,
+  });
 }
 
 export default async function CategoryArchivePage({

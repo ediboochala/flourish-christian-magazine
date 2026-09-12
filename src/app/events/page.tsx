@@ -3,12 +3,14 @@ import MonthlyMeetingNotice from "@/components/events/MonthlyMeetingNotice";
 import CrusadeBanner from "@/components/events/CrusadeBanner";
 import NewsletterCTA from "@/components/NewsletterCTA";
 import Reveal from "@/components/ui/Reveal";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Events",
   description:
     "The standing monthly meeting of M.F.M Women Foundation Florida — the one gathering that brings the whole Women Foundation together on Zoom.",
-};
+  path: "/events",
+});
 
 export default function EventsPage() {
   return (

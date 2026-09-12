@@ -2,11 +2,14 @@ import type { Metadata } from "next";
 import { Mail, MapPin } from "lucide-react";
 import ContactForm from "@/components/forms/ContactForm";
 import Reveal from "@/components/ui/Reveal";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Contact",
-  description: "Get in touch with Flourish Christian Magazine: general inquiries, contributor questions, and event inquiries.",
-};
+  description:
+    "Get in touch with Flourish Christian Magazine: general inquiries, contributor questions, and event inquiries.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

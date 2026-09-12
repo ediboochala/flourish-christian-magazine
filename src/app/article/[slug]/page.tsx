@@ -11,6 +11,7 @@ import ReadingProgress from "@/components/ReadingProgress";
 import { articles, getArticleBySlug, getRelatedArticles } from "@/lib/data/articles";
 import { getAuthorBySlug } from "@/lib/data/authors";
 import { getCategoryBySlug } from "@/lib/data/categories";
+import { pageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return articles.map((a) => ({ slug: a.slug }));
@@ -24,16 +25,20 @@ export async function generateMetadata({
   const { slug } = await params;
   const article = getArticleBySlug(slug);
   if (!article) return {};
-  return {
+  const author = getAuthorBySlug(article.authorSlug);
+  const category = getCategoryBySlug(article.categorySlug);
+  return pageMetadata({
     title: article.seo?.metaTitle ?? article.title,
     description: article.seo?.metaDescription ?? article.excerpt,
-    openGraph: {
-      title: article.title,
-      description: article.excerpt,
-      type: "article",
-      publishedTime: article.publishedAt,
-    },
-  };
+    path: `/article/${article.slug}`,
+    type: "article",
+    publishedTime: article.publishedAt,
+    authors: author ? [author.name] : undefined,
+    section: category?.name,
+    image: article.heroImage.src
+      ? { url: article.heroImage.src, alt: article.heroImage.alt }
+      : undefined,
+  });
 }
 
 export default async function ArticlePage({
@@ -135,17 +140,22 @@ export default async function ArticlePage({
             </div>
           )}
 
-          <div className="mt-8 flex items-center justify-between border-t border-charcoal/10 pt-8">
+          {/* min-w-0 on each flex item is required for the title's `truncate`
+              to actually shrink below its text's natural width instead of
+              forcing the row (and the whole page) wider than the viewport
+              on narrow phones — a flex item's default min-width is its
+              content size, not 0. */}
+          <div className="mt-8 flex items-center justify-between gap-4 border-t border-charcoal/10 pt-8">
             {prevArticle ? (
               <Link
                 href={`/article/${prevArticle.slug}`}
-                className="group flex items-center gap-2 font-sans text-sm text-charcoal-soft hover:text-plum"
+                className="group flex min-w-0 flex-1 items-center gap-2 font-sans text-sm text-charcoal-soft hover:text-plum"
               >
                 <ChevronLeft
-                  className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1"
+                  className="h-4 w-4 flex-shrink-0 transition-transform duration-300 group-hover:-translate-x-1"
                   aria-hidden="true"
                 />
-                <span className="max-w-[10rem] truncate sm:max-w-xs">{prevArticle.title}</span>
+                <span className="min-w-0 truncate">{prevArticle.title}</span>
               </Link>
             ) : (
               <span />
@@ -153,11 +163,11 @@ export default async function ArticlePage({
             {nextArticle && (
               <Link
                 href={`/article/${nextArticle.slug}`}
-                className="group flex items-center gap-2 text-right font-sans text-sm text-charcoal-soft hover:text-plum"
+                className="group flex min-w-0 flex-1 items-center justify-end gap-2 text-right font-sans text-sm text-charcoal-soft hover:text-plum"
               >
-                <span className="max-w-[10rem] truncate sm:max-w-xs">{nextArticle.title}</span>
+                <span className="min-w-0 truncate">{nextArticle.title}</span>
                 <ChevronRight
-                  className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                  className="h-4 w-4 flex-shrink-0 transition-transform duration-300 group-hover:translate-x-1"
                   aria-hidden="true"
                 />
               </Link>
