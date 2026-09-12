@@ -6,8 +6,7 @@ export const MEGA_REGION_LEADERSHIP_URL = "https://mfmmegaregion2usa.org/women";
 
 /**
  * External destination for the Great Florida Deliverance Crusade banner —
- * Joy FM Tampa's listen-live page, the station co-presenting the crusade
- * with Mountain of Fire and Miracles Ministries Tampa. Used by the
- * CrusadeBanner component on the homepage and Events page.
+ * the crusade page on Mountain of Fire and Miracles Ministries Tampa's own
+ * site. Used by the CrusadeBanner component on the homepage and Events page.
  */
-export const JOY_FM_LISTEN_LIVE_URL = "https://www.thejoyfm.com/music/listen-live/";
+export const GREAT_FLORIDA_CRUSADE_URL = "https://www.mfmtampaflorida.org/crusade";
