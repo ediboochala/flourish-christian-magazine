@@ -5,7 +5,11 @@ import { Author } from "@/lib/types";
  * Bylines are shown as "Name, Location" — no author bio is displayed on
  * articles or contributor profiles. Pastor Tayo Oluwayemiwo, Pastor Suzan
  * Olunuga, Winnie Darius and Pastor Mrs Aderonke Olajide are real
- * September 2026 issue contributors. The remaining entries came from the
+ * September 2026 issue contributors. `anonymous-contributor-fl` is also a
+ * real September 2026 submission whose author asked to stay unnamed — kept
+ * separate from the five scaffold placeholders below (`adaeze-okafor`,
+ * `grace-adeyemi`, etc.) so filling in a real name for one of those later
+ * doesn't misattribute this submission. The remaining entries came from the
  * original scaffold; the user asked
  * that any name they did not supply be shown as "Anonymous Contributor,
  * FL" until real names are provided. Slugs are kept stable so existing
@@ -101,6 +105,14 @@ export const authors: Author[] = [
     bio: "",
     focusAreas: ["Women & Purpose", "Christian Living"],
     image: { alt: "Portrait placeholder for Pastor Mrs Aderonke Olajide", tone: "gold" },
+  },
+  {
+    slug: "anonymous-contributor-fl",
+    name: "Anonymous Contributor, FL",
+    role: "Guest Contributor",
+    bio: "",
+    focusAreas: ["Family & Relationships", "Christian Living"],
+    image: { alt: "Portrait placeholder for an anonymous Flourish contributor", tone: "charcoal" },
   },
 ];
 

@@ -2,7 +2,7 @@ import { Article } from "@/lib/types";
 
 /**
  * EDITORIAL CONTENT
- * The five September 2026 issue pieces at the top of this list are real
+ * The six September 2026 issue pieces at the top of this list are real
  * contributor submissions, ordered by editorial priority (`priority: 1`
  * leads the issue) and flagged `isNew` so they carry a "New" badge and
  * sort ahead of everything else. Everything below them is still
@@ -321,6 +321,38 @@ export const articles: Article[] = [
       "Lola thought she needed another company to give her a chance.",
       "What she really needed was the courage to give herself one.",
       "> You were never meant to shrink. You were made to flourish.",
+    ],
+  },
+  {
+    slug: "what-happened-at-number-13",
+    title: "What Happened at Number 13?",
+    subtitle: "A neighborhood turns one ambulance and two stretchers into a full-blown mystery.",
+    excerpt:
+      "When an ambulance pulled up to Number 13 one Tuesday evening, the whole street became detectives, certain a quiet, churchgoing family was hiding a scandal. A wry look at how fast assumption travels — and how little evidence it needs.",
+    categorySlug: "the-homefront",
+    authorSlug: "anonymous-contributor-fl",
+    publishedAt: "2026-09-12",
+    readingTimeMinutes: 4,
+    heroImage: {
+      src: "/images/articles/what-happened-at-number-13.jpg",
+      alt: "A brick townhouse's white front door numbered 13, flanked by climbing plants and a paved front path",
+      tone: "burgundy",
+      motif: "olive",
+      credit: "Photo submitted by the author",
+    },
+    isNew: true,
+    priority: 6,
+    tags: ["new", "community", "humor", "family"],
+    body: [
+      "They looked like a normal family. They went to church on Sundays. The children were well behaved. Shola and her husband, David, went to work, took the children to school and kept mostly to themselves. They had no drama. So, when an ambulance screamed into the street one Tuesday evening and stopped outside Number 13, the neighborhood came alive. Blinds opened. Curtains shifted. Front doors cracked.",
+      "Mrs. Obi from Number 9 came outside carrying a rubbish bag she had absolutely no intention of taking anywhere. Mr. Patel began watering the same patch of grass he had watered twenty minutes earlier. Mrs. Akande from Number 7 stepped outside carrying a broom, although nobody had ever seen her sweep outside after 7 p.m. in her life. Everybody wanted to know one thing. What happened at Number 13?",
+      "Then Shola came out. On a stretcher. Motionless. An oxygen mask covered her face. David followed ten minutes later. Also, on a stretcher. That was when the whispers began. \"Both of them?\" \"Maybe there was a fight.\" \"I always thought that man was too quiet.\" \"You see? Those quiet ones…\" Nobody knew anything, but this did not prevent anybody from having a complete theory.",
+      "Then another police car arrived. A woman stepped out and hurried towards the children. \"Social services,\" Mrs. Akande whispered confidently. She had no evidence whatsoever. Within ten minutes, Number 13 had become the most interesting house on the street. Suddenly, Mr. Patel remembered seeing David with a woman last week and suggested another woman was involved. As the children cried, another theory was that the children were on drugs, and this had caused a violent clash between the couple.",
+      "Soon enough, another car pulled up and Mrs. Obi informed the gathered neighbors it must be their lawyer. She walked up to them and introduced herself as David's sister. She explained it was food poisoning from some leftover seafood takeaway.",
+      "The street did not believe a word of it. Mrs. Akande spoke first. \"Food poisoning?\" then folded her arms. \"Both on stretchers?\" \"And police?\" she nodded with a detective smirk on her face. In turn, Mrs. Obi gave the slow nod of a woman who had just been handed evidence of a government cover-up. \"Hmm,\" muttered Mr. Patel. That hmm traveled further than the original explanation.",
+      "That evening the theories multiplied. Maybe there had been a fight, and the family was covering it up. Maybe the \"sister\" was not really David's sister. Maybe Shola had discovered the affair. Maybe somebody had taken something. Maybe the police had told the family not to speak. Maybe Shola was the villain. Maybe…….",
+      "The next afternoon, Shola and David returned home. They looked very tired but were otherwise fine. The \"sister\" was still with them, taking care of the kids. Then, within a few days, life resumed and things went back to normal. David went back to work. Shola resumed the school run. The children played outside again. The bins went out on Thursday evening. The curtains opened every morning. But the neighbors still believed the family had agreed on a story before coming home.",
+      "> What do you think happened at Number 13?",
     ],
   },
   {
