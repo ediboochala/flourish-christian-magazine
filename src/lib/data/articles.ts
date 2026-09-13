@@ -2,7 +2,7 @@ import { Article } from "@/lib/types";
 
 /**
  * EDITORIAL CONTENT
- * The six September 2026 issue pieces at the top of this list are real
+ * The seven September 2026 issue pieces at the top of this list are real
  * contributor submissions, ordered by editorial priority (`priority: 1`
  * leads the issue) and flagged `isNew` so they carry a "New" badge and
  * sort ahead of everything else. Everything below them is still
@@ -353,6 +353,55 @@ export const articles: Article[] = [
       "That evening the theories multiplied. Maybe there had been a fight, and the family was covering it up. Maybe the \"sister\" was not really David's sister. Maybe Shola had discovered the affair. Maybe somebody had taken something. Maybe the police had told the family not to speak. Maybe Shola was the villain. Maybe…….",
       "The next afternoon, Shola and David returned home. They looked very tired but were otherwise fine. The \"sister\" was still with them, taking care of the kids. Then, within a few days, life resumed and things went back to normal. David went back to work. Shola resumed the school run. The children played outside again. The bins went out on Thursday evening. The curtains opened every morning. But the neighbors still believed the family had agreed on a story before coming home.",
       "> What do you think happened at Number 13?",
+    ],
+  },
+  {
+    slug: "things-i-did-before-becoming-a-bride",
+    title: "Things I Did Before Becoming a Bride",
+    subtitle: "Five years into marriage, one woman reflects on the season of becoming that came before the wedding.",
+    excerpt:
+      "Long before the wedding planning began, there was a season of becoming: knowing God for herself, building a life, and learning who she was. A reflection on what actually prepares a woman for marriage.",
+    categorySlug: "marriage-relationships",
+    authorSlug: "anonymous-contributor-tn",
+    publishedAt: "2026-09-13",
+    readingTimeMinutes: 5,
+    heroImage: {
+      src: "/images/articles/things-i-did-before-becoming-a-bride.jpg",
+      alt: "A bride holding a bouquet of white peonies, roses, and pampas grass",
+      tone: "rose",
+      motif: "lily",
+      credit: "Photo submitted by the author",
+    },
+    isNew: true,
+    priority: 7,
+    tags: ["new", "marriage", "singleness", "identity"],
+    body: [
+      "It has been five years since I walked down the aisle, and looking back, I realize that some of the most important things I did before getting married had very little to do with planning a wedding. They had everything to do with becoming the woman I needed to be.",
+      "Getting married in my late thirties as a Christian lady meant I had already experienced a bit of the real world. I earned my first degree, worked for some years, went back for a second degree, and worked some more. Those years became a journey of self-discovery, and along the way, I met several versions of myself.",
+      "## I Understood Myself",
+      "Before marriage, I had time to discover my personality, strengths, weaknesses, values, ambitions, and boundaries. I learned what mattered to me, what I could tolerate, and what I could not. I also learned that self-discovery does not end with marriage. I am still learning about myself today. However, marriage is easier when you do not expect another person to tell you who you are.",
+      "## I Knew God for Myself",
+      "Being raised in a Christian home and having Christian parents does not automatically give you a personal relationship with God. I really found God for myself when I left home. Away from my parents and the familiar Christian routine, I had to decide what I personally believed. I began to pray because I needed God, not simply because prayer was something we did at home.",
+      "My faith became mine.",
+      "That personal relationship with God became one of the most important foundations I carried into marriage. I never wanted my husband to become my spiritual source. I wanted us to walk with God together while individually knowing Him for ourselves.",
+      "## I Didn't Have a \"Spec\"",
+      "Of course, I had preferences, but I tried not to create such a detailed picture of my ideal husband that I would fail to recognize a good man simply because he came in different packaging.",
+      "I became more interested in lasting traits.",
+      "Was he kind? Responsible? God-fearing? Respectful? Teachable? Could he communicate? Did his actions match his words? Those things mattered more to me than height, profession, ethnicity, accent, fashion sense, or other qualities that may look impressive but cannot sustain a marriage. Not having a rigid \"spec,\" however, did not mean having no standards. Faith, character, honesty, respect, and shared values were things I could not compromise on.",
+      "## I Prayed, But I Still Lived My Life",
+      "I prayed about marriage, but marriage was not the subject of every prayer.",
+      "I prayed about my career, purpose, family, spiritual growth, friendships, finances, opportunities, future in-laws, and the kind of woman I wanted to become. I did not want singleness to feel like an empty waiting room before my \"real life\" began. My life was already happening, and I wanted to live it.",
+      "## I Attended Christian Events — Not Just Singles' Programs",
+      "I attended church programs, conferences, worship meetings, and other Christian events, but not simply because they might provide an opportunity to meet a husband.",
+      "I genuinely wanted to grow. When marriage becomes your main focus, every gathering can begin to feel like a matchmaking event. You enter the room wondering, \"Is he here?\" I learned to attend gatherings to worship, learn, serve, connect with people, and become better.",
+      "## I Built a Life",
+      "Before becoming someone's wife, I was already building my own life.",
+      "I studied, worked, developed friendships, learned responsibility, and became financially aware. I learned to enjoy my own company and to be alone without always feeling lonely. I did not want marriage to erase my identity, gifts, ambitions, or contribution to the world. Becoming a wife would add to who I was, not replace who I was.",
+      "## I Observed, Asked Questions and Worked on Myself",
+      "I watched the marriages around me — not only the glamorous ones. I noticed how couples communicated, handled disagreements, managed money, supported one another, and dealt with difficult seasons. I also asked married people questions and learned from their experiences.",
+      "Most importantly, I worked on myself. It was easy to pray for a good husband, but I also had to ask myself, \"Am I becoming a good wife?\" Could I apologize? Forgive? Communicate? Compromise? Receive correction? Remain kind when upset? Five years later, I am grateful that before becoming a bride, I spent time becoming myself. I knew God. I lived. I worked. I learned. I made mistakes. I grew.",
+      "Nothing completely prepares you for marriage, because marriage itself will teach you things you could never learn beforehand.",
+      "> But marriage did not begin my story. It simply added a beautiful new chapter to a life that had already begun.",
     ],
   },
   {
