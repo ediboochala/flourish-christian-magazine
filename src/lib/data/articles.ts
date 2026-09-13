@@ -2,7 +2,7 @@ import { Article } from "@/lib/types";
 
 /**
  * EDITORIAL CONTENT
- * The seven September 2026 issue pieces at the top of this list are real
+ * The eight September 2026 issue pieces at the top of this list are real
  * contributor submissions, ordered by editorial priority (`priority: 1`
  * leads the issue) and flagged `isNew` so they carry a "New" badge and
  * sort ahead of everything else. Everything below them is still
@@ -402,6 +402,62 @@ export const articles: Article[] = [
       "Most importantly, I worked on myself. It was easy to pray for a good husband, but I also had to ask myself, \"Am I becoming a good wife?\" Could I apologize? Forgive? Communicate? Compromise? Receive correction? Remain kind when upset? Five years later, I am grateful that before becoming a bride, I spent time becoming myself. I knew God. I lived. I worked. I learned. I made mistakes. I grew.",
       "Nothing completely prepares you for marriage, because marriage itself will teach you things you could never learn beforehand.",
       "> But marriage did not begin my story. It simply added a beautiful new chapter to a life that had already begun.",
+    ],
+  },
+  {
+    slug: "closer-to-god-how-do-i-study-my-bible",
+    title: "Closer to God: How Do I Study My Bible?",
+    subtitle: "A simple, practical guide to making Bible study less complicated and more personal.",
+    excerpt:
+      "You are not trying to finish a book, you are getting to know God. A practical, unhurried guide to choosing a translation, picking a focus, and turning scripture into a daily conversation with Him.",
+    categorySlug: "faith-inspiration",
+    authorSlug: "aderonke-olajide",
+    publishedAt: "2026-09-13",
+    readingTimeMinutes: 4,
+    heroImage: {
+      src: "/images/articles/closer-to-god-how-do-i-study-my-bible.jpg",
+      alt: "A person turning the pages of a tabbed study Bible beside an open notebook and laptop on a wooden desk",
+      tone: "gold",
+      motif: "wheat",
+      credit: "Photo submitted by the author",
+    },
+    isNew: true,
+    priority: 8,
+    tags: ["new", "bible study", "prayer", "spiritual growth"],
+    body: [
+      "Here is a simple, practical guide for making Bible study less complicated and more personal.",
+      "Remember, you are not trying to finish a book, you are getting to know God. So don't put yourself under pressure by reading ten chapters a day. Start small, take your time, and enjoy the process. It's a time of learning, reflection, discovery, growing closer to God, and learning more about yourself.",
+      "The goal is simple: to know God better.",
+      "## Choose a Translation You Understand",
+      "Start by choosing a Bible translation you understand. There is no spiritual award for reading a version that leaves you confused after every sentence. If you spend more time trying to decode the English than understanding the message, please find something clearer.",
+      "## Decide Where to Start",
+      "Next, decide where you want to start. You can begin in the Old or New Testament. For a closer walk with Jesus Christ, the New Testament is a great place to begin, it shows His personality and ministry. With the New Testament, you will discover that the Bible is not as far removed from everyday life as people sometimes think. The Old Testament, however, shows the events and power of God before the coming of Jesus Christ. While it is not merely a record of past events, it primarily points to the world's need for a Savior.",
+      "## Pick a Focus for This Season",
+      "Another easy approach is to ask yourself: what do I want to learn in this season of my life? Maybe it's prayer, faith, money, marriage, parenting, wisdom, purpose, fear, forgiveness, the Holy Spirit, just pick one topic and study it. Bible study is about how much of the Word enters you and changes you.",
+      "You can also study the Bible through the life of a particular person. The Bible has so many personalities whose experiences mirror today's reality, Joseph, David, Paul, Moses, Abraham, Naomi, and so much more.",
+      "You can also study a particular event. This can be a Bible adventure for you, the creation story, the Exodus, the kings of Israel, Bible wars, the birth of Jesus Christ, the early church. The list is endless. Choose one event and follow it properly.",
+      "## Slow Down and Ask Questions",
+      "Please don't rush. Some of us read the Bible as if someone is chasing us, ten chapters completed, but what did you learn? Pick a Bible character and follow their journey. Ask yourself what they did well, where they went wrong, and what lessons you can apply to your own life.",
+      "Don't forget to take notes while studying. Remember to pause, think reflectively, ask questions, and write down scriptures that stand out. This is when the Bible becomes a personal experience.",
+      "What is God showing me here?",
+      "Is there something I need to change?",
+      "Is there something I need to stop doing?",
+      "Is there something I need to start doing?",
+      "Which scriptures stand out?",
+      "## Pray Before and After",
+      "Before you begin your Bible study, always say a prayer of thanksgiving. It is a great privilege to study the inspiration of the Holy Spirit, ask Him for understanding, ask Him to speak to you, to give you a word in due season, to help you fully digest the bread of life.",
+      "> For no prophecy was ever produced by the will of man, but men spoke from God as they were carried along by the Holy Spirit. (2 Peter 1:21)",
+      "Finally, at the end of your Bible study, pray with what you have read. If it was about direction, pray about direction. If it was about love, pray about love. If it corrected you, ask for the grace to change.",
+      "## Stay Consistent",
+      "Consistency turns Bible study into a habit. The Word is meant to transform us, encourage us, heal us, and make us more like Christ. It needs constant practice. Don't wait until you have one free hour before you begin, just start. Little by little is the key. Before long, it will become something you look forward to, and it'll stop feeling like a religious duty.",
+      "## Try It This Week",
+      "Choose one book of the Bible.",
+      "Pray before study.",
+      "Read one chapter a day.",
+      "Keep a journal for reflective notes and ask yourself questions.",
+      "Say a prayer after your study.",
+      "Come back the next day and repeat the process.",
+      "> Start small. Stay consistent. Let the Word work in you.",
     ],
   },
   {
