@@ -37,7 +37,6 @@ export const articles: Article[] = [
     },
     isNew: true,
     priority: 1,
-    featured: true,
     editorsPick: true,
     tags: ["new", "healing", "wholeness", "faith"],
     body: [
@@ -524,7 +523,6 @@ export const articles: Article[] = [
       motif: "vine",
       credit: "Photo via Unsplash",
     },
-    featured: false,
     trending: true,
     tags: ["purpose", "identity"],
     body: [
@@ -568,7 +566,6 @@ export const articles: Article[] = [
       motif: "fern",
       credit: "Photo via Unsplash",
     },
-    featured: false,
     editorsPick: true,
     tags: ["motherhood", "family", "discipleship"],
     body: [
@@ -610,7 +607,6 @@ export const articles: Article[] = [
       motif: "lily",
       credit: "Photo via Unsplash",
     },
-    featured: false,
     tags: ["wellness", "rest", "sabbath"],
     body: [
       "Many women wear exhaustion as evidence of devotion: to family, to ministry, to work. We have somehow absorbed the idea that the tired woman is the faithful one, and that rest must be earned by first emptying every list. But the God who created us also modeled rest, and commanded it, long before burnout was a modern vocabulary word.",
@@ -846,8 +842,26 @@ export function getArticlesByAuthor(authorSlug: string): Article[] {
   return articles.filter((a) => a.authorSlug === authorSlug);
 }
 
+/** How often the homepage "Editor's Feature" rotates to the next
+ *  `editorsPick` story. The home page's `revalidate` export must be at
+ *  least this frequent, or visitors won't actually see the new pick. */
+const FEATURE_ROTATION_HOURS = 6;
+
+/**
+ * The article shown as the homepage "Editor's Feature". Rotates through
+ * every `editorsPick`-flagged story in a fixed round-robin, switching
+ * to the next one every `FEATURE_ROTATION_HOURS` hours, so the spot
+ * doesn't stay pinned to a single story indefinitely. The choice is
+ * derived purely from the current time (no stored state), so it's
+ * consistent across serverless instances and visitors within the same
+ * window.
+ */
 export function getFeaturedArticle(): Article {
-  return articles.find((a) => a.featured) ?? articles[0];
+  const pool = articles.filter((a) => a.editorsPick);
+  if (pool.length === 0) return articles[0];
+  const windowMs = FEATURE_ROTATION_HOURS * 60 * 60 * 1000;
+  const index = Math.floor(Date.now() / windowMs) % pool.length;
+  return pool[index];
 }
 
 /**

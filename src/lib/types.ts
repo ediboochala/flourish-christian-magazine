@@ -72,7 +72,9 @@ export interface Article {
   publishedAt: string; // ISO date
   readingTimeMinutes: number;
   heroImage: MediaImage;
-  featured?: boolean;
+  /** Eligible for the homepage "Editor's Feature" (rotates through this
+   *  pool, see `getFeaturedArticle`) and the magazine archive's "Editor's
+   *  Picks" list. */
   editorsPick?: boolean;
   trending?: boolean;
   /** Marks a newly published story. Adds a "New" badge on cards and floats

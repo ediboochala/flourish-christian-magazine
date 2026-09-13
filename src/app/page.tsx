@@ -7,6 +7,11 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
 import { getFeaturedArticle, getLatestArticles } from "@/lib/data/articles";
 
+// Regenerates the static homepage every 6 hours so the rotating
+// "Editor's Feature" (see `getFeaturedArticle`) actually reaches
+// visitors on schedule, instead of staying frozen at build time.
+export const revalidate = 21600;
+
 export default function Home() {
   const featured = getFeaturedArticle();
   // Pull one extra so the grid still shows a full six after the featured
