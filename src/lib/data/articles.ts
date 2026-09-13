@@ -804,10 +804,9 @@ export const articles: Article[] = [
     readingTimeMinutes: 3,
     heroImage: {
       src: "/images/articles/you-are-not-behind-a-word-for-the-comparing-heart.jpg",
-      alt: "Lavender catching warm low sunlight, hills fading behind",
-      tone: "gold",
+      alt: "A yellow stethoscope beside a small red heart shape on a soft pink background",
+      tone: "rose",
       motif: "wheat",
-      credit: "Photo via Unsplash",
     },
     trending: true,
     tags: ["encouragement"],
