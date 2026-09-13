@@ -36,7 +36,11 @@ export default function Hero() {
     <section className="grain-overlay relative overflow-hidden bg-plum">
       {/* Cover photograph — the woman sits to the right of the frame, so
           the crop is held toward her while a plum wash keeps the left
-          side dark enough to carry the headline. */}
+          side dark enough to carry the headline. On mobile the section
+          becomes portrait-shaped, so object-cover only shows a narrow
+          vertical slice of this landscape photo — 84% keeps her face
+          centered in that slice instead of cropping it out (the 70% that
+          sat here previously showed almost nothing but her headwrap). */}
       <div className="absolute inset-0">
         <div className="animate-kenburns absolute inset-0">
           <Image
@@ -45,7 +49,7 @@ export default function Hero() {
             fill
             priority
             sizes="100vw"
-            className="object-cover object-[70%_32%] sm:object-[75%_center] lg:object-[78%_center]"
+            className="object-cover object-[84%_center] sm:object-[75%_center] lg:object-[78%_center]"
           />
         </div>
         <div
