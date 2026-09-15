@@ -2,7 +2,7 @@ import { Article } from "@/lib/types";
 
 /**
  * EDITORIAL CONTENT
- * The nine September 2026 issue pieces at the top of this list are real
+ * The ten September 2026 issue pieces at the top of this list are real
  * contributor submissions, ordered by editorial priority (`priority: 1`
  * leads the issue) and flagged `isNew` so they carry a "New" badge and
  * sort ahead of everything else. Everything below them is still

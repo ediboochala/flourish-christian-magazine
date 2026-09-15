@@ -123,6 +123,14 @@ export const authors: Author[] = [
     focusAreas: ["Marriage & Relationships", "Christian Living"],
     image: { alt: "Portrait placeholder for an anonymous Flourish contributor", tone: "burgundy" },
   },
+  {
+    slug: "justina-oluwaseun",
+    name: "Justina Oluwaseun, Winnipeg, CN",
+    role: "Guest Contributor",
+    bio: "",
+    focusAreas: ["Christian Living", "Personal Growth"],
+    image: { alt: "Portrait placeholder for Justina Oluwaseun", tone: "gold" },
+  },
 ];
 
 export function getAuthorBySlug(slug: string): Author | undefined {
