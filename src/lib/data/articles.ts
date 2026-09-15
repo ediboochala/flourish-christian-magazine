@@ -2,7 +2,7 @@ import { Article } from "@/lib/types";
 
 /**
  * EDITORIAL CONTENT
- * The eight September 2026 issue pieces at the top of this list are real
+ * The nine September 2026 issue pieces at the top of this list are real
  * contributor submissions, ordered by editorial priority (`priority: 1`
  * leads the issue) and flagged `isNew` so they carry a "New" badge and
  * sort ahead of everything else. Everything below them is still
@@ -457,6 +457,74 @@ export const articles: Article[] = [
       "Say a prayer after your study.",
       "Come back the next day and repeat the process.",
       "> Start small. Stay consistent. Let the Word work in you.",
+    ],
+  },
+  {
+    slug: "the-extended-family-whatsapp-group-premium-wahala-headquarters",
+    title: "The Extended Family WhatsApp Group: Premium Wahala Headquarters",
+    subtitle: "Good mornings, voice notes, and a lecture on family ethics — a wry tour of the group chat that never sleeps.",
+    excerpt:
+      "Forty-seven relatives, one 4 a.m. good-morning graphic, and a nine-minute-forty-six-second voice note just to say she won't be coming. A comic tour of the extended-family WhatsApp group and the wahala it quietly generates.",
+    categorySlug: "the-homefront",
+    authorSlug: "anonymous-contributor-fl",
+    publishedAt: "2026-09-16",
+    readingTimeMinutes: 5,
+    heroImage: {
+      src: "/images/articles/the-extended-family-whatsapp-group-premium-wahala-headquarters.jpg",
+      alt: "An iPhone on a desk stand showing a home screen full of messaging and social apps, beside a small plant and a camera lens",
+      tone: "charcoal",
+      motif: "fern",
+      credit: "Photo via Pexels",
+    },
+    isNew: true,
+    priority: 9,
+    tags: ["new", "humor", "family", "community"],
+    body: [
+      "Once upon a time, extended families had meetings. I mean physical meetings where people travelled from different destinations and met at an agreed venue which is usually a family member's house. They were always dramatic, but we attended anyway! These days, all that has moved to WhatsApp. The family compound has become a green app. The village square is now a group chat. Yet somewhere between \"Good morning family\" and \"Who said that about me?\" the extended family WhatsApp group has quietly become Premium Wahala Headquarters.",
+      "The \"Badmus One Love Extended Family\" WhatsApp group began innocently. Uncle Debo decided the family must be very united and keep in touch after grandpa's funeral. He immediately created the group and before we knew it, forty-seven relatives over three generations were added.",
+      "Initially, pictures were shared, warm greetings were exchanged until Aunty Tola decided that 4 a.m. was okay for everyone to wake up to her messages. Before some people have even opened their eyes, she has already posted a giant \"GOOD MORNING FAMILY\" graphic containing roses, sunrise, two doves, a Bible, a waterfall, a cup of coffee, and enough glitter to illuminate the eyes. Then the replies came in: \"Amen.\" \"Amen ma.\" \"Good morning everyone.\" \"Same to you.\" \"Powerful.\" \"I receive it.\"",
+      "By 5 a.m., you have 42 unread messages. Absolutely nothing has happened, just Aunty Tola saying good morning. As if that was not enough, Uncle Ebeneezer discovered messages could be forwarded and he became the family broadcaster. He shared everything from political rumors, prophecies, herbal remedies, to anything and everything. Between him and Aunty Tola, they kept the rhythm going.",
+      "Then there is the family intelligence department, run by Mrs. Carew — nobody remembers how she was related to the family, but she was there anyway. Her posts were random and inquisitive: \"Has anybody heard from Bisi?\" Someone saved as Aunty Canada replied, \"Why are you asking?\" Immediately Uncle Debo lectured the group on the importance of the extended family and proceeded to add about 20 more family members to the group. Then someone responded that Bisi had travelled — his number was not saved so we really don't know who he is, but he had the information. Suddenly, Bisi typed, \"I am fine.\" So, she was there all along silently reading all the messages. Quickly Mrs. Carew assured her she was only concerned and showing family love.",
+      "That phrase — family love — became very useful in the group. It covered concern, questioning, probing, investigating, and sometimes outright monitoring. Then the group went quiet for about 30 minutes until another person, saved as Cousin Tolu, announced there would be a family meeting the following month, stating the time and venue. Swiftly, Uncle Debo adjusted the settings to \"only admins can send messages\" and proceeded to lecture Cousin Tolu on family ethics and protocol, the importance of respecting the chain of command, and how flouting the rules could result in temporary blocking. After some moments of peace and quiet, he adjusted the settings again. Then Aunty Germany posted a voice note: nine minutes, forty-six seconds.",
+      "Nobody wanted to play it. But everybody did. For the first three minutes, she greeted the family. For the next two, she explained that family unity was important. At minute six, she started crying. At minute eight, she said, \"Anyway, what I really wanted to say is that I won't be available for the meeting.\" Nine minutes and forty-six seconds. To say she would not attend!",
+      "The family prayer warrior, Aunty Banke, filled the group with emojis and prayer. \"Every power assigned to scatter this family, die by fire! Every spirit of division, be destroyed! Every household enemy—\" which were immediately followed by more emojis and about 50 \"Amen!\"",
+      "By this time, I was exhausted but decided not to type what was on my mind since I still wanted to remain in the extended family. Bisi, however, muted the group for one year. She had clearly had enough.",
+      "Just as we were all going to heave a sigh of relief and get on with our day, Uncle Debo posted: \"Since we are meeting at Uncle Dayo's for the family meeting next month, what are we doing about food and drink?\" Then they all jumped in with different suggestions, complaints, and arguments. Different suggestions and cost analysis were sent through. Cousin Tolu eventually broke the table when he replied, \"Why should we waste money when there are women in the family?\" For a brief moment there was silence. Then the women entered the chat.",
+      "That statement alone generated enough messages for another meeting.",
+      "> I thought about Bisi. Let's just say she was no longer alone.",
+    ],
+  },
+  {
+    slug: "dont-leave-the-coach-behind",
+    title: "Don't Leave the Coach Behind",
+    subtitle: "A ruined dress, a forgotten zip allowance, and a lesson in letting the Holy Spirit drive.",
+    excerpt:
+      "A sewing mistake made in too much of a hurry becomes a picture of what happens when we rush ahead of God. The problem was never that our Coach was absent — it was that we refused to let Him drive.",
+    categorySlug: "faith-inspiration",
+    authorSlug: "justina-oluwaseun",
+    publishedAt: "2026-09-16",
+    readingTimeMinutes: 3,
+    heroImage: {
+      src: "/images/articles/dont-leave-the-coach-behind.jpg",
+      alt: "A coach in a hoodie and whistle reviewing notes on a clipboard while two athletes look on",
+      tone: "charcoal",
+      motif: "vine",
+      credit: "Photo submitted by the author",
+    },
+    isNew: true,
+    priority: 10,
+    tags: ["new", "holy spirit", "obedience", "guidance"],
+    body: [
+      "Years ago, while I was learning how to sew, I decided to make a surprise dress for my little sister. I was excited and eager to get the job done. In my enthusiasm, I didn't wait for my instructor to properly guide me through the process. Fiam! Before anyone could stop me, I had already cut the fabric, or perhaps sliced it would be a better description.",
+      "Basking in the euphoria of what I thought was a major accomplishment, I proudly presented the neatly cut pieces to my instructor. She looked at them and asked a simple question: \"Where is the zip allowance?\" My heart sank. In my haste, I had forgotten to leave extra fabric for the zipper.",
+      "The dress could not be assembled the way it was intended. Everyone had a good laugh that day. But I cried. I cried because what I thought would be a proud achievement became a laughable mistake. Looking back, I realized that if I had waited just a few more minutes for my instructor's guidance, I could have avoided the error altogether.",
+      "Pause and think about that. How often do we do the same thing in our spiritual lives? We rush ahead making decisions, mapping out our future, and taking charge of our plans without consulting our divine Coach, the Holy Spirit. Confident in our own abilities, we take the wheel and leave Him in the back seat. Then come the wrong turns, disappointments, frustrations, and regrets. Only afterward do we discover where we went wrong.",
+      "> The problem was never that our Driver was absent. The problem was that we refused to let Him drive.",
+      "But my sewing story didn't end with tears. After everyone had finished laughing, my instructor examined my mistake and showed me how to work around it. Together, we transformed what looked like a ruined project into a beautiful design I had never imagined. To my surprise, the finished dress turned out even better than the one I originally envisioned. What I considered a disaster became a masterpiece.",
+      "And isn't that just like God? When we recognize our mistakes, repent, and invite Him back into our decisions, He takes the very mess we are ashamed of and transforms it into a testimony of His grace.",
+      "He specializes in turning broken pieces into beautiful creations. The fragments of what we thought were ruined can become something fit for a King. What an amazing God we serve!",
+      "So yes, it is wiser to seek God's direction from the beginning and spare ourselves the pain of unnecessary detours. But even when we have wandered off course, His mercy still welcomes us back. And when we return to the Master's feet and humbly pray, \"Lord, I missed it. Would You please fix me?\" He doesn't turn us away.",
+      "> Instead, He lovingly takes what is broken and creates something more beautiful than we ever imagined.",
     ],
   },
   {
