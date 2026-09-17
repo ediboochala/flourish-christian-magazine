@@ -506,10 +506,9 @@ export const articles: Article[] = [
     readingTimeMinutes: 3,
     heroImage: {
       src: "/images/articles/dont-leave-the-coach-behind.jpg",
-      alt: "A coach in a hoodie and whistle reviewing notes on a clipboard while two athletes look on",
+      alt: "A coach in a black hoodie with a whistle around his neck standing on a gym court",
       tone: "charcoal",
       motif: "vine",
-      credit: "Photo submitted by the author",
     },
     isNew: true,
     priority: 10,
