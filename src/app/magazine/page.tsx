@@ -14,6 +14,11 @@ export const metadata: Metadata = pageMetadata({
   path: "/magazine",
 });
 
+// Regenerates every 3 hours so the rotating "Editor's Pick" and "Trending"
+// rails (see `getEditorsPicks` / `getTrendingArticles`) reach visitors on
+// schedule, instead of staying frozen at build time.
+export const revalidate = 10800;
+
 export default function MagazinePage() {
   const editorsPicks = getEditorsPicks(3);
   const trending = getTrendingArticles(3);

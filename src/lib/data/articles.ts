@@ -962,12 +962,51 @@ export function getIssueArticles(month = "2026-09"): Article[] {
   return articles.filter((a) => a.publishedAt.startsWith(`${month}-`)).sort(byIssuePriority);
 }
 
+/** How often the rotating story rails (homepage "Latest Stories", and the
+ *  magazine page's "Editor's Pick" and "Trending" rails) advance to their
+ *  next slice. Any page reading these must set `revalidate` to at least
+ *  this frequent, or visitors won't see the new slice on schedule. */
+const RAIL_ROTATION_HOURS = 3;
+
+/**
+ * Returns a `limit`-sized, wrap-around slice of `pool`, starting from an
+ * offset that advances every `RAIL_ROTATION_HOURS` hours. Over enough
+ * windows, every item in `pool` gets a turn in the slice instead of the
+ * same leading items always winning. Derived purely from the current time
+ * (no stored state), so it stays consistent across serverless instances
+ * and visitors within the same window.
+ */
+function rotatingSlice<T>(pool: readonly T[], limit: number): T[] {
+  if (pool.length === 0) return [];
+  if (pool.length <= limit) return [...pool];
+  const windowMs = RAIL_ROTATION_HOURS * 60 * 60 * 1000;
+  const offset = Math.floor(Date.now() / windowMs) % pool.length;
+  return Array.from({ length: limit }, (_, i) => pool[(offset + i) % pool.length]);
+}
+
+/**
+ * A rotating `limit`-sized slice of every article (editorial order),
+ * for the homepage "Latest Stories" rail. `excludeSlug` (typically the
+ * current "Editor's Feature") is dropped from the pool first so the
+ * rail never repeats the story already shown above it.
+ */
+export function getRotatingLatestArticles(limit: number, excludeSlug?: string): Article[] {
+  const pool = getLatestArticles().filter((a) => a.slug !== excludeSlug);
+  return rotatingSlice(pool, limit);
+}
+
 export function getTrendingArticles(limit = 4): Article[] {
-  return articles.filter((a) => a.trending).slice(0, limit);
+  return rotatingSlice(
+    articles.filter((a) => a.trending),
+    limit
+  );
 }
 
 export function getEditorsPicks(limit = 4): Article[] {
-  return articles.filter((a) => a.editorsPick).slice(0, limit);
+  return rotatingSlice(
+    articles.filter((a) => a.editorsPick),
+    limit
+  );
 }
 
 export function getRelatedArticles(article: Article, limit = 3): Article[] {

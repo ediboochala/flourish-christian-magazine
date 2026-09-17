@@ -5,18 +5,17 @@ import FeaturedStory from "@/components/home/FeaturedStory";
 import ArticleCard from "@/components/ArticleCard";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
-import { getFeaturedArticle, getLatestArticles } from "@/lib/data/articles";
+import { getFeaturedArticle, getRotatingLatestArticles } from "@/lib/data/articles";
 
-// Regenerates the static homepage every 6 hours so the rotating
-// "Editor's Feature" (see `getFeaturedArticle`) actually reaches
-// visitors on schedule, instead of staying frozen at build time.
-export const revalidate = 21600;
+// Regenerates the static homepage every 3 hours so the rotating
+// "Editor's Feature" (see `getFeaturedArticle`) and "Latest Stories" rail
+// (see `getRotatingLatestArticles`) actually reach visitors on schedule,
+// instead of staying frozen at build time.
+export const revalidate = 10800;
 
 export default function Home() {
   const featured = getFeaturedArticle();
-  // Pull one extra so the grid still shows a full six after the featured
-  // story is filtered out — six keeps the 3-column rows balanced.
-  const latest = getLatestArticles(7).filter((a) => a.slug !== featured.slug);
+  const latest = getRotatingLatestArticles(6, featured.slug);
 
   return (
     <>
@@ -46,7 +45,7 @@ export default function Home() {
             </div>
           </Reveal>
           <div className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {latest.slice(0, 6).map((article, i) => (
+            {latest.map((article, i) => (
               <Reveal key={article.slug} delayMs={i * 80}>
                 <ArticleCard article={article} />
               </Reveal>
