@@ -4,6 +4,7 @@ import { Mail } from "lucide-react";
 import { FacebookIcon, InstagramIcon, YoutubeIcon } from "@/components/ui/BrandIcons";
 import { categories } from "@/lib/data/categories";
 import NewsletterCTA from "@/components/NewsletterCTA";
+import VisitorCounter from "@/components/layout/VisitorCounter";
 import { MEGA_REGION_LEADERSHIP_URL } from "@/lib/links";
 
 const MAGAZINE_LINKS = [
@@ -156,6 +157,10 @@ export default function Footer() {
           <p className="font-serif text-base italic text-white/70">
             Rooted in Christ. Growing together. Flourishing in purpose.
           </p>
+        </div>
+
+        <div className="mt-8 border-t border-white/10 pt-8">
+          <VisitorCounter />
         </div>
 
         <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 font-sans text-xs text-white/40 sm:flex-row">
