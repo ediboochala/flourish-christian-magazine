@@ -14,11 +14,11 @@ export const metadata: Metadata = pageMetadata({
   path: "/magazine",
 });
 
-// Regenerates every 30 minutes so the rotating "Editor's Pick", "Trending",
+// Regenerates every 2 minutes so the rotating "Editor's Pick", "Trending",
 // and full-archive order (see `getEditorsPicks` / `getTrendingArticles` /
 // `getRotatingAllArticles`) reach visitors on schedule, instead of staying
 // frozen at build time.
-export const revalidate = 1800;
+export const revalidate = 120;
 
 export default function MagazinePage() {
   const editorsPicks = getEditorsPicks(3);

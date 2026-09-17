@@ -914,7 +914,7 @@ export function getArticlesByAuthor(authorSlug: string): Article[] {
  *  and full archive) advances to its next pick/slice/order. Every page
  *  reading these must set `revalidate` to at least this frequent, or
  *  visitors won't actually see the new rotation on schedule. */
-const ROTATION_MINUTES = 30;
+const ROTATION_MINUTES = 2;
 
 /**
  * The article shown as the homepage "Editor's Feature". Rotates through
