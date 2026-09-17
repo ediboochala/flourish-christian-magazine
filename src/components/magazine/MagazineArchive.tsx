@@ -44,17 +44,15 @@ export default function MagazineArchive({
       );
     }
 
-    result = [...result].sort((a, b) => {
-      if (sort === "az") return a.title.localeCompare(b.title);
-      const diff = new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
-      if (sort === "oldest") return -diff;
-      // "newest": brand-new issue pieces first, then by editorial priority, then by date
-      if (!!a.isNew !== !!b.isNew) return a.isNew ? -1 : 1;
-      const pa = a.priority ?? Number.POSITIVE_INFINITY;
-      const pb = b.priority ?? Number.POSITIVE_INFINITY;
-      if (pa !== pb) return pa - pb;
-      return diff;
-    });
+    if (sort === "az") {
+      result = [...result].sort((a, b) => a.title.localeCompare(b.title));
+    } else if (sort === "oldest") {
+      result = [...result].sort(
+        (a, b) => new Date(a.publishedAt).getTime() - new Date(b.publishedAt).getTime()
+      );
+    }
+    // "newest" (default): trust the order `articles` arrived in — the
+    // caller hands it in already rotating on a schedule.
 
     return result;
   }, [articles, activeCategory, query, sort]);

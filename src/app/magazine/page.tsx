@@ -3,7 +3,7 @@ import MagazineArchive from "@/components/magazine/MagazineArchive";
 import ArticleCard from "@/components/ArticleCard";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
-import { articles, getEditorsPicks, getTrendingArticles } from "@/lib/data/articles";
+import { getEditorsPicks, getRotatingAllArticles, getTrendingArticles } from "@/lib/data/articles";
 import { categories } from "@/lib/data/categories";
 import { pageMetadata } from "@/lib/seo";
 
@@ -14,14 +14,16 @@ export const metadata: Metadata = pageMetadata({
   path: "/magazine",
 });
 
-// Regenerates every 3 hours so the rotating "Editor's Pick" and "Trending"
-// rails (see `getEditorsPicks` / `getTrendingArticles`) reach visitors on
-// schedule, instead of staying frozen at build time.
-export const revalidate = 10800;
+// Regenerates every 30 minutes so the rotating "Editor's Pick", "Trending",
+// and full-archive order (see `getEditorsPicks` / `getTrendingArticles` /
+// `getRotatingAllArticles`) reach visitors on schedule, instead of staying
+// frozen at build time.
+export const revalidate = 1800;
 
 export default function MagazinePage() {
   const editorsPicks = getEditorsPicks(3);
   const trending = getTrendingArticles(3);
+  const allArticles = getRotatingAllArticles();
 
   return (
     <div>
@@ -93,7 +95,7 @@ export default function MagazinePage() {
           <Reveal className="block">
             <SectionHeading eyebrow="Full Archive" title="Browse All Stories" />
             <div className="mt-6">
-              <MagazineArchive articles={articles} categories={categories} />
+              <MagazineArchive articles={allArticles} categories={categories} />
             </div>
           </Reveal>
         </div>

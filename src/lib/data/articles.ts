@@ -909,24 +909,25 @@ export function getArticlesByAuthor(authorSlug: string): Article[] {
   return articles.filter((a) => a.authorSlug === authorSlug);
 }
 
-/** How often the homepage "Editor's Feature" rotates to the next
- *  `editorsPick` story. The home page's `revalidate` export must be at
- *  least this frequent, or visitors won't actually see the new pick. */
-const FEATURE_ROTATION_HOURS = 6;
+/** How often every rotating spot on the site (homepage "Editor's Feature"
+ *  and "Latest Stories", the magazine page's "Editor's Pick", "Trending",
+ *  and full archive) advances to its next pick/slice/order. Every page
+ *  reading these must set `revalidate` to at least this frequent, or
+ *  visitors won't actually see the new rotation on schedule. */
+const ROTATION_MINUTES = 30;
 
 /**
  * The article shown as the homepage "Editor's Feature". Rotates through
  * every `editorsPick`-flagged story in a fixed round-robin, switching
- * to the next one every `FEATURE_ROTATION_HOURS` hours, so the spot
- * doesn't stay pinned to a single story indefinitely. The choice is
- * derived purely from the current time (no stored state), so it's
- * consistent across serverless instances and visitors within the same
- * window.
+ * to the next one every `ROTATION_MINUTES` minutes, so the spot doesn't
+ * stay pinned to a single story indefinitely. The choice is derived
+ * purely from the current time (no stored state), so it's consistent
+ * across serverless instances and visitors within the same window.
  */
 export function getFeaturedArticle(): Article {
   const pool = articles.filter((a) => a.editorsPick);
   if (pool.length === 0) return articles[0];
-  const windowMs = FEATURE_ROTATION_HOURS * 60 * 60 * 1000;
+  const windowMs = ROTATION_MINUTES * 60 * 1000;
   const index = Math.floor(Date.now() / windowMs) % pool.length;
   return pool[index];
 }
@@ -961,24 +962,19 @@ export function getIssueArticles(month = "2026-09"): Article[] {
   return articles.filter((a) => a.publishedAt.startsWith(`${month}-`)).sort(byIssuePriority);
 }
 
-/** How often the rotating story rails (homepage "Latest Stories", and the
- *  magazine page's "Editor's Pick" and "Trending" rails) advance to their
- *  next slice. Any page reading these must set `revalidate` to at least
- *  this frequent, or visitors won't see the new slice on schedule. */
-const RAIL_ROTATION_HOURS = 3;
-
 /**
  * Returns a `limit`-sized, wrap-around slice of `pool`, starting from an
- * offset that advances every `RAIL_ROTATION_HOURS` hours. Over enough
- * windows, every item in `pool` gets a turn in the slice instead of the
- * same leading items always winning. Derived purely from the current time
- * (no stored state), so it stays consistent across serverless instances
- * and visitors within the same window.
+ * offset that advances every `ROTATION_MINUTES` minutes. When `limit` is
+ * at least as large as `pool`, this rotates the whole pool in place
+ * instead of slicing it down. Over enough windows, every item in `pool`
+ * gets a turn leading instead of the same items always winning. Derived
+ * purely from the current time (no stored state), so it stays consistent
+ * across serverless instances and visitors within the same window.
  */
 function rotatingSlice<T>(pool: readonly T[], limit: number): T[] {
   if (pool.length === 0) return [];
-  if (pool.length <= limit) return [...pool];
-  const windowMs = RAIL_ROTATION_HOURS * 60 * 60 * 1000;
+  if (pool.length < limit) return [...pool];
+  const windowMs = ROTATION_MINUTES * 60 * 1000;
   const offset = Math.floor(Date.now() / windowMs) % pool.length;
   return Array.from({ length: limit }, (_, i) => pool[(offset + i) % pool.length]);
 }
@@ -992,6 +988,18 @@ function rotatingSlice<T>(pool: readonly T[], limit: number): T[] {
 export function getRotatingLatestArticles(limit: number, excludeSlug?: string): Article[] {
   const pool = getLatestArticles().filter((a) => a.slug !== excludeSlug);
   return rotatingSlice(pool, limit);
+}
+
+/**
+ * Every article (editorial order), cyclically rotated every
+ * `ROTATION_MINUTES` minutes, for the magazine page's full archive.
+ * Used as the default "Newest First" order so the archive doesn't show
+ * the same leading stories forever — see `MagazineArchive`'s "newest"
+ * sort, which trusts this incoming order rather than re-deriving one.
+ */
+export function getRotatingAllArticles(): Article[] {
+  const sorted = getLatestArticles();
+  return rotatingSlice(sorted, sorted.length);
 }
 
 export function getTrendingArticles(limit = 4): Article[] {

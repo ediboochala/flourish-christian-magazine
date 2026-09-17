@@ -7,11 +7,11 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
 import { getFeaturedArticle, getRotatingLatestArticles } from "@/lib/data/articles";
 
-// Regenerates the static homepage every 3 hours so the rotating
+// Regenerates the static homepage every 30 minutes so the rotating
 // "Editor's Feature" (see `getFeaturedArticle`) and "Latest Stories" rail
 // (see `getRotatingLatestArticles`) actually reach visitors on schedule,
 // instead of staying frozen at build time.
-export const revalidate = 10800;
+export const revalidate = 1800;
 
 export default function Home() {
   const featured = getFeaturedArticle();
