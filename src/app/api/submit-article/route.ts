@@ -3,35 +3,37 @@ import { Resend } from "resend";
 
 /**
  * Article/testimony submission endpoint — delivers submissions by email
- * via Resend (https://resend.com), the same service and account the
- * contact form uses (see `src/app/api/contact/route.ts`).
+ * via Resend (https://resend.com). Uses its OWN Resend account, separate
+ * from the contact form's (see `src/app/api/contact/route.ts`) — this one
+ * was signed up under writeforflourishmagazine@gmail.com specifically so
+ * submissions land there.
  *
  * Required environment variables (Vercel → Project → Settings →
  * Environment Variables, and `.env.local` for local dev):
  *
- *   RESEND_API_KEY           API key from the Resend dashboard.
- *   SUBMIT_ARTICLE_TO_EMAIL  Where submissions are delivered. Defaults to
- *                            oureditorialboard@gmail.com (see note below —
- *                            NOT writeforflourishmagazine@gmail.com yet).
- *   CONTACT_FROM_EMAIL       The "from" address (shared with the contact
- *                            form). Until the sending domain is verified
- *                            in Resend, this stays Resend's shared test
- *                            sender.
+ *   SUBMIT_ARTICLE_RESEND_API_KEY  API key for the writeforflourishmagazine
+ *                                  Resend account. Falls back to the
+ *                                  shared RESEND_API_KEY if unset.
+ *   SUBMIT_ARTICLE_TO_EMAIL        Where submissions are delivered.
+ *                                  Defaults to writeforflourishmagazine@gmail.com.
+ *   SUBMIT_ARTICLE_FROM_EMAIL      The "from" address. Until this account's
+ *                                  sending domain is verified in Resend,
+ *                                  stays on Resend's shared test sender.
  *
- * IMPORTANT: this Resend account's sending domain isn't verified yet, so
- * it's restricted to Resend's sandbox mode — it can only deliver to the
- * account's own signup address (oureditorialboard@gmail.com), confirmed
- * live: sending to writeforflourishmagazine@gmail.com is rejected with
- * "You can only send testing emails to your own email address." Defaulting
- * here to the address that actually works rather than silently breaking
- * every real submission. Once flourishchristianmagazine.org is verified in
- * Resend (Dashboard → Domains), set SUBMIT_ARTICLE_TO_EMAIL to
- * writeforflourishmagazine@gmail.com to route submissions there instead.
+ * Neither Resend account here has a verified sending domain yet, so each
+ * is sandboxed to only deliver to its own signup address — confirmed live
+ * by testing. That's exactly why this route uses a dedicated key/account
+ * instead of the contact form's: the shared RESEND_API_KEY account is
+ * sandboxed to oureditorialboard@gmail.com and can't reach
+ * writeforflourishmagazine@gmail.com at all. Once a domain is verified on
+ * this account (Resend Dashboard → Domains), sending is no longer
+ * restricted to the signup address.
  */
 
-const TO_EMAIL = process.env.SUBMIT_ARTICLE_TO_EMAIL || "oureditorialboard@gmail.com";
+const TO_EMAIL = process.env.SUBMIT_ARTICLE_TO_EMAIL || "writeforflourishmagazine@gmail.com";
 const FROM_EMAIL =
-  process.env.CONTACT_FROM_EMAIL || "Flourish Article Submissions <onboarding@resend.dev>";
+  process.env.SUBMIT_ARTICLE_FROM_EMAIL || "Flourish Article Submissions <onboarding@resend.dev>";
+const API_KEY = process.env.SUBMIT_ARTICLE_RESEND_API_KEY || process.env.RESEND_API_KEY;
 
 // Resend's request body cap is 40MB; stay comfortably under it since the
 // submission text is also part of the same payload.
@@ -80,9 +82,9 @@ export async function POST(request: Request) {
     }
   }
 
-  if (!process.env.RESEND_API_KEY) {
+  if (!API_KEY) {
     console.error(
-      "[Flourish] Article submissions aren't configured: RESEND_API_KEY is missing. Submission was not delivered:",
+      "[Flourish] Article submissions aren't configured: no Resend API key is set. Submission was not delivered:",
       { fullName, email, articleTitle, category }
     );
     return NextResponse.json(
@@ -91,7 +93,7 @@ export async function POST(request: Request) {
     );
   }
 
-  const resend = new Resend(process.env.RESEND_API_KEY);
+  const resend = new Resend(API_KEY);
 
   try {
     const { error } = await resend.emails.send({
