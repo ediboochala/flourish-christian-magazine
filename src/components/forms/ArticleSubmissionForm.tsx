@@ -9,17 +9,28 @@ const labelClasses = "block font-sans text-xs font-semibold uppercase tracking-[
 
 export default function ArticleSubmissionForm() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const form = e.currentTarget;
     setStatus("submitting");
-    const formData = new FormData(e.currentTarget);
+    setErrorMessage("");
+    const formData = new FormData(form);
     try {
       const res = await fetch("/api/submit-article", { method: "POST", body: formData });
-      if (!res.ok) throw new Error("Submission failed");
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        throw new Error(data.error || "Something went wrong.");
+      }
       setStatus("success");
-      e.currentTarget.reset();
-    } catch {
+      form.reset();
+    } catch (err) {
+      setErrorMessage(
+        err instanceof Error && err.message
+          ? err.message
+          : "Something went wrong submitting your story. Please try again, or email us directly."
+      );
       setStatus("error");
     }
   }
@@ -30,8 +41,7 @@ export default function ArticleSubmissionForm() {
         <h3 className="font-serif text-2xl text-plum">Thank You for Sharing Your Story</h3>
         <p className="mt-3 font-sans text-sm leading-relaxed text-charcoal-soft">
           Your submission has been received. The Flourish editorial team reviews every submission
-          and will be in touch by email. [Placeholder confirmation, connect to a real editorial
-          review workflow before launch.]
+          and will be in touch by email.
         </p>
       </div>
     );
@@ -144,9 +154,7 @@ export default function ArticleSubmissionForm() {
       </label>
 
       {status === "error" && (
-        <p className="font-sans text-sm text-burgundy">
-          Something went wrong submitting your story. Please try again, or email us directly.
-        </p>
+        <p className="font-sans text-sm text-burgundy">{errorMessage}</p>
       )}
 
       <button

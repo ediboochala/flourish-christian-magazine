@@ -61,6 +61,19 @@ export default function WriteForFlourishPage() {
                 with your confirmed editorial workflow and expected response time.]
               </p>
             </div>
+            <div className="mt-6 rounded-2xl border border-plum/15 p-6">
+              <h3 className="font-serif text-lg text-plum">Prefer to Email Directly?</h3>
+              <p className="mt-2 font-sans text-sm leading-relaxed text-charcoal-soft">
+                Send your story straight to{" "}
+                <a
+                  href="mailto:writeforflourishmagazine@gmail.com"
+                  className="font-semibold text-plum underline underline-offset-2 hover:text-burgundy"
+                >
+                  writeforflourishmagazine@gmail.com
+                </a>
+                .
+              </p>
+            </div>
            </Reveal>
           </aside>
 
