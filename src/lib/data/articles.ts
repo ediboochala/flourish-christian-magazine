@@ -914,14 +914,16 @@ export function getArticlesByAuthor(authorSlug: string): Article[] {
  *  advances to its next slice/order. Every page reading these must set
  *  `revalidate` to at least this frequent, or visitors won't actually see
  *  the new rotation on schedule. The homepage "Editor's Feature" runs on
- *  its own faster `FEATURED_ROTATION_MINUTES` below. */
-const ROTATION_MINUTES = 10;
+ *  its own `FEATURED_ROTATION_MINUTES` below (kept as a separate constant
+ *  in case the two ever need to diverge again, even though both are 1
+ *  right now). */
+const ROTATION_MINUTES = 1;
 
 /** How often the homepage "Editor's Feature" advances to the next article.
  *  Kept separate from `ROTATION_MINUTES` — this spot cycles through every
- *  single article (not just `editorsPick`-flagged ones) on its own faster
- *  schedule, one at a time, so every story gets a turn there. */
-const FEATURED_ROTATION_MINUTES = 5;
+ *  single article (not just `editorsPick`-flagged ones) one at a time, so
+ *  every story gets a turn there. */
+const FEATURED_ROTATION_MINUTES = 1;
 
 /**
  * The article shown as the homepage "Editor's Feature". Rotates through
