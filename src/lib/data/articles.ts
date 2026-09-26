@@ -909,25 +909,34 @@ export function getArticlesByAuthor(authorSlug: string): Article[] {
   return articles.filter((a) => a.authorSlug === authorSlug);
 }
 
-/** How often every rotating spot on the site (homepage "Editor's Feature"
- *  and "Latest Stories", the magazine page's "Editor's Pick", "Trending",
- *  and full archive) advances to its next pick/slice/order. Every page
- *  reading these must set `revalidate` to at least this frequent, or
- *  visitors won't actually see the new rotation on schedule. */
+/** How often every rotating spot on the site (homepage "Latest Stories",
+ *  the magazine page's "Editor's Pick", "Trending", and full archive)
+ *  advances to its next slice/order. Every page reading these must set
+ *  `revalidate` to at least this frequent, or visitors won't actually see
+ *  the new rotation on schedule. The homepage "Editor's Feature" runs on
+ *  its own faster `FEATURED_ROTATION_MINUTES` below. */
 const ROTATION_MINUTES = 10;
+
+/** How often the homepage "Editor's Feature" advances to the next article.
+ *  Kept separate from `ROTATION_MINUTES` — this spot cycles through every
+ *  single article (not just `editorsPick`-flagged ones) on its own faster
+ *  schedule, one at a time, so every story gets a turn there. */
+const FEATURED_ROTATION_MINUTES = 5;
 
 /**
  * The article shown as the homepage "Editor's Feature". Rotates through
- * every `editorsPick`-flagged story in a fixed round-robin, switching
- * to the next one every `ROTATION_MINUTES` minutes, so the spot doesn't
- * stay pinned to a single story indefinitely. The choice is derived
- * purely from the current time (no stored state), so it's consistent
- * across serverless instances and visitors within the same window.
+ * every article in a fixed round-robin (editorial order — see
+ * `getLatestArticles`), switching to the next one every
+ * `FEATURED_ROTATION_MINUTES` minutes, so the spot cycles through the
+ * whole magazine, old stories included, instead of staying pinned to a
+ * handful of picks. The choice is derived purely from the current time (no
+ * stored state), so it's consistent across serverless instances and
+ * visitors within the same window.
  */
 export function getFeaturedArticle(): Article {
-  const pool = articles.filter((a) => a.editorsPick);
+  const pool = getLatestArticles();
   if (pool.length === 0) return articles[0];
-  const windowMs = ROTATION_MINUTES * 60 * 1000;
+  const windowMs = FEATURED_ROTATION_MINUTES * 60 * 1000;
   const index = Math.floor(Date.now() / windowMs) % pool.length;
   return pool[index];
 }
