@@ -90,14 +90,12 @@ export default function Hero() {
       </div>
 
       <div className="relative z-[2] mx-auto flex min-h-[72vh] max-w-7xl flex-col px-6 pb-16 pt-10 sm:min-h-[82vh] sm:pt-12 lg:px-10">
-        {/* Issue line */}
-        <div className="animate-fade-in flex items-center justify-between gap-4 font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-gold-light sm:text-xs">
+        {/* Issue line — the "Online publication of M.F.M Women Foundation
+            Florida" line that used to sit here was removed: PublicationBadge
+            (see src/components/layout) now carries that message site-wide
+            instead of just in this one hero. */}
+        <div className="animate-fade-in font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-gold-light sm:text-xs">
           <span>Issue No.&nbsp;1 &nbsp;&bull;&nbsp; A Season of Renewal</span>
-          <span className="hidden text-right leading-tight text-white/60 sm:block">
-            Online publication of
-            <br />
-            M.F.M Women Foundation Florida
-          </span>
         </div>
 
         {/* Masthead */}
