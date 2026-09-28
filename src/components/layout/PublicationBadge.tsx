@@ -2,13 +2,12 @@ import Link from "next/link";
 
 /**
  * A small, persistent "seal" identifying Flourish as the online publication
- * of M.F.M Women Foundation Florida. Fixed to the top-center of the
- * viewport — not inside <Header>, so it never competes with the nav,
- * search, or hamburger button for space — and stays put while scrolling,
- * on every page. Positioned below the header's tallest (unscrolled) height
- * so it's never covered by it.
+ * of M.F.M Women Foundation Florida. Fixed to the right edge, vertically
+ * centered in the viewport — not inside <Header>, so it never competes
+ * with the nav, search, or hamburger button for space — and stays put
+ * while scrolling, on every page.
  *
- * Horizontal centering is `left-1/2` + `-translate-x-1/2` — but since the
+ * Vertical centering is `top-1/2` + `-translate-y-1/2` — but since the
  * infinite float animation (`.publication-badge` in globals.css) sets its
  * own `transform` on every frame, that -50% offset is baked into the
  * keyframes too, or centering would break the instant the animation starts
@@ -31,7 +30,7 @@ export default function PublicationBadge() {
     <Link
       href="/about"
       aria-label="Flourish: an online publication of M.F.M Women Foundation Florida"
-      className="publication-badge fixed left-1/2 top-[126px] z-40 flex w-[98px] -translate-x-1/2 flex-col items-center gap-0.5 rounded-xl border border-white/40 bg-[linear-gradient(150deg,rgba(255,255,255,0.38),rgba(255,255,255,0.1))] px-2 py-1.5 text-center shadow-[0_8px_28px_rgba(67,39,100,0.2)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:border-white/70 hover:shadow-[0_14px_34px_rgba(67,39,100,0.28)] sm:top-32 sm:w-[122px] sm:px-3 sm:py-2.5"
+      className="publication-badge fixed right-3 top-1/2 z-40 flex w-[98px] -translate-y-1/2 flex-col items-center gap-0.5 rounded-xl border border-white/40 bg-[linear-gradient(150deg,rgba(255,255,255,0.38),rgba(255,255,255,0.1))] px-2 py-1.5 text-center shadow-[0_8px_28px_rgba(67,39,100,0.2)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:border-white/70 hover:shadow-[0_14px_34px_rgba(67,39,100,0.28)] sm:right-5 sm:w-[122px] sm:px-3 sm:py-2.5 lg:right-8"
     >
       <svg viewBox="0 0 24 24" className="h-2.5 w-2.5 flex-shrink-0 text-gold-light drop-shadow-[0_1px_2px_rgba(0,0,0,0.25)] sm:h-3 sm:w-3" aria-hidden="true">
         <path
