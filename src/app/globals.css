@@ -219,6 +219,27 @@
   animation: sway 7s ease-in-out infinite;
 }
 
+/* A slow, gentle vertical drift for the persistent publication badge (see
+   PublicationBadge.tsx) — reads as "floating" rather than mechanically
+   bouncing. Combined with `fade-in` (comma-separated, not stacked as a
+   second class) since the CSS `animation` property can't hold two
+   independently-applied shorthand values at once. */
+@keyframes badge-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.publication-badge {
+  animation:
+    fade-in 0.9s ease both,
+    badge-float 4.5s ease-in-out 1s infinite;
+}
+
 /* A diagonal light sweep across a button on hover — reserved for a
    page's single highest-priority call to action. */
 .btn-shine {
@@ -514,6 +535,10 @@ select:focus-visible,
   .aurora-backdrop::before,
   .aurora-backdrop::after {
     animation: none;
+  }
+  .publication-badge {
+    animation: none;
+    opacity: 1;
   }
   .btn-shine::after {
     display: none;
