@@ -91,8 +91,8 @@ export default function Hero() {
 
       <div className="relative z-[2] mx-auto flex min-h-[72vh] max-w-7xl flex-col px-6 pb-16 pt-10 sm:min-h-[82vh] sm:pt-12 lg:px-10">
         {/* Issue line — the "Online publication of M.F.M Women Foundation
-            Florida" line that used to sit here was removed: PublicationBadge
-            (see src/components/layout) now carries that message site-wide
+            Florida" line that used to sit here was removed: the header
+            logo (see Header.tsx) now carries that message site-wide
             instead of just in this one hero. */}
         <div className="animate-fade-in font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-gold-light sm:text-xs">
           <span>Issue No.&nbsp;1 &nbsp;&bull;&nbsp; A Season of Renewal</span>

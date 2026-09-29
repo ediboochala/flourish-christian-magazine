@@ -150,6 +150,12 @@ export default function Header() {
             <span className="font-sans text-[8px] font-semibold uppercase tracking-[0.26em] text-gold">
               Christian Magazine
             </span>
+            {/* Very small, wraps freely rather than sizing the whole logo
+                block to its content — keeps it from ever crowding the
+                hamburger button/search icon on narrow phones. */}
+            <span className="mt-0.5 max-w-[130px] font-serif text-[6.5px] italic leading-tight text-charcoal-soft sm:max-w-[220px] sm:text-[7.5px]">
+              An online publication of M.F.M Women Foundation Florida
+            </span>
           </span>
         </Link>
 

@@ -3,7 +3,6 @@ import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import PublicationBadge from "@/components/layout/PublicationBadge";
 import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/seo";
 
 // Fraunces is a full variable font — loading it without a fixed `weight`
@@ -115,7 +114,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to main content
         </a>
         <Header />
-        <PublicationBadge />
         <main id="main-content">{children}</main>
         <Footer />
       </body>
