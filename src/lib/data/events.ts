@@ -22,7 +22,25 @@ export const monthlyMeeting: MonthlyMeeting = {
  * listed here. If a foundation-wide dated event is ever added, push it
  * into this array and the Events page and homepage will pick it up.
  */
-export const events: FlourishEvent[] = [];
+export const events: FlourishEvent[] = [
+  {
+    slug: "womens-retreat-2026-rekindling-the-altar",
+    title: "Women's Retreat 2026: Rekindling the Altar",
+    category: "Retreats",
+    date: "2026-10-10",
+    time: "9:00 AM – 4:00 PM CT",
+    location: "MFM Banquet Hall, 10000 Kleckley Drive, Houston, TX 77075",
+    description:
+      "Seven hours at the Master's feet. Women of M.F.M Women Foundation Mega Region 2 USA gather for a day of prayer, worship, teaching, fellowship, and transformation, centered on the theme ‘Rekindling the Altar’ (Leviticus 6:12–13). Ministering: Pastor Oluwatoyin Oni (President, Women Foundation Mega Region 2 USA) and Pastor Olumide Oni (PRO, MFM USA Mega Region 2), under the leadership of Dr. Pastor (Mrs.) Folashade Olukoya (International President, MFM Women Foundation) and Dr. D.K. Olukoya (General Overseer, MFM Worldwide). Come, be renewed at His feet.",
+    image: {
+      src: "/images/events/womens-retreat-2026-rekindling-the-altar.jpg",
+      alt: "Women's Retreat 2026 flyer: Rekindling the Altar, hosted by M.F.M Women Foundation Mega Region 2 USA, October 10 2026 at the MFM Banquet Hall in Houston, Texas",
+      tone: "plum",
+    },
+    registrationOpen: true,
+    featured: true,
+  },
+];
 
 export function getEventBySlug(slug: string): FlourishEvent | undefined {
   return events.find((e) => e.slug === slug);

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
 import { Calendar, Clock, MapPin } from "lucide-react";
 import PlaceholderImage from "@/components/ui/PlaceholderImage";
@@ -7,6 +8,12 @@ import ShareButtons from "@/components/ShareButtons";
 import { events, getEventBySlug, getUpcomingEvents } from "@/lib/data/events";
 import { formatDate } from "@/lib/utils";
 import { pageMetadata } from "@/lib/seo";
+
+// General inbox for event inquiries — same address used across Contact
+// and Get Involved (no dedicated registration system exists yet, so
+// "Register Now" opens a pre-addressed, pre-subjected email instead of
+// being a dead button).
+const EVENTS_INQUIRY_EMAIL = "oureditorialboard@gmail.com";
 
 export function generateStaticParams() {
   return events.map((e) => ({ slug: e.slug }));
@@ -61,7 +68,23 @@ export default async function EventDetailPage({
       <section className="bg-white py-12">
         <div className="mx-auto grid max-w-5xl grid-cols-1 gap-10 px-6 lg:grid-cols-3 lg:px-10">
           <div className="lg:col-span-2">
-            <h2 className="font-serif text-2xl text-plum">About This Event</h2>
+            {event.image.src && (
+              <div className="overflow-hidden rounded-2xl shadow-[0_18px_40px_-16px_rgba(58,15,43,0.25)]">
+                {/* The full flyer, shown uncropped and undimmed — the hero
+                    band above uses this same image as a dimmed backdrop for
+                    brand consistency, but a text-dense flyer like this one
+                    needs to be legible at full size somewhere on the page. */}
+                <Image
+                  src={event.image.src}
+                  alt={event.image.alt}
+                  width={1254}
+                  height={1254}
+                  sizes="(min-width: 1024px) 56rem, 100vw"
+                  className="h-auto w-full"
+                />
+              </div>
+            )}
+            <h2 className="mt-8 font-serif text-2xl text-plum">About This Event</h2>
             <p className="mt-4 font-sans text-base leading-relaxed text-charcoal-soft">
               {event.description}
             </p>
@@ -95,15 +118,31 @@ export default async function EventDetailPage({
               </div>
             </dl>
 
-            <button
-              disabled={!event.registrationOpen}
-              className="mt-6 w-full rounded-full bg-plum px-6 py-3.5 font-sans text-xs font-semibold uppercase tracking-[0.1em] text-white transition-colors hover:bg-burgundy disabled:cursor-not-allowed disabled:bg-charcoal/20 disabled:text-charcoal-soft"
+            {event.registrationOpen ? (
+              <a
+                href={`mailto:${EVENTS_INQUIRY_EMAIL}?subject=${encodeURIComponent(
+                  `Registration: ${event.title}`
+                )}`}
+                className="mt-6 block w-full rounded-full bg-plum px-6 py-3.5 text-center font-sans text-xs font-semibold uppercase tracking-[0.1em] text-white transition-colors hover:bg-burgundy"
+              >
+                Register Now
+              </a>
+            ) : (
+              <button
+                disabled
+                className="mt-6 w-full cursor-not-allowed rounded-full bg-charcoal/20 px-6 py-3.5 font-sans text-xs font-semibold uppercase tracking-[0.1em] text-charcoal-soft"
+              >
+                Registration Closed
+              </button>
+            )}
+            <a
+              href={`mailto:${EVENTS_INQUIRY_EMAIL}?subject=${encodeURIComponent(
+                `Question about: ${event.title}`
+              )}`}
+              className="mt-3 block w-full rounded-full border border-plum px-6 py-3.5 text-center font-sans text-xs font-semibold uppercase tracking-[0.1em] text-plum transition-colors hover:bg-plum hover:text-white"
             >
-              {event.registrationOpen ? "Register Now" : "Registration Closed"}
-            </button>
-            <button className="mt-3 w-full rounded-full border border-plum px-6 py-3.5 font-sans text-xs font-semibold uppercase tracking-[0.1em] text-plum transition-colors hover:bg-plum hover:text-white">
-              Add to Calendar
-            </button>
+              Ask a Question
+            </a>
           </div>
         </div>
       </section>
