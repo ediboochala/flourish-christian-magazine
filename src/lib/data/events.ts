@@ -38,6 +38,7 @@ export const events: FlourishEvent[] = [
       tone: "plum",
     },
     registrationOpen: true,
+    registrationUrl: "https://mfmmegaregion2usa.org/events#womens-retreat",
     featured: true,
   },
 ];

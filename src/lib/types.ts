@@ -111,6 +111,8 @@ export interface FlourishEvent {
   description: string;
   image: MediaImage;
   registrationOpen: boolean;
+  /** External registration page; falls back to an email inquiry when unset. */
+  registrationUrl?: string;
   featured?: boolean;
 }
 

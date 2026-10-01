@@ -9,10 +9,9 @@ import { events, getEventBySlug, getUpcomingEvents } from "@/lib/data/events";
 import { formatDate } from "@/lib/utils";
 import { pageMetadata } from "@/lib/seo";
 
-// General inbox for registration inquiries — same address used across
-// Contact and Get Involved (no dedicated registration system exists yet,
-// so "Register Now" opens a pre-addressed, pre-subjected email instead of
-// being a dead button).
+// "Register Now" opens the event's registrationUrl when set; otherwise it
+// falls back to a pre-addressed, pre-subjected email to this general inbox
+// (same address used across Contact and Get Involved).
 const EVENTS_INQUIRY_EMAIL = "oureditorialboard@gmail.com";
 // "Ask a Question" goes to the Write for Flourish inbox instead.
 const EVENTS_QUESTION_EMAIL = "writeforflourishmagazine@gmail.com";
@@ -122,9 +121,13 @@ export default async function EventDetailPage({
 
             {event.registrationOpen ? (
               <a
-                href={`mailto:${EVENTS_INQUIRY_EMAIL}?subject=${encodeURIComponent(
-                  `Registration: ${event.title}`
-                )}`}
+                href={
+                  event.registrationUrl ??
+                  `mailto:${EVENTS_INQUIRY_EMAIL}?subject=${encodeURIComponent(
+                    `Registration: ${event.title}`
+                  )}`
+                }
+                {...(event.registrationUrl && { target: "_blank", rel: "noopener noreferrer" })}
                 className="mt-6 block w-full rounded-full bg-plum px-6 py-3.5 text-center font-sans text-xs font-semibold uppercase tracking-[0.1em] text-white transition-colors hover:bg-burgundy"
               >
                 Register Now
