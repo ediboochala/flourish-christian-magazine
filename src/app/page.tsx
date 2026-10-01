@@ -2,6 +2,7 @@ import Link from "next/link";
 import Hero from "@/components/home/Hero";
 import ScriptureBanner from "@/components/home/ScriptureBanner";
 import FeaturedStory from "@/components/home/FeaturedStory";
+import UpcomingEventBanner from "@/components/home/UpcomingEventBanner";
 import ArticleCard from "@/components/ArticleCard";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
@@ -25,6 +26,10 @@ export default function Home() {
 
       <Reveal>
         <FeaturedStory article={featured} />
+      </Reveal>
+
+      <Reveal variant="scale">
+        <UpcomingEventBanner />
       </Reveal>
 
       {/* LATEST STORIES */}
