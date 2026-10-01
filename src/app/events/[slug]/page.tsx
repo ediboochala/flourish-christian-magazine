@@ -9,11 +9,13 @@ import { events, getEventBySlug, getUpcomingEvents } from "@/lib/data/events";
 import { formatDate } from "@/lib/utils";
 import { pageMetadata } from "@/lib/seo";
 
-// General inbox for event inquiries — same address used across Contact
-// and Get Involved (no dedicated registration system exists yet, so
-// "Register Now" opens a pre-addressed, pre-subjected email instead of
+// General inbox for registration inquiries — same address used across
+// Contact and Get Involved (no dedicated registration system exists yet,
+// so "Register Now" opens a pre-addressed, pre-subjected email instead of
 // being a dead button).
 const EVENTS_INQUIRY_EMAIL = "oureditorialboard@gmail.com";
+// "Ask a Question" goes to the Write for Flourish inbox instead.
+const EVENTS_QUESTION_EMAIL = "writeforflourishmagazine@gmail.com";
 
 export function generateStaticParams() {
   return events.map((e) => ({ slug: e.slug }));
@@ -136,7 +138,7 @@ export default async function EventDetailPage({
               </button>
             )}
             <a
-              href={`mailto:${EVENTS_INQUIRY_EMAIL}?subject=${encodeURIComponent(
+              href={`mailto:${EVENTS_QUESTION_EMAIL}?subject=${encodeURIComponent(
                 `Question about: ${event.title}`
               )}`}
               className="mt-3 block w-full rounded-full border border-plum px-6 py-3.5 text-center font-sans text-xs font-semibold uppercase tracking-[0.1em] text-plum transition-colors hover:bg-plum hover:text-white"
