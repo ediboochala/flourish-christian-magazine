@@ -16,24 +16,6 @@ export const metadata: Metadata = pageMetadata({
   path: "/about",
 });
 
-const GALLERY = [
-  {
-    src: "/images/site/about-aggressive-prayer.jpg",
-    alt: "A man with eyes closed and one hand raised in prayer, women praying behind him",
-    caption: "Aggressive prayer",
-  },
-  {
-    src: "/images/site/about-spirit-filled-worship.jpg",
-    alt: "A woman in a lilac lace dress worshipping with both hands raised and eyes closed",
-    caption: "Spirit-filled worship",
-  },
-  {
-    src: "/images/site/about-one-body.jpg",
-    alt: "The MFM altar dressed with purple, white, and orange flower arrangements",
-    caption: "One body, many members",
-  },
-];
-
 const VALUES = [
   {
     title: "Faith",
@@ -149,32 +131,6 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
-          </Reveal>
-        </div>
-      </section>
-
-      <section className="bg-white pb-12 pt-0">
-        <div className="mx-auto max-w-6xl px-6 lg:px-10">
-          <Reveal>
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-              {GALLERY.map((photo) => (
-                <figure key={photo.src}>
-                  <div className="overflow-hidden rounded-2xl shadow-[0_18px_40px_-16px_rgba(58,15,43,0.25)]">
-                    <Image
-                      src={photo.src}
-                      alt={photo.alt}
-                      width={1600}
-                      height={1067}
-                      sizes="(min-width: 640px) 33vw, 100vw"
-                      className="aspect-[3/2] h-auto w-full object-cover transition-transform duration-500 hover:scale-[1.03]"
-                    />
-                  </div>
-                  <figcaption className="mt-3 text-center font-serif text-lg text-plum">
-                    {photo.caption}
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
           </Reveal>
         </div>
       </section>
