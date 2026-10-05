@@ -10,8 +10,9 @@ import { getFeaturedArticle, getRotatingLatestArticles } from "@/lib/data/articl
 
 // Regenerates the static homepage every 1 minute so both the "Editor's
 // Feature" (see `getFeaturedArticle`) and "Latest Stories" rail (see
-// `getRotatingLatestArticles`) actually reach visitors on schedule,
-// instead of staying frozen at build time.
+// `getRotatingLatestArticles`, which always leads with the newest post)
+// actually reach visitors on schedule, instead of staying frozen at build
+// time.
 export const revalidate = 60;
 
 export default function Home() {
