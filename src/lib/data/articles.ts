@@ -2,9 +2,10 @@ import { Article } from "@/lib/types";
 
 /**
  * EDITORIAL CONTENT
- * The ten September 2026 issue pieces at the top of this list are real
- * contributor submissions, ordered by editorial priority (`priority: 1`
- * leads the issue) and flagged `isNew` so they carry a "New" badge and
+ * The real contributor submissions at the top of this list (ten from the
+ * September 2026 issue, plus October 2026 arrivals after them) are
+ * ordered by editorial priority (`priority: 1` leads the issue) and
+ * flagged `isNew` so they carry a "New" badge and
  * sort ahead of everything else. Everything below them is still
  * illustrative placeholder content demonstrating layout, tone, and
  * structure. Replace the placeholders with real Flourish editorial
@@ -745,6 +746,84 @@ export const articles: Article[] = [
       "3. Holy Spirit, tune my heart to hear Your gentle whisper and feel Your comforting presence in my quiet moments.",
       "4. Lord Jesus, when the world feels empty and I feel forgotten by people, remind me that You are right beside me.",
       "5. Father, let Your love cheer my soul during dark and heavy nights. Drive away all depression, anxiety, and despair.",
+    ],
+  },
+  {
+    slug: "bearing-more-fruits",
+    title: "Bearing More Fruits",
+    subtitle: "Fruitfulness is not self-generated. It flows from staying joined to the Vine.",
+    excerpt:
+      "A reflection on John 15: what it costs to disconnect from the Vine, and the grace available to reconnect, be pruned, and bear even more fruit.",
+    categorySlug: "faith-inspiration",
+    authorSlug: "adenike-popoola",
+    publishedAt: "2026-10-05",
+    readingTimeMinutes: 4,
+    heroImage: {
+      src: "/images/articles/bearing-more-fruits.jpg",
+      alt: "Two hands cradling the soil-covered roots of a young plant being replanted",
+      tone: "burgundy",
+      motif: "vine",
+    },
+    isNew: true,
+    priority: 15,
+    tags: ["new", "fruitfulness", "obedience", "prayer"],
+    body: [
+      "> In the same way that a branch can't bear grapes by itself but only by being joined to the vine, you can't bear fruit unless you are joined with me. (John 15:5, MSG)",
+      "Beloved, the word of God above admonishes us to bear more fruit as believers, in every area of our lives. When there is a disconnect from the Vine, unfruitfulness and abuse are inevitable. Jesus is the Vine and we are the branches, hence our fruitfulness is dependent on knowing God, His plans, and His purposes for our lives. That way we are not easily tossed around by the wind of the world. The songwriter said, and I quote, \"When I know You, I'll find me.\"",
+      "## A Story Worth Pondering",
+      "Let me share the story of a well-known Nollywood star who shared her experience online. She was a chorister in a very big church, who brought down the power of God while ministering. She said a word of knowledge was passed across to her not to drink alcohol at all. She then confessed that she tasted the alcohol, and since then she knew the power and presence of God had diminished from her life. Peradventure she was supposed to compose a song that would draw men and women to God, essentially bearing fruit, and even more fruit, in God's vineyard.",
+      "On the contrary, she lost it by disobeying the instruction from God that was peculiar to her. Beloved, without Him we are nothing. We may experience some movements which may not lead to any real progress in life. As a woman who really needs to flourish, I enjoin you to assess your life at the place of prayer, and ask God some questions about your life, especially when you're experiencing stagnation.",
+      "## Abiding Is the Secret",
+      "Jesus was deliberate when He said, \"I am the vine, ye are the branches: He that abideth in me, and I in him, the same bringeth forth much fruit: for without me ye can do nothing\" (John 15:5, KJV). Notice the order. Fruit does not come first; abiding comes first. Many of us are striving to produce fruit through activity, through busyness, through our own strength, when what God is really asking for is abiding: staying joined, staying connected, staying surrendered.",
+      "He also said, \"Every branch in me that beareth not fruit he taketh away: and every branch that beareth fruit, he purgeth it, that it may bring forth more fruit\" (John 15:2, KJV). Pruning is not punishment. It is preparation. God cuts away what is unnecessary so that what remains can flourish.",
+      "Tell Jesus, \"Master, speak, oh speak to me.\" If there is a disconnect, pray yourself back to connecting to your first love, the Vine, the Husbandman, and His name is Jesus Christ. I ask you, are you bearing fruit at all? If not, then reconnect with your Maker. He alone can make the best out of your life, because He is the Potter and you are the clay. And if you are bearing fruit even now, there is still enough room for you to bear even more fruit.",
+      "## Song",
+      "> Give me grace to flourish, abundant grace to flourish. Give me grace to flourish, Your grace is enough for me.",
+      "I enjoin you dearly, beloved, make time to study John chapter 15. Let the word of God speak expressly to your heart, and let the tillage and the pruning begin. I decree and declare that your life will experience a divine turnaround that will launch you into greater heights, and motivate you to flourish in every area of your life, in the name of Jesus.",
+      "## Prayer Points",
+      "Father, reconnect every disconnected branch of my life back to You, the true Vine, in the name of Jesus.",
+      "Lord, prune away everything in me that hinders fruitfulness, and let me bring forth fruit that remains, in the name of Jesus.",
+    ],
+  },
+  {
+    slug: "how-i-started-an-organic-farm-in-a-small-space-at-home",
+    title: "How I Started an Organic Farm in a Small Space at Home",
+    subtitle: "You don't need acres of land. You need faithfulness with what is already in your hand.",
+    excerpt:
+      "A personal testimony of turning a few containers and a small patch of ground into an organic farm, one patient, faith-filled season at a time.",
+    categorySlug: "womens-stories",
+    authorSlug: "caroline-wood",
+    publishedAt: "2026-10-05",
+    readingTimeMinutes: 4,
+    heroImage: {
+      src: "/images/articles/how-i-started-an-organic-farm-in-a-small-space-at-home.jpg",
+      alt: "A ripe red apple resting on a teal Holy Bible outdoors against soft green foliage",
+      tone: "gold",
+      motif: "olive",
+    },
+    isNew: true,
+    priority: 16,
+    tags: ["new", "testimony", "stewardship", "patience"],
+    body: [
+      "I began my organic farming journey at home with only a small amount of space to work with. I didn't have a large plot of land, but I decided not to let that discourage me. I believed that if I started small, stayed consistent, and learned along the way, I could grow something meaningful.",
+      "> Whatsoever a man soweth, that shall he also reap. (Galatians 6:7, KJV)",
+      "That verse became more than a warning to me. It became a promise. I had small hands, a small balcony, and a lot of unused flowerpots, but I had something to sow. I decided that was enough to begin.",
+      "## Starting With What I Had",
+      "I started with a few vegetables and herbs, planting them in containers and small garden beds wherever I could find room around the house, a sunny windowsill, a corner of the patio, a strip of soil along the fence. I chose natural growing methods and avoided harmful chemicals because I wanted to provide fresh, wholesome food for my family, and because I believe we are called to be good stewards of what God gives us.",
+      "> And the LORD God took the man, and put him into the garden of Eden to dress it and to keep it. (Genesis 2:15, KJV)",
+      "Even before sin entered the world, God gave humanity a garden to tend. There is something deeply restorative about putting your hands in soil. It reminded me, long before my first harvest, that I was doing something God Himself built into us to do.",
+      "## What the Garden Taught Me",
+      "Those first days in the garden taught me patience. I learned how to prepare the soil, plant seeds, water carefully, manage pests naturally, and tend to my plants regularly. Seeing the first seeds sprout and eventually produce food filled me with excitement and gratitude. It encouraged me to keep going.",
+      "Some seeds came up quickly. Others took far longer than I expected, and a few never came up at all. I had to learn to let each plant have its own season instead of comparing one to another. That lesson did not stay in the garden; it followed me into the rest of my life.",
+      "## It Grew Into Something I Did Not Plan For",
+      "Over time, my small home garden grew into an organic farm. I discovered that you don't need acres of land to begin. A backyard, balcony, patio, or a few containers can be enough to take the first step. What started as a handful of pots became raised beds, then rows, then more than I ever imagined I would be tending.",
+      "I think of Zechariah's question: \"For who hath despised the day of small things?\" (Zechariah 4:10, KJV). I almost despised mine. I almost decided that a few pots on a patio were not worth the effort because they were not a real farm. I am glad I planted them anyway.",
+      "## Lessons For Anyone Starting Small",
+      "If you are thinking about starting something small, in your garden or anywhere else in your life, here is what I would tell you. Start with the space you actually have, not the space you wish you had. Learn one skill at a time instead of trying to master everything at once. Expect some failures; they are part of the process, not proof that you should stop. And celebrate the small harvests, they are evidence that what you planted is working.",
+      "## A Beautiful Harvest",
+      "My journey has taught me that farming calls for patience, consistency, and wise use of the resources we have. What seemed like a small space became the beginning of something much bigger. I'm thankful for how far I've come and for the lessons each growing season continues to bring.",
+      "If you've been thinking about starting a garden or a farm, don't wait until everything is perfect. Begin with what you have. Start small, learn as you grow, and trust that faithful effort can lead to a beautiful harvest.",
+      "> He which soweth bountifully shall reap also bountifully. (2 Corinthians 9:6, KJV)",
     ],
   },
   {
