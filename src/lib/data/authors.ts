@@ -5,7 +5,8 @@ import { Author } from "@/lib/types";
  * Bylines are shown as "Name, Location" — no author bio is displayed on
  * articles or contributor profiles. Pastor Tayo Oluwayemiwo, Pastor Suzan
  * Olunuga, Winnie Darius and Pastor Mrs Aderonke Olajide are real
- * September 2026 issue contributors. `anonymous-contributor-fl` and
+ * September 2026 issue contributors; Pastor Mrs Bunmi Oyetunji joined in
+ * October 2026. `anonymous-contributor-fl` and
  * `anonymous-contributor-tn` are also real September 2026 submissions whose
  * authors asked to stay unnamed — kept separate from the five scaffold
  * placeholders below (`adaeze-okafor`, `grace-adeyemi`, etc.) so filling in
@@ -106,6 +107,15 @@ export const authors: Author[] = [
     bio: "",
     focusAreas: ["Women & Purpose", "Christian Living"],
     image: { alt: "Portrait placeholder for Pastor Mrs Aderonke Olajide", tone: "gold" },
+  },
+  {
+    slug: "bunmi-oyetunji",
+    name: "Pastor Mrs Bunmi Oyetunji, Miami, FL",
+    role: "Guest Contributor",
+    editorialTeam: true,
+    bio: "",
+    focusAreas: ["Health & Wellness", "Faith & Spirituality"],
+    image: { alt: "Portrait placeholder for Pastor Mrs Bunmi Oyetunji", tone: "plum" },
   },
   {
     slug: "anonymous-contributor-fl",
