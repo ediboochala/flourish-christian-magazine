@@ -533,7 +533,7 @@ export const articles: Article[] = [
     subtitle: "God is interested in the whole woman: your body, your mind, your soul, and your spirit.",
     excerpt:
       "Prosperity is more than what is in your bank account. A pastoral call for women to stop placing themselves at the bottom of the list, and to steward body, mind, and spirit as gifts from God.",
-    categorySlug: "health-wellness",
+    categorySlug: "womens-stories",
     authorSlug: "bunmi-oyetunji",
     publishedAt: "2026-10-05",
     readingTimeMinutes: 5,
