@@ -1,4 +1,5 @@
 import { Article } from "@/lib/types";
+import { newestOf } from "@/lib/articleOrder";
 
 /**
  * EDITORIAL CONTENT
@@ -13,9 +14,11 @@ import { Article } from "@/lib/types";
  * placeholder entries should be treated as official M.F.M Women
  * Foundation Florida or Flourish statements.
  *
- * Adding a new issue piece: give it `isNew: true`, a `priority` number,
- * and a `publishedAt` in the issue month. It will surface at the top of
- * the homepage "Latest Stories" and the magazine archive automatically.
+ * Adding a new issue piece: give it `isNew: true`, the next `priority`
+ * number up, and today's `publishedAt`. As the most recent arrival it is
+ * pinned on top of the homepage "Editor's Feature", the magazine archive,
+ * and its category page until the next piece is posted (see
+ * `getNewestArticle`); everything else keeps rotating.
  */
 export const articles: Article[] = [
   {
@@ -1213,34 +1216,22 @@ export function getArticlesByAuthor(authorSlug: string): Article[] {
  *  the magazine page's "Editor's Pick", "Trending", and full archive)
  *  advances to its next slice/order. Every page reading these must set
  *  `revalidate` to at least this frequent, or visitors won't actually see
- *  the new rotation on schedule. The homepage "Editor's Feature" runs on
- *  its own `FEATURED_ROTATION_MINUTES` below (kept as a separate constant
- *  in case the two ever need to diverge again, even though both are 1
- *  right now). */
+ *  the new rotation on schedule. */
 const ROTATION_MINUTES = 1;
 
-/** How often the homepage "Editor's Feature" advances to the next article.
- *  Kept separate from `ROTATION_MINUTES` — this spot cycles through every
- *  single article (not just `editorsPick`-flagged ones) one at a time, so
- *  every story gets a turn there. */
-const FEATURED_ROTATION_MINUTES = 1;
-
 /**
- * The article shown as the homepage "Editor's Feature". Rotates through
- * every article in a fixed round-robin (editorial order — see
- * `getLatestArticles`), switching to the next one every
- * `FEATURED_ROTATION_MINUTES` minutes, so the spot cycles through the
- * whole magazine, old stories included, instead of staying pinned to a
- * handful of picks. The choice is derived purely from the current time (no
- * stored state), so it's consistent across serverless instances and
- * visitors within the same window.
+ * The most recently posted article (see `byArrival`). It stays pinned on
+ * top of every listing (the homepage "Editor's Feature", the magazine
+ * archive, and its category page) until a newer piece is posted, at which
+ * point it drops into the rotation with everything else.
  */
+export function getNewestArticle(): Article {
+  return newestOf(articles) ?? articles[0];
+}
+
+/** The homepage "Editor's Feature": always the newest article. */
 export function getFeaturedArticle(): Article {
-  const pool = getLatestArticles();
-  if (pool.length === 0) return articles[0];
-  const windowMs = FEATURED_ROTATION_MINUTES * 60 * 1000;
-  const index = Math.floor(Date.now() / windowMs) % pool.length;
-  return pool[index];
+  return getNewestArticle();
 }
 
 /**
@@ -1291,26 +1282,31 @@ function rotatingSlice<T>(pool: readonly T[], limit: number): T[] {
 }
 
 /**
- * A rotating `limit`-sized slice of every article (editorial order),
- * for the homepage "Latest Stories" rail. `excludeSlug` (typically the
- * current "Editor's Feature") is dropped from the pool first so the
- * rail never repeats the story already shown above it.
+ * A `limit`-sized list for the homepage "Latest Stories" rail: the newest
+ * article first, then a rotating slice of everything else. `excludeSlug`
+ * (typically the current "Editor's Feature") is dropped first so the rail
+ * never repeats the story already shown above it — when that's the newest
+ * article, the whole rail rotates.
  */
 export function getRotatingLatestArticles(limit: number, excludeSlug?: string): Article[] {
-  const pool = getLatestArticles().filter((a) => a.slug !== excludeSlug);
-  return rotatingSlice(pool, limit);
+  const newest = getNewestArticle();
+  const rest = getLatestArticles().filter((a) => a !== newest && a.slug !== excludeSlug);
+  if (newest.slug === excludeSlug) return rotatingSlice(rest, limit);
+  return [newest, ...rotatingSlice(rest, limit - 1)];
 }
 
 /**
- * Every article (editorial order), cyclically rotated every
- * `ROTATION_MINUTES` minutes, for the magazine page's full archive.
- * Used as the default "Newest First" order so the archive doesn't show
- * the same leading stories forever — see `MagazineArchive`'s "newest"
- * sort, which trusts this incoming order rather than re-deriving one.
+ * Every article for the magazine archive and category pages: the newest
+ * one pinned first, everything else cyclically rotated every
+ * `ROTATION_MINUTES` minutes so the rest of the archive doesn't show the
+ * same stories forever. `MagazineArchive`'s "Newest First" sort keeps
+ * this order, re-pinning the newest story within whatever category or
+ * search is active.
  */
 export function getRotatingAllArticles(): Article[] {
-  const sorted = getLatestArticles();
-  return rotatingSlice(sorted, sorted.length);
+  const newest = getNewestArticle();
+  const rest = getLatestArticles().filter((a) => a !== newest);
+  return [newest, ...rotatingSlice(rest, rest.length)];
 }
 
 export function getTrendingArticles(limit = 4): Article[] {

@@ -4,8 +4,12 @@ import Link from "next/link";
 import MagazineArchive from "@/components/magazine/MagazineArchive";
 import PlaceholderImage from "@/components/ui/PlaceholderImage";
 import { categories, getCategoryBySlug } from "@/lib/data/categories";
-import { articles, getArticlesByCategory } from "@/lib/data/articles";
+import { getArticlesByCategory, getRotatingAllArticles } from "@/lib/data/articles";
 import { pageMetadata } from "@/lib/seo";
+
+// Regenerates every 1 minute so the rotating archive order (see
+// `getRotatingAllArticles`) reaches visitors on schedule.
+export const revalidate = 60;
 
 export function generateStaticParams() {
   return categories.map((c) => ({ slug: c.slug }));
@@ -66,7 +70,7 @@ export default async function CategoryArchivePage({
       <section className="bg-ivory py-12">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <MagazineArchive
-            articles={articles}
+            articles={getRotatingAllArticles()}
             categories={categories}
             initialCategorySlug={category.slug}
           />

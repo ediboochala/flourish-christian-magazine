@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { Search } from "lucide-react";
 import { Article, Category } from "@/lib/types";
+import { pinNewest } from "@/lib/articleOrder";
 import ArticleCard from "@/components/ArticleCard";
 
 interface MagazineArchiveProps {
@@ -50,9 +51,11 @@ export default function MagazineArchive({
       result = [...result].sort(
         (a, b) => new Date(a.publishedAt).getTime() - new Date(b.publishedAt).getTime()
       );
+    } else {
+      // "newest" (default): keep the rotating order the caller handed in,
+      // but always lead with the most recently posted story in view.
+      result = pinNewest(result);
     }
-    // "newest" (default): trust the order `articles` arrived in — the
-    // caller hands it in already rotating on a schedule.
 
     return result;
   }, [articles, activeCategory, query, sort]);
