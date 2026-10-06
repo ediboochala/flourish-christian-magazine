@@ -7,9 +7,9 @@ import { categories, getCategoryBySlug } from "@/lib/data/categories";
 import { getArticlesByCategory, getRotatingAllArticles } from "@/lib/data/articles";
 import { pageMetadata } from "@/lib/seo";
 
-// Regenerates every 1 minute so the rotating archive order (see
+// Regenerates every 10 seconds so the rotating archive order (see
 // `getRotatingAllArticles`) reaches visitors on schedule.
-export const revalidate = 60;
+export const revalidate = 10;
 
 export function generateStaticParams() {
   return categories.map((c) => ({ slug: c.slug }));

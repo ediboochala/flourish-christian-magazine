@@ -1217,12 +1217,12 @@ export function getArticlesByAuthor(authorSlug: string): Article[] {
  *  advances to its next slice/order. Every page reading these must set
  *  `revalidate` to at least this frequent, or visitors won't actually see
  *  the new rotation on schedule. */
-const ROTATION_MINUTES = 1;
+const ROTATION_SECONDS = 10;
 
 /** How often the homepage "Editor's Feature" advances to the next article.
- *  Kept separate from `ROTATION_MINUTES` in case the two ever need to
- *  diverge, even though both are 1 right now. */
-const FEATURED_ROTATION_MINUTES = 1;
+ *  Kept separate from `ROTATION_SECONDS` in case the two ever need to
+ *  diverge, even though both are 10 right now. */
+const FEATURED_ROTATION_SECONDS = 10;
 
 /**
  * The most recently posted article (see `byArrival`). It stays pinned as
@@ -1237,8 +1237,8 @@ export function getNewestArticle(): Article {
 /**
  * The article shown as the homepage "Editor's Feature". Rotates through
  * every article except the newest one (which already leads "Latest
- * Stories" right below it), switching every `FEATURED_ROTATION_MINUTES`
- * minutes. Derived purely from the current time (no stored state), so
+ * Stories" right below it), switching every `FEATURED_ROTATION_SECONDS`
+ * seconds. Derived purely from the current time (no stored state), so
  * it's consistent across serverless instances and visitors within the
  * same window.
  */
@@ -1246,7 +1246,7 @@ export function getFeaturedArticle(): Article {
   const newest = getNewestArticle();
   const pool = getLatestArticles().filter((a) => a !== newest);
   if (pool.length === 0) return newest;
-  const windowMs = FEATURED_ROTATION_MINUTES * 60 * 1000;
+  const windowMs = FEATURED_ROTATION_SECONDS * 1000;
   return pool[Math.floor(Date.now() / windowMs) % pool.length];
 }
 
@@ -1282,7 +1282,7 @@ export function getIssueArticles(month = "2026-09"): Article[] {
 
 /**
  * Returns a `limit`-sized, wrap-around slice of `pool`, starting from an
- * offset that advances every `ROTATION_MINUTES` minutes. When `limit` is
+ * offset that advances every `ROTATION_SECONDS` seconds. When `limit` is
  * at least as large as `pool`, this rotates the whole pool in place
  * instead of slicing it down. Over enough windows, every item in `pool`
  * gets a turn leading instead of the same items always winning. Derived
@@ -1292,7 +1292,7 @@ export function getIssueArticles(month = "2026-09"): Article[] {
 function rotatingSlice<T>(pool: readonly T[], limit: number): T[] {
   if (pool.length === 0) return [];
   if (pool.length < limit) return [...pool];
-  const windowMs = ROTATION_MINUTES * 60 * 1000;
+  const windowMs = ROTATION_SECONDS * 1000;
   const offset = Math.floor(Date.now() / windowMs) % pool.length;
   return Array.from({ length: limit }, (_, i) => pool[(offset + i) % pool.length]);
 }
@@ -1313,7 +1313,7 @@ export function getRotatingLatestArticles(limit: number, excludeSlug?: string): 
 /**
  * Every article for the magazine archive and category pages: the newest
  * one pinned first, everything else cyclically rotated every
- * `ROTATION_MINUTES` minutes so the rest of the archive doesn't show the
+ * `ROTATION_SECONDS` seconds so the rest of the archive doesn't show the
  * same stories forever. `MagazineArchive`'s "Newest First" sort keeps
  * this order, re-pinning the newest story within whatever category or
  * search is active.
