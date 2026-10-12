@@ -4,98 +4,96 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import { cx } from "@/lib/utils";
 
-/** How long each spread stays open before the next one slides in. */
-const HOLD_MS = 9000;
+/** How long each spread stays open before the page turns. */
+const HOLD_MS = 5000;
 
 interface BookCarouselProps {
-  /** One open-book spread per article, rendered on the server. */
-  slides: React.ReactNode[];
+  /** Left page (photo) of each article's spread, rendered on the server. */
+  lefts: React.ReactNode[];
+  /** Right page (story) of each article's spread. */
+  rights: React.ReactNode[];
   labels: string[];
 }
 
+type Turn = { dir: "next" | "prev"; to: number };
+
 /**
- * Slides a row of open-book spreads slowly from right to left inside a
- * fixed book cover. A copy of the first spread sits after the last one so
- * the loop always moves forward: once that copy has slid into view, the
- * track snaps back to the real first spread with the transition switched
- * off, so the jump can't be seen.
+ * An open book whose pages turn over, one article per spread.
+ *
+ * Turning forward on a two-page layout: the current right page becomes a
+ * "leaf" hinged at the spine that rotates over to the left. Its back face
+ * is the next spread's left page, and the next spread's right page waits
+ * underneath, so when the leaf lands the next spread is complete. Turning
+ * back mirrors this from the left page. On the single-page phone layout,
+ * the whole page turns away from its left edge to reveal the next one.
  *
  * Autoplay pauses while the book is hovered or has keyboard focus, while
  * the tab is hidden, and when the visitor pauses it. It never starts for
- * visitors who prefer reduced motion.
+ * visitors who prefer reduced motion, and their manual turns are instant.
  */
-export default function BookCarousel({ slides, labels }: BookCarouselProps) {
-  const count = slides.length;
+export default function BookCarousel({ lefts, rights, labels }: BookCarouselProps) {
+  const count = lefts.length;
   const [index, setIndex] = useState(0);
-  const [animate, setAnimate] = useState(true);
+  const [turn, setTurn] = useState<Turn | null>(null);
   const [paused, setPaused] = useState(false);
   const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
-  const pendingPrev = useRef(false);
+  const [twoPage, setTwoPage] = useState(true);
   const touchStartX = useRef<number | null>(null);
 
   useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const sync = () => setReducedMotion(mq.matches);
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const wide = window.matchMedia("(min-width: 768px)");
+    const sync = () => {
+      setReducedMotion(motion.matches);
+      setTwoPage(wide.matches);
+    };
     sync();
-    mq.addEventListener("change", sync);
+    motion.addEventListener("change", sync);
+    wide.addEventListener("change", sync);
     const onVisibility = () => setHidden(document.hidden);
     document.addEventListener("visibilitychange", onVisibility);
     return () => {
-      mq.removeEventListener("change", sync);
+      motion.removeEventListener("change", sync);
+      wide.removeEventListener("change", sync);
       document.removeEventListener("visibilitychange", onVisibility);
     };
   }, []);
 
-  const next = useCallback(() => {
-    setAnimate(true);
-    setIndex((i) => (i >= count ? i : i + 1));
-  }, [count]);
+  const turnTo = useCallback(
+    (to: number, dir: Turn["dir"]) => {
+      if (turn || to === index) return;
+      if (reducedMotion) setIndex(to);
+      else setTurn({ dir, to });
+    },
+    [turn, index, reducedMotion]
+  );
 
-  const prev = useCallback(() => {
-    if (index === 0) {
-      // Jump (invisibly) to the copy of the first spread, then slide back.
-      pendingPrev.current = true;
-      setAnimate(false);
-      setIndex(count);
-      return;
-    }
-    setAnimate(true);
-    setIndex((i) => i - 1);
-  }, [index, count]);
+  const next = useCallback(() => turnTo((index + 1) % count, "next"), [turnTo, index, count]);
+  const prev = useCallback(() => turnTo((index - 1 + count) % count, "prev"), [turnTo, index, count]);
 
-  // Turn the transition back on a frame after an invisible snap.
-  useEffect(() => {
-    if (animate) return;
-    let inner = 0;
-    const outer = requestAnimationFrame(() => {
-      inner = requestAnimationFrame(() => {
-        setAnimate(true);
-        if (pendingPrev.current) {
-          pendingPrev.current = false;
-          setIndex(count - 1);
-        }
-      });
-    });
-    return () => {
-      cancelAnimationFrame(outer);
-      cancelAnimationFrame(inner);
-    };
-  }, [animate, count]);
+  const finishTurn = () => {
+    if (!turn) return;
+    setIndex(turn.to);
+    setTurn(null);
+  };
 
   const playing = !paused && !hovered && !focused && !hidden && !reducedMotion && count > 1;
 
   useEffect(() => {
-    if (!playing) return;
+    if (!playing || turn) return;
     const t = setTimeout(next, HOLD_MS);
     return () => clearTimeout(t);
-  }, [playing, index, next]);
+  }, [playing, turn, next]);
 
   if (count === 0) return null;
 
-  const active = index % count;
+  // What lies flat underneath while a leaf is turning.
+  const baseLeft = turn && (turn.dir === "prev" || !twoPage) ? turn.to : index;
+  const baseRight = turn && (turn.dir === "next" || !twoPage) ? turn.to : index;
+  const upcoming = (index + 1) % count;
 
   return (
     <div
@@ -124,37 +122,60 @@ export default function BookCarousel({ slides, labels }: BookCarouselProps) {
             else prev();
           }}
         >
-          <div
-            className={cx("book-track", animate && "book-track--animate")}
-            style={{ transform: `translateX(-${index * 100}%)` }}
-            aria-live={playing ? "off" : "polite"}
-            onTransitionEnd={(e) => {
-              if (e.target !== e.currentTarget || e.propertyName !== "transform") return;
-              if (index >= count) {
-                setAnimate(false);
-                setIndex(0);
-              }
-            }}
-          >
-            {[...slides, slides[0]].map((slide, i) => {
-              const isClone = i === count;
-              const isCurrent = i === index;
-              return (
-                <div
-                  key={isClone ? "clone" : i}
-                  className="book-slide"
-                  role={isClone ? undefined : "group"}
-                  aria-roledescription={isClone ? undefined : "slide"}
-                  aria-label={isClone ? undefined : `${i + 1} of ${count}: ${labels[i]}`}
-                  aria-hidden={isClone || !isCurrent || undefined}
-                  inert={!isCurrent}
-                >
-                  {slide}
+          <div className="book-stage">
+            {/* Lays out the next spread invisibly so its photo has loaded
+                before the page turns onto it. */}
+            {count > 1 && (
+              <div className="book-preload" aria-hidden="true" inert>
+                {lefts[upcoming]}
+              </div>
+            )}
+
+            <div
+              className="book-base"
+              role="group"
+              aria-roledescription="slide"
+              aria-label={`${(turn?.to ?? index) + 1} of ${count}: ${labels[turn?.to ?? index]}`}
+            >
+              {lefts[baseLeft]}
+              {rights[baseRight]}
+            </div>
+
+            <div className="book-gutter" aria-hidden="true" />
+
+            {turn && (
+              <div
+                key={`${index}-${turn.to}`}
+                className={cx(
+                  "book-leaf",
+                  !twoPage ? "book-leaf--single" : turn.dir === "next" ? "book-leaf--next" : "book-leaf--prev"
+                )}
+                aria-hidden="true"
+                inert
+                onAnimationEnd={(e) => {
+                  if (e.target === e.currentTarget) finishTurn();
+                }}
+              >
+                <div className="book-leaf-face book-leaf-face--front">
+                  {!twoPage ? (
+                    <div className="grid grid-cols-1">
+                      {lefts[index]}
+                      {rights[index]}
+                    </div>
+                  ) : turn.dir === "next" ? (
+                    rights[index]
+                  ) : (
+                    lefts[index]
+                  )}
+                  <span className="book-leaf-shade" />
                 </div>
-              );
-            })}
+                <div className="book-leaf-face book-leaf-face--back">
+                  {twoPage && (turn.dir === "next" ? lefts[turn.to] : rights[turn.to])}
+                  <span className="book-leaf-shade" />
+                </div>
+              </div>
+            )}
           </div>
-          <div className="book-gutter" aria-hidden="true" />
         </div>
       </div>
 
@@ -170,30 +191,33 @@ export default function BookCarousel({ slides, labels }: BookCarouselProps) {
           </button>
 
           <div className="flex items-center gap-2">
-            {labels.map((label, i) => (
-              <button
-                key={i}
-                type="button"
-                onClick={() => {
-                  setAnimate(true);
-                  setIndex(i);
-                }}
-                aria-label={`Go to article ${i + 1}: ${label}`}
-                aria-current={i === active || undefined}
-                className={cx(
-                  "relative h-2 overflow-hidden rounded-full transition-all duration-500",
-                  i === active ? "w-10 bg-plum/15" : "w-2 bg-plum/25 hover:bg-plum/50"
-                )}
-              >
-                {i === active && (
-                  <span
-                    key={`${index}-${playing}`}
-                    className={cx("book-progress absolute inset-y-0 left-0 bg-plum", !playing && "w-full")}
-                    style={playing ? { animationDuration: `${HOLD_MS}ms` } : undefined}
-                  />
-                )}
-              </button>
-            ))}
+            {labels.map((label, i) => {
+              const active = i === (turn?.to ?? index);
+              return (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => turnTo(i, i > index ? "next" : "prev")}
+                  aria-label={`Go to article ${i + 1}: ${label}`}
+                  aria-current={active || undefined}
+                  className={cx(
+                    "relative h-2 overflow-hidden rounded-full transition-all duration-500",
+                    active ? "w-10 bg-plum/15" : "w-2 bg-plum/25 hover:bg-plum/50"
+                  )}
+                >
+                  {active && (
+                    <span
+                      key={`${index}-${playing}-${!!turn}`}
+                      className={cx(
+                        "book-progress absolute inset-y-0 left-0 bg-plum",
+                        (!playing || turn) && "w-full"
+                      )}
+                      style={playing && !turn ? { animationDuration: `${HOLD_MS}ms` } : undefined}
+                    />
+                  )}
+                </button>
+              );
+            })}
           </div>
 
           <button

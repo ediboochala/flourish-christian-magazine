@@ -492,9 +492,9 @@ select:focus-visible,
 /* ==========================================================================
    OPEN-BOOK FEATURE CAROUSEL (homepage "Featured Articles")
    A plum cloth-bound cover holds a block of cream pages; each article is a
-   two-page spread that slides slowly sideways inside it. The cover, page
-   edges, and spine shadow stay put while only the spreads move, so it
-   reads as pages passing through an open book rather than a sliding card.
+   two-page spread, and the pages turn over one at a time (see
+   `BookCarousel`). The cover, page edges, and spine shadow stay put while
+   only the turning leaf moves.
    ========================================================================== */
 .book {
   position: relative;
@@ -522,19 +522,138 @@ select:focus-visible,
   touch-action: pan-y;
 }
 
-.book-track {
-  display: flex;
+/* Holds the 3D perspective the turning leaf rotates in. */
+.book-stage {
+  position: relative;
+  perspective: 2600px;
+}
+
+.book-base {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.book-preload {
+  position: absolute;
+  inset: 0;
+  width: 50%;
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* A page turning over, hinged at the spine. Its two faces are separate
+   pages back to back; each hides when facing away. */
+.book-leaf {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  transform-style: preserve-3d;
+  animation-duration: 1.3s;
+  animation-timing-function: cubic-bezier(0.45, 0.05, 0.25, 1);
+  animation-fill-mode: both;
   will-change: transform;
 }
 
-.book-track--animate {
-  /* Slow, eased glide: gentle start, long soft settle. */
-  transition: transform 1.6s cubic-bezier(0.65, 0, 0.25, 1);
+.book-leaf--next {
+  left: 50%;
+  width: 50%;
+  transform-origin: left center;
+  animation-name: leaf-turn-next;
 }
 
-.book-slide {
-  flex: 0 0 100%;
-  min-width: 0;
+.book-leaf--prev {
+  left: 0;
+  width: 50%;
+  transform-origin: right center;
+  animation-name: leaf-turn-prev;
+}
+
+/* Phone layout: the single page turns away from its left edge. */
+.book-leaf--single {
+  left: 0;
+  width: 100%;
+  transform-origin: left center;
+  animation-name: leaf-turn-single;
+}
+
+.book-leaf-face {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #fdf9f2;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.book-leaf-face--back {
+  transform: rotateY(180deg);
+}
+
+/* Light falls off the page as it rises toward vertical, then returns as
+   it settles flat on the other side. */
+.book-leaf-shade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to right, rgba(40, 24, 10, 0.28), rgba(40, 24, 10, 0.08));
+  animation: leaf-shade-front 1.3s cubic-bezier(0.45, 0.05, 0.25, 1) both;
+}
+
+.book-leaf-face--back .book-leaf-shade {
+  background: linear-gradient(to left, rgba(40, 24, 10, 0.28), rgba(40, 24, 10, 0.08));
+  animation-name: leaf-shade-back;
+}
+
+@keyframes leaf-turn-next {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(-180deg);
+  }
+}
+
+@keyframes leaf-turn-prev {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(180deg);
+  }
+}
+
+@keyframes leaf-turn-single {
+  from {
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  to {
+    transform: rotateY(-120deg);
+    opacity: 0;
+  }
+}
+
+@keyframes leaf-shade-front {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes leaf-shade-back {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 .book-page {
@@ -545,7 +664,8 @@ select:focus-visible,
 }
 
 @media (min-width: 768px) {
-  .book-slide {
+  .book-base {
+    grid-template-columns: 1fr 1fr;
     height: 30rem;
   }
   .book-page {
@@ -568,7 +688,7 @@ select:focus-visible,
 }
 
 @media (min-width: 1024px) {
-  .book-slide {
+  .book-base {
     height: 32rem;
   }
 }
