@@ -1,5 +1,5 @@
 import { Article } from "@/lib/types";
-import { newestOf } from "@/lib/articleOrder";
+import { byArrival, newestOf } from "@/lib/articleOrder";
 
 /**
  * EDITORIAL CONTENT
@@ -1322,6 +1322,12 @@ export function getRotatingAllArticles(): Article[] {
   const newest = getNewestArticle();
   const rest = getLatestArticles().filter((a) => a !== newest);
   return [newest, ...rotatingSlice(rest, rest.length)];
+}
+
+/** The homepage "Featured Articles" book: the issue's real contributor
+ *  pieces (`isNew`), most recently posted first. */
+export function getBookFeatureArticles(limit = 8): Article[] {
+  return articles.filter((a) => a.isNew).sort(byArrival).slice(0, limit);
 }
 
 export function getTrendingArticles(limit = 4): Article[] {

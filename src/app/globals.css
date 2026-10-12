@@ -489,6 +489,153 @@ select:focus-visible,
   transform: scale(1.06);
 }
 
+/* ==========================================================================
+   OPEN-BOOK FEATURE CAROUSEL (homepage "Featured Articles")
+   A plum cloth-bound cover holds a block of cream pages; each article is a
+   two-page spread that slides slowly sideways inside it. The cover, page
+   edges, and spine shadow stay put while only the spreads move, so it
+   reads as pages passing through an open book rather than a sliding card.
+   ========================================================================== */
+.book {
+  position: relative;
+  border-radius: 1.1rem;
+  padding: 0.6rem;
+  background:
+    radial-gradient(120% 140% at 50% 0%, var(--color-plum-light) 0%, var(--color-plum) 55%, #2c1843 100%);
+  box-shadow:
+    0 40px 70px -30px rgba(36, 20, 54, 0.55),
+    0 18px 30px -18px rgba(36, 20, 54, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.book-block {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.6rem;
+  background: #fdf9f2;
+  /* Stacked page edges peeking out along the top, bottom, and fore-edges. */
+  box-shadow:
+    0 1px 0 #efe6d6,
+    0 2px 0 #e7dcc8,
+    0 3px 0 #efe6d6,
+    0 4px 0 #ded2bb;
+  touch-action: pan-y;
+}
+
+.book-track {
+  display: flex;
+  will-change: transform;
+}
+
+.book-track--animate {
+  /* Slow, eased glide: gentle start, long soft settle. */
+  transition: transform 1.6s cubic-bezier(0.65, 0, 0.25, 1);
+}
+
+.book-slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
+.book-page {
+  position: relative;
+  height: 100%;
+  padding: 1.5rem;
+  background: #fdf9f2;
+}
+
+@media (min-width: 768px) {
+  .book-slide {
+    height: 30rem;
+  }
+  .book-page {
+    padding: 2.25rem 2.5rem 2.75rem;
+  }
+  /* Paper curving down into the spine, and light falling off at the outer
+     fore-edges. */
+  .book-page--left {
+    background:
+      linear-gradient(to left, rgba(80, 56, 30, 0.16), rgba(80, 56, 30, 0.04) 6%, transparent 14%),
+      linear-gradient(to right, rgba(80, 56, 30, 0.06), transparent 4%),
+      #fdf9f2;
+  }
+  .book-page--right {
+    background:
+      linear-gradient(to right, rgba(80, 56, 30, 0.18), rgba(80, 56, 30, 0.05) 6%, transparent 14%),
+      linear-gradient(to left, rgba(80, 56, 30, 0.06), transparent 4%),
+      #fdf9f2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .book-slide {
+    height: 32rem;
+  }
+}
+
+/* The spine: a soft shadow plus a hairline crease down the middle of the
+   spread. It sits above the sliding track and never moves. */
+.book-gutter {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .book-gutter {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 3rem;
+    transform: translateX(-50%);
+    pointer-events: none;
+    background:
+      linear-gradient(to right, transparent, rgba(60, 40, 20, 0.14) 45%, rgba(60, 40, 20, 0.22) 50%, rgba(60, 40, 20, 0.14) 55%, transparent);
+  }
+  .book-gutter::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    background: rgba(60, 40, 20, 0.25);
+  }
+}
+
+.book-folio {
+  position: absolute;
+  bottom: 1rem;
+  font-family: var(--font-serif);
+  font-size: 0.75rem;
+  font-style: italic;
+  color: rgba(74, 66, 69, 0.6);
+}
+
+.book-page--left .book-folio {
+  left: 2.5rem;
+}
+
+.book-page--right .book-folio {
+  right: 2.5rem;
+}
+
+/* Fills the active dot over the time a spread stays open. */
+@keyframes book-progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.book-progress {
+  animation-name: book-progress;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
