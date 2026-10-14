@@ -15,7 +15,8 @@ import { byArrival, newestOf } from "@/lib/articleOrder";
  * Foundation Florida or Flourish statements.
  *
  * Adding a new issue piece: give it `isNew: true`, the next `priority`
- * number up, and today's `publishedAt`. As the most recent arrival it is
+ * number up, today's `publishedAt`, and the `issue` number it belongs to
+ * (every article without one is in Issue No. 1; see `data/issues.ts`). As the most recent arrival it is
  * pinned first in the homepage "Latest Stories", the magazine archive,
  * and its category page until the next piece is posted (see
  * `getNewestArticle`); everything else keeps rotating.
@@ -1272,12 +1273,6 @@ export function getLatestArticles(limit?: number): Article[] {
 export function getNewArticles(limit?: number): Article[] {
   const sorted = articles.filter((a) => a.isNew).sort(byIssuePriority);
   return typeof limit === "number" ? sorted.slice(0, limit) : sorted;
-}
-
-/** Every article published in the given month (`"YYYY-MM"`), ordered
- *  new-and-prioritised first. Defaults to the current September 2026 issue. */
-export function getIssueArticles(month = "2026-09"): Article[] {
-  return articles.filter((a) => a.publishedAt.startsWith(`${month}-`)).sort(byIssuePriority);
 }
 
 /**

@@ -11,6 +11,7 @@ import ReadingProgress from "@/components/ReadingProgress";
 import { articles, getArticleBySlug, getRelatedArticles } from "@/lib/data/articles";
 import { getAuthorBySlug } from "@/lib/data/authors";
 import { getCategoryBySlug } from "@/lib/data/categories";
+import { getIssueByNumber, getIssueNumber } from "@/lib/data/issues";
 import { pageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
@@ -53,6 +54,7 @@ export default async function ArticlePage({
   const author = getAuthorBySlug(article.authorSlug);
   const category = getCategoryBySlug(article.categorySlug);
   const related = getRelatedArticles(article, 3);
+  const issue = getIssueByNumber(getIssueNumber(article));
 
   const currentIndex = articles.findIndex((a) => a.slug === article.slug);
   const prevArticle = articles[currentIndex - 1];
@@ -86,6 +88,14 @@ export default async function ArticlePage({
               </Link>
             )}
           </div>
+          {issue && (
+            <Link
+              href={`/issues/${issue.slug}`}
+              className="mt-3 inline-block font-sans text-[11px] font-medium uppercase tracking-[0.18em] text-white/60 transition-colors hover:text-white"
+            >
+              Issue No. {issue.number} &bull; {issue.title}
+            </Link>
+          )}
           <h1 className="text-h1 mt-4 font-serif text-white">{article.title}</h1>
           {article.subtitle && (
             <p className="mx-auto mt-5 max-w-xl font-serif text-lg italic leading-relaxed text-white/80">

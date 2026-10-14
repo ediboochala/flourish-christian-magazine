@@ -4,7 +4,10 @@ import ArticleCard from "@/components/ArticleCard";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
 import { getEditorsPicks, getRotatingAllArticles, getTrendingArticles } from "@/lib/data/articles";
+import Link from "next/link";
+import IssueShelf from "@/components/issues/IssueShelf";
 import { categories } from "@/lib/data/categories";
+import { getIssueStats, issues } from "@/lib/data/issues";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -24,6 +27,9 @@ export default function MagazinePage() {
   const editorsPicks = getEditorsPicks(3);
   const trending = getTrendingArticles(3);
   const allArticles = getRotatingAllArticles();
+  const issueOptions = issues
+    .filter((i) => getIssueStats(i.number).stories > 0)
+    .map((i) => ({ number: i.number, label: `Issue No. ${i.number}: ${i.title}` }));
 
   return (
     <div>
@@ -74,17 +80,20 @@ export default function MagazinePage() {
       <section className="bg-white pb-8 pt-12">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <Reveal className="block">
-            <SectionHeading eyebrow="Past Issues Archive" title="Browse Every Issue of Flourish" />
-            <div className="mt-6 flex flex-col gap-3 rounded-2xl border border-charcoal/10 bg-cream p-6 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <p className="font-sans text-xs font-semibold uppercase tracking-[0.16em] text-burgundy">
-                  Issue No. 1
-                </p>
-                <p className="mt-1 font-serif text-xl italic text-plum">A Season of Renewal</p>
-              </div>
-              <span className="font-sans text-xs font-medium uppercase tracking-[0.1em] text-charcoal-soft">
-                Future issues will populate here
-              </span>
+            <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
+              <SectionHeading eyebrow="The Issues" title="Browse Every Issue of Flourish" />
+              <Link
+                href="/issues"
+                className="group/link inline-flex items-center gap-1 font-sans text-xs font-semibold uppercase tracking-[0.1em] text-burgundy hover:text-plum"
+              >
+                All Issues
+                <span className="inline-block transition-transform duration-300 group-hover/link:translate-x-1">
+                  &rarr;
+                </span>
+              </Link>
+            </div>
+            <div className="mx-auto mt-12 max-w-4xl">
+              <IssueShelf />
             </div>
           </Reveal>
         </div>
@@ -95,7 +104,11 @@ export default function MagazinePage() {
           <Reveal className="block">
             <SectionHeading eyebrow="Full Archive" title="Browse All Stories" />
             <div className="mt-6">
-              <MagazineArchive articles={allArticles} categories={categories} />
+              <MagazineArchive
+                articles={allArticles}
+                categories={categories}
+                issueOptions={issueOptions}
+              />
             </div>
           </Reveal>
         </div>

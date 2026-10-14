@@ -756,6 +756,69 @@ select:focus-visible,
   animation-fill-mode: both;
 }
 
+/* ==========================================================================
+   ISSUES — "coming together" states for an issue still being written.
+   ========================================================================== */
+
+/* A soft, breathing status dot. */
+@keyframes issue-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(157, 199, 39, 0.55);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(157, 199, 39, 0);
+  }
+}
+
+.issue-pulse {
+  animation: issue-pulse 2.4s ease-in-out infinite;
+}
+
+/* A light sweep across placeholder lines, as if the words are still
+   being written in. `shimmer-bar` sits on dark grounds, `skeleton` on
+   light ones. */
+@keyframes shimmer {
+  from {
+    background-position: 150% 0;
+  }
+  to {
+    background-position: -50% 0;
+  }
+}
+
+.shimmer-bar,
+.skeleton {
+  background-size: 200% 100%;
+  animation: shimmer 2.6s ease-in-out infinite;
+}
+
+.shimmer-bar {
+  background-image: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0.14) 30%,
+    rgba(255, 255, 255, 0.34) 50%,
+    rgba(255, 255, 255, 0.14) 70%
+  );
+}
+
+.skeleton {
+  background-image: linear-gradient(
+    100deg,
+    var(--color-cream) 30%,
+    #fbf6ee 50%,
+    var(--color-cream) 70%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .issue-pulse,
+  .shimmer-bar,
+  .skeleton {
+    animation: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

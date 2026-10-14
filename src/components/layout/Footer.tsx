@@ -8,6 +8,7 @@ import VisitorCounter from "@/components/layout/VisitorCounter";
 import { MEGA_REGION_LEADERSHIP_URL } from "@/lib/links";
 
 const MAGAZINE_LINKS = [
+  { href: "/issues", label: "Issues" },
   { href: "/magazine", label: "Magazine Archive" },
   { href: "/write-for-flourish", label: "Submit an Article" },
   { href: "/about#editorial-board", label: "Editorial Board" },

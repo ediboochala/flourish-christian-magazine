@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { getLatestIssue } from "@/lib/data/issues";
 
 /**
  * HERO — the printed Flourish cover, rebuilt for the web: a centered
@@ -171,7 +172,7 @@ export default function Hero() {
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <Link
-              href="/magazine"
+              href={`/issues/${getLatestIssue().slug}`}
               className="btn-shine group/link inline-flex items-center justify-center gap-2 rounded-full bg-gold-light px-7 py-3.5 font-sans text-xs font-semibold uppercase tracking-[0.1em] text-plum transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0 active:scale-[0.97]"
             >
               Read the Latest Issue

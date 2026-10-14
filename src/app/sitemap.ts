@@ -4,10 +4,12 @@ import { articles } from "@/lib/data/articles";
 import { categories } from "@/lib/data/categories";
 import { authors } from "@/lib/data/authors";
 import { events } from "@/lib/data/events";
+import { issues } from "@/lib/data/issues";
 
 const STATIC_ROUTES = [
   "",
   "/magazine",
+  "/issues",
   "/categories",
   "/events",
   "/about",
@@ -51,5 +53,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticEntries, ...articleEntries, ...categoryEntries, ...authorEntries, ...eventEntries];
+  const issueEntries: MetadataRoute.Sitemap = issues.map((issue) => ({
+    url: `${SITE_URL}/issues/${issue.slug}`,
+    changeFrequency: issue.status === "in-progress" ? "weekly" : "monthly",
+    priority: 0.8,
+  }));
+
+  return [...staticEntries, ...issueEntries, ...articleEntries, ...categoryEntries, ...authorEntries, ...eventEntries];
 }

@@ -5,13 +5,19 @@ import { getCategoryBySlug } from "@/lib/data/categories";
 import PlaceholderImage from "@/components/ui/PlaceholderImage";
 import Eyebrow from "@/components/ui/Eyebrow";
 
-export default function FeaturedStory({ article }: { article: Article }) {
+export default function FeaturedStory({
+  article,
+  eyebrow = "Editor's Feature",
+}: {
+  article: Article;
+  eyebrow?: string;
+}) {
   const author = getAuthorBySlug(article.authorSlug);
   const category = getCategoryBySlug(article.categorySlug);
 
   return (
     <section className="mx-auto max-w-7xl px-6 py-12 lg:px-10 lg:py-14">
-      <Eyebrow>Editor&apos;s Feature</Eyebrow>
+      <Eyebrow>{eyebrow}</Eyebrow>
       <div className="mt-6 grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-10">
         <Link
           href={`/article/${article.slug}`}

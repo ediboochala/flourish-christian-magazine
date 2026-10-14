@@ -84,11 +84,36 @@ export interface Article {
    *  (1 leads the issue). Undefined sorts after every prioritised story. */
   priority?: number;
   tags?: string[];
+  /** Which issue (see `src/lib/data/issues.ts`) the article belongs to.
+   *  Omitted means Issue No. 1, the inaugural issue every article up to
+   *  October 2026 was published in. New pieces for a later issue must set
+   *  this explicitly. */
+  issue?: number;
   body: string[]; // paragraphs / simple markup blocks (## for h2, > for pull-quote)
   seo?: {
     metaTitle?: string;
     metaDescription?: string;
   };
+}
+
+/** A numbered issue of the magazine. */
+export interface Issue {
+  number: number;
+  slug: string;
+  title: string;
+  tagline: string;
+  description: string;
+  /** "published" issues are complete and readable; an "in-progress" issue
+   *  is still being written. It shows whatever articles have arrived so
+   *  far, alongside placeholders for the stories still on their way. */
+  status: "published" | "in-progress";
+  /** Shown beside the issue number, e.g. "Inaugural Issue · 2026". */
+  dateLabel: string;
+  /** Cover photograph. In-progress issues without one get a designed
+   *  "coming together" cover instead. */
+  cover?: MediaImage;
+  /** Object-position for the cover photo when it's cropped to portrait. */
+  coverFocus?: string;
 }
 
 export type EventCategory =

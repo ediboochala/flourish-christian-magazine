@@ -10,6 +10,9 @@ interface MagazineArchiveProps {
   articles: Article[];
   categories: Category[];
   initialCategorySlug?: string;
+  /** Issues readers can filter by. The filter only appears once there
+   *  are at least two to choose between. */
+  issueOptions?: { number: number; label: string }[];
 }
 
 type SortOption = "newest" | "oldest" | "az";
@@ -20,8 +23,10 @@ export default function MagazineArchive({
   articles,
   categories,
   initialCategorySlug,
+  issueOptions = [],
 }: MagazineArchiveProps) {
   const [query, setQuery] = useState("");
+  const [activeIssue, setActiveIssue] = useState<number | "all">("all");
   const [activeCategory, setActiveCategory] = useState<string | "all">(
     initialCategorySlug ?? "all"
   );
@@ -33,6 +38,10 @@ export default function MagazineArchive({
 
     if (activeCategory !== "all") {
       result = result.filter((a) => a.categorySlug === activeCategory);
+    }
+
+    if (activeIssue !== "all") {
+      result = result.filter((a) => (a.issue ?? 1) === activeIssue);
     }
 
     if (query.trim()) {
@@ -58,7 +67,7 @@ export default function MagazineArchive({
     }
 
     return result;
-  }, [articles, activeCategory, query, sort]);
+  }, [articles, activeCategory, activeIssue, query, sort]);
 
   const visible = filtered.slice(0, visibleCount);
 
@@ -86,7 +95,30 @@ export default function MagazineArchive({
           />
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
+          {issueOptions.length > 1 && (
+            <>
+              <label htmlFor="magazine-issue" className="font-sans text-xs uppercase tracking-[0.1em] text-charcoal-soft">
+                Issue
+              </label>
+              <select
+                id="magazine-issue"
+                value={activeIssue}
+                onChange={(e) => {
+                  setActiveIssue(e.target.value === "all" ? "all" : Number(e.target.value));
+                  setVisibleCount(PAGE_SIZE);
+                }}
+                className="rounded-full border border-charcoal/15 bg-white px-4 py-2.5 font-sans text-sm text-charcoal focus:border-gold focus:outline-none"
+              >
+                <option value="all">All Issues</option>
+                {issueOptions.map((o) => (
+                  <option key={o.number} value={o.number}>
+                    {o.label}
+                  </option>
+                ))}
+              </select>
+            </>
+          )}
           <label htmlFor="magazine-sort" className="font-sans text-xs uppercase tracking-[0.1em] text-charcoal-soft">
             Sort
           </label>
