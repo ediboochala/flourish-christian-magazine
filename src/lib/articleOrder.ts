@@ -20,10 +20,18 @@ export function newestOf(list: readonly Article[]): Article | undefined {
   );
 }
 
-/** Moves the most recently posted article in `list` to the front, leaving
- *  the (rotating) order of everything else untouched. */
-export function pinNewest(list: readonly Article[]): Article[] {
+/** Every article in `list` posted on the latest `publishedAt` date (the
+ *  newest batch), in arrival order. */
+export function newestBatchOf(list: readonly Article[]): Article[] {
   const newest = newestOf(list);
   if (!newest) return [];
-  return [newest, ...list.filter((a) => a !== newest)];
+  return list.filter((a) => a.publishedAt === newest.publishedAt).sort(byArrival);
+}
+
+/** Moves the newest batch in `list` to the front, leaving the (rotating)
+ *  order of everything else untouched. */
+export function pinNewestBatch(list: readonly Article[]): Article[] {
+  const batch = newestBatchOf(list);
+  const pinned = new Set(batch);
+  return [...batch, ...list.filter((a) => !pinned.has(a))];
 }

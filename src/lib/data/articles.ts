@@ -1,13 +1,13 @@
 import { Article } from "@/lib/types";
-import { byArrival, newestOf } from "@/lib/articleOrder";
+import { byArrival, newestBatchOf, newestOf } from "@/lib/articleOrder";
 
 /**
  * EDITORIAL CONTENT
- * The real contributor submissions at the top of this list (ten from the
- * September 2026 issue, plus October 2026 arrivals after them) are
- * ordered by editorial priority (`priority: 1` leads the issue) and
- * flagged `isNew` so they carry a "New" badge and
- * sort ahead of everything else. Everything below them is still
+ * The real contributor submissions at the top of this list (September,
+ * October, and November 2026 arrivals, in that order) are numbered by
+ * `priority`. Only the latest batch is flagged `isNew`, which gives it a
+ * "New" badge; take the flag off the previous batch when the next one
+ * arrives. Everything below them is still
  * illustrative placeholder content demonstrating layout, tone, and
  * structure. Replace the placeholders with real Flourish editorial
  * content before launch. No claims, statistics, or quotes in the
@@ -16,10 +16,11 @@ import { byArrival, newestOf } from "@/lib/articleOrder";
  *
  * Adding a new issue piece: give it `isNew: true`, the next `priority`
  * number up, today's `publishedAt`, and the `issue` number it belongs to
- * (every article without one is in Issue No. 1; see `data/issues.ts`). As the most recent arrival it is
- * pinned first in the homepage "Latest Stories", the magazine archive,
- * and its category page until the next piece is posted (see
- * `getNewestArticle`); everything else keeps rotating.
+ * (every article without one is in Issue No. 1; see `data/issues.ts`).
+ * Everything posted on the latest `publishedAt` date is the newest batch:
+ * it's pinned first in the homepage "Latest Stories", the magazine
+ * archive, and category pages until a later batch arrives (see
+ * `getNewestBatch`), and everything else keeps rotating.
  */
 export const articles: Article[] = [
   {
@@ -40,7 +41,6 @@ export const articles: Article[] = [
       motif: "vine",
       credit: "AI-generated image",
     },
-    isNew: true,
     priority: 1,
     editorsPick: true,
     tags: ["new", "healing", "wholeness", "faith"],
@@ -104,7 +104,6 @@ export const articles: Article[] = [
       motif: "wheat",
       credit: "Photo via Unsplash",
     },
-    isNew: true,
     priority: 2,
     trending: true,
     tags: ["new", "faith", "perseverance", "healing"],
@@ -150,7 +149,6 @@ export const articles: Article[] = [
       motif: "olive",
       credit: "Photo via Unsplash",
     },
-    isNew: true,
     priority: 3,
     tags: ["new", "gratitude", "praise", "worship"],
     body: [
@@ -189,7 +187,6 @@ export const articles: Article[] = [
       motif: "fern",
       credit: "Photo via Unsplash",
     },
-    isNew: true,
     priority: 4,
     editorsPick: true,
     tags: ["new", "love", "relationships", "presence"],
@@ -236,7 +233,6 @@ export const articles: Article[] = [
       motif: "vine",
       credit: "Photo submitted by the author",
     },
-    isNew: true,
     priority: 5,
     tags: ["new", "career", "purpose", "resilience"],
     body: [
@@ -344,7 +340,6 @@ export const articles: Article[] = [
       motif: "olive",
       credit: "Photo submitted by the author",
     },
-    isNew: true,
     priority: 6,
     tags: ["new", "community", "humor", "family"],
     body: [
@@ -376,7 +371,6 @@ export const articles: Article[] = [
       motif: "lily",
       credit: "Photo submitted by the author",
     },
-    isNew: true,
     priority: 7,
     tags: ["new", "marriage", "singleness", "identity"],
     body: [
@@ -425,7 +419,6 @@ export const articles: Article[] = [
       motif: "wheat",
       credit: "Photo submitted by the author",
     },
-    isNew: true,
     priority: 8,
     tags: ["new", "bible study", "prayer", "spiritual growth"],
     body: [
@@ -481,7 +474,6 @@ export const articles: Article[] = [
       motif: "fern",
       credit: "Photo via Pexels",
     },
-    isNew: true,
     priority: 9,
     tags: ["new", "humor", "family", "community"],
     body: [
@@ -515,7 +507,6 @@ export const articles: Article[] = [
       tone: "charcoal",
       motif: "vine",
     },
-    isNew: true,
     priority: 10,
     tags: ["new", "holy spirit", "obedience", "guidance"],
     body: [
@@ -547,7 +538,6 @@ export const articles: Article[] = [
       tone: "rose",
       motif: "lily",
     },
-    isNew: true,
     priority: 11,
     tags: ["new", "wellness", "self-care", "stewardship"],
     body: [
@@ -612,7 +602,6 @@ export const articles: Article[] = [
       tone: "charcoal",
       motif: "olive",
     },
-    isNew: true,
     priority: 12,
     tags: ["new", "hope", "encouragement", "isaiah"],
     body: [
@@ -667,7 +656,6 @@ export const articles: Article[] = [
       tone: "charcoal",
       motif: "wheat",
     },
-    isNew: true,
     priority: 13,
     tags: ["new", "psalms", "encouragement", "sisterhood"],
     body: [
@@ -724,7 +712,6 @@ export const articles: Article[] = [
       tone: "gold",
       motif: "vine",
     },
-    isNew: true,
     priority: 14,
     tags: ["new", "friendship", "intimacy-with-god", "prayer"],
     body: [
@@ -768,7 +755,6 @@ export const articles: Article[] = [
       tone: "burgundy",
       motif: "vine",
     },
-    isNew: true,
     priority: 15,
     tags: ["new", "fruitfulness", "obedience", "prayer"],
     body: [
@@ -805,7 +791,6 @@ export const articles: Article[] = [
       tone: "gold",
       motif: "olive",
     },
-    isNew: true,
     priority: 16,
     tags: ["new", "testimony", "stewardship", "patience"],
     body: [
@@ -828,6 +813,307 @@ export const articles: Article[] = [
       "My journey has taught me that farming calls for patience, consistency, and wise use of the resources we have. What seemed like a small space became the beginning of something much bigger. I'm thankful for how far I've come and for the lessons each growing season continues to bring.",
       "If you've been thinking about starting a garden or a farm, don't wait until everything is perfect. Begin with what you have. Start small, learn as you grow, and trust that faithful effort can lead to a beautiful harvest.",
       "> He which soweth bountifully shall reap also bountifully. (2 Corinthians 9:6, KJV)",
+    ],
+  },
+  // November 2026 arrivals. Posted together on 2026-11-02, so they lead
+  // every listing as one batch (see `getNewestBatch`); the higher the
+  // `priority` number, the earlier the piece sits within the batch.
+  {
+    slug: "a-grateful-heart",
+    title: "A Grateful Heart",
+    subtitle: "A grateful heart does not deny hardship. It finds meaning within it.",
+    excerpt:
+      "Mabel set out to weed her garden and uprooted her seedlings instead. Then the sun broke through, and a bud she thought was dead began to open. A short reflection on finding blessing in every disappointment.",
+    categorySlug: "health-wellness",
+    authorSlug: "bunmi-oyetunji",
+    publishedAt: "2026-11-02",
+    readingTimeMinutes: 2,
+    heroImage: {
+      src: "/images/articles/a-grateful-heart.jpg",
+      alt: "A woman in a sun hat and denim jacket crouching to water flowering shrubs with a metal watering can",
+      tone: "gold",
+      motif: "fern",
+    },
+    isNew: true,
+    priority: 22,
+    tags: ["gratitude", "devotional", "resilience"],
+    body: [
+      "Mabel woke up and decided to do some work in her garden. She put on her garden gloves and, row by row, started uprooting the weeds. Little did she know that while taking out the weeds, she had also been uprooting some newly sprouting seedlings. Halfway through, she realized what she had done and felt disappointed. Oh my, what have I done!",
+      "She looked up and suddenly saw the sun parting the clouds. Mabel sighed, smiled, and muttered, \"God, You have some sense of humor.\" Then she looked to the next row and saw that a plant she thought was dead had one of its buds slowly opening up beautifully. Mabel smiled and said, \"Thank You, Jesus, for this blessing.\"",
+      "> Blessings present themselves in numerous ways. It is up to us to acknowledge them.",
+      "It is up to us to be grateful for every opportunity, and every disappointment, that presents itself.",
+      "## Finding Meaning in Hardship",
+      "A grateful heart does not deny hardship but rather finds meaning within it. It celebrates small victories, cherishes relationships, and sees each day as a gift rather than a burden. This mindset not only uplifts our spirit but also strengthens our connections with others, as appreciation naturally fosters kindness and empathy.",
+      "When we face obstacles, it does not mean a setback, nor does it mean God has forgotten us. Rather, it is a call to be thankful. Remember His Word, that everything is working together for our good, as God has promised.",
+      "When we cultivate thankfulness, we nurture resilience. We find beauty where others see blame.",
+      "> In the quiet of morning light, gratitude blooms, soft and bright.",
+      "## The Dawn of a New Day",
+      "It's the dawn of a new day! Another day to be happy, to be grateful, because everything is working together for our good. He is in control.",
+      "> Let every detail in your lives — words, actions, whatever — be done in the name of the Master, Jesus, thanking God the Father every step of the way. (Colossians 3:17, MSG)",
+    ],
+  },
+  {
+    slug: "closer-to-god-an-honest-look-at-the-self-we-seldom-see",
+    title: "Closer to God: An Honest Look at the Self We Seldom See",
+    subtitle: "Before deciding whom these people remind you of, consider what they might reveal about you.",
+    excerpt:
+      "Some bullies never raise a hand. They use words, influence, and even religion, at family gatherings, in meetings, and in church. Meet five of them, and then take an honest look in the mirror.",
+    categorySlug: "marriage-relationships",
+    authorSlug: "aderonke-olajide",
+    publishedAt: "2026-11-02",
+    readingTimeMinutes: 4,
+    heroImage: {
+      src: "/images/articles/closer-to-god-an-honest-look-at-the-self-we-seldom-see.jpg",
+      alt: "A boy sitting on a classroom floor hugging his knees while two classmates point down at him",
+      tone: "charcoal",
+      motif: "olive",
+    },
+    isNew: true,
+    priority: 21,
+    tags: ["relationships", "self-examination", "kindness", "closer-to-god"],
+    body: [
+      "Some bullies don't fight with physical weapons. They operate differently! Some use words, influence, manipulation, intimidation, and even religion to inflict wounds that cannot be seen.",
+      "They destroy confidence over lunch. They threaten livelihoods in meetings. They assassinate reputations over the phone. They turn schools into places of dread, homes into battlegrounds, workplaces into hostile environments, and churches into places where believers feel choked instead of strengthened.",
+      "> Their weapons may be invisible, but the damage they leave behind is painfully real.",
+      "Meet Victoria, Marcus, Matilda, Liam, and Maureen. Before deciding whom they remind you of, consider what they might reveal about you.",
+      "Are you ready?",
+      "> Drive out the mocker and out goes strife; quarrels and insults are ended. (Proverbs 22:10)",
+      "## Five People, Five Excuses",
+      "Meet Victoria, the controlling mother-in-law. She humiliates her daughter-in-law at family gatherings, criticizes her cooking, questions her parenting, makes sarcastic remarks about her upbringing, and secretly encourages her son to distrust his wife. She calls it protecting her son.",
+      "Meet Marcus, the insecure co-worker. He deliberately withholds important information, takes credit for other people's achievements, spreads damaging rumors about colleagues, and quietly sabotages their chances of promotion. He smiles at his colleagues while secretly working against them. He calls it office politics.",
+      "Meet Matilda, the nosy neighbor. She monitors who visits your home, questions your children about private family matters, exaggerates what she overhears, and circulates damaging stories disguised as prayer requests. She calls it neighborly concern.",
+      "Meet Liam, the school bully. He mocks a classmate's appearance, imitates their accent to entertain his friends, shares humiliating videos in group chats, and deliberately excludes vulnerable students until they dread coming to school. He calls it having fun.",
+      "Meet Maureen, the church member. She humiliates younger believers, spreads confidential prayer requests, questions the spirituality of anyone who disagrees with her, manipulates church relationships, and uses her influence to isolate members she dislikes. She also interprets disagreement as rebellion and uses spiritual language to intimidate those who challenge her behavior. She calls it defending the faith.",
+      "Five people. Five environments. Five different excuses.",
+      "> One ugly pattern: cruelty disguised as something justifiable.",
+      "## When the Roles Are Reversed",
+      "It's easy to recognize bullying when it is done by another person. But what happens when the roles are reversed? Here is the uncomfortable question: why is it concern, correction, discipline, humor, or spiritual discernment when you do the same thing?",
+      "\"I was only trying to help.\" (Concern.) \"They needed to hear the truth.\" (Correction.) \"It was just a harmless joke.\" (Humor.) \"Someone had to put them in their place.\" (Discipline.) \"I was only standing up for what is right.\" (Spiritual discernment.)",
+      "How convenient that we condemn in others what we so easily excuse in ourselves!",
+      "When you take a close look at these five characters, you may discover that the bully you have been complaining about is not so different from the person staring back at you in the mirror.",
+      "> So in everything, do to others what you would have them do to you. (Matthew 7:12)",
+    ],
+  },
+  {
+    slug: "god-of-times-and-seasons",
+    title: "God of Times and Seasons",
+    subtitle: "Recognizing your season and knowing what to do.",
+    excerpt:
+      "One woman is celebrating while another is still waiting. That does not mean you are behind; you may simply be in a different season. Six seasons of a woman's life, and what each one asks of you.",
+    categorySlug: "faith-inspiration",
+    authorSlug: "tayo-oluwayemiwo",
+    publishedAt: "2026-11-02",
+    readingTimeMinutes: 5,
+    heroImage: {
+      src: "/images/articles/god-of-times-and-seasons.jpg",
+      alt: "An open antique pocket watch beside a bouquet of dried flowers wrapped in paper, in soft window light",
+      tone: "gold",
+      motif: "wheat",
+    },
+    isNew: true,
+    priority: 20,
+    tags: ["seasons", "waiting", "purpose", "ecclesiastes"],
+    body: [
+      "> To everything there is a season, and a time to every purpose under the heaven. (Ecclesiastes 3:1, KJV)",
+      "Life unfolds in seasons. Some bring joy, progress, and answered prayers. Others bring waiting, uncertainty, disappointment, and painful changes.",
+      "One woman is celebrating marriage while another is waiting for a husband. One is enjoying motherhood while another is praying for a child. One is advancing in her career while another is struggling to find direction.",
+      "> The fact that another woman is celebrating does not mean you are behind. You may simply be in a different season.",
+      "God is the God of times and seasons. The challenge is recognizing your present season, understanding its purpose, and knowing how to respond.",
+      "## 1. The Season of Waiting",
+      "This is when prayers seem unanswered, opportunities remain closed, and God appears silent. You have prayed, believed, and waited, yet nothing seems to change. Waiting can produce frustration, comparison, and impatience. But waiting should not mean inactivity.",
+      "What to do: Strengthen your faith, develop yourself, remain prayerful, and continue pursuing worthwhile opportunities. Do not allow desperation to push you into regrettable decisions.",
+      "Remember: A delayed answer does not mean your life must stand still.",
+      "## 2. The Season of Preparation",
+      "This is the season of learning, training, discipline, and personal development. You may be acquiring qualifications, developing a business, raising children, or learning important lessons through everyday responsibilities. Preparation often happens quietly, without applause or recognition.",
+      "What to do: Invest in knowledge, develop your abilities, accept correction, and remain teachable.",
+      "Remember: Do not rush into opportunities you have not prepared yourself to handle.",
+      "## 3. The Season of Discovery",
+      "This is when you begin to recognize your gifts, talents, abilities, and purpose. Perhaps you discover a passion for teaching, writing, leadership, entrepreneurship, ministry, or helping others. Philippians 2:13 reminds us that God works within us to accomplish His purpose.",
+      "What to do: Identify your strengths, develop your gifts, explore opportunities, and refuse to let age or fear limit you.",
+      "Remember: You can discover a new purpose at thirty, forty, fifty, sixty, or beyond.",
+      "## 4. The Season of Pain",
+      "This season may come through disappointment, betrayal, illness, bereavement, financial hardship, or broken relationships. Pain can weaken confidence, cloud judgment, and make the future appear uncertain. Yet difficult experiences can also develop wisdom, resilience, and compassion.",
+      "What to do: Seek God's guidance, pray for discernment, accept appropriate support, and resist bitterness. Give yourself time to heal.",
+      "Remember: Your pain may shape your story, but it does not have to define your future.",
+      "## 5. The Season of Celebration",
+      "This is when long-awaited answers arrive, doors open, and the fruits of previous efforts become visible. It may be marriage, childbirth, healing, promotion, financial breakthrough, or restoration. But celebration requires responsibility.",
+      "What to do: Give God thanks, remain humble, practice good stewardship, and protect what has been entrusted to you.",
+      "Remember: Receiving a blessing is one thing; sustaining its benefits requires wisdom.",
+      "## 6. The Season of Pruning and Testing",
+      "This season challenges your habits, priorities, attitudes, and relationships. You may need to release unhealthy attachments, confront personal weaknesses, establish boundaries, or make uncomfortable changes. John 15:2 reminds us that pruning can produce greater fruitfulness.",
+      "What to do: Examine yourself, seek discernment, embrace necessary changes, and remain faithful through uncertainty.",
+      "Remember: Sometimes growth requires letting go before moving forward.",
+      "## Make Your Season Count",
+      "Seasons do not wait for anyone. They continue whether we are prepared or not.",
+      "A season of waiting requires patience. Preparation requires discipline. Discovery requires courage. Pain requires healing. Celebration requires wisdom. Pruning requires humility.",
+      "Every season presents opportunities to grow in faith, deepen our dependence on God, develop compassion for others, and reveal His glory.",
+      "> The greatest mistake is not passing through a difficult season. It is failing to recognize what that season requires of you.",
+      "So, what season are you in today? Do not waste it comparing your journey with another woman's life.",
+      "Recognize your season. Understand its demands. Make the most of it. Trust the God who holds every season in His hands.",
+    ],
+  },
+  {
+    slug: "the-art-of-making-wise-choices",
+    title: "The Art of Making Wise Choices",
+    subtitle: "Four biblical principles for decisions you won't regret.",
+    excerpt:
+      "Should I take the job, the relationship, the business, the move? The quality of our lives is often shaped by the quality of our choices. Wisdom, meditation, diligence, and prayer for the decisions that matter.",
+    categorySlug: "faith-inspiration",
+    authorSlug: "tayo-oluwayemiwo",
+    publishedAt: "2026-11-02",
+    readingTimeMinutes: 5,
+    heroImage: {
+      src: "/images/articles/the-art-of-making-wise-choices.jpg",
+      alt: "A man holding his head in his hands while hands on both sides point at him",
+      tone: "burgundy",
+      motif: "olive",
+    },
+    isNew: true,
+    priority: 19,
+    tags: ["decisions", "wisdom", "prayer", "proverbs"],
+    body: [
+      "Every day, we make choices. Some are small and seemingly insignificant, while others have the power to change the direction of our lives.",
+      "Should I accept that job offer? Is this relationship right for me? Should I start that business, return to school, relocate, or remain where I am?",
+      "For many women, these decisions extend beyond personal ambitions. They affect marriages, children, careers, finances, ministries, and families.",
+      "> The quality of our lives is often influenced by the quality of our choices.",
+      "Good intentions alone do not guarantee good outcomes. Neither does disliking failure automatically produce success. Making better decisions requires wisdom, reflection, diligence, and prayer. Here are four biblical principles to guide us.",
+      "## 1. Wisdom: Look Beyond What You Can See",
+      "You cannot make destiny-defining decisions from a place of ignorance. Sometimes, the greatest danger is not making a wrong choice deliberately but making one without sufficient knowledge.",
+      "A woman considering marriage needs more than romantic feelings. A woman starting a business needs more than enthusiasm. And a woman changing careers needs more than frustration with her current job.",
+      "Wisdom requires looking beyond immediate desires to consider long-term consequences. Proverbs 4:7 reminds us that wisdom is the principal thing.",
+      "Seek wisdom through God's Word, sound biblical teaching, reliable information, and counsel from people whose judgment and experience you respect. Be careful whose advice you accept. Not everyone who has an opinion has the wisdom to guide your future.",
+      "> Wanting a better life is not enough. Your choices must reflect the future you desire.",
+      "## 2. Meditation: Think Before You Act",
+      "Have you ever made a decision in anger, excitement, fear, or desperation, only to regret it later? Many avoidable mistakes happen because we act before we think.",
+      "Biblical meditation involves deliberately reflecting on God's Word and allowing its principles to shape our thoughts, attitudes, and decisions. Joshua 1:8 emphasizes the importance of meditating on God's Word. Meditation helps us slow down, examine our motives, and resist impulsive decisions.",
+      "Before accepting an opportunity, entering a relationship, making a major purchase, or responding to an upsetting situation, ask yourself: Is this decision consistent with my values? Am I acting from wisdom or emotion? What could be the consequences six months or five years from now?",
+      "A focused mind sees beyond the excitement of the moment. Not every attractive opportunity is the right opportunity, and not every urgent decision requires an immediate answer.",
+      "Sometimes, the wisest thing you can do is give yourself time to think.",
+      "## 3. Diligence: Turn Good Intentions Into Action",
+      "Things rarely change simply because we wish they would. You may desire financial stability, a stronger marriage, better health, spiritual growth, or career advancement. But meaningful improvement usually requires deliberate action.",
+      "> You cannot consistently make yesterday's choices and expect an entirely different tomorrow.",
+      "Proverbs 21:5 (KJV) declares: \"The thoughts of the diligent tend only to plenteousness; but of every one that is hasty only to want.\"",
+      "Diligence means planning carefully, gathering information, considering consequences, and following through. A woman seeking financial freedom must examine her spending habits. One desiring career advancement may need additional training. A woman seeking better health must make consistent choices that support her wellbeing.",
+      "Proverbs 22:3 also reminds us that prudent people recognize danger and take precautions. Wisdom identifies the right direction; diligence helps you move in that direction.",
+      "## 4. Prayer: Invite God Into Your Decisions",
+      "Some decisions are too important to be governed by emotions, pressure, or personal preferences alone. Prayer allows us to seek God's guidance, examine our motives, and surrender our plans to His will.",
+      "James 1:5 encourages anyone lacking wisdom to ask God. Jesus Himself demonstrated the importance of prayer before significant decisions, including His selection of the twelve apostles (Luke 6:12–13).",
+      "Prayer does not eliminate the need for research, planning, or wise counsel. Rather, it helps us approach these responsibilities with humility and discernment. When emotions push you toward a questionable decision, prayer can create room for reflection, peace, and clarity.",
+      "> Never allow pressure to make a decision that wisdom is asking you to reconsider.",
+      "## Your Choices Shape Your Tomorrow",
+      "Every woman desires a meaningful, fruitful, and fulfilling life. But such a life is not built on wishes alone. It is shaped by the decisions we make and the actions we consistently take.",
+      "Seek wisdom before choosing. Meditate before acting. Be diligent in your responsibilities. And above all, remain prayerful.",
+      "You may not control every circumstance that comes your way, but you can become more intentional about the choices you make in response.",
+      "Before your next major decision, ask yourself: Am I choosing what is convenient today, or what is wise for tomorrow?",
+    ],
+  },
+  {
+    slug: "your-bread-is-coming",
+    title: "Your Bread Is Coming!",
+    subtitle: "When others are celebrating and you are still waiting.",
+    excerpt:
+      "Your friend got the promotion. The woman you mentored has a thriving business. And you are still asking, \"Lord, when will it be my turn?\" A word from the feeding of the five thousand for everyone sitting near the back.",
+    categorySlug: "faith-inspiration",
+    authorSlug: "bunmi-oyetunji",
+    publishedAt: "2026-11-02",
+    readingTimeMinutes: 5,
+    heroImage: {
+      src: "/images/articles/your-bread-is-coming.jpg",
+      alt: "A tray of golden, freshly baked bread rolls on a stovetop",
+      tone: "gold",
+      motif: "wheat",
+    },
+    isNew: true,
+    priority: 18,
+    tags: ["waiting", "comparison", "provision", "encouragement"],
+    body: [
+      "Have you ever looked around and wondered why everyone seems to be moving forward while you remain in the same place?",
+      "Your friend just received a promotion. Someone you mentored has started a thriving business. Another woman is celebrating her wedding anniversary while you are still praying for a husband.",
+      "And there you are, wondering, \"Lord, when will it be my turn?\"",
+      "You have prayed, fasted, attended deliverance programs, and trusted God. Yet the answers you seek seem to be arriving at everyone else's doorstep.",
+      "Sometimes, the disappointment is even greater when the person celebrating is someone you helped. You taught her the business, shared your knowledge, introduced her to customers, encouraged her, and even prayed for her success. Now her business is flourishing while yours is struggling.",
+      "You started before her. You worked just as hard. You sacrificed just as much. And quietly, you begin to wonder, \"God, have You forgotten me?\"",
+      "> Cheer up, sister. Your bread is coming!",
+      "## The Miracle of the Five Loaves",
+      "Remember the beautiful account in John 6:1–14. A large crowd had gathered to listen to Jesus. There were about five thousand men, besides women and children. When they became hungry, a young boy's lunch of five barley loaves and two small fish was brought to Jesus.",
+      "Humanly speaking, the provision was hopelessly inadequate. How could five loaves feed thousands of hungry people?",
+      "Yet Jesus took the bread, gave thanks, and distributed it through His disciples. And something extraordinary happened. Everyone received enough to eat! Not only was the crowd satisfied, but twelve baskets of leftovers were gathered afterward.",
+      "> What appeared insufficient in human hands became more than enough through the power of God.",
+      "## What About Those at the Back?",
+      "Imagine yourself sitting somewhere near the back of that enormous crowd. You watch the disciples distributing bread. The people in front receive their portions. Families begin eating. Children are satisfied. Others are smiling with gratitude. But the disciples have not reached your section.",
+      "Would you become worried? Would you complain that others were receiving preferential treatment? Would you become jealous or frustrated? Or would you remain hopeful?",
+      "The Bible does not tell us what those at the back were thinking, but the illustration teaches a valuable lesson.",
+      "> Just because someone else has received her portion does not mean God has forgotten you.",
+      "The bread was still being distributed, and there was enough for everyone.",
+      "## Celebrate Her Bread While Waiting for Yours",
+      "One of the greatest tests of character is learning to celebrate another woman's success while waiting for your own breakthrough.",
+      "Can you genuinely congratulate the friend who received the promotion you wanted? Can you rejoice with the woman whose business is flourishing while yours is struggling? Can you celebrate another woman's marriage, motherhood, or financial breakthrough without allowing bitterness to grow?",
+      "Romans 12:15 encourages us to rejoice with those who rejoice.",
+      "> Another woman's testimony is not evidence of your failure.",
+      "Her success does not diminish your potential. Her answered prayer does not make yours less important. Celebrate her. Encourage her. Thank God with her.",
+      "And while waiting, continue developing yourself, pursuing opportunities, and taking responsible steps toward your goals. Faith does not mean inactivity.",
+      "## Don't Leave Before Your Bread Arrives",
+      "Sometimes, disappointment tempts us to abandon hope, withdraw from others, or surrender to resentment. But Habakkuk 2:3 reminds us:",
+      "> Though it tarry, wait for it; because it will surely come, it will not tarry. (Habakkuk 2:3, KJV)",
+      "God's timing may differ from our expectations, and His answers may arrive in unexpected ways. The miracle of the five loaves reminds us that God's provision is not limited by what appears available.",
+      "So, refuse comparison. Reject jealousy. Remain prayerful, thankful, and diligent. The sky is wide enough for every bird to fly. Another woman's progress does not have to threaten your own.",
+      "Her bread has arrived. Yours has not been forgotten.",
+      "Keep praying. Keep preparing. Keep trusting. And when another woman receives her blessing, celebrate wholeheartedly.",
+      "> Cheer up, sister. Your bread is coming!",
+    ],
+  },
+  {
+    slug: "courage-in-the-calling",
+    title: "Courage in the Calling",
+    subtitle: "What Hannah's surrender, Ruth's devotion, and Esther's bravery teach us about God's unseen hand.",
+    excerpt:
+      "A heartbroken wife, a widowed foreigner, and a queen facing a life-or-death decision. Three women of Scripture, three kinds of courage, and one God working behind the scenes the whole time.",
+    categorySlug: "womens-stories",
+    authorSlug: "modupe-obatusin",
+    publishedAt: "2026-11-02",
+    readingTimeMinutes: 6,
+    heroImage: {
+      src: "/images/articles/courage-in-the-calling.jpg",
+      alt: "A hand holding a well-worn King James Holy Bible against dark clothing",
+      tone: "charcoal",
+      motif: "lily",
+    },
+    isNew: true,
+    priority: 17,
+    tags: ["courage", "hannah", "ruth", "esther", "calling"],
+    body: [
+      "We live in a world where success is often measured by visibility, recognition, influence, and position. Even as Christian women, we can become so focused on what others are achieving that we overlook the significance of our own journey.",
+      "Yet God often accomplishes His greatest purposes through ordinary people in seemingly insignificant circumstances.",
+      "Consider three remarkable women in Scripture: Hannah, Ruth, and Esther. One was a heartbroken wife longing for a child. Another was a widowed foreigner struggling to survive. The third was a queen facing a life-threatening decision.",
+      "> God was working behind the scenes, even when they could not see His hand.",
+      "Their lives teach us three expressions of courage: surrendering in sorrow, remaining faithful in ordinary circumstances, and standing boldly when everything is at stake.",
+      "## Hannah: The Courage to Surrender",
+      "Read 1 Samuel 1:1–20. Hannah knew the pain of unanswered prayers. Year after year, she endured the heartbreak of childlessness while facing constant provocation from Peninnah, her husband's other wife. Imagine the emotional weight of watching another woman enjoy the blessing you desperately desire.",
+      "Yet Hannah refused to allow her pain to turn her away from God. Instead, she brought her brokenness into His presence.",
+      "At Shiloh, Hannah prayed so intensely that Eli the priest mistakenly assumed she was drunk. But what appeared strange to Eli was a woman pouring out her deepest sorrow before God. Her words in 1 Samuel 1:15 were simple: \"I have poured out my soul before the LORD.\"",
+      "Hannah's courage was not demonstrated through confrontation or public recognition. It was revealed through surrender. She entrusted her deepest desire to God and promised to dedicate her son to His service. In time, Samuel was born and became one of Israel's great prophets.",
+      "> Surrender is not weakness. Sometimes, the greatest act of courage is placing what matters most into God's hands.",
+      "For every woman waiting for an answer, Hannah's story is a reminder that your private tears are not hidden from God.",
+      "## Ruth: The Courage to Remain Faithful",
+      "Read Ruth 1–4. Ruth's story began with loss and uncertainty. She was a widow, a foreigner, and a woman with no clear prospects for the future. When Naomi encouraged her to return to Moab, Ruth chose loyalty over convenience. Her declaration remains one of Scripture's most beautiful expressions of commitment:",
+      "> Whither thou goest, I will go; and where thou lodgest, I will lodge. (Ruth 1:16, KJV)",
+      "But Ruth's devotion was more than words. After arriving in Bethlehem, she went into the fields to gather leftover grain so that she and Naomi could survive. There was nothing glamorous about her assignment. She worked quietly, diligently, and faithfully.",
+      "She did not know that the field where she gathered grain would become the setting for a remarkable change in her life. Through her relationship with Boaz, Ruth became part of the family line leading to King David and ultimately Jesus Christ.",
+      "Ruth teaches us that faithfulness in ordinary responsibilities can carry extraordinary significance. Perhaps your present assignment feels unnoticed. You are caring for children, supporting family members, working tirelessly, or serving faithfully without recognition.",
+      "Do not despise your season of small beginnings. God can work through ordinary acts of loyalty, kindness, and diligence.",
+      "## Esther: The Courage to Stand",
+      "Read Esther 4–7. Esther's courage was tested in a completely different environment. She was a queen living in a palace, yet her position could not protect her people from Haman's deadly plot.",
+      "When Mordecai challenged her to intervene, Esther faced a frightening reality: approaching the king without an invitation could cost her life. Mordecai's question remains relevant today:",
+      "> And who knoweth whether thou art come to the kingdom for such a time as this? (Esther 4:14, KJV)",
+      "Esther understood the danger, but she refused to allow fear to determine her response. She called for a three-day fast before approaching the king. Then came her courageous declaration: \"And if I perish, I perish\" (Esther 4:16).",
+      "Esther used her position not merely for personal comfort but to advocate for those whose lives were threatened.",
+      "> Courage is not the absence of fear, but the willingness to do what is right despite fear.",
+      "Sometimes, God places us in positions where silence is easier, but speaking up is necessary.",
+      "## Three Women, One Unseen God",
+      "Hannah surrendered her pain. Ruth remained faithful through uncertainty. Esther confronted danger with courage. None of them understood the full significance of their decisions at the time. Yet their stories remind us that God's purposes can unfold through prayer, everyday faithfulness, and courageous action.",
+      "Perhaps today you identify with Hannah's waiting, Ruth's uncertainty, or Esther's difficult decision. Whatever your circumstances, remember:",
+      "> You do not need a prominent position to fulfil a meaningful calling. You need a heart willing to trust God and the courage to obey Him.",
+      "God's hand may not always be visible, but His faithfulness remains. Your calling matters, even when the world has not noticed it.",
     ],
   },
   {
@@ -1226,26 +1512,28 @@ const ROTATION_SECONDS = 10;
 const FEATURED_ROTATION_SECONDS = 10;
 
 /**
- * The most recently posted article (see `byArrival`). It stays pinned as
- * the first card in the homepage "Latest Stories" and on top of the
- * magazine archive and its category page until a newer piece is posted,
- * at which point it drops into the rotation with everything else.
+ * The newest batch: every article posted on the most recent `publishedAt`
+ * date, in arrival order (see `byArrival`). The batch stays pinned at the
+ * front of the homepage "Latest Stories", the magazine archive, and
+ * category pages until a later batch is posted, at which point it drops
+ * into the rotation with everything else.
  */
-export function getNewestArticle(): Article {
-  return newestOf(articles) ?? articles[0];
+export function getNewestBatch(): Article[] {
+  return newestBatchOf(articles);
 }
 
 /**
  * The article shown as the homepage "Editor's Feature". Rotates through
- * every article except the newest one (which already leads "Latest
+ * every article outside the newest batch (which already leads "Latest
  * Stories" right below it), switching every `FEATURED_ROTATION_SECONDS`
  * seconds. Derived purely from the current time (no stored state), so
  * it's consistent across serverless instances and visitors within the
  * same window.
  */
 export function getFeaturedArticle(): Article {
-  const newest = getNewestArticle();
-  const pool = getLatestArticles().filter((a) => a !== newest);
+  const batch = new Set(getNewestBatch());
+  const pool = getLatestArticles().filter((a) => !batch.has(a));
+  const newest = newestOf(articles) ?? articles[0];
   if (pool.length === 0) return newest;
   const windowMs = FEATURED_ROTATION_SECONDS * 1000;
   return pool[Math.floor(Date.now() / windowMs) % pool.length];
@@ -1294,35 +1582,37 @@ function rotatingSlice<T>(pool: readonly T[], limit: number): T[] {
 
 /**
  * A `limit`-sized list for the homepage "Latest Stories" rail: the newest
- * article first, then a rotating slice of everything else. `excludeSlug`
- * (typically the current "Editor's Feature") is dropped first so the rail
- * never repeats the story already shown above it.
+ * batch first, then a rotating slice of everything else to fill any
+ * remaining places. `excludeSlug` (typically the current "Editor's
+ * Feature") is dropped first so the rail never repeats the story already
+ * shown above it.
  */
 export function getRotatingLatestArticles(limit: number, excludeSlug?: string): Article[] {
-  const newest = getNewestArticle();
-  const rest = getLatestArticles().filter((a) => a !== newest && a.slug !== excludeSlug);
-  if (newest.slug === excludeSlug) return rotatingSlice(rest, limit);
-  return [newest, ...rotatingSlice(rest, limit - 1)];
+  const batch = getNewestBatch().filter((a) => a.slug !== excludeSlug);
+  const pinned = new Set(batch);
+  const rest = getLatestArticles().filter((a) => !pinned.has(a) && a.slug !== excludeSlug);
+  return [...batch, ...rotatingSlice(rest, Math.max(0, limit - batch.length))].slice(0, limit);
 }
 
 /**
  * Every article for the magazine archive and category pages: the newest
- * one pinned first, everything else cyclically rotated every
+ * batch pinned first, everything else cyclically rotated every
  * `ROTATION_SECONDS` seconds so the rest of the archive doesn't show the
  * same stories forever. `MagazineArchive`'s "Newest First" sort keeps
- * this order, re-pinning the newest story within whatever category or
+ * this order, re-pinning the newest batch within whatever category or
  * search is active.
  */
 export function getRotatingAllArticles(): Article[] {
-  const newest = getNewestArticle();
-  const rest = getLatestArticles().filter((a) => a !== newest);
-  return [newest, ...rotatingSlice(rest, rest.length)];
+  const batch = getNewestBatch();
+  const pinned = new Set(batch);
+  const rest = getLatestArticles().filter((a) => !pinned.has(a));
+  return [...batch, ...rotatingSlice(rest, rest.length)];
 }
 
-/** The homepage "Featured Articles" book: the issue's real contributor
- *  pieces (`isNew`), most recently posted first. */
+/** The homepage "Featured Articles" book: the real contributor pieces
+ *  (the ones with a `priority` number), most recently posted first. */
 export function getBookFeatureArticles(limit = 8): Article[] {
-  return articles.filter((a) => a.isNew).sort(byArrival).slice(0, limit);
+  return articles.filter((a) => a.priority !== undefined).sort(byArrival).slice(0, limit);
 }
 
 export function getTrendingArticles(limit = 4): Article[] {

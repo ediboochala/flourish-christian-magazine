@@ -135,6 +135,16 @@ export const authors: Author[] = [
     image: { alt: "Portrait placeholder for an anonymous Flourish contributor", tone: "burgundy" },
   },
   {
+    // Joined November 2026. No location was supplied with her first
+    // submission; append ", City, ST" to the name once known.
+    slug: "modupe-obatusin",
+    name: "Pastor Mrs Modupe Oluwasegun Obatusin",
+    role: "Guest Contributor",
+    bio: "",
+    focusAreas: ["Faith & Spirituality", "Women & Purpose"],
+    image: { alt: "Portrait placeholder for Pastor Mrs Modupe Oluwasegun Obatusin", tone: "plum" },
+  },
+  {
     slug: "justina-oluwaseun",
     name: "Justina Oluwaseun, Winnipeg, CN",
     role: "Guest Contributor",

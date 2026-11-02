@@ -67,12 +67,14 @@ export default async function ArticlePage({
       {/* HERO */}
       <section className="grain-overlay relative overflow-hidden bg-plum">
         <div className="absolute inset-0 overflow-hidden opacity-[0.7]">
-          <div className="animate-kenburns absolute inset-0">
-            <PlaceholderImage image={article.heroImage} priority />
+          <div className="hero-parallax absolute inset-0">
+            <div className="animate-kenburns absolute inset-0">
+              <PlaceholderImage image={article.heroImage} priority />
+            </div>
           </div>
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-plum/95 via-plum/70 to-plum/35" />
-        <div className="relative z-[2] mx-auto max-w-3xl px-6 pb-10 pt-20 text-center lg:px-10">
+        <div className="hero-recede relative z-[2] mx-auto max-w-3xl px-6 pb-10 pt-20 text-center lg:px-10">
           <div className="flex items-center justify-center gap-3">
             {article.isNew && (
               <span className="rounded-full bg-gold px-2.5 py-1 font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-plum">
@@ -192,8 +194,8 @@ export default async function ArticlePage({
           <div className="mx-auto max-w-7xl px-6 lg:px-10">
             <h2 className="font-serif text-2xl text-plum sm:text-3xl">You May Also Like</h2>
             <div className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {related.map((a) => (
-                <ArticleCard key={a.slug} article={a} />
+              {related.map((a, i) => (
+                <ArticleCard key={a.slug} article={a} index={i} />
               ))}
             </div>
           </div>

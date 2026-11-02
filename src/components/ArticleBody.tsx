@@ -1,7 +1,8 @@
 /** Renders simple markup blocks: "## " → h2 heading, "> " → pull-quote,
  *  everything else → paragraph. Kept intentionally simple for the
  *  placeholder content layer; swap for a rich-text/MDX renderer once a
- *  real CMS is connected. */
+ *  real CMS is connected. Each block eases in as it scrolls into view —
+ *  see the `.article-body` scroll animations in globals.css. */
 export default function ArticleBody({ blocks }: { blocks: string[] }) {
   return (
     <div className="article-body">

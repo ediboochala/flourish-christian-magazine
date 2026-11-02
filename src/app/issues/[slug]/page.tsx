@@ -224,7 +224,7 @@ function PublishedBody({ issue, list }: { issue: Issue; list: Article[] }) {
 
                 <ol className="divide-y divide-charcoal/10">
                   {articles.map((article, i) => (
-                    <li key={article.slug}>
+                    <li key={article.slug} className="scroll-rise">
                       <ContentsRow article={article} number={start + i} />
                     </li>
                   ))}
@@ -308,8 +308,8 @@ function InProgressBody({ issue, arrived }: { issue: Issue; arrived: Article[] }
           </Reveal>
 
           <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {arrived.map((article) => (
-              <ArticleCard key={article.slug} article={article} />
+            {arrived.map((article, i) => (
+              <ArticleCard key={article.slug} article={article} index={i} />
             ))}
             {Array.from({ length: placeholders }, (_, i) => (
               <SkeletonCard key={i} delayMs={i * 220} />

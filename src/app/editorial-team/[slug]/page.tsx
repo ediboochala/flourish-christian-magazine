@@ -74,8 +74,8 @@ export default async function EditorialTeamProfilePage({
           </h2>
           {authorArticles.length > 0 ? (
             <div className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {authorArticles.map((a) => (
-                <ArticleCard key={a.slug} article={a} />
+              {authorArticles.map((a, i) => (
+                <ArticleCard key={a.slug} article={a} index={i} />
               ))}
             </div>
           ) : (

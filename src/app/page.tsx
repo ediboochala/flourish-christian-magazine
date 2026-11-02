@@ -52,9 +52,7 @@ export default function Home() {
           </Reveal>
           <div className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {latest.map((article, i) => (
-              <Reveal key={article.slug} delayMs={i * 80}>
-                <ArticleCard article={article} />
-              </Reveal>
+              <ArticleCard key={article.slug} article={article} index={i} />
             ))}
           </div>
         </div>

@@ -57,8 +57,8 @@ export default function MagazinePage() {
               <Reveal className="mb-10 block">
                 <SectionHeading eyebrow="Editor's Pick" title="Hand-Selected for You" />
                 <div className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                  {editorsPicks.map((a) => (
-                    <ArticleCard key={a.slug} article={a} />
+                  {editorsPicks.map((a, i) => (
+                    <ArticleCard key={a.slug} article={a} index={i} />
                   ))}
                 </div>
               </Reveal>

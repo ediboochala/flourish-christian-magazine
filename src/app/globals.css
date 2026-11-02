@@ -360,15 +360,29 @@ select:focus-visible,
 
 /* Editorial pull-quote */
 .pull-quote {
+  position: relative;
   font-family: var(--font-serif);
   font-style: italic;
   font-variation-settings: "WONK" 1;
   font-size: clamp(1.5rem, 2.2vw, 2.1rem);
   line-height: 1.4;
   color: var(--color-plum);
-  border-left: 3px solid var(--color-gold);
   padding-left: 1.5rem;
   margin: 2.5rem 0;
+}
+
+/* The gold rule beside a pull quote — a pseudo-element rather than a
+   border so it can draw itself downward as the quote scrolls in. */
+.pull-quote::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  border-radius: 3px;
+  background: linear-gradient(to bottom, var(--color-gold-light), var(--color-gold));
+  transform-origin: top;
 }
 
 .pull-quote::before {
@@ -414,6 +428,207 @@ select:focus-visible,
   color: var(--color-plum);
   margin: 2.75rem 0 1.25rem;
   line-height: 1.25;
+}
+
+/* A short gold rule under each section heading. */
+.article-body h2::after {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 2px;
+  margin-top: 0.7rem;
+  border-radius: 2px;
+  background: var(--color-gold-light);
+  transform-origin: left;
+}
+
+/* Title underline that sweeps in under a card's headline on hover. */
+.title-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  transition: background-size 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.group:hover .title-underline,
+.group:focus-visible .title-underline {
+  background-size: 100% 1px;
+}
+
+/* ==========================================================================
+   SCROLL CHOREOGRAPHY
+   Scroll-driven animations: each piece is tied to its own position in the
+   viewport rather than a timer, so it eases in exactly as the reader
+   scrolls to it (and settles back if they scroll up). Runs entirely on the
+   browser's compositor — no JavaScript. Browsers without scroll timelines,
+   and anyone who prefers reduced motion, simply see everything in place.
+   ========================================================================== */
+@keyframes card-rise {
+  from {
+    opacity: 0;
+    transform: perspective(900px) translateY(56px) rotateX(9deg) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* A plum curtain lifts off the photograph, uncovering it from the bottom
+   edge up, while the photo settles from a slight zoom. (A curtain rather
+   than clip-path, which would also clip the card's shadow.) */
+.card-media::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background: linear-gradient(to top, var(--color-plum-light), var(--color-plum));
+  transform-origin: top;
+  transform: scaleY(0);
+}
+
+@keyframes curtain-lift {
+  from {
+    transform: scaleY(1);
+  }
+  to {
+    transform: scaleY(0);
+  }
+}
+
+@keyframes media-settle {
+  from {
+    transform: scale(1.18);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes scroll-rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes draw-down {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes draw-across {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes quote-in {
+  from {
+    opacity: 0;
+    transform: translateX(-22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* The article hero photo drifts down slower than the page (parallax) and
+   the title block lifts and fades as the reader moves into the text. */
+@keyframes hero-parallax {
+  to {
+    transform: translateY(22%);
+  }
+}
+
+@keyframes hero-recede {
+  to {
+    opacity: 0.25;
+    transform: translateY(-36px);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .card-rise {
+      animation: card-rise linear both;
+      animation-timeline: view();
+      animation-range: entry calc(var(--stagger, 0) * 7%) cover calc(28% + var(--stagger, 0) * 7%);
+    }
+
+    .card-rise .card-media {
+      view-timeline-name: --card-media;
+    }
+
+    .card-rise .card-media::before {
+      animation: curtain-lift linear both;
+      animation-timeline: --card-media;
+      animation-range: entry 10% cover 38%;
+    }
+
+    .card-rise .card-media-inner {
+      animation: media-settle linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 45%;
+    }
+
+    .scroll-rise,
+    .article-body > p:not(.pull-quote),
+    .article-body > h2 {
+      animation: scroll-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 22%;
+    }
+
+    .article-body > h2 {
+      view-timeline-name: --heading;
+    }
+
+    .article-body > h2::after {
+      animation: draw-across linear both;
+      animation-timeline: --heading;
+      animation-range: entry 40% cover 32%;
+    }
+
+    .pull-quote {
+      view-timeline-name: --quote;
+      animation: quote-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 30%;
+    }
+
+    .pull-quote::after {
+      animation: draw-down linear both;
+      animation-timeline: --quote;
+      animation-range: entry 20% cover 40%;
+    }
+
+    .hero-parallax {
+      animation: hero-parallax linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 90vh;
+    }
+
+    .hero-recede {
+      animation: hero-recede linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 70vh;
+    }
+  }
 }
 
 .article-body h3 {
