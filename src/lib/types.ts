@@ -118,6 +118,11 @@ export interface Issue {
   cover?: MediaImage;
   /** Object-position for the cover photo when it's cropped to portrait. */
   coverFocus?: string;
+  /** A colour scheme of its own (see `.theme-wine` in globals.css), so an
+   *  issue doesn't look like the one before it. Omitted = brand plum. */
+  theme?: "wine";
+  /** Announcement artwork shown in the hero while the issue is in progress. */
+  poster?: MediaImage;
 }
 
 export type EventCategory =

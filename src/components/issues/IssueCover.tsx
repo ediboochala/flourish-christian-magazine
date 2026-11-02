@@ -7,7 +7,8 @@ import { cx } from "@/lib/utils";
  * number, and title over the cover photograph, with a light spine edge on
  * the left. Issues still in progress get a designed "coming together"
  * cover — a large outlined issue numeral and shimmering headline bars
- * where the cover lines will go.
+ * where the cover lines will go. An in-progress issue with announcement
+ * artwork (`poster`) shows that artwork as its cover instead.
  */
 export default function IssueCover({
   issue,
@@ -20,6 +21,27 @@ export default function IssueCover({
 }) {
   const inProgress = issue.status === "in-progress" || !issue.cover?.src;
 
+  if (inProgress && issue.poster?.src) {
+    return (
+      <div
+        className={cx(
+          "issue-cover relative aspect-[3/4] w-full overflow-hidden rounded-l-[4px] rounded-r-xl bg-cream",
+          className
+        )}
+      >
+        <Image
+          src={issue.poster.src}
+          alt={issue.poster.alt}
+          fill
+          priority={priority}
+          sizes="(min-width: 1024px) 22rem, (min-width: 640px) 45vw, 90vw"
+          className="object-cover object-top"
+        />
+        <SpineEdge />
+      </div>
+    );
+  }
+
   return (
     <div
       className={cx(
@@ -27,6 +49,7 @@ export default function IssueCover({
         // the cover's own width), so the cover reads the same whether it's
         // a full-size hero or a small thumbnail.
         "issue-cover @container grain-overlay relative aspect-[3/4] w-full overflow-hidden rounded-l-[4px] rounded-r-xl bg-plum",
+        issue.theme && `theme-${issue.theme}`,
         className
       )}
     >
@@ -110,15 +133,20 @@ export default function IssueCover({
         )}
       </div>
 
-      {/* Spine edge */}
-      <span
-        className="pointer-events-none absolute inset-y-0 left-0 z-[3] w-3"
-        style={{
-          background:
-            "linear-gradient(to right, rgba(0,0,0,0.35), rgba(255,255,255,0.18) 35%, rgba(0,0,0,0.12) 70%, transparent)",
-        }}
-        aria-hidden="true"
-      />
+      <SpineEdge />
     </div>
+  );
+}
+
+function SpineEdge() {
+  return (
+    <span
+      className="pointer-events-none absolute inset-y-0 left-0 z-[3] w-3"
+      style={{
+        background:
+          "linear-gradient(to right, rgba(0,0,0,0.35), rgba(255,255,255,0.18) 35%, rgba(0,0,0,0.12) 70%, transparent)",
+      }}
+      aria-hidden="true"
+    />
   );
 }

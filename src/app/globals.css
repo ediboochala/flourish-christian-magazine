@@ -37,6 +37,25 @@
   --font-sans: var(--font-inter), "Helvetica Neue", Arial, sans-serif;
 }
 
+/* Issue No. 2's palette, from its "Love, Sharing, and Thanksgiving"
+   poster: deep wine red, burnished gold, and warm cream in place of the
+   brand violet and lime. Scoped to whatever carries the class (the issue's
+   page and its cover), so every token-based utility inside picks it up. */
+.theme-wine {
+  --color-ivory: #fcf7f0;
+  --color-cream: #f6eadc;
+  --color-plum: #6f1222;
+  --color-plum-light: #9c2335;
+  --color-burgundy: #a81d33;
+  --color-burgundy-light: #d0606e;
+  --color-rose: #e9b9b3;
+  --color-rose-light: #f8e6e1;
+  --color-gold: #9a6b22;
+  --color-gold-light: #d8b062;
+  --color-lilac: #e2b7ad;
+  --color-lilac-light: #f3dcd4;
+}
+
 @theme inline {
   --color-ivory: var(--color-ivory);
   --color-cream: var(--color-cream);

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Bell, Lock, PenLine } from "lucide-react";
+import { ArrowLeft, Bell, Leaf, Lock, PenLine } from "lucide-react";
 import ArticleCard from "@/components/ArticleCard";
 import FeaturedStory from "@/components/home/FeaturedStory";
 import IssueCover from "@/components/issues/IssueCover";
@@ -52,7 +53,7 @@ export default async function IssuePage({ params }: { params: Promise<{ slug: st
   const inProgress = issue.status === "in-progress";
 
   return (
-    <div>
+    <div className={issue.theme && `theme-${issue.theme}`}>
       <IssueHero issue={issue} />
       {inProgress ? (
         <InProgressBody issue={issue} arrived={list} locked={getLockedArticles(issue.number)} />
@@ -65,6 +66,7 @@ export default async function IssuePage({ params }: { params: Promise<{ slug: st
 }
 
 function IssueHero({ issue }: { issue: Issue }) {
+  if (issue.poster) return <PosterHero issue={issue} poster={issue.poster} />;
   const stats = getIssueStats(issue.number);
   const inProgress = issue.status === "in-progress";
 
@@ -150,6 +152,93 @@ function IssueHero({ issue }: { issue: Issue }) {
               </div>
             </>
           )}
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/** A light, sunlit hero for an issue that has announcement artwork: the
+ *  poster framed on the right, its headline echoed in type on the left. */
+function PosterHero({ issue, poster }: { issue: Issue; poster: NonNullable<Issue["poster"]> }) {
+  return (
+    <section className="relative overflow-hidden bg-ivory py-12 sm:py-16">
+      {/* Warm window light across a cream wall, as in the poster. */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(115deg, rgba(255,255,255,0.8) 0%, transparent 38%), radial-gradient(80% 70% at 88% 18%, var(--color-rose-light) 0%, transparent 65%), linear-gradient(to bottom, var(--color-ivory), var(--color-cream))",
+        }}
+        aria-hidden="true"
+      />
+      <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-[1fr_21rem] lg:gap-16 lg:px-10">
+        <Reveal className="block text-center lg:text-left">
+          <Link
+            href="/issues"
+            className="inline-flex items-center gap-1.5 font-sans text-xs font-semibold uppercase tracking-[0.14em] text-charcoal-soft transition-colors hover:text-plum"
+          >
+            <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" />
+            All Issues
+          </Link>
+          <p className="mt-7 flex items-center justify-center gap-3 font-sans text-[11px] font-semibold uppercase tracking-[0.24em] text-burgundy lg:justify-start">
+            <span className="hidden h-px w-8 bg-gold sm:block" aria-hidden="true" />
+            M.F.M Women Foundation &bull; Florida
+            <span className="hidden h-px w-8 bg-gold sm:block" aria-hidden="true" />
+          </p>
+          <p className="mt-5 font-serif text-[clamp(2.6rem,7vw,4.5rem)] font-semibold uppercase leading-[0.95] text-plum">
+            Issue {issue.number} <span className="block">Is Coming</span>
+          </p>
+          <div className="mt-6 flex items-center justify-center gap-3 lg:justify-start" aria-hidden="true">
+            <span className="h-px w-16 bg-gold/70" />
+            <Leaf className="h-4 w-4 text-gold" />
+            <span className="h-px w-16 bg-gold/70" />
+          </div>
+          <h1 className="mt-5 font-serif text-2xl uppercase leading-snug tracking-[0.04em] text-plum sm:text-3xl">
+            {issue.title}
+          </h1>
+          <p className="mt-4 flex items-center justify-center gap-3 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-gold lg:justify-start">
+            <span className="inline-flex items-center gap-2 rounded-full bg-plum px-3 py-1 text-[10px] tracking-[0.18em] text-white">
+              <span className="issue-pulse h-1.5 w-1.5 rounded-full bg-gold-light" aria-hidden="true" />
+              In Progress
+            </span>
+            {issue.dateLabel}
+          </p>
+          <p className="mx-auto mt-6 max-w-xl font-serif text-lg italic leading-relaxed text-charcoal-soft lg:mx-0">
+            {issue.tagline}
+          </p>
+          <p className="mx-auto mt-3 max-w-xl font-sans text-[15px] leading-relaxed text-charcoal-soft lg:mx-0">
+            {issue.description}
+          </p>
+          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start">
+            <Link
+              href="/write-for-flourish"
+              className="btn-shine inline-flex items-center gap-2 rounded-full bg-plum px-7 py-3.5 font-sans text-xs font-semibold uppercase tracking-[0.1em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-burgundy hover:shadow-lg"
+            >
+              <PenLine className="h-4 w-4" aria-hidden="true" />
+              Write for Issue No. {issue.number}
+            </Link>
+            <Link
+              href="#subscribe"
+              className="inline-flex items-center gap-2 rounded-full border border-plum/40 px-7 py-3.5 font-sans text-xs font-semibold uppercase tracking-[0.1em] text-plum transition-all duration-300 hover:-translate-y-0.5 hover:bg-plum hover:text-white"
+            >
+              <Bell className="h-4 w-4" aria-hidden="true" />
+              Notify Me
+            </Link>
+          </div>
+        </Reveal>
+
+        <Reveal variant="scale" className="mx-auto block w-full max-w-[20rem] lg:max-w-none">
+          <div className="relative aspect-[2/3] overflow-hidden rounded-2xl shadow-[0_34px_60px_-24px_rgba(111,18,34,0.55)] ring-1 ring-gold-light/50">
+            <Image
+              src={poster.src!}
+              alt={poster.alt}
+              fill
+              priority
+              sizes="(min-width: 1024px) 21rem, 20rem"
+              className="object-cover"
+            />
+          </div>
         </Reveal>
       </div>
     </section>
@@ -305,13 +394,21 @@ function InProgressBody({
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <Reveal className="block">
             <SectionHeading
-              eyebrow={arrived.length > 0 ? "Arrived So Far" : "Pages Being Written"}
+              eyebrow={
+                arrived.length > 0 ? "Arrived So Far" : locked.length > 0 ? "Sealed for Release" : "Pages Being Written"
+              }
               title={
                 arrived.length > 0
                   ? `The First Stories of Issue No. ${issue.number}`
-                  : `Issue No. ${issue.number} Is Coming Together`
+                  : locked.length > 0
+                    ? `${locked.length} Stories, Ready and Waiting`
+                    : `Issue No. ${issue.number} Is Coming Together`
               }
-              description="Each new story takes its place here the moment it's published. The rest are still being written, prayed over, and edited."
+              description={
+                locked.length > 0
+                  ? "Written, prayed over, and edited, and locked until release day. Each one opens here the moment the issue is released."
+                  : "Each new story takes its place here the moment it's published. The rest are still being written, prayed over, and edited."
+              }
               align="center"
             />
           </Reveal>
@@ -320,8 +417,8 @@ function InProgressBody({
             {arrived.map((article, i) => (
               <ArticleCard key={article.slug} article={article} index={i} />
             ))}
-            {locked.map((article) => (
-              <LockedCard key={article.slug} article={article} />
+            {locked.map((_, i) => (
+              <LockedCard key={i} number={i + 1} issueNumber={issue.number} />
             ))}
             {Array.from({ length: placeholders }, (_, i) => (
               <SkeletonCard key={i} delayMs={i * 220} />
@@ -378,36 +475,43 @@ function InProgressBody({
   );
 }
 
-/** A finished story held back until the issue is released: its picture
- *  veiled, its title showing, and no link through to the article. */
-function LockedCard({ article }: { article: Article }) {
-  const category = categories.find((c) => c.slug === article.categorySlug);
+/** A finished story held back until the issue is released. Deliberately
+ *  given nothing of the article (no title, picture, or link), so the page
+ *  reveals only that a story is waiting. */
+function LockedCard({ number, issueNumber }: { number: number; issueNumber: number }) {
   return (
     <div className="flex flex-col overflow-hidden rounded-2xl bg-white shadow-[0_1px_2px_rgba(36,31,33,0.06)]">
-      <div className="relative aspect-[4/3] w-full overflow-hidden bg-plum">
-        <div className="absolute inset-0 scale-110 opacity-60 blur-md" aria-hidden="true">
-          <PlaceholderImage image={article.heroImage} sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" />
-        </div>
-        <div className="absolute inset-0 bg-plum/40" aria-hidden="true" />
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-center">
-          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/15 ring-1 ring-gold-light/50 backdrop-blur-sm">
-            <Lock className="h-6 w-6 text-gold-light" aria-hidden="true" />
-          </span>
-          <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-white">
-            Unlocking Soon
-          </span>
-        </div>
+      <div
+        className="relative flex aspect-[4/3] w-full flex-col items-center justify-center gap-3 overflow-hidden text-center"
+        style={{
+          background:
+            "radial-gradient(120% 90% at 75% 15%, var(--color-plum-light) 0%, var(--color-plum) 58%, color-mix(in srgb, var(--color-plum) 70%, black) 100%)",
+        }}
+      >
+        <span
+          className="pointer-events-none absolute -bottom-10 -right-2 select-none font-serif text-[9rem] font-semibold leading-none text-transparent [-webkit-text-stroke:1.5px_color-mix(in_srgb,var(--color-gold-light)_35%,transparent)]"
+          aria-hidden="true"
+        >
+          {number}
+        </span>
+        <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/10 ring-1 ring-gold-light/60">
+          <Lock className="h-6 w-6 text-gold-light" aria-hidden="true" />
+        </span>
+        <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-white">
+          Sealed Until Release
+        </span>
       </div>
-      <div className="flex flex-1 flex-col p-6">
-        {category && (
-          <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.16em] text-burgundy">
-            {category.name}
-          </p>
-        )}
-        <h3 className="mt-2 font-serif text-xl leading-snug text-plum">{article.title}</h3>
-        <p className="mt-auto flex items-center gap-2 border-t border-charcoal/10 pt-4 font-serif text-sm italic text-charcoal-soft">
-          <Lock className="h-3.5 w-3.5 text-gold" aria-hidden="true" />
-          Ready and waiting for Issue No. {article.issue}&hellip;
+      <div className="flex flex-1 flex-col p-6" aria-hidden="true">
+        <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.16em] text-burgundy">
+          Story {number}
+        </p>
+        <span className="mt-3 block h-5 w-4/5 rounded-full bg-plum/10" />
+        <span className="mt-3 block h-5 w-3/5 rounded-full bg-plum/10" />
+        <span className="mt-5 block h-3 w-full rounded-full bg-charcoal/[0.06]" />
+        <span className="mt-2 block h-3 w-2/3 rounded-full bg-charcoal/[0.06]" />
+        <p className="mt-5 flex items-center gap-2 border-t border-charcoal/10 pt-4 font-serif text-sm italic text-charcoal-soft">
+          <Lock className="h-3.5 w-3.5 text-gold" />
+          Unlocks with Issue No. {issueNumber}
         </p>
       </div>
     </div>

@@ -32,12 +32,18 @@ export const issues: Issue[] = [
   {
     number: 2,
     slug: "issue-2",
-    title: "Coming Together",
-    tagline: "New stories, testimonies, and teaching are on their way.",
+    title: "A Season of Love, Sharing, and Thanksgiving",
+    tagline: "Stories of open hands and grateful hearts, for the season of giving thanks.",
     description:
-      "Our contributors are writing now. Issue No. 2 fills in here story by story as each piece arrives — check back soon, or share your own story to be part of it.",
+      "Our November issue is written and sealed, waiting for its release. Faith, stories, wellness, and community — check back soon, or share your own story to be part of it.",
     status: "in-progress",
-    dateLabel: "In Progress",
+    dateLabel: "November 2026",
+    theme: "wine",
+    poster: {
+      src: "/images/issues/issue-2-coming-soon.jpg",
+      alt: "Issue 2 is coming: a smiling woman in a wine-red headwrap reading the November issue of Flourish, A Season of Love, Sharing and Thanksgiving",
+      tone: "burgundy",
+    },
   },
 ];
 

@@ -816,7 +816,7 @@ const allArticles: Article[] = [
   },
   // November 2026 arrivals, held back for Issue No. 2 and `locked` until
   // the editor gives the word: they are off every page of the site (only
-  // a locked teaser card shows on the Issue No. 2 page). To release them,
+  // a sealed card with no title or picture shows on the Issue No. 2 page). To release them,
   // delete the `locked: true` lines. The higher the `priority` number,
   // the earlier the piece sits within the batch.
   {
@@ -1504,7 +1504,7 @@ const newestBatch = new Set(newestBatchOf(published));
 export const articles: Article[] = published.map((a) => ({ ...a, isNew: newestBatch.has(a) }));
 
 /** Locked pieces waiting for an issue, most recently posted first. Only for
- *  the issue page's teaser cards: never link to them or show their body. */
+ *  counting the issue page's sealed cards: never show any of their content. */
 export function getLockedArticles(issue: number): Article[] {
   return allArticles.filter((a) => a.locked && (a.issue ?? 1) === issue).sort(byArrival);
 }

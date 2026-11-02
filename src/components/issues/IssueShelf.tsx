@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { getLockedArticles } from "@/lib/data/articles";
 import { getIssueStats, issues } from "@/lib/data/issues";
 import IssueCover from "@/components/issues/IssueCover";
 import { cx } from "@/lib/utils";
@@ -25,8 +26,12 @@ export default function IssueShelf({ exclude, className }: { exclude?: number; c
         const href = `/issues/${issue.slug}`;
         const stats = getIssueStats(issue.number);
         const inProgress = issue.status === "in-progress";
+        const sealed = getLockedArticles(issue.number).length;
         return (
-          <article key={issue.slug} className="group flex flex-col items-center text-center">
+          <article
+            key={issue.slug}
+            className={cx("group flex flex-col items-center text-center", issue.theme && `theme-${issue.theme}`)}
+          >
             <Link
               href={href}
               aria-label={`Issue No. ${issue.number}: ${issue.title}`}
@@ -58,7 +63,9 @@ export default function IssueShelf({ exclude, className }: { exclude?: number; c
                   <span className="issue-pulse h-2 w-2 rounded-full bg-gold-light" aria-hidden="true" />
                   {stats.stories > 0
                     ? `${stats.stories} ${stats.stories === 1 ? "story" : "stories"} in so far`
-                    : "Stories arriving soon"}
+                    : sealed > 0
+                      ? `${sealed} ${sealed === 1 ? "story" : "stories"} sealed for release`
+                      : "Stories arriving soon"}
                 </p>
                 <div className="mt-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
                   <Link
