@@ -78,7 +78,8 @@ export interface Article {
   editorsPick?: boolean;
   trending?: boolean;
   /** Marks a newly published story. Adds a "New" badge on cards and floats
-   *  the article to the top of listings, ahead of older stories. */
+   *  the article to the top of listings, ahead of older stories. Set
+   *  automatically on the newest published batch (see `data/articles.ts`). */
   isNew?: boolean;
   /** Editorial priority within an issue. Lower number = higher priority
    *  (1 leads the issue). Undefined sorts after every prioritised story. */
@@ -89,6 +90,9 @@ export interface Article {
    *  October 2026 was published in. New pieces for a later issue must set
    *  this explicitly. */
   issue?: number;
+  /** Written and filed but not released yet: hidden from the whole site
+   *  until the editor removes this flag. */
+  locked?: boolean;
   body: string[]; // paragraphs / simple markup blocks (## for h2, > for pull-quote)
   seo?: {
     metaTitle?: string;

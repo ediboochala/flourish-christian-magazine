@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, Bell, PenLine } from "lucide-react";
+import { ArrowLeft, Bell, Lock, PenLine } from "lucide-react";
 import ArticleCard from "@/components/ArticleCard";
 import FeaturedStory from "@/components/home/FeaturedStory";
 import IssueCover from "@/components/issues/IssueCover";
@@ -19,6 +19,7 @@ import {
   getLatestIssue,
   issues,
 } from "@/lib/data/issues";
+import { getLockedArticles } from "@/lib/data/articles";
 import { pageMetadata } from "@/lib/seo";
 import { Article, Issue } from "@/lib/types";
 
@@ -54,7 +55,7 @@ export default async function IssuePage({ params }: { params: Promise<{ slug: st
     <div>
       <IssueHero issue={issue} />
       {inProgress ? (
-        <InProgressBody issue={issue} arrived={list} />
+        <InProgressBody issue={issue} arrived={list} locked={getLockedArticles(issue.number)} />
       ) : (
         <PublishedBody issue={issue} list={list} />
       )}
@@ -286,8 +287,16 @@ function ContentsRow({ article, number }: { article: Article; number: number }) 
   );
 }
 
-function InProgressBody({ issue, arrived }: { issue: Issue; arrived: Article[] }) {
-  const placeholders = Math.max(3, 6 - arrived.length);
+function InProgressBody({
+  issue,
+  arrived,
+  locked,
+}: {
+  issue: Issue;
+  arrived: Article[];
+  locked: Article[];
+}) {
+  const placeholders = Math.max(3, 6 - arrived.length - locked.length);
   const latest = getLatestIssue();
 
   return (
@@ -310,6 +319,9 @@ function InProgressBody({ issue, arrived }: { issue: Issue; arrived: Article[] }
           <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {arrived.map((article, i) => (
               <ArticleCard key={article.slug} article={article} index={i} />
+            ))}
+            {locked.map((article) => (
+              <LockedCard key={article.slug} article={article} />
             ))}
             {Array.from({ length: placeholders }, (_, i) => (
               <SkeletonCard key={i} delayMs={i * 220} />
@@ -363,6 +375,42 @@ function InProgressBody({ issue, arrived }: { issue: Issue; arrived: Article[] }
         </div>
       </section>
     </>
+  );
+}
+
+/** A finished story held back until the issue is released: its picture
+ *  veiled, its title showing, and no link through to the article. */
+function LockedCard({ article }: { article: Article }) {
+  const category = categories.find((c) => c.slug === article.categorySlug);
+  return (
+    <div className="flex flex-col overflow-hidden rounded-2xl bg-white shadow-[0_1px_2px_rgba(36,31,33,0.06)]">
+      <div className="relative aspect-[4/3] w-full overflow-hidden bg-plum">
+        <div className="absolute inset-0 scale-110 opacity-60 blur-md" aria-hidden="true">
+          <PlaceholderImage image={article.heroImage} sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" />
+        </div>
+        <div className="absolute inset-0 bg-plum/40" aria-hidden="true" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-center">
+          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/15 ring-1 ring-gold-light/50 backdrop-blur-sm">
+            <Lock className="h-6 w-6 text-gold-light" aria-hidden="true" />
+          </span>
+          <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-white">
+            Unlocking Soon
+          </span>
+        </div>
+      </div>
+      <div className="flex flex-1 flex-col p-6">
+        {category && (
+          <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.16em] text-burgundy">
+            {category.name}
+          </p>
+        )}
+        <h3 className="mt-2 font-serif text-xl leading-snug text-plum">{article.title}</h3>
+        <p className="mt-auto flex items-center gap-2 border-t border-charcoal/10 pt-4 font-serif text-sm italic text-charcoal-soft">
+          <Lock className="h-3.5 w-3.5 text-gold" aria-hidden="true" />
+          Ready and waiting for Issue No. {article.issue}&hellip;
+        </p>
+      </div>
+    </div>
   );
 }
 

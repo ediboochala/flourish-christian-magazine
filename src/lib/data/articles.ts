@@ -5,16 +5,15 @@ import { byArrival, newestBatchOf, newestOf } from "@/lib/articleOrder";
  * EDITORIAL CONTENT
  * The real contributor submissions at the top of this list (September,
  * October, and November 2026 arrivals, in that order) are numbered by
- * `priority`. Only the latest batch is flagged `isNew`, which gives it a
- * "New" badge; take the flag off the previous batch when the next one
- * arrives. Everything below them is still
+ * `priority`. The latest published batch is automatically flagged
+ * `isNew` (a "New" badge; see `articles` below). Everything below them is still
  * illustrative placeholder content demonstrating layout, tone, and
  * structure. Replace the placeholders with real Flourish editorial
  * content before launch. No claims, statistics, or quotes in the
  * placeholder entries should be treated as official M.F.M Women
  * Foundation Florida or Flourish statements.
  *
- * Adding a new issue piece: give it `isNew: true`, the next `priority`
+ * Adding a new issue piece: give it the next `priority`
  * number up, today's `publishedAt`, and the `issue` number it belongs to
  * (every article without one is in Issue No. 1; see `data/issues.ts`).
  * Everything posted on the latest `publishedAt` date is the newest batch:
@@ -22,7 +21,7 @@ import { byArrival, newestBatchOf, newestOf } from "@/lib/articleOrder";
  * archive, and category pages until a later batch arrives (see
  * `getNewestBatch`), and everything else keeps rotating.
  */
-export const articles: Article[] = [
+const allArticles: Article[] = [
   {
     slug: "from-brokenness-to-wholeness-overcoming-lifes-toughest-battles",
     title: "From Brokenness to Wholeness: Overcoming Life's Toughest Battles",
@@ -815,9 +814,11 @@ export const articles: Article[] = [
       "> He which soweth bountifully shall reap also bountifully. (2 Corinthians 9:6, KJV)",
     ],
   },
-  // November 2026 arrivals. Posted together on 2026-11-02, so they lead
-  // every listing as one batch (see `getNewestBatch`); the higher the
-  // `priority` number, the earlier the piece sits within the batch.
+  // November 2026 arrivals, held back for Issue No. 2 and `locked` until
+  // the editor gives the word: they are off every page of the site (only
+  // a locked teaser card shows on the Issue No. 2 page). To release them,
+  // delete the `locked: true` lines. The higher the `priority` number,
+  // the earlier the piece sits within the batch.
   {
     slug: "a-grateful-heart",
     title: "A Grateful Heart",
@@ -834,8 +835,9 @@ export const articles: Article[] = [
       tone: "gold",
       motif: "fern",
     },
-    isNew: true,
     priority: 22,
+    issue: 2,
+    locked: true,
     tags: ["gratitude", "devotional", "resilience"],
     body: [
       "Mabel woke up and decided to do some work in her garden. She put on her garden gloves and, row by row, started uprooting the weeds. Little did she know that while taking out the weeds, she had also been uprooting some newly sprouting seedlings. Halfway through, she realized what she had done and felt disappointed. Oh my, what have I done!",
@@ -868,8 +870,9 @@ export const articles: Article[] = [
       tone: "charcoal",
       motif: "olive",
     },
-    isNew: true,
     priority: 21,
+    issue: 2,
+    locked: true,
     tags: ["relationships", "self-examination", "kindness", "closer-to-god"],
     body: [
       "Some bullies don't fight with physical weapons. They operate differently! Some use words, influence, manipulation, intimidation, and even religion to inflict wounds that cannot be seen.",
@@ -910,8 +913,9 @@ export const articles: Article[] = [
       tone: "gold",
       motif: "wheat",
     },
-    isNew: true,
     priority: 20,
+    issue: 2,
+    locked: true,
     tags: ["seasons", "waiting", "purpose", "ecclesiastes"],
     body: [
       "> To everything there is a season, and a time to every purpose under the heaven. (Ecclesiastes 3:1, KJV)",
@@ -968,8 +972,9 @@ export const articles: Article[] = [
       tone: "burgundy",
       motif: "olive",
     },
-    isNew: true,
     priority: 19,
+    issue: 2,
+    locked: true,
     tags: ["decisions", "wisdom", "prayer", "proverbs"],
     body: [
       "Every day, we make choices. Some are small and seemingly insignificant, while others have the power to change the direction of our lives.",
@@ -1023,8 +1028,9 @@ export const articles: Article[] = [
       tone: "gold",
       motif: "wheat",
     },
-    isNew: true,
     priority: 18,
+    issue: 2,
+    locked: true,
     tags: ["waiting", "comparison", "provision", "encouragement"],
     body: [
       "Have you ever looked around and wondered why everyone seems to be moving forward while you remain in the same place?",
@@ -1078,8 +1084,9 @@ export const articles: Article[] = [
       tone: "charcoal",
       motif: "lily",
     },
-    isNew: true,
     priority: 17,
+    issue: 2,
+    locked: true,
     tags: ["courage", "hannah", "ruth", "esther", "calling"],
     body: [
       "We live in a world where success is often measured by visibility, recognition, influence, and position. Even as Christian women, we can become so focused on what others are achieving that we overlook the significance of our own journey.",
@@ -1486,6 +1493,21 @@ export const articles: Article[] = [
     ],
   },
 ];
+
+/**
+ * Every article readers can see. `locked` pieces are left out entirely, so
+ * they have no page, card, search result, or sitemap entry until unlocked.
+ * The newest batch among what's left gets the "New" badge.
+ */
+const published = allArticles.filter((a) => !a.locked);
+const newestBatch = new Set(newestBatchOf(published));
+export const articles: Article[] = published.map((a) => ({ ...a, isNew: newestBatch.has(a) }));
+
+/** Locked pieces waiting for an issue, most recently posted first. Only for
+ *  the issue page's teaser cards: never link to them or show their body. */
+export function getLockedArticles(issue: number): Article[] {
+  return allArticles.filter((a) => a.locked && (a.issue ?? 1) === issue).sort(byArrival);
+}
 
 export function getArticleBySlug(slug: string): Article | undefined {
   return articles.find((a) => a.slug === slug);
