@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import PlaceholderImage from "@/components/ui/PlaceholderImage";
+import AuthorAvatar from "@/components/ui/AuthorAvatar";
 import ArticleBody from "@/components/ArticleBody";
 import ArticleCard from "@/components/ArticleCard";
 import ShareButtons from "@/components/ShareButtons";
@@ -105,9 +106,7 @@ export default async function ArticlePage({
             </p>
           )}
           <div className="mt-7 flex items-center justify-center gap-3 font-sans text-sm text-white/75">
-            <span className="relative h-10 w-10 overflow-hidden rounded-full ring-2 ring-white/30">
-              {author && <PlaceholderImage image={author.image} sizes="40px" />}
-            </span>
+            {author && <AuthorAvatar author={author} sizes="40px" className="h-10 w-10 ring-2 ring-white/30" />}
             <span>
               By <strong className="font-bold tracking-tight text-white">{author?.name}</strong>
               <span className="mx-2">·</span>
@@ -131,9 +130,7 @@ export default async function ArticlePage({
 
           {author && (
             <div className="mt-8 flex flex-col items-start gap-4 rounded-2xl bg-cream p-6 sm:flex-row sm:items-center">
-              <span className="relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-full">
-                <PlaceholderImage image={author.image} sizes="64px" />
-              </span>
+              <AuthorAvatar author={author} sizes="64px" className="h-16 w-16" />
               <div>
                 <p className="font-sans text-xs font-semibold uppercase tracking-[0.1em] text-burgundy">
                   Written By

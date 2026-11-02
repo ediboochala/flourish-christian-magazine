@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import PlaceholderImage from "@/components/ui/PlaceholderImage";
+import AuthorAvatar from "@/components/ui/AuthorAvatar";
 import ArticleCard from "@/components/ArticleCard";
 import { authors, getAuthorBySlug } from "@/lib/data/authors";
 import { getArticlesByAuthor } from "@/lib/data/articles";
@@ -40,9 +40,7 @@ export default async function EditorialTeamProfilePage({
     <div>
       <section className="bg-plum py-12 sm:py-14">
         <div className="mx-auto flex max-w-3xl flex-col items-center px-6 text-center lg:px-10">
-          <div className="relative h-32 w-32 overflow-hidden rounded-full ring-4 ring-white/20">
-            <PlaceholderImage image={author.image} sizes="128px" />
-          </div>
+          <AuthorAvatar author={author} sizes="128px" className="h-32 w-32 ring-4 ring-white/20" />
           <h1 className="mt-6 font-serif text-3xl text-white sm:text-4xl">{author.name}</h1>
           {author.role && (
             <p className="mt-2 font-sans text-xs font-semibold uppercase tracking-[0.16em] text-gold-light">

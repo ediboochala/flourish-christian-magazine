@@ -3,6 +3,7 @@ import { Article } from "@/lib/types";
 import { getAuthorBySlug } from "@/lib/data/authors";
 import { getCategoryBySlug } from "@/lib/data/categories";
 import PlaceholderImage from "@/components/ui/PlaceholderImage";
+import AuthorAvatar from "@/components/ui/AuthorAvatar";
 import Eyebrow from "@/components/ui/Eyebrow";
 
 export default function FeaturedStory({
@@ -45,9 +46,7 @@ export default function FeaturedStory({
             {article.excerpt}
           </p>
           <div className="mt-6 flex items-center gap-3 font-sans text-sm text-charcoal-soft">
-            <span className="relative h-9 w-9 overflow-hidden rounded-full">
-              {author && <PlaceholderImage image={author.image} sizes="36px" />}
-            </span>
+            {author && <AuthorAvatar author={author} sizes="36px" className="h-9 w-9" />}
             <span>
               By <strong className="font-bold tracking-tight text-plum">{author?.name}</strong>
             </span>
