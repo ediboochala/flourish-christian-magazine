@@ -40,8 +40,8 @@ export const issues: Issue[] = [
     dateLabel: "November 2026",
     theme: "wine",
     poster: {
-      src: "/images/issues/issue-2-coming-soon.jpg",
-      alt: "Issue 2 is coming: a smiling woman in a wine-red headwrap reading the November issue of Flourish, A Season of Love, Sharing and Thanksgiving",
+      src: "/images/issues/issue-2-coming-soon-reading.jpg",
+      alt: "Issue 2 is coming: a woman in a wine-red headwrap peeking over the November issue of Flourish, A Season of Love, Sharing and Thanksgiving",
       tone: "burgundy",
     },
   },

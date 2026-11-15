@@ -172,7 +172,7 @@ function PosterHero({ issue, poster }: { issue: Issue; poster: NonNullable<Issue
         }}
         aria-hidden="true"
       />
-      <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-[1fr_21rem] lg:gap-16 lg:px-10">
+      <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-[1fr_26rem] lg:gap-16 lg:px-10">
         <Reveal className="block text-center lg:text-left">
           <Link
             href="/issues"
@@ -228,14 +228,14 @@ function PosterHero({ issue, poster }: { issue: Issue; poster: NonNullable<Issue
           </div>
         </Reveal>
 
-        <Reveal variant="scale" className="mx-auto block w-full max-w-[20rem] lg:max-w-none">
-          <div className="relative aspect-[2/3] overflow-hidden rounded-2xl shadow-[0_34px_60px_-24px_rgba(111,18,34,0.55)] ring-1 ring-gold-light/50">
+        <Reveal variant="scale" className="mx-auto block w-full max-w-[26rem] lg:max-w-none">
+          <div className="relative aspect-square overflow-hidden rounded-2xl shadow-[0_34px_60px_-24px_rgba(111,18,34,0.55)] ring-1 ring-gold-light/50">
             <Image
               src={poster.src!}
               alt={poster.alt}
               fill
               priority
-              sizes="(min-width: 1024px) 21rem, 20rem"
+              sizes="(min-width: 1024px) 26rem, 90vw"
               className="object-cover"
             />
           </div>
