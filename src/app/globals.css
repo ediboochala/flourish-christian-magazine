@@ -461,6 +461,84 @@ select:focus-visible,
   transform-origin: left;
 }
 
+.article-body h3 {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  color: var(--color-plum);
+  margin: 2.25rem 0 1rem;
+  line-height: 1.3;
+}
+
+.article-body ul {
+  margin: 0 0 1.75rem;
+  padding-left: 1.4rem;
+  list-style: none;
+}
+
+.article-body li {
+  position: relative;
+  margin-bottom: 0.85rem;
+  text-wrap: pretty;
+}
+
+/* A small gold leaf-dot in place of the default bullet. */
+.article-body li::before {
+  content: "";
+  position: absolute;
+  left: -1.15rem;
+  top: 0.72em;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 0 50% 0 50%;
+  background: var(--color-gold);
+}
+
+.article-body strong {
+  font-weight: 600;
+  color: var(--color-plum);
+}
+
+/* Sidebar-style table: cream panel, plum header row. */
+.article-table {
+  margin: 0 0 2.25rem;
+  overflow-x: auto;
+  border-radius: 1rem;
+  border: 1px solid color-mix(in srgb, var(--color-gold-light) 60%, transparent);
+  background: var(--color-cream);
+}
+
+.article-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.article-table th {
+  background: var(--color-plum);
+  color: #fff;
+  text-align: left;
+  font-weight: 600;
+  padding: 0.8rem 1.1rem;
+}
+
+.article-table td {
+  padding: 0.8rem 1.1rem;
+  vertical-align: top;
+  border-top: 1px solid color-mix(in srgb, var(--color-gold-light) 45%, transparent);
+}
+
+.article-table td:first-child {
+  font-weight: 500;
+  color: var(--color-plum);
+}
+
+.article-body .article-note {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--color-charcoal-soft);
+}
+
 /* Title underline that sweeps in under a card's headline on hover. */
 .title-underline {
   background-image: linear-gradient(currentColor, currentColor);

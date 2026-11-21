@@ -168,6 +168,14 @@ export const authors: Author[] = [
     focusAreas: ["Christian Living", "Personal Growth"],
     image: { alt: "Portrait placeholder for Caroline Wood", tone: "gold" },
   },
+  {
+    slug: "abimbola-aluko",
+    name: "Pastor Mrs Abimbola Aluko, Essex, MD",
+    role: "Guest Contributor",
+    bio: "",
+    focusAreas: ["Health & Wellness", "Christian Living"],
+    image: { alt: "Portrait placeholder for Pastor Mrs Abimbola Aluko", tone: "gold" },
+  },
 ];
 
 export function getAuthorBySlug(slug: string): Author | undefined {
