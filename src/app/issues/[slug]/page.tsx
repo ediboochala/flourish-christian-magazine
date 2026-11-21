@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Bell, Leaf, Lock, PenLine } from "lucide-react";
+import { ArrowLeft, Bell, CalendarDays, Leaf, Lock, PenLine } from "lucide-react";
 import ArticleCard from "@/components/ArticleCard";
 import FeaturedStory from "@/components/home/FeaturedStory";
 import IssueCover from "@/components/issues/IssueCover";
@@ -207,7 +207,17 @@ function PosterHero({ issue, poster }: { issue: Issue; poster: NonNullable<Issue
           <p className="mx-auto mt-6 max-w-xl font-serif text-lg italic leading-relaxed text-charcoal-soft lg:mx-0">
             {issue.tagline}
           </p>
-          <p className="mx-auto mt-3 max-w-xl font-sans text-[15px] leading-relaxed text-charcoal-soft lg:mx-0">
+          {issue.launch && (
+            <div className="mx-auto mt-6 max-w-xl rounded-2xl border border-gold/40 bg-white/70 px-5 py-4 text-center lg:mx-0 lg:text-left">
+              <p className="flex items-center justify-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-burgundy lg:justify-start">
+                <CalendarDays className="h-4 w-4 text-gold" aria-hidden="true" />
+                Launch Day
+              </p>
+              <p className="mt-1.5 font-serif text-xl font-semibold text-plum sm:text-2xl">{issue.launch.dateLabel}</p>
+              <p className="mt-1 font-sans text-sm text-charcoal-soft">{issue.launch.occasion}</p>
+            </div>
+          )}
+          <p className="mx-auto mt-5 max-w-xl font-sans text-[15px] leading-relaxed text-charcoal-soft lg:mx-0">
             {issue.description}
           </p>
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start">

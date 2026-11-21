@@ -123,6 +123,14 @@ export interface Issue {
   theme?: "wine";
   /** Announcement artwork shown in the hero while the issue is in progress. */
   poster?: MediaImage;
+  /** Announced release, shown in the site-wide bar and the issue hero while
+   *  the issue is in progress. */
+  launch?: {
+    /** e.g. "Thursday, November 26, 2026" */
+    dateLabel: string;
+    /** Where/what the release coincides with. */
+    occasion: string;
+  };
 }
 
 export type EventCategory =

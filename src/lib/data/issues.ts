@@ -44,8 +44,19 @@ export const issues: Issue[] = [
       alt: "Issue 2 is coming: a woman in a wine-red headwrap peeking over the November issue of Flourish, A Season of Love, Sharing and Thanksgiving",
       tone: "burgundy",
     },
+    launch: {
+      dateLabel: "Thursday, November 26, 2026",
+      occasion: "Thanksgiving Day at MFM Tampa, Florida",
+    },
   },
 ];
+
+/** The upcoming issue with an announced launch date, if any — drives the
+ *  site-wide announcement bar. Remove `launch` (or publish the issue) to
+ *  take the bar down. */
+export function getAnnouncedIssue(): Issue | undefined {
+  return issues.find((i) => i.status === "in-progress" && i.launch);
+}
 
 export function getIssueNumber(article: Article): number {
   return article.issue ?? 1;
