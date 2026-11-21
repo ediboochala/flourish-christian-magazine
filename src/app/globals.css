@@ -493,6 +493,36 @@ select:focus-visible,
   background: var(--color-gold);
 }
 
+.article-body ol {
+  margin: 0 0 1.75rem;
+  padding-left: 2.6rem;
+  list-style: none;
+  counter-reset: article-ol;
+}
+
+.article-body ol > li {
+  counter-increment: article-ol;
+}
+
+/* Gold serif numerals in a soft circle. */
+.article-body ol > li::before {
+  content: counter(article-ol);
+  position: absolute;
+  left: -2.6rem;
+  top: 0.15em;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 9999px;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-plum);
+  background: var(--color-cream);
+  border: 1px solid var(--color-gold-light);
+}
+
 .article-body strong {
   font-weight: 600;
   color: var(--color-plum);

@@ -176,6 +176,14 @@ export const authors: Author[] = [
     focusAreas: ["Health & Wellness", "Christian Living"],
     image: { alt: "Portrait placeholder for Pastor Mrs Abimbola Aluko", tone: "gold" },
   },
+  {
+    slug: "elizabeth-arisekola-oloko",
+    name: "Dr. Elizabeth Arisekola-Oloko, Houston, TX",
+    role: "Guest Contributor",
+    bio: "",
+    focusAreas: ["Women & Purpose", "Personal Growth"],
+    image: { alt: "Portrait placeholder for Dr. Elizabeth Arisekola-Oloko", tone: "plum" },
+  },
 ];
 
 export function getAuthorBySlug(slug: string): Author | undefined {

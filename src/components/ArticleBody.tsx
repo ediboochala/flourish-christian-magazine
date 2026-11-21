@@ -5,6 +5,7 @@ import { Fragment, type ReactNode } from "react";
  *   "### " → h3 sub-heading (e.g. a sidebar title)
  *   "> "   → pull-quote
  *   "- "   → bullet; consecutive bullets are grouped into one list
+ *   "1. "  → numbered item; consecutive items form one numbered list
  *   "| a | b |\n| c | d |" → table, first row is the header
  *   "~ "   → small italic note (disclaimers, scripture sign-offs)
  *   everything else → paragraph
@@ -32,6 +33,20 @@ export default function ArticleBody({ blocks }: { blocks: string[] }) {
             <li key={j}>{inline(item)}</li>
           ))}
         </ul>,
+      );
+    } else if (/^\d+\. /.test(block)) {
+      const items: string[] = [];
+      while (i < blocks.length && /^\d+\. /.test(blocks[i])) {
+        items.push(blocks[i].replace(/^\d+\. /, ""));
+        i++;
+      }
+      i--;
+      out.push(
+        <ol key={i}>
+          {items.map((item, j) => (
+            <li key={j}>{inline(item)}</li>
+          ))}
+        </ol>,
       );
     } else if (block.startsWith("## ")) {
       out.push(<h2 key={i}>{inline(block.slice(3))}</h2>);
