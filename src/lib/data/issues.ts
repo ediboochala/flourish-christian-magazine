@@ -46,7 +46,7 @@ export const issues: Issue[] = [
     },
     launch: {
       dateLabel: "Thursday, November 26, 2026",
-      occasion: "Thanksgiving Day at MFM Tampa, Florida",
+      occasion: "Thanksgiving Day",
     },
   },
 ];
