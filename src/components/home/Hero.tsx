@@ -5,9 +5,23 @@ import { getLatestIssue } from "@/lib/data/issues";
 /**
  * HERO — the printed Flourish cover, rebuilt for the web: a centered
  * "FLOURISH" wordmark, the cover woman filling the right of the frame,
- * a "Season of Renewal" headline block lower-left, and the brand ribbon
- * closing the panel.
+ * the latest issue's "A Season of …" headline block lower-left, and the
+ * brand ribbon closing the panel. The issue line, headline, tagline, and
+ * artwork all follow `getLatestIssue()` (artwork from its `hero` field,
+ * falling back to the original Flourish cover).
  */
+
+const DEFAULT_HERO = {
+  src: "/images/site/hero-renewal.png",
+  alt: "A woman in a purple headwrap writing in her Bible beside vases of purple flowers",
+};
+
+/** Splits "A Season of Love, Sharing, and Thanksgiving" into the small
+ *  italic lead-in and the large headline word(s). */
+function splitTitle(title: string): { lead?: string; main: string } {
+  const m = title.match(/^(A Season of)s+(.+)$/i);
+  return m ? { lead: m[1], main: m[2] } : { main: title };
+}
 
 function LeafCrest({ className }: { className?: string }) {
   return (
@@ -33,8 +47,16 @@ function LeafCrest({ className }: { className?: string }) {
 }
 
 export default function Hero() {
+  const issue = getLatestIssue();
+  const { lead, main } = splitTitle(issue.title);
+  const hero = issue.hero?.src ? issue.hero : DEFAULT_HERO;
+  const focus = issue.hero?.focus;
+  // The wash over the photo follows the issue's colour scheme.
+  const wash = issue.theme === "wine" ? "111,18,34" : "67,39,100";
+  const washTop = issue.theme === "wine" ? "64,10,20" : "45,25,72";
+
   return (
-    <section className="grain-overlay relative overflow-hidden bg-plum">
+    <section className={`grain-overlay relative overflow-hidden bg-plum ${issue.theme ? `theme-${issue.theme}` : ""}`}>
       {/* Cover photograph — the woman sits to the right of the frame, so
           the crop is held toward her while a plum wash keeps the left
           side dark enough to carry the headline. On mobile the section
@@ -45,25 +67,28 @@ export default function Hero() {
       <div className="absolute inset-0">
         <div className="animate-kenburns absolute inset-0">
           <Image
-            src="/images/site/hero-renewal.png"
-            alt="A woman in a purple headwrap writing in her Bible beside vases of purple flowers"
+            src={hero.src!}
+            alt={hero.alt}
             fill
             priority
             sizes="100vw"
-            className="object-cover object-[84%_center] sm:object-[75%_center] lg:object-[78%_center]"
+            className={
+              focus ? "object-cover" : "object-cover object-[84%_center] sm:object-[75%_center] lg:object-[78%_center]"
+            }
+            style={focus ? { objectPosition: focus } : undefined}
           />
         </div>
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to right, rgba(67,39,100,0.94) 0%, rgba(67,39,100,0.82) 30%, rgba(67,39,100,0.42) 58%, rgba(67,39,100,0.14) 100%)",
+              `linear-gradient(to right, rgba(${wash},0.94) 0%, rgba(${wash},0.82) 30%, rgba(${wash},0.42) 58%, rgba(${wash},0.14) 100%)`,
           }}
         />
         <div
           className="absolute inset-x-0 top-0 h-44"
           style={{
-            background: "linear-gradient(to bottom, rgba(45,25,72,0.72) 0%, transparent 100%)",
+            background: `linear-gradient(to bottom, rgba(${washTop},0.72) 0%, transparent 100%)`,
           }}
         />
         <div className="aurora-backdrop opacity-40" />
@@ -96,7 +121,9 @@ export default function Hero() {
             logo (see Header.tsx) now carries that message site-wide
             instead of just in this one hero. */}
         <div className="animate-fade-in font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-gold-light sm:text-xs">
-          <span>Issue No.&nbsp;1 &nbsp;&bull;&nbsp; A Season of Renewal</span>
+          <span>
+            Issue No.&nbsp;{issue.number} &nbsp;&bull;&nbsp; {issue.title}
+          </span>
         </div>
 
         {/* Masthead */}
@@ -128,26 +155,32 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Season of Renewal — pushed toward the lower-left, as on the cover */}
+        {/* The issue's season — pushed toward the lower-left, as on the cover */}
         <div
           className="animate-fade-up mt-auto max-w-full pt-10 sm:max-w-lg"
           style={{ animationDelay: "220ms" }}
         >
+          {lead && (
+            <p
+              className="font-serif text-2xl italic text-gold-light sm:text-3xl"
+              style={{ fontVariationSettings: '"WONK" 1' }}
+            >
+              {lead}
+            </p>
+          )}
           <p
-            className="font-serif text-2xl italic text-gold-light sm:text-3xl"
-            style={{ fontVariationSettings: '"WONK" 1' }}
+            className="text-balance font-serif font-semibold uppercase leading-[0.95] text-white [text-shadow:0_2px_20px_rgba(0,0,0,0.3)]"
+            style={{
+              // Long titles ("Love, Sharing, and Thanksgiving") step down a size.
+              fontSize:
+                main.length > 14 ? "clamp(2rem, 1.3rem + 2.6vw, 3.4rem)" : "clamp(2.75rem, 1.8rem + 4vw, 4.75rem)",
+              letterSpacing: "0.01em",
+            }}
           >
-            A Season of
-          </p>
-          <p
-            className="font-serif font-semibold uppercase leading-[0.9] text-white [text-shadow:0_2px_20px_rgba(0,0,0,0.3)]"
-            style={{ fontSize: "clamp(2.75rem, 1.8rem + 4vw, 4.75rem)", letterSpacing: "0.01em" }}
-          >
-            Renewal
+            {main}
           </p>
           <p className="mt-4 max-w-full font-sans text-[15px] leading-relaxed text-white/85 sm:max-w-md sm:text-base">
-            Embracing new beginnings with faith and purpose — a page, a prayer,
-            and a story at a time.
+            {issue.tagline}
           </p>
 
           {/* Scripture roundel, echoing the cover's badge */}

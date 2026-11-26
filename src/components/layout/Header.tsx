@@ -18,7 +18,7 @@ const NAV: NavItem[] = [
     href: "/magazine",
     label: "Magazine",
     menu: [
-      { href: "/issues", label: "Issues", blurb: "Issue No. 1 & what's coming next" },
+      { href: "/issues", label: "Issues", blurb: "The latest issue of Flourish" },
       { href: "/magazine", label: "Magazine Archive", blurb: "Every story, searchable" },
       { href: "/write-for-flourish", label: "Submit an Article", blurb: "Share your story" },
       {

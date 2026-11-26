@@ -123,6 +123,13 @@ export interface Issue {
   theme?: "wine";
   /** Announcement artwork shown in the hero while the issue is in progress. */
   poster?: MediaImage;
+  /** Retired from the site: the issue and every article in it are hidden
+   *  everywhere (no page, card, search result, or sitemap entry). The data
+   *  stays in `data/issueCatalog.ts`, so deleting this flag restores it. */
+  archived?: boolean;
+  /** Wide artwork for the homepage hero while this is the latest issue.
+   *  Omitted = the original Flourish cover artwork. */
+  hero?: MediaImage & { focus?: string };
   /** Announced release, shown in the site-wide bar and the issue hero while
    *  the issue is in progress. */
   launch?: {

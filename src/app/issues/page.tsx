@@ -9,7 +9,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "Issues",
   description:
-    "Every issue of Flourish Christian Magazine in one place. Read Issue No. 1, A Season of Renewal, and see what's coming in Issue No. 2.",
+    "Every issue of Flourish Christian Magazine in one place. Read Issue No. 2, A Season of Love, Sharing, and Thanksgiving.",
   path: "/issues",
 });
 

@@ -2,6 +2,7 @@ import { Article, Issue } from "@/lib/types";
 import { articles } from "@/lib/data/articles";
 import { getAuthorBySlug } from "@/lib/data/authors";
 import { byArrival } from "@/lib/articleOrder";
+import { allIssues } from "@/lib/data/issueCatalog";
 
 /**
  * ISSUES
@@ -10,46 +11,12 @@ import { byArrival } from "@/lib/articleOrder";
  * "coming together": its page lists whatever articles have arrived so far
  * plus placeholder slots for the rest. When it's complete, switch its
  * `status` to "published" (and give it a `cover`), then add the next
- * issue here as "in-progress".
+ * issue here as "in-progress". The issue list itself lives in
+ * `data/issueCatalog.ts`; set `archived: true` there to retire an issue
+ * (and all its articles) from the site.
  */
-export const issues: Issue[] = [
-  {
-    number: 1,
-    slug: "issue-1",
-    title: "A Season of Renewal",
-    tagline: "Embracing new beginnings with faith and purpose — a page, a prayer, and a story at a time.",
-    description:
-      "Our inaugural issue: testimonies of healing and wholeness, teaching on prayer and the Word, honest conversations about marriage and the home, and a call for every woman to steward her body, mind, and spirit well.",
-    status: "published",
-    dateLabel: "Inaugural Issue · 2026",
-    cover: {
-      src: "/images/site/hero-renewal.png",
-      alt: "Issue No. 1 cover: a woman in a purple headwrap writing in her Bible beside vases of purple flowers",
-      tone: "plum",
-    },
-    coverFocus: "78% center",
-  },
-  {
-    number: 2,
-    slug: "issue-2",
-    title: "A Season of Love, Sharing, and Thanksgiving",
-    tagline: "Stories of open hands and grateful hearts, for the season of giving thanks.",
-    description:
-      "Our November issue is written and sealed, waiting for its release. Faith, stories, wellness, and community — check back soon, or share your own story to be part of it.",
-    status: "in-progress",
-    dateLabel: "November 2026",
-    theme: "wine",
-    poster: {
-      src: "/images/issues/issue-2-coming-soon-reading.jpg",
-      alt: "Issue 2 is coming: a woman in a wine-red headwrap peeking over the November issue of Flourish, A Season of Love, Sharing and Thanksgiving",
-      tone: "burgundy",
-    },
-    launch: {
-      dateLabel: "Thursday, November 26, 2026",
-      occasion: "Thanksgiving Day",
-    },
-  },
-];
+/** Issues shown on the site: archived ones are left out entirely. */
+export const issues: Issue[] = allIssues.filter((i) => !i.archived);
 
 /** The upcoming issue with an announced launch date, if any — drives the
  *  site-wide announcement bar. Remove `launch` (or publish the issue) to

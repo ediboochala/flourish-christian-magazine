@@ -1,5 +1,6 @@
 import { Article } from "@/lib/types";
 import { byArrival, newestBatchOf, newestOf } from "@/lib/articleOrder";
+import { archivedIssueNumbers } from "@/lib/data/issueCatalog";
 
 /**
  * EDITORIAL CONTENT
@@ -814,11 +815,9 @@ const allArticles: Article[] = [
       "> He which soweth bountifully shall reap also bountifully. (2 Corinthians 9:6, KJV)",
     ],
   },
-  // November 2026 arrivals, held back for Issue No. 2 and `locked` until
-  // the editor gives the word: they are off every page of the site (only
-  // a sealed card with no title or picture shows on the Issue No. 2 page). To release them,
-  // delete the `locked: true` lines. The higher the `priority` number,
-  // the earlier the piece sits within the batch.
+  // Issue No. 2, released together on Thanksgiving Day, November 26, 2026
+  // (they share that `publishedAt` so the whole issue is the newest batch).
+  // The higher the `priority` number, the earlier the piece sits within it.
   {
     slug: "woman-educate-yourself",
     title: "Woman, Educate Yourself!",
@@ -827,7 +826,7 @@ const allArticles: Article[] = [
       "Marriage is not the end of ambition. Motherhood is not the burial ground of dreams. From six-hour commutes to a PhD while raising four children, a personal call to keep learning at every season of life.",
     categorySlug: "womens-stories",
     authorSlug: "elizabeth-arisekola-oloko",
-    publishedAt: "2026-11-21",
+    publishedAt: "2026-11-26",
     readingTimeMinutes: 4,
     heroImage: {
       src: "/images/articles/woman-educate-yourself.jpg",
@@ -837,7 +836,6 @@ const allArticles: Article[] = [
     },
     priority: 26,
     issue: 2,
-    locked: true,
     tags: ["education", "lifelong learning", "women and purpose", "motherhood", "career"],
     body: [
       "**Marriage is not the end of ambition. Motherhood is not the burial ground of dreams. And age is certainly not an expiration date for learning.**",
@@ -887,7 +885,7 @@ const allArticles: Article[] = [
       "When Harold Johnson's knees started crackling like bubble wrap, he and Bernice stepped into the ring. A warm, funny guide to eating well, moving more, fall-proofing the home, and caring for the temple God gave you.",
     categorySlug: "health-wellness",
     authorSlug: "abimbola-aluko",
-    publishedAt: "2026-11-21",
+    publishedAt: "2026-11-26",
     readingTimeMinutes: 5,
     heroImage: {
       src: "/images/articles/snap-crackle-pray.jpg",
@@ -896,8 +894,8 @@ const allArticles: Article[] = [
       motif: "olive",
     },
     priority: 25,
+    trending: true,
     issue: 2,
-    locked: true,
     tags: ["joint health", "healthy eating", "fall prevention", "exercise", "wellness"],
     body: [
       "## Meet the Johnsons (and The Knees)",
@@ -949,7 +947,7 @@ const allArticles: Article[] = [
       "Sometimes the person lying in that hospital bed has only one strong voice available to them: yours. A gentle, practical call to pray boldly, ask questions, and speak up for the ones we love.",
     categorySlug: "health-wellness",
     authorSlug: "winnie-darius",
-    publishedAt: "2026-11-15",
+    publishedAt: "2026-11-26",
     readingTimeMinutes: 4,
     heroImage: {
       src: "/images/articles/be-the-voice-at-the-bedside.jpg",
@@ -958,8 +956,8 @@ const allArticles: Article[] = [
       motif: "olive",
     },
     priority: 24,
+    editorsPick: true,
     issue: 2,
-    locked: true,
     tags: ["patient advocacy", "caregiving", "hospital", "health", "faith"],
     body: [
       "There are few things more frightening than watching someone you love become vulnerable in a hospital bed.",
@@ -1001,7 +999,7 @@ const allArticles: Article[] = [
       "From the first little rise beneath a t-shirt to the one bra you could unfasten with one hand, every woman has a story about her breasts. A warm, honest nudge to make room for your mammogram.",
     categorySlug: "health-wellness",
     authorSlug: "aderonke-olajide",
-    publishedAt: "2026-11-05",
+    publishedAt: "2026-11-26",
     readingTimeMinutes: 3,
     heroImage: {
       src: "/images/articles/your-mammogram-appointment.jpg",
@@ -1011,7 +1009,6 @@ const allArticles: Article[] = [
     },
     priority: 23,
     issue: 2,
-    locked: true,
     tags: ["breast health", "mammogram", "wellness", "self-care"],
     body: [
       "I think I was more excited about my mammogram appointment than the mammographer. I certainly had more questions. As she helped me get into position, I asked, \"Do you ever feel awkward? After seeing so many breasts, do you ever want to look away?\"",
@@ -1040,7 +1037,7 @@ const allArticles: Article[] = [
       "Mabel set out to weed her garden and uprooted her seedlings instead. Then the sun broke through, and a bud she thought was dead began to open. A short reflection on finding blessing in every disappointment.",
     categorySlug: "health-wellness",
     authorSlug: "bunmi-oyetunji",
-    publishedAt: "2026-11-02",
+    publishedAt: "2026-11-26",
     readingTimeMinutes: 2,
     heroImage: {
       src: "/images/articles/a-grateful-heart.jpg",
@@ -1049,8 +1046,8 @@ const allArticles: Article[] = [
       motif: "fern",
     },
     priority: 22,
+    trending: true,
     issue: 2,
-    locked: true,
     tags: ["gratitude", "devotional", "resilience"],
     body: [
       "Mabel woke up and decided to do some work in her garden. She put on her garden gloves and, row by row, started uprooting the weeds. Little did she know that while taking out the weeds, she had also been uprooting some newly sprouting seedlings. Halfway through, she realized what she had done and felt disappointed. Oh my, what have I done!",
@@ -1075,7 +1072,7 @@ const allArticles: Article[] = [
       "Some bullies never raise a hand. They use words, influence, and even religion, at family gatherings, in meetings, and in church. Meet five of them, and then take an honest look in the mirror.",
     categorySlug: "marriage-relationships",
     authorSlug: "aderonke-olajide",
-    publishedAt: "2026-11-02",
+    publishedAt: "2026-11-26",
     readingTimeMinutes: 4,
     heroImage: {
       src: "/images/articles/closer-to-god-an-honest-look-at-the-self-we-seldom-see.jpg",
@@ -1085,7 +1082,6 @@ const allArticles: Article[] = [
     },
     priority: 21,
     issue: 2,
-    locked: true,
     tags: ["relationships", "self-examination", "kindness", "closer-to-god"],
     body: [
       "Some bullies don't fight with physical weapons. They operate differently! Some use words, influence, manipulation, intimidation, and even religion to inflict wounds that cannot be seen.",
@@ -1118,7 +1114,7 @@ const allArticles: Article[] = [
       "One woman is celebrating while another is still waiting. That does not mean you are behind; you may simply be in a different season. Six seasons of a woman's life, and what each one asks of you.",
     categorySlug: "faith-inspiration",
     authorSlug: "tayo-oluwayemiwo",
-    publishedAt: "2026-11-02",
+    publishedAt: "2026-11-26",
     readingTimeMinutes: 5,
     heroImage: {
       src: "/images/articles/god-of-times-and-seasons.jpg",
@@ -1127,8 +1123,8 @@ const allArticles: Article[] = [
       motif: "wheat",
     },
     priority: 20,
+    editorsPick: true,
     issue: 2,
-    locked: true,
     tags: ["seasons", "waiting", "purpose", "ecclesiastes"],
     body: [
       "> To everything there is a season, and a time to every purpose under the heaven. (Ecclesiastes 3:1, KJV)",
@@ -1177,7 +1173,7 @@ const allArticles: Article[] = [
       "Should I take the job, the relationship, the business, the move? The quality of our lives is often shaped by the quality of our choices. Wisdom, meditation, diligence, and prayer for the decisions that matter.",
     categorySlug: "faith-inspiration",
     authorSlug: "tayo-oluwayemiwo",
-    publishedAt: "2026-11-02",
+    publishedAt: "2026-11-26",
     readingTimeMinutes: 5,
     heroImage: {
       src: "/images/articles/the-art-of-making-wise-choices.jpg",
@@ -1187,7 +1183,6 @@ const allArticles: Article[] = [
     },
     priority: 19,
     issue: 2,
-    locked: true,
     tags: ["decisions", "wisdom", "prayer", "proverbs"],
     body: [
       "Every day, we make choices. Some are small and seemingly insignificant, while others have the power to change the direction of our lives.",
@@ -1233,7 +1228,7 @@ const allArticles: Article[] = [
       "Your friend got the promotion. The woman you mentored has a thriving business. And you are still asking, \"Lord, when will it be my turn?\" A word from the feeding of the five thousand for everyone sitting near the back.",
     categorySlug: "faith-inspiration",
     authorSlug: "bunmi-oyetunji",
-    publishedAt: "2026-11-02",
+    publishedAt: "2026-11-26",
     readingTimeMinutes: 5,
     heroImage: {
       src: "/images/articles/your-bread-is-coming.jpg",
@@ -1242,8 +1237,8 @@ const allArticles: Article[] = [
       motif: "wheat",
     },
     priority: 18,
+    trending: true,
     issue: 2,
-    locked: true,
     tags: ["waiting", "comparison", "provision", "encouragement"],
     body: [
       "Have you ever looked around and wondered why everyone seems to be moving forward while you remain in the same place?",
@@ -1289,7 +1284,7 @@ const allArticles: Article[] = [
       "A heartbroken wife, a widowed foreigner, and a queen facing a life-or-death decision. Three women of Scripture, three kinds of courage, and one God working behind the scenes the whole time.",
     categorySlug: "womens-stories",
     authorSlug: "modupe-obatusin",
-    publishedAt: "2026-11-02",
+    publishedAt: "2026-11-26",
     readingTimeMinutes: 6,
     heroImage: {
       src: "/images/articles/courage-in-the-calling.jpg",
@@ -1298,8 +1293,8 @@ const allArticles: Article[] = [
       motif: "lily",
     },
     priority: 17,
+    editorsPick: true,
     issue: 2,
-    locked: true,
     tags: ["courage", "hannah", "ruth", "esther", "calling"],
     body: [
       "We live in a world where success is often measured by visibility, recognition, influence, and position. Even as Christian women, we can become so focused on what others are achieving that we overlook the significance of our own journey.",
@@ -1708,11 +1703,12 @@ const allArticles: Article[] = [
 ];
 
 /**
- * Every article readers can see. `locked` pieces are left out entirely, so
+ * Every article readers can see. `locked` pieces and every article in an
+ * archived issue (see `Issue.archived`) are left out entirely, so
  * they have no page, card, search result, or sitemap entry until unlocked.
  * The newest batch among what's left gets the "New" badge.
  */
-const published = allArticles.filter((a) => !a.locked);
+const published = allArticles.filter((a) => !a.locked && !archivedIssueNumbers.has(a.issue ?? 1));
 const newestBatch = new Set(newestBatchOf(published));
 export const articles: Article[] = published.map((a) => ({ ...a, isNew: newestBatch.has(a) }));
 
