@@ -82,13 +82,13 @@ export default function Hero() {
           className="absolute inset-0"
           style={{
             background:
-              `linear-gradient(to right, rgba(${wash},0.94) 0%, rgba(${wash},0.82) 30%, rgba(${wash},0.42) 58%, rgba(${wash},0.14) 100%)`,
+              `linear-gradient(to right, rgba(${wash},0.96) 0%, rgba(${wash},0.9) 35%, rgba(${wash},0.78) 62%, rgba(${wash},0.62) 100%)`,
           }}
         />
         <div
           className="absolute inset-x-0 top-0 h-44"
           style={{
-            background: `linear-gradient(to bottom, rgba(${washTop},0.72) 0%, transparent 100%)`,
+            background: `linear-gradient(to bottom, rgba(${washTop},0.82) 0%, transparent 100%)`,
           }}
         />
         <div className="aurora-backdrop opacity-40" />
