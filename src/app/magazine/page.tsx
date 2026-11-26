@@ -6,6 +6,7 @@ import Reveal from "@/components/ui/Reveal";
 import { getEditorsPicks, getRotatingAllArticles, getTrendingArticles } from "@/lib/data/articles";
 import Link from "next/link";
 import IssueShelf from "@/components/issues/IssueShelf";
+import OtherArticles from "@/components/OtherArticles";
 import { categories } from "@/lib/data/categories";
 import { getIssueStats, issues } from "@/lib/data/issues";
 import { pageMetadata } from "@/lib/seo";
@@ -113,6 +114,8 @@ export default function MagazinePage() {
           </Reveal>
         </div>
       </section>
+
+      <OtherArticles className="bg-ivory pb-14" />
     </div>
   );
 }

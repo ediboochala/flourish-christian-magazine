@@ -9,14 +9,14 @@ import ArticleCard from "@/components/ArticleCard";
 import ShareButtons from "@/components/ShareButtons";
 import NewsletterCTA from "@/components/NewsletterCTA";
 import ReadingProgress from "@/components/ReadingProgress";
-import { articles, getArticleBySlug, getRelatedArticles } from "@/lib/data/articles";
+import { articles, otherArticles, getArticleBySlug, getRelatedArticles, isOtherArticle } from "@/lib/data/articles";
 import { getAuthorBySlug } from "@/lib/data/authors";
 import { getCategoryBySlug } from "@/lib/data/categories";
 import { getIssueByNumber, getIssueNumber } from "@/lib/data/issues";
 import { pageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
-  return articles.map((a) => ({ slug: a.slug }));
+  return [...articles, ...otherArticles].map((a) => ({ slug: a.slug }));
 }
 
 export async function generateMetadata({
@@ -57,9 +57,12 @@ export default async function ArticlePage({
   const related = getRelatedArticles(article, 3);
   const issue = getIssueByNumber(getIssueNumber(article));
 
-  const currentIndex = articles.findIndex((a) => a.slug === article.slug);
-  const prevArticle = articles[currentIndex - 1];
-  const nextArticle = articles[currentIndex + 1];
+  // Previous/next stay within the article's own list, so an "Other
+  // Articles" piece only steps through the other "Other Articles".
+  const siblings = isOtherArticle(article.slug) ? otherArticles : articles;
+  const currentIndex = siblings.findIndex((a) => a.slug === article.slug);
+  const prevArticle = siblings[currentIndex - 1];
+  const nextArticle = siblings[currentIndex + 1];
 
   return (
     <article>

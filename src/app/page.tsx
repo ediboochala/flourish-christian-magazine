@@ -6,6 +6,7 @@ import FeaturedBook from "@/components/home/FeaturedBook";
 import ArticleCard from "@/components/ArticleCard";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
+import OtherArticles from "@/components/OtherArticles";
 import { getFeaturedArticle, getRotatingLatestArticles } from "@/lib/data/articles";
 
 // Regenerates the static homepage every 10 seconds so both the "Editor's
@@ -57,6 +58,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* OTHER ARTICLES: earlier issues, collapsed until clicked */}
+      <OtherArticles className="bg-white pb-14 pt-2" />
     </>
   );
 }

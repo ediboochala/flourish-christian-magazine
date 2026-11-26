@@ -1703,10 +1703,10 @@ const allArticles: Article[] = [
 ];
 
 /**
- * Every article readers can see. `locked` pieces and every article in an
- * archived issue (see `Issue.archived`) are left out entirely, so
- * they have no page, card, search result, or sitemap entry until unlocked.
- * The newest batch among what's left gets the "New" badge.
+ * Every article in the main listings. `locked` pieces are hidden entirely;
+ * articles from an archived issue (see `Issue.archived`) are kept out of
+ * here and shown only in the collapsed "Other Articles" panel (see
+ * `otherArticles` below). The newest batch gets the "New" badge.
  */
 const published = allArticles.filter((a) => !a.locked && !archivedIssueNumbers.has(a.issue ?? 1));
 const newestBatch = new Set(newestBatchOf(published));
@@ -1718,8 +1718,22 @@ export function getLockedArticles(issue: number): Article[] {
   return allArticles.filter((a) => a.locked && (a.issue ?? 1) === issue).sort(byArrival);
 }
 
+/**
+ * "Other Articles": the unlocked articles from archived issues. They stay
+ * out of every listing above (homepage, magazine, categories, search) and
+ * are only reached through the collapsed "Other Articles" panel, but
+ * each keeps its own readable page. Most recently posted first.
+ */
+export const otherArticles: Article[] = allArticles
+  .filter((a) => !a.locked && archivedIssueNumbers.has(a.issue ?? 1))
+  .sort(byArrival);
+
+export function isOtherArticle(slug: string): boolean {
+  return otherArticles.some((a) => a.slug === slug);
+}
+
 export function getArticleBySlug(slug: string): Article | undefined {
-  return articles.find((a) => a.slug === slug);
+  return articles.find((a) => a.slug === slug) ?? otherArticles.find((a) => a.slug === slug);
 }
 
 export function getArticlesByCategory(categorySlug: string): Article[] {
