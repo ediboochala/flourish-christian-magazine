@@ -183,6 +183,14 @@ export const authors: Author[] = [
     focusAreas: ["Women & Purpose", "Personal Growth"],
     image: { alt: "Portrait placeholder for Dr. Elizabeth Arisekola-Oloko", tone: "plum" },
   },
+  {
+    slug: "atinuke-ibegbulem",
+    name: "Pastor Atinuke Ibegbulem, Houston, TX",
+    role: "Guest Contributor",
+    bio: "",
+    focusAreas: ["Faith & Spirituality", "Prayer & Devotion"],
+    image: { alt: "Portrait placeholder for Pastor Atinuke Ibegbulem", tone: "burgundy" },
+  },
 ];
 
 export function getAuthorBySlug(slug: string): Author | undefined {
