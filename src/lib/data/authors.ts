@@ -135,10 +135,9 @@ export const authors: Author[] = [
     image: { alt: "Portrait placeholder for an anonymous Flourish contributor", tone: "burgundy" },
   },
   {
-    // Joined November 2026. No location was supplied with her first
-    // submission; append ", City, ST" to the name once known.
+    // Joined November 2026; Austin, TX location added 2026-11-28.
     slug: "modupe-obatusin",
-    name: "Pastor Mrs Modupe Oluwasegun Obatusin",
+    name: "Pastor Mrs Modupe Oluwasegun Obatusin, Austin, TX",
     role: "Guest Contributor",
     bio: "",
     focusAreas: ["Faith & Spirituality", "Women & Purpose"],
